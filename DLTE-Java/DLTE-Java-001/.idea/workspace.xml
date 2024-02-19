@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38c717b0-c63a-4824-a51f-52108a9edaf9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/basics/service/Banking.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/basics/service/PersonalLoan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/basics/service/Interaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/basics/service/Interaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/basics/service/Banking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/basics/service/Banking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/basics/service/PersonalLoan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/basics/service/PersonalLoan.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +125,7 @@
       <workItem from="1708314774499" duration="1387000" />
       <workItem from="1708319401650" duration="1683000" />
       <workItem from="1708327564877" duration="1267000" />
-      <workItem from="1708352058573" duration="2528000" />
+      <workItem from="1708352058573" duration="3869000" />
     </task>
     <servers />
   </component>
@@ -137,6 +136,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="371" y="93" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1708368329155">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="371" y="93" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1280.672@0.0.1280.672" timestamp="1708368329155" />
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1708081899906">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
@@ -169,5 +172,9 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="91" y="33" key="new project wizard/0.0.1280.672@0.0.1280.672" timestamp="1708327708262" />
+    <state x="297" y="149" key="run.anything.popup" timestamp="1708367722192">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="297" y="149" key="run.anything.popup/0.0.1280.672@0.0.1280.672" timestamp="1708367722192" />
   </component>
 </project>
