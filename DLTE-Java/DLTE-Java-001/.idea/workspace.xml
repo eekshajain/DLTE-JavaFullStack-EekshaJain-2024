@@ -2,29 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38c717b0-c63a-4824-a51f-52108a9edaf9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../.idea/DLTE-JavaFullStack-EekshaJain-2024.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/DLTE-Java-001.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/xxjainne.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/basics/service/Blocks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/basics/service/CLI_FD_MaturityAmount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/basics/service/Interaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/CarLoanDataValidation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/InsuranceProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/MinimumBalance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/NumberOfDebits.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/PasswordRegex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/SIPCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/TaxSlabs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/test/java/basics/service/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/DLTE-Java-002-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/TaxSlabs.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/surefire-reports/TEST-basics.service.AppTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/surefire-reports/basics.service.AppTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/test-classes/basics/service/AppTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/basics/service/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/basics/service/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/DLTE-java-001-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/DLTE-java-001-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/basics/service/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/basics/service/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-basics.service.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-basics.service.AppTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/basics.service.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/basics.service.AppTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/basics/service/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/basics/service/AppTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/basics/service/CLI_FD_MaturityAmount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/basics/service/CLI_FD_MaturityAmount.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,19 +48,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="2cQwStycaTUMBHI68I479BDBLAn" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JAVA" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DLTE-Java-002" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -139,17 +148,28 @@
       <workItem from="1708058028646" duration="2278000" />
       <workItem from="1708073356855" duration="9923000" />
       <workItem from="1708251938317" duration="3485000" />
+      <workItem from="1708314774499" duration="1387000" />
+      <workItem from="1708319401650" duration="1683000" />
+      <workItem from="1708327564877" duration="1267000" />
+      <workItem from="1708352058573" duration="2105000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1708081899906">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.672@0.0.1280.672" timestamp="1708081899906" />
+    <state x="421" y="93" key="FileChooserDialogImpl" timestamp="1708352075506">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="421" y="93" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1708352075506" />
     <state width="1237" height="145" key="GridCell.Tab.0.bottom" timestamp="1708255520430">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
@@ -170,5 +190,9 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="144" y="0" key="SettingsEditor/0.0.1280.672@0.0.1280.672" timestamp="1708078757565" />
+    <state x="91" y="33" key="new project wizard" timestamp="1708327708262">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="91" y="33" key="new project wizard/0.0.1280.672@0.0.1280.672" timestamp="1708327708262" />
   </component>
 </project>

@@ -16,7 +16,7 @@ public class CLI_FD_MaturityAmount {
         System.out.println("Enter Duration of FD");
         tenureOfFD=scanner.nextInt();
         maturityFD=principalAmount*Math.pow((1+yearlyInterest),tenureOfFD);
-        System.out.println("Your Maturity Fixed Deposit Amount is "+String.format("%.2f",maturityFD)+" of Principal Amount "+principalAmount+" with the rate of interest "+rateOfInterest+" for the tenure of "+tenureOfFD+" years");
+        System.out.println("Your Maturity Fixed Deposit Amount is "+maturityFD+" of Principal Amount "+principalAmount+" with the rate of interest "+rateOfInterest+" for the tenure of "+tenureOfFD+" years");
 
     }
 }
