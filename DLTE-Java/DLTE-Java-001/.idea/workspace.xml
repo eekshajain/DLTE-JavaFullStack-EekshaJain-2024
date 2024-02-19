@@ -2,35 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38c717b0-c63a-4824-a51f-52108a9edaf9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/CarLoanDataValidation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/InsuranceProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/MinimumBalance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/NumberOfDebits.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/PasswordRegex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/SIPCalculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/TaxSlabs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/test/java/basics/service/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/DLTE-Java-002-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/App.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/TaxSlabs.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/maven-archiver/pom.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/surefire-reports/TEST-basics.service.AppTest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/surefire-reports/basics.service.AppTest.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/test-classes/basics/service/AppTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/basics/service/CLI_FD_MaturityAmount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/basics/service/CLI_FD_MaturityAmount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/CarLoanDataValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/CarLoanDataValidation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

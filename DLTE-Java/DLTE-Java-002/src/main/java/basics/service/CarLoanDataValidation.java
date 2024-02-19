@@ -35,9 +35,9 @@ public class CarLoanDataValidation {
         Pattern patternPAN=Pattern.compile(panCardExpression);
         Matcher matcherPAN =patternPAN.matcher(borrowerPan);
         if(matcherPAN.matches())
-            System.out.println("Valid name");
+            System.out.println("Valid PAN Card");
         else
-            System.out.println("Invalid name");
+            System.out.println("Invalid PAN Card");
 //        System.out.println("Fill your NameLet us know our Income Type");
 //        borrowerIncomeType=scanner.next();
         System.out.println("Mention Mobile number");
