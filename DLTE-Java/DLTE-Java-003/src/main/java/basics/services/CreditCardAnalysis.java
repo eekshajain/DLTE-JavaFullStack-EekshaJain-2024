@@ -72,7 +72,7 @@ public class CreditCardAnalysis {
     public void filterBasedOnBillPayment(CreditCard[] customers,String date){
         String splitDate[]=date.split("-");
         for(CreditCard each:customers){
-            if(Integer.parseInt(splitDate[0])==each.getDateOfBillPayment().getDate() && Integer.parseInt(splitDate[1])==each.getDateOfBillPayment().getMonth() && Integer.parseInt(splitDate[0])==each.getDateOfBillPayment().getYear()){
+            if(Integer.parseInt(splitDate[0])==each.getDateOfBillPayment().getDate() && Integer.parseInt(splitDate[1])==each.getDateOfBillPayment().getMonth() && Integer.parseInt(splitDate[2])==each.getDateOfBillPayment().getYear()){
                 System.out.println(each.getCreditCardHolder()+" "+each.getCreditCardNumber());
             }
         }

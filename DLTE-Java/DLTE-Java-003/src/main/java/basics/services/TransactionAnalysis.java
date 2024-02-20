@@ -88,6 +88,8 @@ public class TransactionAnalysis {
         System.out.println("Number of transaction made to beneficiary "+beneficiary+" is "+count);
     }
 
-    public void
+    public void filterBasedRemarks(TransactionData[] myData,String remarks){
+      //  for()
+    }
 
 }
