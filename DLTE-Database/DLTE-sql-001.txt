@@ -1,0 +1,25 @@
+create table transaction_analysis(transaction_id number not null,transaction_date date not null,transaction_to varchar(255) not null,transaction_amount number(10) not null,transaction_remarks varchar(255));
+
+create sequence transaction_sequence start with 24001 increment by 1;
+
+alter table transaction_analysis add constraint transaction_sequence primary key(transaction_id);
+
+insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Divija',774,'20-Feb-2024','Bus Ticket');
+
+insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Ankitha',400,'12-Feb-2024','Stationary');
+
+insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Akshira',800,'10-Feb-2024','Bus Ticket');
+
+insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Divija',350,'15-Feb-2024','Desserts');
+
+insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Arundhathi',350,'01-Feb-2024','Hotel');
+
+1.select * from transaction_analysis where transaction_date between '1-Feb-2024' and '15-Feb-2024';
+
+2.select min(transaction_amount) from transaction_analysis;
+
+3.select max(transaction_amount) from transaction_analysis;
+
+4.select count(*)  from transaction_analysis where transaction_to='Divija'
+
+5.select * from transaction_analysis where transaction_remarks='Bus Ticket';
