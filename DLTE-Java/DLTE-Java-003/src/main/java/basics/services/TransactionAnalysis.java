@@ -8,7 +8,7 @@ public class TransactionAnalysis {
         System.out.println("--------Welcome to MyBank--------");
         Scanner scanner=new Scanner(System.in);
         Integer startDate,endDate;
-        String beneficiaryName="";
+        String beneficiaryName="",remarks="";
         int option=0;
         TransactionData[] myBank={
                 new TransactionData(new Date(2024,2,14),2000,"Divija","Friend"),
@@ -20,7 +20,8 @@ public class TransactionAnalysis {
                 new TransactionData(new Date(2024,1,10),200,"Ankitha","Friend"),
         };
         TransactionAnalysis analysis=new TransactionAnalysis();
-        System.out.println("Enter\n1.Filter Based On transaction Date\n2.Least amount transferred\n3.Maximum amount transferred\n4.Number of transaction to particular beneficiary\n5.Filter based on particular remarks");
+        System.out.println("Enter\n1.Filter Based On transaction Date\n2.Least amount transferred\n3.Maximum amount transferred\n4.Number of transaction to particular beneficiary\n5.Filter based on particular remarks\n6.Sort beneficiary in descending\n7.Sort amount in ascending");
+        System.out.println("Enter your choice");
         option=scanner.nextInt();
        switch (option){
            case 1:
@@ -39,8 +40,24 @@ public class TransactionAnalysis {
                beneficiaryName=scanner.next();
                analysis.numberOfTransaction(myBank,beneficiaryName);
                break;
+           case 5:
+               System.out.println("Enter the remarks based on which you want to filter");
+               remarks=scanner.next();
+               analysis.filterBasedRemarks(myBank,remarks);
+               break;
+           case 6:
+               System.out.println("Sort beneficiary in descending");
+               analysis.sortBasedOnBeneficiary(myBank);
+               analysis.list(myBank);
+               break;
+           case 7:
+               System.out.println("Sort amount in ascending");
+               analysis.sortBasedOnAmount(myBank);
+               analysis.list(myBank);
        }
+       scanner.close();
     }
+
     public void filterBasedOnDate(TransactionData[] myData,Integer startDate,Integer endDate){
         System.out.println("Details whose date of transaction are between "+startDate+" and "+endDate);
         for(TransactionData each:myData){
@@ -63,6 +80,7 @@ public class TransactionAnalysis {
             }
         }
     }
+
 
     public void maximumAmountTransferred(TransactionData[] myData){
         Integer max =Integer.MIN_VALUE;
@@ -89,7 +107,44 @@ public class TransactionAnalysis {
     }
 
     public void filterBasedRemarks(TransactionData[] myData,String remarks){
-      //  for()
+        System.out.println("Details of those whose remarks is "+remarks);
+        for(TransactionData each:myData){
+            if(each.getRemarks().equals(remarks)){
+                System.out.println(each.getSentTo()+"  "+each.getAmountOfTransaction()+" "+each.getDateOfTransaction());
+            }
+        }
+    }
+    public void list(TransactionData[] myData){
+        System.out.println("Available customers");
+        for(TransactionData each:myData){
+            System.out.println(each);
+        }
+    }
+
+    public void sortBasedOnBeneficiary(TransactionData[] myData){
+      TransactionData temp=null;
+      for(int index=0;index<myData.length-1;index++){
+          for (int select=0;select<myData.length-index-1;select++){
+              if(myData[select].getSentTo().compareTo(myData[select+1].getSentTo())<0){
+                  temp=myData[select];
+                  myData[select]=myData[select+1];
+                  myData[select+1]=temp;
+              }
+          }
+      }
+    }
+
+    public void sortBasedOnAmount(TransactionData[] myData){
+        TransactionData temp=null;
+        for(int index=0;index<myData.length-1;index++){
+            for (int select=0;select<myData.length-index-1;select++){
+                if(myData[select].getAmountOfTransaction().compareTo(myData[select+1].getAmountOfTransaction())>0){
+                    temp=myData[select];
+                    myData[select]=myData[select+1];
+                    myData[select+1]=temp;
+                }
+            }
+        }
     }
 
 }
