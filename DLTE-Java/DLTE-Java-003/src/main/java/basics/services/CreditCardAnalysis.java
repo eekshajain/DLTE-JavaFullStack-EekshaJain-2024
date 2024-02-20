@@ -58,7 +58,7 @@ public class CreditCardAnalysis {
 
             }
         }
-
+   scanner.close();
     }
     public void filterBasedOnLimit(CreditCard[] customers,Integer start,Integer end){
         System.out.println("List of users having amount limit between "+start+" and "+end);
@@ -72,7 +72,7 @@ public class CreditCardAnalysis {
     public void filterBasedOnBillPayment(CreditCard[] customers,String date){
         String splitDate[]=date.split("-");
         for(CreditCard each:customers){
-            if(Integer.parseInt(splitDate[0])==each.getDateOfBillGeneration().getDate() && Integer.parseInt(splitDate[1])==each.getDateOfBillGeneration().getMonth() && Integer.parseInt(splitDate[0])==each.getDateOfBillGeneration().getYear()){
+            if(Integer.parseInt(splitDate[0])==each.getDateOfBillPayment().getDate() && Integer.parseInt(splitDate[1])==each.getDateOfBillPayment().getMonth() && Integer.parseInt(splitDate[0])==each.getDateOfBillPayment().getYear()){
                 System.out.println(each.getCreditCardHolder()+" "+each.getCreditCardNumber());
             }
         }
@@ -88,7 +88,7 @@ public class CreditCardAnalysis {
                  System.out.println("Your PIN is now updated");
              }
          }
-
+      scanner.close();
     }
 
 }
