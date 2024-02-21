@@ -4,7 +4,6 @@
     <list default="true" id="38c717b0-c63a-4824-a51f-52108a9edaf9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/basics/service/Banking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/basics/service/Banking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/basics/service/PersonalLoan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/basics/service/PersonalLoan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/InsuranceProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/InsuranceProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/CarLoanDataValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/CarLoanDataValidation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/InsuranceProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/InsuranceProvider.class" afterDir="false" />
@@ -144,7 +143,8 @@
       <workItem from="1708319401650" duration="1683000" />
       <workItem from="1708327564877" duration="1267000" />
       <workItem from="1708352058573" duration="3948000" />
-      <workItem from="1708481962548" duration="783000" />
+      <workItem from="1708481962548" duration="865000" />
+      <workItem from="1708485389678" duration="249000" />
     </task>
     <servers />
   </component>
@@ -167,22 +167,22 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="421" y="93" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1708352075506" />
-    <state width="1237" height="145" key="GridCell.Tab.0.bottom" timestamp="1708482488864">
+    <state width="1237" height="145" key="GridCell.Tab.0.bottom" timestamp="1708482833539">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="145" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1708482488864" />
-    <state width="1237" height="145" key="GridCell.Tab.0.center" timestamp="1708482488864">
+    <state width="1237" height="145" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1708482833539" />
+    <state width="1237" height="145" key="GridCell.Tab.0.center" timestamp="1708482833539">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="145" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1708482488864" />
-    <state width="1237" height="145" key="GridCell.Tab.0.left" timestamp="1708482488864">
+    <state width="1237" height="145" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1708482833539" />
+    <state width="1237" height="145" key="GridCell.Tab.0.left" timestamp="1708482833539">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="145" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1708482488864" />
-    <state width="1237" height="145" key="GridCell.Tab.0.right" timestamp="1708482488864">
+    <state width="1237" height="145" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1708482833539" />
+    <state width="1237" height="145" key="GridCell.Tab.0.right" timestamp="1708482833539">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="145" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1708482488864" />
+    <state width="1237" height="145" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1708482833539" />
     <state x="144" y="0" key="SettingsEditor" timestamp="1708078757565">
       <screen x="0" y="0" width="1280" height="672" />
     </state>

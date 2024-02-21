@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Banking {
     public static void main(String[] args) {
         String name="",emailAddress="",address="",IFSCCode="",password="",confirmPassword="";
+        int customerID;
         Long mobile=0L,accNumber=0L;
         int bankType;
         Scanner scanner=new Scanner(System.in);
@@ -15,14 +16,10 @@ public class Banking {
             case 1:
                 System.out.println("Enter your name");
                 name=scanner.nextLine();
-                System.out.println("Enter address");
-                address=scanner.nextLine();
                 System.out.println("Enter Email address");
                 emailAddress=scanner.next();
-                System.out.println("Enter Account number");
-                accNumber=scanner.nextLong();
-                System.out.println("Enter bank IFSC code");
-                IFSCCode=scanner.next();
+                System.out.println("Enter Customer ID");
+                customerID=scanner.nextInt();
                 System.out.println("Enter password");
                 password=scanner.next();
                 System.out.println("Re enter password");
