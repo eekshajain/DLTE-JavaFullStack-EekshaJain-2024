@@ -8,7 +8,8 @@ public class Banking {
         Long mobile=0L,accNumber=0L;
         int bankType;
         Scanner scanner=new Scanner(System.in);
-        System.out.println("Enter 1 for NetBanking 2 for Mobile Banking");
+        System.out.println("Welcome to MyBank");
+        System.out.println("Enter\n1.To create NetBanking\n2.To create MobileBanking");
         bankType=scanner.nextInt();
         switch (bankType){
             case 1:
@@ -48,7 +49,7 @@ public class Banking {
                 System.out.println("Re enter password");
                 confirmPassword=scanner.next();
                 if(password.equals(confirmPassword))
-                    System.out.println("Dear customer thank you for registering for Net Banking");
+                    System.out.println("Dear customer thank you for registering for Mobile Banking");
                 else
                     System.out.println("Wrong password");
         }
