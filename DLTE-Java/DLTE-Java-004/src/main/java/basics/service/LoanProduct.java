@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class LoanProduct implements MyBank {
-    int sizeLoan=0;
 Scanner scanner =new Scanner(System.in);
 Scanner scanner1=new Scanner(System.in);
    Loan[] loans = new Loan[10];
@@ -49,16 +48,23 @@ Scanner scanner1=new Scanner(System.in);
         int choice;
         LoanProduct loans1 =new LoanProduct();
         choice=scanner.nextInt();
+        while(true){
         System.out.println("Enter choice\n1.Add new loan\n2.Check available loan\n3.Check closed loan");
-        switch (choice){
+        switch (choice) {
             case 1:
                 System.out.println("Enter number of loans");
-                int size=scanner.nextInt();
+                int size = scanner.nextInt();
                 loans1.addLoan(size);
                 System.out.println("Loan added successfully!");
                 break;
-            case 2:loans1.availableLoan();
-            case 3:loans1.closedLoan();
+            case 2:
+                loans1.availableLoan();
+            case 3:
+                loans1.closedLoan();
+            default:
+                scanner.close();
+                System.exit(0);
+        }
         }
     }
 
