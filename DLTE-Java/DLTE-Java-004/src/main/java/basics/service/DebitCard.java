@@ -9,7 +9,6 @@ Scanner scanner=new Scanner(System.in);
     public DebitCard(){
 
     }
-
     public DebitCard(Long debitCardNumber, Integer cardPIN) {
         this.debitCardNumber = debitCardNumber;
         this.cardPIN = cardPIN;
