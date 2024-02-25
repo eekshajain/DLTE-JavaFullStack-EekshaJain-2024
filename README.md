@@ -16,5 +16,6 @@
     *filter transaction those done for Education
     <br>perform trigger operation</br>
     *before when insert new transaction with null or empty remarks assign some valid remarks
-    <br>DLTE-sql-003.txt</br>
+    <br></br>
+    DLTE-sql-003.txt
     <br>This file contains sql commands to create users and grant permission to them</br>
