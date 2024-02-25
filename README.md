@@ -2,7 +2,7 @@
    <br> Contains report on agile methodology</br>
 **DLTE-Database:**
     <br>DLTE-sql-001.txt</br>
-    <br>This file contains sql commands to create a table transaction_analysis and insert data into this table. This file also contains sql commands to  
+    This file contains sql commands to create a table transaction_analysis and insert data into this table. This file also contains sql commands to  
     *Filter based on given ranges of date
     *least amount transferred
     *maximum amount transferred
