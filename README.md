@@ -7,8 +7,8 @@
     *least amount transferred
     *maximum amount transferred
     *number of transaction made to particular beneficiary
-    *filter based on particular remarks
-    <br>DLTE-sql-002.txt</br>
+    *filter based on particular remarks<br></br>
+    DLTE-sql-002.txt
     <br>This file contains sql commands for procedures and triggers.
     <br>Exception handling using procedures</br>
     *insert new transaction
