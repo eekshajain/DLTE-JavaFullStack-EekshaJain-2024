@@ -1,0 +1,150 @@
+1. Grant select privilage to user1
+ create user Ranjana identified by ranj2024;
+
+User created.
+
+SQL> grant connect to Ranjana;
+
+Grant succeeded.
+
+SQL> connect Ranjana/ranj2024
+Connected.
+SQL> alter session set current_schema=system;
+
+Session altered.
+grant select on transaction_analysis to Ranjana;
+
+Grant succeeded.
+
+SQL> connect Ranjana/ranj2024
+Connected.
+SQL> alter session set current_schema=system;
+select transaction_to from transaction_analysis where transaction_remarks='General';
+
+TRANSACTION_TO
+--------------------------------------------------------------------------------
+Spandana
+-----------------------------------------============================-----------------------------------------------------------
+2. Grant delete privilage to user2
+create user Ananya identified by anyu2024;
+
+User created.
+
+
+SQL> grant delete on transaction_analysis to Ananya;
+
+Grant succeeded.
+
+SQL> connect Ananya/anyu2024
+ERROR:
+ORA-01045: user ANANYA lacks CREATE SESSION privilege; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> connect system/662002
+Connected.
+
+SQL> grant create session to Ananya;
+
+Grant succeeded.
+
+SQL> connect Ananya/anyu2024
+Connected.
+
+SQL> alter session set current_schema=system;
+
+Session altered.
+
+SQL> delete from transaction_analysis where transaction_to='Vinitha';
+
+1 row deleted.
+-----------------------------------------============================-----------------------------------------------------------
+3.Grant select privilage to user3
+ create user Raj identified by rajj2024;
+
+User created.
+
+SQL> grant connect to Raj;
+
+Grant succeeded.
+
+SQL> grant select on transaction_analysis to Raj;
+
+Grant succeeded.
+
+SQL> connect Raj/rajj2024
+Connected.
+SQL> alter session set current_schema=system;
+
+Session altered.
+
+SQL> select transaction_date from transaction_analysis where transaction_to='Akshira';
+
+TRANSACTI
+---------
+10-FEB-24
+-----------------------------------------============================-----------------------------------------------------------
+4.Grant insert privilage to user4
+create user Anand identified by anan2024;
+
+User created.
+
+SQL> grant connect to Anand;
+
+Grant succeeded.
+
+SQL> grant insert on transaction_analysis to Anand;
+
+Grant succeeded.
+
+SQL> connect Anand/anan2024
+Connected.
+SQL> alter session set current_schema=system;
+
+Session altered.
+
+SQL> insert into transaction_analysis values(transaction_seq.nextval,'23-Feb-2024','Annapoorna',500,'Friend');
+insert into transaction_analysis values(transaction_seq.nextval,'23-Feb-2024','Annapoorna',500,'Friend')
+                                        *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> insert into transaction_analysis values(transaction_seq.nextval,'23-Feb-2024','Annapoorna',500,'Friend');
+insert into transaction_analysis values(transaction_seq.nextval,'23-Feb-2024','Annapoorna',500,'Friend')
+                                        *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+SQL> alter session set current_schema=system;
+
+Session altered.
+
+SQL> insert into transaction_analysis values(transaction_seq.nextval,'23-Feb-2024','Annapoorna',500,'Friend');
+insert into transaction_analysis values(transaction_seq.nextval,'23-Feb-2024','Annapoorna',500,'Friend')
+                                        *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+-----------------------------------------============================-----------------------------------------------------------
+5.Grant update privilage to user5
+ create user Vandana identified by vand2024;
+
+User created.
+
+SQL> grant connect to Vandana;
+
+Grant succeeded.
+
+SQL> grant update on transaction_analysis to Vandana;
+
+Grant succeeded.
+
+SQL> connect Vandana/vand2024
+Connected.
+SQL> alter session set current_schema=system;
+
+Session altered.
+
+SQL> update transaction_analysis set transaction_amount=200 where transaction_remarks='General';
+
+1 row updated.

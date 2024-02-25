@@ -1,0 +1,77 @@
+1.create or replace PROCEDURE new_transaction(
+  trans_date DATE,
+  amount_trans NUMBER,
+  trans_to VARCHAR2,
+  trans_remarks VARCHAR2,
+  trans_info out VARCHAR2
+)
+as 
+BEGIN
+    insert into transaction_analysis (transaction_id,transaction_date,transaction_to,transaction_amount,transaction_remarks)
+    VALUES (TRANSACTION_SEQ.nextval,trans_date,trans_to,amount_trans,trans_remarks);
+    trans_info:='Transaction inserted';
+exception
+      when others then
+      trans_info:='Error due to' || SQLERRM;
+end;
+/
+
+variable info_insert VARCHAR2;
+execute new_transaction('20-Feb-2024',2300,'Spandana','Family',:info_insert);
+print info_insert;
+-----------------------------------------------------------------------------------------------------------------------------------------
+2.
+create or replace PROCEDURE delete_transaction(
+  trans_id NUMBER,
+  trans_info out VARCHAR2
+)
+as 
+BEGIN
+    delete from transaction_analysis where transaction_id =trans_id;
+    trans_info:='Transaction deleted';
+exception
+      when no_data_found then
+      trans_info:='No such transaction';
+      when others then
+      trans_info:='Error due to' || SQLERRM;
+end;
+/
+variable info VARCHAR2;
+execute delete_transaction(2024008,:info);
+-------------------------------------------------------------------------------------------------------------------------------------
+3.create or replace PROCEDURE select_transaction(
+  trans_remarks VARCHAR2,
+  trans_to out VARCHAR2,
+  trans_amnt out NUMBER,
+  trans_info out VARCHAR2
+)
+as 
+BEGIN
+    select transaction_to ,transaction_amount into trans_to,trans_amnt from transaction_analysis where transaction_remarks=trans_remarks;
+    trans_info:='required data to selected';
+exception
+      when no_data_found then
+      trans_info:='No such transaction';
+      when others then
+      trans_info:='Error due to' || SQLERRM;
+end;
+/
+
+variable found_num VARCHAR2;
+variable found_amnt number;
+variable info_error  VARCHAR2;
+execute select_transaction('Education',:found_num,:found_amnt,:info_error);
+print found_num;
+print found_amnt;
+print info_error;
+------------------------------------------------------------------------------------------------------------------------------------------
+4.create or replace trigger check_insert
+before insert on transaction_analysis
+for each row
+begin
+   if :new.transaction_remarks is null then :new.transaction_remarks :='General';
+   end if;
+end;
+/
+
+insert into transaction_analysis values(transaction_seq.nextval,'20-Feb-2024','Spandana',2300,null);
