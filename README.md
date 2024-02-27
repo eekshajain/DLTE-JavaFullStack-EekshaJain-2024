@@ -19,3 +19,8 @@
     <br></br>
     DLTE-sql-003.txt
     <br>This file contains sql commands to create users and grant permission to them</br>
+    **DLTE-Java:**
+    <br>DLTE-Java-001</br>
+    Consists programs on 
+    -FD Calculator
+    -Register to Mobile Banking and Net Banking
