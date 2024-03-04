@@ -1,10 +1,12 @@
 package org.example;
 
-public class withinPackge extends TryProtected {
+public class withinPackge  {
     public static void main(String[] args) {
         //TryProtected try1=new TryProtected();
         //TryPrivate try2=new TryPrivate();
-        TryDefault try3 = new TryDefault();
+    final  TryDefault try3 ;
+    try3=new TryDefault();
+        try3.varPublic=12;
 //        System.out.println(try1.varDefault);
 //        System.out.println(try1.varProtected);
 //       // System.out.println(try1.varPrivate);

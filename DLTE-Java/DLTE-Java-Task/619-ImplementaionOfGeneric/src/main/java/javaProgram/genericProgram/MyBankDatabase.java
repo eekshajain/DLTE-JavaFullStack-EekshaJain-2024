@@ -1,4 +1,4 @@
-package java.generic;
+package javaProgram.genericProgram;
 
 public class MyBankDatabase<T> implements Activity<T> {
  //   @Override
@@ -7,11 +7,10 @@ public class MyBankDatabase<T> implements Activity<T> {
      for(int index=0;index<newObjects.length;index++){
          if(newObjects[index]==null){
              newObjects[index]=objects;
-             return objects+" is inserted";
+             return "Objects is inserted";
          }
-         return objects+" not inserted";
      }
-        return null;
+        return "Object not inserted";
     }
 
     @Override
@@ -26,7 +25,7 @@ public class MyBankDatabase<T> implements Activity<T> {
         if(index>=0 && index<newObjects.length && newObjects[index]!=null){
             T object=newObjects[index];
             newObjects[index]=null;
-            return object+" is deleted";
+            return "objects is deleted";
         }
         return null;
     }
@@ -35,10 +34,10 @@ public class MyBankDatabase<T> implements Activity<T> {
     public void update(int index,T object) {
         if(index>=0&&index< newObjects.length){
             newObjects[index]=object;
-            System.out.println(object+" is updated ");
+            System.out.println("Object is updated ");
         }
         else
-            System.out.println(object+" is not updated");
+            System.out.println("objects is not updated");
     }
     }
 

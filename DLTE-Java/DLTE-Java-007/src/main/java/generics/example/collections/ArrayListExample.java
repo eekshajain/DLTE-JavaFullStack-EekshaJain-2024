@@ -1,6 +1,7 @@
 package generics.example.collections;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ArrayListExample {
     public static void main(String[] args) {
@@ -18,7 +19,7 @@ public class ArrayListExample {
         arrayList2.forEach((n)-> System.out.println(n));
         arrayList2.addAll(2,arrayList1);
         System.out.println("Display list 2 after join");
-        arrayList2.forEach((n)-> System.out.println(n));
+        arrayList2.forEach((shreekanth)-> System.out.println(shreekanth));
         System.out.println("To check elemnets");
         if(arrayList2.contains("Two")) System.out.println("True"); //checks if elements is present
         System.out.println("Get size "+arrayList2.size());
@@ -34,5 +35,6 @@ public class ArrayListExample {
         Integer[] arrInteger = arrayList.toArray(new Integer[0]);
         System.out.println("ArrayList to Integer Array");
         for(Integer each:arrInteger) System.out.println(each+" ");
+        //Collections.sort();
     }
 }

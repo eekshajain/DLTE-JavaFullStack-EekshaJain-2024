@@ -13,17 +13,18 @@ public class InsuranceProvider {
   featureOne=scanner.nextLine();
   String companyOffer="";
  for(int index=0;index<StarHealthInsurance.length;index++){
-  if(featureOne.toLowerCase().contains(StarHealthInsurance[index]))
+  if(featureOne.toLowerCase().equals(StarHealthInsurance[index]))
       companyOffer+="StarHealthInsurance";
  }
  for(int index=0;index<AdithyaBirlaHealthInsurance.length;index++){
-            if(featureOne.toLowerCase().contains(AdithyaBirlaHealthInsurance[index]))
+            if(featureOne.toLowerCase().equals(AdithyaBirlaHealthInsurance[index]))
                 companyOffer+="AdithyaBirlaHealthInsurance";
         }
  for(int index=0;index<RelianceGeneral.length;index++){
-            if(featureOne.toLowerCase().contains(RelianceGeneral[index]))
+            if(featureOne.toLowerCase().equals(RelianceGeneral[index]))
                 companyOffer+="RelianceGeneral";
         }
+
         System.out.println("Companies that offer features are "+companyOffer);
     }
 }

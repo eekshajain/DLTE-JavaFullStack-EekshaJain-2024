@@ -1,4 +1,4 @@
-package java.generic;
+package javaProgram.genericProgram;
 
 import java.util.Date;
 
@@ -46,5 +46,15 @@ public class Transaction {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "dateOfTransaction=" + dateOfTransaction +
+                ", amountOfTransaction=" + amountOfTransaction +
+                ", sentTo='" + sentTo + '\'' +
+                ", remarks='" + remarks + '\'' +
+                '}';
     }
 }

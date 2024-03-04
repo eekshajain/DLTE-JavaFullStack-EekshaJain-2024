@@ -1,1 +1,1 @@
-Writing from string
+Writing from stringWriting using command line interface

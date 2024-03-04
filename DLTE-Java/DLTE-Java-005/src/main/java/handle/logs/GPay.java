@@ -16,20 +16,14 @@ public class GPay extends Account{
         this.upiPIN = upiPIN;
         this.userName = userName;
     }
-    public void payBill(String name,Integer amount,String type){
-        Scanner scanner=new Scanner(System.in);
-        Integer pin;
-        int attempts=0;
-        while(attempts<5) {
-            System.out.println("Enter UPI PIN");
-            pin = scanner.nextInt();
+    public boolean payBill(String name,Integer amount,String type,Integer pin){
             if (pin.equals(upiPIN)) {
                 System.out.println(name + " your " + type + " bill of amount " + amount + " Rs. is paid. ");
-                break;
+                return true;
             } else {
-                attempts++;
+               throw new MyBankException();
             }
-        }
-        if(attempts>=5) throw new MyBankException();
+
+        //if(attempts>=5) throw new MyBankException();
     }
 }

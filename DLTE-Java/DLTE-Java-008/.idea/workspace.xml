@@ -1,22 +1,263 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1241270-eb06-4535-abfd-96585fac2f70" name="Default Changelist" comment="" />
+    <list default="true" id="f1241270-eb06-4535-abfd-96585fac2f70" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/ThrowsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-001/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-001/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/InsuranceProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/InsuranceProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/CarLoanDataValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/CarLoanDataValidation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/InsuranceProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/InsuranceProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-003/src/main/java/basics/services/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-003/src/main/java/basics/services/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-003/src/main/java/basics/services/CreditCardAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-003/src/main/java/basics/services/CreditCardAnalysis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/CreditCardExceptionHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/CreditCardExceptionHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/Exceptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/GPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/GPay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/MobileBanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/MobileBanking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/MyBankException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/MyBankException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/TryFor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/TryFor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/DLTE-Java-005-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/CreditCardExceptionHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/CreditCardExceptionHandling.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/GPay.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/GPay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/MobileBanking.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/MobileBanking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/MyBankException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/MyBankException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/surefire-reports/TEST-handle.logs.AppTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/surefire-reports/handle.logs.AppTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-006/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-006/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/multi/threading/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/multi/threading/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/multi/threading/TransactionAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/multi/threading/TransactionAnalysis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/multi/threading/TransactionAnalysisFunctionality.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/multi/threading/TransactionAnalysisFunctionality.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-007/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-007/DLTE-Java-007.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-007/DLTE-Java-007.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-007/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-007/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/ArrayListExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/ArrayListExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/LinkedListExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/LinkedListExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/MapExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/MapExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/ReadingFromFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/ReadingFromFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/SetExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/SetExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generics/example/collections/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-007/target/classes/generic/example/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-007/target/test-classes/generic/example/AppTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectOutputFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectOutputFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OutputFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OutputFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SampleFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SampleFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FileCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FileCreation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ReadObjectFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ReadObjectFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WriteIntoFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WriteIntoFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WriteObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WriteObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-009/.idea/DLTE-Java-009.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-009/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-009/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-009/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-009/DLTE-Java-009.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-009/DLTE-Java-009.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-009/src/main/java/org/example/CreatingTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-009/src/main/java/org/example/CreatingTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-009/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-009/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/619-ImplementaionOfGeneric.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/619-ImplementaionOfGeneric.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/java/generic/Activity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/java/generic/CreditCard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/java/generic/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/java/generic/MyBankDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/java/generic/Transaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/javaProgram/genericProgram/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/javaProgram/genericProgram/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/javaProgram/genericProgram/CreditCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/javaProgram/genericProgram/CreditCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/javaProgram/genericProgram/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/javaProgram/genericProgram/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/javaProgram/genericProgram/MyBankDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/javaProgram/genericProgram/MyBankDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/javaProgram/genericProgram/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/src/main/java/javaProgram/genericProgram/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/target/classes/javaProgram/genericProgram/CreditCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/target/classes/javaProgram/genericProgram/CreditCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/target/classes/javaProgram/genericProgram/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/target/classes/javaProgram/genericProgram/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/target/classes/javaProgram/genericProgram/MyBankDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/target/classes/javaProgram/genericProgram/MyBankDatabase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/target/classes/javaProgram/genericProgram/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/619-ImplementaionOfGeneric/target/classes/javaProgram/genericProgram/Transaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/654-GenericCCWithFiles.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/654-GenericCCWithFiles.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/OutputFile.txr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/OutputFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/OutputFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/CreditCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/CreditCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/MyBankDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/MyBankDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/target/classes/org/example/CreditCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/target/classes/org/example/CreditCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/target/classes/org/example/MyBankDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/target/classes/org/example/MyBankDatabase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/664-TransactionUsingDynamicStorage/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/664-TransactionUsingDynamicStorage/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/664-TransactionUsingDynamicStorage/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/664-TransactionUsingDynamicStorage/src/main/java/org/example/Tranaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/664-TransactionUsingDynamicStorage/src/main/java/org/example/TransactionAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/664-TransactionUsingDynamicStorage/src/main/java/org/example/TransactionAnalysis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/DLTE-Java-Task.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/DLTE-Java-Task1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/DLTE-Java-Task1/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/DLTE-Java-Task1/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/DLTE-Java-Task1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/DLTE-Java-Task1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/DLTE-Java-Task1/DLTE-Java-Task1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/DLTE-Java-Task1/src/main/java/java/task/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/DLTE-Java-Task1/src/test/java/java/task/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/META-INF/LiveCoding.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/CollectDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/CollectDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/test-classes/org/example/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/test-classes/org/example/AppTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/src/main/java/org/example/CollectDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/src/main/java/org/example/CollectDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/src/main/java/org/example/EnterDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/src/main/java/org/example/EnterDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/target/classes/org/example/CollectDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/target/classes/org/example/CollectDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/target/classes/org/example/ContactDetails.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LiveCoding/target/classes/org/example/EnterDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/target/classes/org/example/EnterDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/TryOutside.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/TryOutside.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/DisplayAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/DisplayAbstract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryAbstract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryDefault.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryDefault.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryDefaultInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryDefaultInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryPrivate.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryPrivate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryProtected.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryProtected.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/withinPackge.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/withinPackge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/outsidePackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/outsidePackage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/TryOutside.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/TryOutside.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryDefault.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryDefault.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryDefaultInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryDefaultInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryPrivate.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryPrivate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryProtected.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryProtected.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/withinPackge.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/withinPackge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/outsidePackage.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/outsidePackage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/test-classes/org/example/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/test-classes/org/example/AppTest.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2cvvkwAjmd4pygHk10wsAndYTFY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RunManager" selected="Application.ReadFile">
+    <configuration name="ReadAndWrite" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.ReadAndWrite" />
+      <module name="DLTE-Java-008" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReadFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.ReadFile" />
+      <module name="DLTE-Java-008" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReadObjectFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.ReadObjectFile" />
+      <module name="DLTE-Java-008" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WriteIntoFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.WriteIntoFile" />
+      <module name="DLTE-Java-008" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WriteObject" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.WriteObject" />
+      <module name="DLTE-Java-008" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ReadFile" />
+        <item itemvalue="Application.ReadObjectFile" />
+        <item itemvalue="Application.WriteObject" />
+        <item itemvalue="Application.WriteIntoFile" />
+        <item itemvalue="Application.ReadAndWrite" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -41,28 +282,59 @@
       <option name="presentableId" value="Default" />
       <updated>1709005013396</updated>
       <workItem from="1709005016545" duration="1025000" />
+      <workItem from="1709398927437" duration="85000" />
+      <workItem from="1709399026790" duration="3580000" />
+      <workItem from="1709439602415" duration="11356000" />
+      <workItem from="1709529478316" duration="304000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="17" key="GridCell.Tab.0.bottom" timestamp="1709007083122">
+    <state x="233" y="0" key="#Project_Structure" timestamp="1709446256098">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="17" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1709007083122" />
-    <state width="1237" height="17" key="GridCell.Tab.0.center" timestamp="1709007083122">
+    <state x="233" y="0" key="#Project_Structure/0.0.1280.672@0.0.1280.672" timestamp="1709446256098" />
+    <state x="382" y="141" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1709443800117">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="17" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1709007083122" />
-    <state width="1237" height="17" key="GridCell.Tab.0.left" timestamp="1709007083122">
+    <state x="382" y="141" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.672@0.0.1280.672" timestamp="1709443800117" />
+    <state x="446" y="54" key="#com.intellij.ide.util.MemberChooser" timestamp="1709444334556">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="17" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1709007083122" />
-    <state width="1237" height="17" key="GridCell.Tab.0.right" timestamp="1709007083122">
+    <state x="446" y="54" key="#com.intellij.ide.util.MemberChooser/0.0.1280.672@0.0.1280.672" timestamp="1709444334556" />
+    <state x="421" y="93" key="FileChooserDialogImpl" timestamp="1709476699490">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="17" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1709007083122" />
+    <state x="421" y="93" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1709476699490" />
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom" timestamp="1709476872731">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1709476872731" />
+    <state width="1237" height="2" key="GridCell.Tab.0.center" timestamp="1709476872731">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1709476872731" />
+    <state width="1237" height="2" key="GridCell.Tab.0.left" timestamp="1709476872731">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1709476872731" />
+    <state width="1237" height="2" key="GridCell.Tab.0.right" timestamp="1709476872731">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1709476872731" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1709446330798">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.672@0.0.1280.672" timestamp="1709446330798" />
+    <state x="91" y="33" key="new project wizard" timestamp="1709446845758">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="91" y="33" key="new project wizard/0.0.1280.672@0.0.1280.672" timestamp="1709446845758" />
   </component>
 </project>

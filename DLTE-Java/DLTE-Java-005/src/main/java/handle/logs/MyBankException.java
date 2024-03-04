@@ -4,6 +4,6 @@ import java.util.ResourceBundle;
 
 public class MyBankException extends RuntimeException {
     public MyBankException() {
-        super(ResourceBundle.getBundle("application").getString("account.block"));
+        super(ResourceBundle.getBundle("application").getString("wrong.pin"));
     }
 }

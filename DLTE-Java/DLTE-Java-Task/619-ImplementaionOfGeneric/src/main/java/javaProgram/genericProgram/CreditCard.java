@@ -1,4 +1,4 @@
-package java.generic;
+package javaProgram.genericProgram;
 
 import java.util.Date;
 
@@ -78,6 +78,20 @@ public class CreditCard {
 
     public void setCreditCardNumber(Long creditCardNumber) {
         CreditCardNumber = creditCardNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "CreditCard{" +
+                "CreditCardHolder='" + CreditCardHolder + '\'' +
+                ", CreditCardCVV=" + CreditCardCVV +
+                ", CreditCardExpiry=" + CreditCardExpiry +
+                ", CreditCardLimit=" + CreditCardLimit +
+                ", CreditCardPin=" + CreditCardPin +
+                ", DateOfBillGeneration=" + DateOfBillGeneration +
+                ", DateOfBillPayment=" + DateOfBillPayment +
+                ", CreditCardNumber=" + CreditCardNumber +
+                '}';
     }
 
     public CreditCard(Long creditCardNumber, String creditCardHolder, Integer creditCardCVV, Date creditCardExpiry, Integer creditCardLimit, Integer creditCardPin, Date dateOfBillGeneration, Date dateOfBillPayment) {

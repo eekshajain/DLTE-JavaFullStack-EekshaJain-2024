@@ -53,9 +53,8 @@ public class CreditCardAnalysis {
                         int extendLimit=each.getCreditCardLimit();
                         extendLimit+=(extendLimit*0.5);
                         each.setCreditCardLimit(extendLimit);
-                        System.out.println(each.getCreditCardHolder()+",Congratulations!Your Card limit is updated!After updation your limit is "+extendLimit);
+                        System.out.println(each.getCreditCardHolder()+",Congratulations!Your Card limit is updated!After update your limit is "+extendLimit);
                     }
-
             }
         }
    scanner.close();

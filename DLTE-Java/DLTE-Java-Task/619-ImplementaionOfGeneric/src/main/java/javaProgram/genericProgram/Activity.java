@@ -1,4 +1,4 @@
-package java.generic;
+package javaProgram.genericProgram;
 
 public interface Activity<T> {
 

@@ -1,7 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c49803a3-9724-46db-b79a-c096181417b3" name="Default Changelist" comment="" />
+    <list default="true" id="c49803a3-9724-46db-b79a-c096181417b3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/Exceptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/TryFor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/DLTE-Java-007.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generic/example/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/src/main/java/generic/example/collections/IllustrationOfArrayList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/src/test/java/generic/example/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/target/DLTE-Java-007-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/target/classes/generic/example/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/target/surefire-reports/TEST-generic.example.AppTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/target/surefire-reports/generic.example.AppTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-007/target/test-classes/generic/example/AppTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-008/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-008/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-008/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-008/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-008/DLTE-Java-008.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-008/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-008/src/main/java/org/example/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-008/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LiveCoding.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/CollectDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/EmployeeAddress.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/EmployeeContactDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/EmployeeName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/EnterDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/LiveCoding.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/example/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/example/CollectDetails.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/example/Employee.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/example/EmployeeAddress.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/example/EmployeeContactDetails.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/example/EmployeeName.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/example/EnterDetails.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/org/example/AppTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/TryOutside.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryDefaultInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/TryOutside.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryDefaultInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-001/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-001/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/InsuranceProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/InsuranceProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/CarLoanDataValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/CarLoanDataValidation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/InsuranceProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/InsuranceProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-003/src/main/java/basics/services/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-003/src/main/java/basics/services/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-003/src/main/java/basics/services/CreditCardAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-003/src/main/java/basics/services/CreditCardAnalysis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/CreditCardExceptionHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/CreditCardExceptionHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/GPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/GPay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/MobileBanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/MobileBanking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/MyBankException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/handle/logs/MyBankException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/DLTE-Java-005-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/CreditCardExceptionHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/CreditCardExceptionHandling.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/GPay.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/GPay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/MobileBanking.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/MobileBanking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/MyBankException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/MyBankException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/surefire-reports/TEST-handle.logs.AppTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/surefire-reports/handle.logs.AppTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-006/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-006/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/multi/threading/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/multi/threading/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/multi/threading/TransactionAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/multi/threading/TransactionAnalysis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/multi/threading/TransactionAnalysisFunctionality.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/multi/threading/TransactionAnalysisFunctionality.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryDefault.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryDefault.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryPrivate.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryPrivate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryProtected.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/TryProtected.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/withinPackge.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/org/example/withinPackge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/outsidePackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/src/main/java/outsidePackage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryDefault.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryDefault.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryPrivate.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryPrivate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryProtected.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/TryProtected.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/withinPackge.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/org/example/withinPackge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/classes/outsidePackage.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/classes/outsidePackage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TryAccessModifier/target/test-classes/org/example/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryAccessModifier/target/test-classes/org/example/AppTest.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +116,18 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2cwGzVQjMQ7b3Hi7HVm1jLCMJ5m" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -22,9 +135,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="C:/DLTE-JavaFullStack-EekshaJain-2024/DLTE-Java/DLTE-Java-004" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="CollectDetails" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -71,6 +185,7 @@
       <workItem from="1709015492290" duration="7495000" />
       <workItem from="1709043774444" duration="6535000" />
       <workItem from="1709052689770" duration="6183000" />
+      <workItem from="1709082547357" duration="4789000" />
     </task>
     <servers />
   </component>
@@ -78,10 +193,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="446" y="22" key="#com.intellij.ide.util.MemberChooser" timestamp="1709057784257">
+    <state x="446" y="22" key="#com.intellij.ide.util.MemberChooser" timestamp="1709084568398">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="446" y="22" key="#com.intellij.ide.util.MemberChooser/0.0.1280.672@0.0.1280.672" timestamp="1709057784257" />
+    <state x="446" y="22" key="#com.intellij.ide.util.MemberChooser/0.0.1280.672@0.0.1280.672" timestamp="1709084568398" />
     <state x="371" y="85" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1709016232950">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
@@ -90,22 +205,22 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="421" y="93" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1709053616825" />
-    <state width="1237" height="201" key="GridCell.Tab.0.bottom" timestamp="1709058925159">
+    <state width="1237" height="135" key="GridCell.Tab.0.bottom" timestamp="1709088348843">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="201" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1709058925159" />
-    <state width="1237" height="201" key="GridCell.Tab.0.center" timestamp="1709058925159">
+    <state width="1237" height="135" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1709088348843" />
+    <state width="1237" height="135" key="GridCell.Tab.0.center" timestamp="1709088348843">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="201" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1709058925159" />
-    <state width="1237" height="201" key="GridCell.Tab.0.left" timestamp="1709058925159">
+    <state width="1237" height="135" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1709088348843" />
+    <state width="1237" height="135" key="GridCell.Tab.0.left" timestamp="1709088348843">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="201" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1709058925159" />
-    <state width="1237" height="201" key="GridCell.Tab.0.right" timestamp="1709058925159">
+    <state width="1237" height="135" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1709088348843" />
+    <state width="1237" height="135" key="GridCell.Tab.0.right" timestamp="1709088348843">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="201" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1709058925159" />
+    <state width="1237" height="135" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1709088348843" />
     <state width="1237" height="201" key="GridCell.Tab.1.bottom" timestamp="1709058925159">
       <screen x="0" y="0" width="1280" height="672" />
     </state>

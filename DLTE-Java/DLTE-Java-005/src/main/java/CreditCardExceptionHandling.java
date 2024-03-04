@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CreditCardExceptionHandling {
-   static ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
+   static ResourceBundle resourceBundle=ResourceBundle.getBundle("application"); // to load data from different local files
    static Logger logger=Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static void main(String[] args) {
         System.out.println(resourceBundle.getString("welcome.message"));
@@ -62,7 +62,8 @@ public class CreditCardExceptionHandling {
                 System.out.println("User "+each.getCreditCardHolder()+" with card number "+each.getCreditCardNumber()+".");
                 flag=1;
             }
-        }if(flag==0) {
+        }
+        if(flag==0) {
                throw new MyBankCreditCardException();
         }
     }
