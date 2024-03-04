@@ -6,5 +6,5 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface Activity {
-    void create(List<CreditCard> creditCardArrayList) throws IOException;
+    void create(List<CreditCard> creditCardArrayList) throws IOException, ClassNotFoundException;
 }

@@ -2,11 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1241270-eb06-4535-abfd-96585fac2f70" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/DLTE-Java-618.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/accounts-logs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/mybank-acounts.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/entity/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/entity/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/middleware/FileStorageTarget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/middleware/UserFileRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/remotes/StorageTarget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/remotes/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/services/AccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/resources/accounts.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/test/java/app/mobilebanking/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/accounts.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/entity/Account.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/entity/Transaction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/middleware/FileStorageTarget$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/middleware/FileStorageTarget.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/middleware/UserFileRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/remotes/StorageTarget.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/remotes/UserRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/services/AccountService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/test-classes/app/mobilebanking/AppTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FileCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FileCreation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ReadObjectFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ReadObjectFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/FileCreation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/FileCreation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/ReadObjectFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/ReadObjectFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/OutputFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/OutputFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/MyBankDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/MyBankDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/target/classes/org/example/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/target/classes/org/example/Activity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/target/classes/org/example/MyBankDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/target/classes/org/example/MyBankDatabase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LiveCoding/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,22 +214,22 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="421" y="93" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1709476699490" />
-    <state width="1237" height="286" key="GridCell.Tab.0.bottom" timestamp="1709538289920">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1709546192526">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="286" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1709538289920" />
-    <state width="1237" height="286" key="GridCell.Tab.0.center" timestamp="1709538289920">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1709546192526" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1709546192526">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="286" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1709538289920" />
-    <state width="1237" height="286" key="GridCell.Tab.0.left" timestamp="1709538289920">
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1709546192526" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1709546192526">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="286" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1709538289920" />
-    <state width="1237" height="286" key="GridCell.Tab.0.right" timestamp="1709538289920">
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1709546192526" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1709546192526">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="286" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1709538289920" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1709546192526" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1709446330798">
       <screen x="0" y="0" width="1280" height="672" />
     </state>

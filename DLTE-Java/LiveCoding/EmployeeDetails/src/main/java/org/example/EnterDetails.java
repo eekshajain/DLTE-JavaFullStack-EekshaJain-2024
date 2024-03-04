@@ -1,9 +1,7 @@
 package org.example;
 
-import java.text.NumberFormat;
+import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class EnterDetails {
 
@@ -74,30 +72,31 @@ public class EnterDetails {
        return employeeAddress;
    }
 
-    public void displayName(EmployeeName employeeName[]){
-        for(int index=0;index<employeeName.length;index++){
-            EmployeeName employee=employeeName[index];
+    public void displayName(List<EmployeeName> employeeName){
+        for(int index=0;index<employeeName.size();index++){
+            EmployeeName employee=employeeName.get(index);
             if(employee.getFirstName()!=null) {
                 if(employee.getMiddleName()!=null)
                     if(employee.getLastName()!=null)
                 System.out.println("Name:" + employee.getFirstName() + " " + employee.getMiddleName() + " " + employee.getLastName());
-            }else
-                System.out.println("Null");
+            }
         }
 
     }
-    public void displayContactDetails(EmployeeContactDetails employeeContactDetails[]){
+    public void displayContactDetails(List<EmployeeContactDetails> employeeContactDetails){
 //       for (int index=0;index<employeeContactDetails.length;index++)
 //           System.out.println("Phone Number:"+employeeContactDetails[index].getPhoneNumber()+"\n"+"Email Address:"+employeeContactDetails[index].getEmailID());
-//       for(EmployeeContactDetails each:employeeContactDetails){
-//           System.out.println("Phone Number:"+each.getPhoneNumber()+"\n"+"Email Address:"+each.getEmailID());
-//       }
+       for(EmployeeContactDetails each:employeeContactDetails){
+           System.out.println("Phone Number:"+each.getPhoneNumber()+"\n"+"Email Address:"+each.getEmailID());
+       }
 
     }
-    public void displayAddress(EmployeeAddress tempEmployeeAddress[],EmployeeAddress permEmployeeAddress[]){
-        for(int index=0;index<tempEmployeeAddress.length;index++){
-            System.out.println("Temporary address:"+tempEmployeeAddress[index].getTemporaryHouseName()+","+tempEmployeeAddress[index].getTemporaryHouseStreet()+","+tempEmployeeAddress[index].getTemporaryCityName()+","+tempEmployeeAddress[index].getTemporaryStateName()+"-"+tempEmployeeAddress[index].getTemporaryPinCode());
-            System.out.println("Permanent address:"+permEmployeeAddress[index].getPermanentHouseName()+","+permEmployeeAddress[index].getPermanentHouseStreet()+","+permEmployeeAddress[index].getPermanentCityName()+","+permEmployeeAddress[index].getPermanentStateName()+"-"+permEmployeeAddress[index].getPermanentPinCode());
+    public void displayAddress(List<EmployeeAddress> tempEmployeeAddress, List<EmployeeAddress> permEmployeeAddress){
+        for(int index=0;index<tempEmployeeAddress.size();index++){
+            EmployeeAddress tempAddress=tempEmployeeAddress.get(index);
+            EmployeeAddress permAddress=permEmployeeAddress.get(index);
+            System.out.println("Temporary address:"+tempAddress.getTemporaryHouseName()+","+tempAddress.getTemporaryHouseStreet()+","+tempAddress.getTemporaryCityName()+","+tempAddress.getTemporaryStateName()+"-"+tempAddress.getTemporaryPinCode());
+            System.out.println("Permanent address:"+permAddress.getPermanentHouseName()+","+permAddress.getPermanentHouseStreet()+","+permAddress.getPermanentCityName()+","+permAddress.getPermanentStateName()+"-"+permAddress.getPermanentPinCode());
         }
 
     }

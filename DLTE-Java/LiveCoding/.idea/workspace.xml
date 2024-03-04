@@ -2,11 +2,69 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c49803a3-9724-46db-b79a-c096181417b3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../ConsoleApp/DLTE-JavaFullStack-ShreyasShettyB2024" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-004/src/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-004/src/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-004/src/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-004/src/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-004/src/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/DLTE-Java-618.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/accounts-logs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/accounts-logs.txt.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/mybank-acounts.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/entity/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/entity/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/middleware/FileStorageTarget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/middleware/UserFileRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/remotes/StorageTarget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/remotes/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/java/app/mobilebanking/services/AccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/resources/accounts.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/src/test/java/app/mobilebanking/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/accounts.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/entity/Account.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/entity/Transaction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/middleware/FileStorageTarget$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/middleware/FileStorageTarget.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/middleware/UserFileRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/remotes/StorageTarget.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/remotes/UserRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/app/mobilebanking/services/AccountService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-618/target/test-classes/app/mobilebanking/AppTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoadProductEntity/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoadProductEntity/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoadProductEntity/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoadProductEntity/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoadProductEntity/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoadProductEntity/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoadProductEntity/713-LoanProductEntity.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoadProductEntity/src/main/java/org/example/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoadProductEntity/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoanProductEntity/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoanProductEntity/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoanProductEntity/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoanProductEntity/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoanProductEntity/713-LoanProductEntity.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoanProductEntity/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoanProductEntity/src/main/java/org/example/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoanProductEntity/src/main/java/org/example/Loan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-Task/713-LoanProductEntity/src/test/java/org/example/AppTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DLTE-Java-008/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-008/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DLTE-Java-008/src/main/java/org/example/FileCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-008/src/main/java/org/example/FileCreation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DLTE-Java-008/src/main/java/org/example/ReadObjectFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-008/src/main/java/org/example/ReadObjectFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DLTE-Java-008/target/classes/org/example/FileCreation.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-008/target/classes/org/example/FileCreation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DLTE-Java-008/target/classes/org/example/ReadObjectFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-008/target/classes/org/example/ReadObjectFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/OutputFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/OutputFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/MyBankDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/src/main/java/org/example/MyBankDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/target/classes/org/example/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/target/classes/org/example/Activity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/target/classes/org/example/MyBankDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-Task/654-GenericCCWithFiles/target/classes/org/example/MyBankDatabase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +104,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DLTE-Java-618" />
   </component>
   <component name="RunManager">
     <configuration name="CollectDetails" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -95,6 +153,7 @@
       <workItem from="1709052689770" duration="6183000" />
       <workItem from="1709082547357" duration="4789000" />
       <workItem from="1709535916416" duration="2549000" />
+      <workItem from="1709546213519" duration="2681000" />
     </task>
     <servers />
   </component>
@@ -113,10 +172,10 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="371" y="85" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.672@0.0.1280.672" timestamp="1709016232950" />
-    <state x="421" y="93" key="FileChooserDialogImpl" timestamp="1709053616825">
+    <state x="421" y="93" key="FileChooserDialogImpl" timestamp="1709546229188">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="421" y="93" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1709053616825" />
+    <state x="421" y="93" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1709546229188" />
     <state width="1237" height="135" key="GridCell.Tab.0.bottom" timestamp="1709088348843">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
