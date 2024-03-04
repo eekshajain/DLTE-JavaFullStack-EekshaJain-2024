@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ce8ea4a4-2b31-4d24-8061-11eb07d3de4d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../ConsoleApp/DLTE-JavaFullStack-ShreyasShettyB2024" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/DLTE-Java-618.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/accounts-logs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/accounts-logs.txt.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/mybank-acounts.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/src/main/java/app/mobilebanking/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/src/main/java/app/mobilebanking/entity/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/src/main/java/app/mobilebanking/entity/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/src/main/java/app/mobilebanking/middleware/FileStorageTarget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/src/main/java/app/mobilebanking/middleware/UserFileRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/src/main/java/app/mobilebanking/remotes/StorageTarget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/src/main/java/app/mobilebanking/remotes/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/src/main/java/app/mobilebanking/services/AccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/src/main/resources/accounts.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/src/test/java/app/mobilebanking/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/target/classes/accounts.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/target/classes/app/mobilebanking/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/target/classes/app/mobilebanking/entity/Account.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/target/classes/app/mobilebanking/entity/Transaction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/target/classes/app/mobilebanking/middleware/FileStorageTarget$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/target/classes/app/mobilebanking/middleware/FileStorageTarget.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/target/classes/app/mobilebanking/middleware/UserFileRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/target/classes/app/mobilebanking/remotes/StorageTarget.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/target/classes/app/mobilebanking/remotes/UserRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/target/classes/app/mobilebanking/services/AccountService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-Java-618/target/test-classes/app/mobilebanking/AppTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/713-LoanProductEntity.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DLTE-Java-008/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../DLTE-Java-008/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../654-GenericCCWithFiles/OutputFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../654-GenericCCWithFiles/OutputFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../654-GenericCCWithFiles/src/main/java/org/example/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../654-GenericCCWithFiles/src/main/java/org/example/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../654-GenericCCWithFiles/src/main/java/org/example/MyBankDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../654-GenericCCWithFiles/src/main/java/org/example/MyBankDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../654-GenericCCWithFiles/target/classes/org/example/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/../654-GenericCCWithFiles/target/classes/org/example/Activity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../654-GenericCCWithFiles/target/classes/org/example/MyBankDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/../654-GenericCCWithFiles/target/classes/org/example/MyBankDatabase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LiveCoding/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../LiveCoding/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2dDmfVfVHA9SnU9kl34A9LXO8XB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../713-LoanProductEntity" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ce8ea4a4-2b31-4d24-8061-11eb07d3de4d" name="Default Changelist" comment="" />
+      <created>1709551126063</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709551126063</updated>
+      <workItem from="1709551129055" duration="438000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="93" key="FileChooserDialogImpl" timestamp="1709551568491">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="421" y="93" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1709551568491" />
+    <state width="1237" height="161" key="GridCell.Tab.0.bottom" timestamp="1709551570849">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="161" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1709551570849" />
+    <state width="1237" height="161" key="GridCell.Tab.0.center" timestamp="1709551570849">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="161" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1709551570849" />
+    <state width="1237" height="161" key="GridCell.Tab.0.left" timestamp="1709551570849">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="161" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1709551570849" />
+    <state width="1237" height="161" key="GridCell.Tab.0.right" timestamp="1709551570849">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="161" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1709551570849" />
+  </component>
+</project>
