@@ -42,17 +42,23 @@ public class MyBankDatabase implements Activity{
     public void create(List<CreditCard> creditCardArrayList) throws IOException, ClassNotFoundException {
         List<CreditCard> creditCard;
         File file=new File("OutputFile.txt");
-        if(file.exists()) {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            creditCard = (List<CreditCard>) objectInputStream.readObject();//re read file
-            creditCard.addAll(creditCardArrayList);//add new data into existing file
-        }else{
-            creditCard=creditCardArrayList;
-        }
-        FileOutputStream fileOutputStream=new FileOutputStream("OutputFile.txt");
-        ObjectOutputStream objectOutputStream=new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(creditCard);
+//        if(file.exists()) {
+//            FileInputStream fileInputStream = new FileInputStream(file);
+//            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+//            creditCard = (List<CreditCard>) objectInputStream.readObject();//re read file
+//            creditCard.addAll(creditCardArrayList);//add new data into existing file
+//        }else{
+//            creditCard=creditCardArrayList;
+//        }
+        FileOutputStream fileOutputStream=new FileOutputStream("OutputFile.txt",true);
+
+        ObjectOutputStream objectOutputStream=new ObjectOutputStream(fileOutputStream){
+            @Override
+            protected void writeStreamHeader() throws IOException {
+                super.writeStreamHeader();
+            }
+        };
+        objectOutputStream.writeObject(creditCardArrayList);
         objectOutputStream.close();
         fileOutputStream.close();
     }

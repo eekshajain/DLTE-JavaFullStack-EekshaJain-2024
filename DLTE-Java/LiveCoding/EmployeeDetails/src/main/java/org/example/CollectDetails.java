@@ -9,11 +9,11 @@ public class CollectDetails {
     DisplayDetails displayDetails=new DisplayDetails();
         ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
         List<EmployeeName> employeeNames=new ArrayList<>();
-        List<EmployeeName> employeeID=new ArrayList<>();
         List<EmployeeAddress> temporaryEmployeeAddress=new ArrayList<>();
        List<EmployeeAddress> permanentEmployeeAddress=new ArrayList<>();
         List<EmployeeContactDetails> employeeContactDetails=new ArrayList<>();
         List<EmployeeAddress> addresses=new ArrayList<>();
+        List<Object> all=new ArrayList<>();
 
         while (true) {
             System.out.println(resourceBundle.getString("menu.ask"));
@@ -22,11 +22,15 @@ public class CollectDetails {
                 case 1:
                     do {
                         try {
-                            employeeID.add(employeeDetailCollection.collectEmployeeID());
-                            employeeNames.add(employeeDetailCollection.collectNames());
+                            employeeNames.add(employeeDetailCollection.collectBasic());
                             employeeContactDetails.add(employeeDetailCollection.collectContactDetails());
                             temporaryEmployeeAddress.add(employeeDetailCollection.collectTemporaryAddress());
-                            permanentEmployeeAddress.add(employeeDetailCollection.collectPermanentAddress());
+                          //  permanentEmployeeAddress.add(employeeDetailCollection.collectPermanentAddress());
+                         //   String data=employeeNames+" "+employeeContactDetails+" "+temporaryEmployeeAddress+" "+permanentEmployeeAddress;
+//                            String data=employeeNames+" "+employeeContactDetails+" "+temporaryEmployeeAddress;
+//                            // System.out.println(data);
+//                            all.add(data);
+//                            System.out.println(all);
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid Input");
                         }
@@ -35,8 +39,8 @@ public class CollectDetails {
                     break;
                 case 2:
                     System.out.println("Enter the employee ID");
-                    displayDetails.display(employeeID,employeeNames, employeeContactDetails, temporaryEmployeeAddress, permanentEmployeeAddress,scanner.nextInt());
-                   // displayDetails.displayAll(employeeID, employeeNames, employeeContactDetails, temporaryEmployeeAddress, permanentEmployeeAddress);
+                    displayDetails.display(employeeNames, employeeContactDetails, temporaryEmployeeAddress, scanner.nextInt());
+                   // displayDetails.displayAll(employeeNames, employeeContactDetails, temporaryEmployeeAddress, permanentEmployeeAddress);
                     break;
                 default:
                     System.exit(0);

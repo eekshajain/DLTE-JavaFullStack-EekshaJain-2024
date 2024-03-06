@@ -45,11 +45,10 @@ public class EnterDetails implements InputEmployeeDetails{
      System.out.println("Enter your First Name");
      name.setFirstName(scanner.next());
      System.out.println("Enter your middle name");
-     name.setLastName(scanner.next());
+     name.setMiddleName(scanner.next());
      System.out.println("Enter your last name");
      name.setLastName(scanner.next());
      return name;
-
  }
    public EmployeeContactDetails collectContactDetails(){
      EmployeeContactDetails  employeeContactDetails=new EmployeeContactDetails();
@@ -79,6 +78,32 @@ public class EnterDetails implements InputEmployeeDetails{
 
    public EmployeeAddress collectPermanentAddress(){
       EmployeeAddress employeeAddress =new EmployeeAddress();
+       System.out.println("Enter your Permanent Address:");
+       System.out.println("Enter your House name");
+       employeeAddress.setPermanentHouseName(scanner3.nextLine());
+       System.out.println("Enter your Street name");
+       employeeAddress.setPermanentHouseStreet(scanner3.nextLine());
+       System.out.println("Enter your City name");
+       employeeAddress.setPermanentCityName(scanner3.nextLine());
+       System.out.println("Enter your State name");
+       employeeAddress.setPermanentStateName(scanner3.nextLine());
+       System.out.println("Enter your city pincode");
+       employeeAddress.setPermanentPinCode(scanner1.nextInt());
+       return employeeAddress;
+   }
+   public EmployeeAddress collectAddress(){
+       EmployeeAddress employeeAddress=new EmployeeAddress();
+       System.out.println("Enter your Temporary Address:");
+       System.out.println("Enter your House name");
+       employeeAddress.setTemporaryHouseName(scanner2.nextLine());
+       System.out.println("Enter your Street name");
+       employeeAddress.setTemporaryHouseStreet(scanner2.nextLine());
+       System.out.println("Enter your City name");
+       employeeAddress.setTemporaryCityName(scanner2.nextLine());
+       System.out.println("Enter your State name");
+       employeeAddress.setTemporaryStateName(scanner2.nextLine());
+       System.out.println("Enter your city pincode");
+       employeeAddress.setTemporaryPinCode(scanner1.nextInt());
        System.out.println("Enter your Permanent Address:");
        System.out.println("Enter your House name");
        employeeAddress.setPermanentHouseName(scanner3.nextLine());

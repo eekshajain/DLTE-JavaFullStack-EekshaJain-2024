@@ -33,26 +33,38 @@ public class DisplayDetails implements DisplayEmployeeDetails {
         }
 
     }
-public void display(List<EmployeeName> employeeID,List<EmployeeName> employeeName, List<EmployeeContactDetails> employeeContactDetails, List<EmployeeAddress> tempEmployeeAddress, List<EmployeeAddress> permEmployeeAddress,int empID){
-        int index=employeeID.indexOf(empID);
-        EmployeeName employee=employeeName.get(index);
-        EmployeeContactDetails employeeContactDetails1=employeeContactDetails.get(index);
-        EmployeeAddress tempAddress=tempEmployeeAddress.get(index);
-        EmployeeAddress permAddress=permEmployeeAddress.get(index);
-    if(employee.getFirstName()!=null) {
-        if(employee.getMiddleName()!=null)
-            if(employee.getLastName()!=null)
-                System.out.println("Name:" + employee.getFirstName() + " " + employee.getMiddleName() + " " + employee.getLastName());
-    }else{
-        System.out.println("null");}
-    System.out.println("Phone Number:"+employeeContactDetails1.getPhoneNumber()+"\n"+"Email Address:"+employeeContactDetails1.getEmailID());
-    System.out.println("Temporary address:"+tempAddress.getTemporaryHouseName()+","+tempAddress.getTemporaryHouseStreet()+","+tempAddress.getTemporaryCityName()+","+tempAddress.getTemporaryStateName()+"-"+tempAddress.getTemporaryPinCode());
-    System.out.println("Permanent address:"+permAddress.getPermanentHouseName()+","+permAddress.getPermanentHouseStreet()+","+permAddress.getPermanentCityName()+","+permAddress.getPermanentStateName()+"-"+permAddress.getPermanentPinCode());
+public void display(List<EmployeeName> employeeName, List<EmployeeContactDetails> employeeContactDetails, List<EmployeeAddress> tempEmployeeAddress, int empID){
+  //  System.out.println(employeeName);
+        int index=-1;
+    for(int i=0;i<employeeName.size();i++){
+       if(employeeName.get(i).getEmployeeID()==empID) {
+       //    System.out.println(employeeName.get(i).getEmployeeID());
+           index = i;
+           break;
+       }
+    }
+    System.out.println(index);
+    if(index!=-1) {
+        EmployeeName employee = employeeName.get(index);
+        EmployeeContactDetails employeeContactDetails1 = employeeContactDetails.get(index);
+        EmployeeAddress tempAddress = tempEmployeeAddress.get(index);
+        //     EmployeeAddress permAddress=permEmployeeAddress.get(index);
+        if (employee.getFirstName() != null) {
+            if (employee.getMiddleName() != null)
+                if (employee.getLastName() != null)
+                    System.out.println("Name:" + employee.getFirstName() + " " + employee.getMiddleName() + " " + employee.getLastName());
+        } else {
+            System.out.println("null");
+        }
+        System.out.println("Phone Number:" + employeeContactDetails1.getPhoneNumber() + "\n" + "Email Address:" + employeeContactDetails1.getEmailID());
+        System.out.println("Temporary address:" + tempAddress.getTemporaryHouseName() + "," + tempAddress.getTemporaryHouseStreet() + "," + tempAddress.getTemporaryCityName() + "," + tempAddress.getTemporaryStateName() + "-" + tempAddress.getTemporaryPinCode());
+        // System.out.println("Permanent address:"+permAddress.getPermanentHouseName()+","+permAddress.getPermanentHouseStreet()+","+permAddress.getPermanentCityName()+","+permAddress.getPermanentStateName()+"-"+permAddress.getPermanentPinCode());
+    }
 }
     @Override
-    public void displayAll(List<EmployeeName> employeeID, List<EmployeeName> employeeName, List<EmployeeContactDetails> employeeContactDetails, List<EmployeeAddress> tempEmployeeAddress, List<EmployeeAddress> permEmployeeAddress) {
+    public void displayAll(List<EmployeeName> employeeName, List<EmployeeContactDetails> employeeContactDetails, List<EmployeeAddress> tempEmployeeAddress, List<EmployeeAddress> permEmployeeAddress) {
         for(int index=0;index<employeeName.size();index++){
-            EmployeeName id=employeeID.get(index);
+            EmployeeName id=employeeName.get(index);
             EmployeeName employee=employeeName.get(index);
             EmployeeContactDetails employeeContactDetails1=employeeContactDetails.get(index);
             EmployeeAddress tempAddress=tempEmployeeAddress.get(index);
