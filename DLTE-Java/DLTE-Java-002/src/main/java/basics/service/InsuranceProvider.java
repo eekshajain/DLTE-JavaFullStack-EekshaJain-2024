@@ -4,27 +4,25 @@ import java.util.Scanner;
 
 public class InsuranceProvider {
     public static void main(String[] args) {
-  String StarHealthInsurance[]={"hospitalisation coverages","complimentary checkups","cashless treatment"};
-  String AdithyaBirlaHealthInsurance[]={"daycare procedures","hospitalisation coverages", "accidental hospitalization"};
-  String RelianceGeneral[]={"critical illness cover","complimentary checkups","maternity benefits"};
-  Scanner scanner=new Scanner(System.in);
-  String featureOne="";
-  System.out.println("Enter Feature");
-  featureOne=scanner.nextLine();
-  String companyOffer="";
- for(int index=0;index<StarHealthInsurance.length;index++){
-  if(featureOne.toLowerCase().equals(StarHealthInsurance[index]))
-      companyOffer+="StarHealthInsurance";
- }
- for(int index=0;index<AdithyaBirlaHealthInsurance.length;index++){
-            if(featureOne.toLowerCase().equals(AdithyaBirlaHealthInsurance[index]))
-                companyOffer+="AdithyaBirlaHealthInsurance";
+  String StarHealthInsurance[]={"hospitalisationCoverages","complimentaryCheckups","cashlessTreatment"};
+  String AdithyaBirlaHealthInsurance[]={"daycareProcedures","hospitalisationCoverages", "accidentalHospitalization"};
+  String RelianceGeneral[]={"criticalIllnessCover","complimentaryCheckups","maternityBenefits"};
+
+for(String each:args){
+    for(String select:StarHealthInsurance){
+        if(each.equalsIgnoreCase(select)) System.out.println("StarHealthInsurance Offers: "+select);
+    }
+}
+ for(String each:args){
+     for(String select:AdithyaBirlaHealthInsurance){
+             if(each.equalsIgnoreCase(select)) System.out.println("AdithyaBirlaHealthInsurance Offers: "+select);
+          }
         }
- for(int index=0;index<RelianceGeneral.length;index++){
-            if(featureOne.toLowerCase().equals(RelianceGeneral[index]))
-                companyOffer+="RelianceGeneral";
+   for(String each:args){
+        for(String select:RelianceGeneral){
+                if(each.equalsIgnoreCase(select)) System.out.println("RelianceGeneral Offers: "+select);
+            }
         }
 
-        System.out.println("Companies that offer features are "+companyOffer);
     }
 }
