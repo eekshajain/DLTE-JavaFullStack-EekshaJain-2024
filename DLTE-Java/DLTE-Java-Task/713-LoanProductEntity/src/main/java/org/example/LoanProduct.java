@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class LoanProduct implements MyBank{
     Scanner scanner =new Scanner(System.in);
     Scanner scanner1=new Scanner(System.in);
-  ArrayList<Loan> loans=new ArrayList<>();
     @Override
     public void addLoan() throws IOException, ClassNotFoundException {
         Loan loan=new Loan();

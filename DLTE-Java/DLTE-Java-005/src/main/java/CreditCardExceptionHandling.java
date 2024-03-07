@@ -1,18 +1,26 @@
 import handle.logs.MyBankCreditCardException;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class CreditCardExceptionHandling {
    static ResourceBundle resourceBundle=ResourceBundle.getBundle("application"); // to load data from different local files
    static Logger logger=Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println(resourceBundle.getString("welcome.message"));
         Scanner scanner=new Scanner(System.in);
         String filterDate="";
+        FileHandler fileHandler=new FileHandler("log-files.txt",true);
+        SimpleFormatter simpleFormatter=new SimpleFormatter();
+        fileHandler.setFormatter(simpleFormatter);
+        logger.addHandler(fileHandler);
         int option,currPIN,wrongLogin=1;
         Integer lowerLimit,upperLimit;
         Long creditCardNumber;
