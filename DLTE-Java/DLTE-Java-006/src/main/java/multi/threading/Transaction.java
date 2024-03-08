@@ -8,6 +8,13 @@ public class Transaction {
     private String sentTo;
     private String remarks;
 
+    public Transaction(Date dateOfTransaction, Integer amountOfTransaction, String sentTo, String remarks) {
+        this.dateOfTransaction = dateOfTransaction;
+        this.amountOfTransaction = amountOfTransaction;
+        this.sentTo = sentTo;
+        this.remarks = remarks;
+    }
+
     public Date getDateOfTransaction() {
         return dateOfTransaction;
     }

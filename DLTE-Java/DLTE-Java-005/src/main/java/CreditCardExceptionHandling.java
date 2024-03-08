@@ -12,7 +12,7 @@ import java.util.logging.SimpleFormatter;
 
 public class CreditCardExceptionHandling {
    static ResourceBundle resourceBundle=ResourceBundle.getBundle("application"); // to load data from different local files
-   static Logger logger=Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+   //static Logger logger=Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static void main(String[] args) throws IOException {
         System.out.println(resourceBundle.getString("welcome.message"));
         Scanner scanner=new Scanner(System.in);
@@ -20,7 +20,7 @@ public class CreditCardExceptionHandling {
         FileHandler fileHandler=new FileHandler("log-files.txt",true);
         SimpleFormatter simpleFormatter=new SimpleFormatter();
         fileHandler.setFormatter(simpleFormatter);
-        logger.addHandler(fileHandler);
+      //  logger.addHandler(fileHandler);
         int option,currPIN,wrongLogin=1;
         Integer lowerLimit,upperLimit;
         Long creditCardNumber;
@@ -45,7 +45,7 @@ public class CreditCardExceptionHandling {
                     analysis.filterBasedOnLimit(myBank, lowerLimit, upperLimit);
                 }catch(MyBankCreditCardException exception){
                     System.out.println("No users");
-                  logger.log(Level.INFO,exception.getMessage());
+               //   logger.log(Level.INFO,exception.getMessage());
                 }
                 break;
             case 2:
@@ -55,14 +55,14 @@ public class CreditCardExceptionHandling {
                     analysis.filterBasedOnBillPayment(myBank, filterDate);
                 }catch (MyBankCreditCardException exception){
                     System.out.println("No users");
-                    logger.log(Level.INFO,exception.getMessage());
+                   // logger.log(Level.INFO,exception.getMessage());
                 }
                 break;
         }
         scanner.close();
     }
     public void filterBasedOnLimit(CreditCard[] customers,Integer start,Integer end){
-        logger.log(Level.INFO,"Listing the users");
+        //logger.log(Level.INFO,"Listing the users");
         System.out.println("List of users having amount limit between "+start+" and "+end);
         int flag=0;
         for(CreditCard each:customers){

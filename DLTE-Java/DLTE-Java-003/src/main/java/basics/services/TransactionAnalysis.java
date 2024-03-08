@@ -5,11 +5,6 @@ import java.util.Scanner;
 
 public class TransactionAnalysis {
     public static void main(String[] args) {
-        System.out.println("--------Welcome to MyBank--------");
-        Scanner scanner=new Scanner(System.in);
-        Integer startDate,endDate;
-        String beneficiaryName="",remarks="";
-        int option=0;
         TransactionData[] myBank={
                 new TransactionData(new Date(2024,2,14),2000,"Divija","Friend"),
                 new TransactionData(new Date(2024,2,15),1250,"BMTC","Bills"),
@@ -19,6 +14,11 @@ public class TransactionAnalysis {
                 new TransactionData(new Date(2024,1,17),20000,"MITE","Education"),
                 new TransactionData(new Date(2024,1,10),200,"Ankitha","Friend"),
         };
+        System.out.println("--------Welcome to MyBank--------");
+        Scanner scanner=new Scanner(System.in);
+        Integer startDate,endDate;
+        String beneficiaryName="",remarks="";
+        int option=0;
         TransactionAnalysis analysis=new TransactionAnalysis();
         System.out.println("Enter\n1.Filter Based On transaction Date\n2.Least amount transferred\n3.Maximum amount transferred\n4.Number of transaction to particular beneficiary\n5.Filter based on particular remarks\n6.Sort beneficiary in descending\n7.Sort amount in ascending");
         System.out.println("Enter your choice");

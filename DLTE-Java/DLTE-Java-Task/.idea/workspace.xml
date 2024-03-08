@@ -2,50 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7e7d685-46ec-4d30-b02f-fd4f6cf1a83c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/InsuranceProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-002/src/main/java/basics/service/InsuranceProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/InsuranceProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-002/target/classes/basics/service/InsuranceProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/MobileBanking.class" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/target/classes/handle/logs/MobileBanking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DLTE-Java-008/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-008/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/654-GenericCCWithFiles/OutputFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/654-GenericCCWithFiles/OutputFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/654-GenericCCWithFiles/src/main/java/org/example/MyBankDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/654-GenericCCWithFiles/src/main/java/org/example/MyBankDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/654-GenericCCWithFiles/target/classes/org/example/MyBankDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/654-GenericCCWithFiles/target/classes/org/example/MyBankDatabase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/ConsoleEnvironment/AllDetails.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/ConsoleEnvironment/AllDetails.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/ConsoleEnvironment/ConsoleEnvironment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/ConsoleEnvironment/ConsoleEnvironment.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/ConsoleEnvironment/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/ConsoleEnvironment/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/ConsoleEnvironment/src/main/java/org/consoleEnv/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/ConsoleEnvironment/src/main/java/org/consoleEnv/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/ConsoleEnvironment/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/ConsoleEnvironment/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/ConsoleEnvironment/target/classes/org/consoleEnv/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/ConsoleEnvironment/target/classes/org/consoleEnv/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/src/main/java/org/files/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/src/main/java/org/files/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/src/main/java/org/files/ReadAndDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/src/main/java/org/files/ReadAndDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/target/FileRepository-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/target/FileRepository-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/target/classes/org/files/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/target/classes/org/files/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/target/classes/org/files/ReadAndDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/target/classes/org/files/ReadAndDisplay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/target/surefire-reports/TEST-org.files.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/target/surefire-reports/TEST-org.files.AppTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/target/surefire-reports/org.files.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/FileRepository/target/surefire-reports/org.files.AppTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/src/main/java/org/middleware/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/src/main/java/org/middleware/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/src/main/java/org/middleware/EmployeeAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/src/main/java/org/middleware/EmployeeAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/src/main/java/org/middleware/EmployeeBasicDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/src/main/java/org/middleware/EmployeeBasicDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/src/main/java/org/middleware/InputEmployeeDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/src/main/java/org/middleware/InputEmployeeDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/target/MiddlewareInterface-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/target/MiddlewareInterface-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/target/classes/org/middleware/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/target/classes/org/middleware/Employee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/target/surefire-reports/TEST-org.middleware.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/target/surefire-reports/TEST-org.middleware.AppTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/target/surefire-reports/org.middleware.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeDetails/MiddlewareInterface/target/surefire-reports/org.middleware.AppTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LiveCoding/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/src/main/java/org/example/CollectDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/src/main/java/org/example/CollectDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/src/main/java/org/example/DisplayDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/src/main/java/org/example/DisplayDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/src/main/java/org/example/DisplayEmployeeDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/src/main/java/org/example/DisplayEmployeeDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/src/main/java/org/example/EnterDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/src/main/java/org/example/EnterDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/src/main/java/org/example/InputEmployeeDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/src/main/java/org/example/InputEmployeeDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/CollectDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/CollectDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/DisplayDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/DisplayDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/DisplayEmployeeDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/DisplayEmployeeDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/EnterDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/EnterDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/InputEmployeeDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../LiveCoding/EmployeeDetails/target/classes/org/example/InputEmployeeDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TryIntegration/ProjectOne/src/main/java/org/first/Basket.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TryIntegration/ProjectOne/src/main/java/org/first/Basket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TryIntegration/ProjectTwo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TryIntegration/ProjectTwo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TryIntegration/ProjectTwo/target/classes/org/second/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TryIntegration/ProjectTwo/target/classes/org/second/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/CreditCardExceptionHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DLTE-Java-005/src/main/java/CreditCardExceptionHandling.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +25,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/742-LambdaExpressionLoanProduct" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -92,6 +51,8 @@
       <updated>1709140400235</updated>
       <workItem from="1709140401476" duration="5000" />
       <workItem from="1709720070454" duration="611000" />
+      <workItem from="1709811375993" duration="7000" />
+      <workItem from="1709811819480" duration="7000" />
     </task>
     <servers />
   </component>

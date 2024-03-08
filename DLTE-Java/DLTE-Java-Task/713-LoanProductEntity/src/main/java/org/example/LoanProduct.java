@@ -25,18 +25,14 @@ public class LoanProduct implements MyBank{
         loan.setBorrowerContact(scanner.nextLong());
         loans.add(loan);// take input and store in arraylist
         File file=new File("OutputFile.txt");
-        List<Loan> tempLoan;
         if(file.exists()){
             FileInputStream fileInputStream=new FileInputStream(file);
             ObjectInputStream objectInputStream=new ObjectInputStream(fileInputStream);
-            tempLoan= (List<Loan>) objectInputStream.readObject();//re read file
-            tempLoan.addAll(loans);//add new data into existing file
-        }else{
-            tempLoan=loans;
+            loans.addAll((List<Loan>) objectInputStream.readObject());
         }
         FileOutputStream fileOutputStream=new FileOutputStream(file);
         ObjectOutputStream objectOutputStream=new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(tempLoan);
+        objectOutputStream.writeObject(loans);
         objectOutputStream.close();
         fileOutputStream.close();
     }
