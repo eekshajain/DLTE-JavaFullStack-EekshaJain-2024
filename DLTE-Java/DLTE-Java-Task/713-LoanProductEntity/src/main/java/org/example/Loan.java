@@ -1,19 +1,19 @@
 package org.example;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Loan implements Serializable {
     private Long loanNumber;
     private Integer loanAmount;
-
-    public Loan() {
-
-    }
-
     private String loanDate;
     private String loanStatus;
     private String borrowerName;
     private Long borrowerContact;
+
+    public Loan() {
+
+    }
 
     @Override
     public String toString() {
@@ -83,4 +83,5 @@ public class Loan implements Serializable {
     public void setBorrowerContact(Long borrowerContact) {
         this.borrowerContact = borrowerContact;
     }
+
 }

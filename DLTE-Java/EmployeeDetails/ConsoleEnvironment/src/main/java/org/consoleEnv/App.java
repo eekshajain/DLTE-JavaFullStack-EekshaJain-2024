@@ -1,5 +1,9 @@
 package org.consoleEnv;
 
+
+
+import com.sun.org.slf4j.Logger;
+import com.sun.org.slf4j.internal.LoggerFactory;
 import org.files.ReadAndDisplay;
 import org.middleware.Employee;
 import org.middleware.EmployeeAddress;
@@ -17,8 +21,10 @@ import java.util.Scanner;
  */
 public class App 
 {
+    Logger logger= LoggerFactory.getLogger(App.class);
     public static void main( String[] args )
     {
+
         Scanner scanner=new Scanner(System.in);
         Scanner scanner1=new Scanner(System.in);
         Scanner scanner2=new Scanner(System.in);
@@ -28,6 +34,7 @@ public class App
         ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
         EmployeeAddress employeeAddress=new EmployeeAddress();
         List<Employee> employeeArrayList=new ArrayList<>();
+        System.setProperty("logbackConfiguration","C:\\DLTE-JavaFullStack-EekshaJain-2024\\DLTE-Java\\EmployeeDetails\\logback.xml");
         while (true){
             System.out.println(resourceBundle.getString("menu.display"));
             switch (scanner.nextInt()){
@@ -69,6 +76,7 @@ public class App
                         employeeAddress.setPermanentStateName(scanner3.nextLine());
                         System.out.println("Enter your city pincode");
                         employeeAddress.setPermanentPinCode(scanner1.nextInt());
+                        //logger.
                         employeeArrayList.add(new Employee(employeeBasicDetails,employeeAddress));
                         employeeDetails.saveAll(employeeArrayList);
                         System.out.println("Do you want to add more?");
