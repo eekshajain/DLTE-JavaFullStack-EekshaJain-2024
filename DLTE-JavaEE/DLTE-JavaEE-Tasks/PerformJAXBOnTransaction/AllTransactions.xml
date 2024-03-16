@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transactionWrapper>
+    <transaction>
+        <amountOfTransaction>2000</amountOfTransaction>
+        <dateOfTransaction>2024-03-15T15:32:56.548+05:30</dateOfTransaction>
+        <remarks>Friend</remarks>
+        <sentTo>Anita</sentTo>
+        <user>Vinita</user>
+    </transaction>
+    <transaction>
+        <amountOfTransaction>300</amountOfTransaction>
+        <dateOfTransaction>2024-03-15T15:32:56.548+05:30</dateOfTransaction>
+        <remarks>Family</remarks>
+        <sentTo>Sunita</sentTo>
+        <user>Savitha</user>
+    </transaction>
+    <transaction>
+        <amountOfTransaction>400</amountOfTransaction>
+        <dateOfTransaction>2024-03-15T15:32:56.548+05:30</dateOfTransaction>
+        <remarks>Emergency</remarks>
+        <sentTo>Tanya</sentTo>
+        <user>Savitha</user>
+    </transaction>
+</transactionWrapper>
