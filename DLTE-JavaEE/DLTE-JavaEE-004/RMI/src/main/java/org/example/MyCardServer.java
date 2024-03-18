@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
@@ -25,6 +26,7 @@ public class MyCardServer extends UnicastRemoteObject implements MyCardInterface
     private Registry registry;
     private AccountService service;
     protected MyCardServer() throws RemoteException, NamingException {
+        registry= LocateRegistry.createRegistry(3030);
        service=new AccountService(new DatabaseTarget());
         Hashtable properties=new Hashtable();
         properties.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.rmi.registry.RegistryContextFactory");

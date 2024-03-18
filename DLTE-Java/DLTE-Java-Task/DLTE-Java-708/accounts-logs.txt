@@ -1,2 +1,4 @@
 Mar 14, 2024 6:19:37 AM org.example.middleware.UserDatabaseRepository verifyPassword
 WARNING: Login Failed!
+Mar 18, 2024 5:57:35 PM org.example.middleware.UserDatabaseRepository withdraw
+INFO: Withdrawal is successful

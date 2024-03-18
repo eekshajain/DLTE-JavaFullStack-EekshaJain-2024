@@ -2,92 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d92d0d9a-121d-4eb9-bb55-658aeb6ca89e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../JMS/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JMS/src/main/java/org/example/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JMS/src/main/resources/logback.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JMS/src/test/java/org/example/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MyCardInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MyCardOfficial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MyCardServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-007/src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-007/src/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-008/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-008/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-008/OutputFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-008/OutputFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-008/src/main/java/org/example/ReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-008/src/main/java/org/example/ReadFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-008/target/classes/org/example/ReadFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-008/target/classes/org/example/ReadFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-Task/DLTE-Java-708/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-Task/DLTE-Java-708/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-Task/DLTE-Java-708/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/DLTE-Java-Task/DLTE-Java-708/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/src/main/java/org/consoleEnv/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/src/main/java/org/consoleEnv/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/target/classes/org/consoleEnv/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment - ForDAO/target/classes/org/consoleEnv/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/src/main/java/org/consoleEnv/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/src/main/java/org/consoleEnv/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/src/main/java/org/consoleEnv/EmployeeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/src/main/java/org/consoleEnv/EmployeeException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/target/classes/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/target/classes/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/target/classes/org/consoleEnv/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/ConsoleEnvironment/target/classes/org/consoleEnv/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/src/main/java/org/example/ReadAndDisplayUsingDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/src/main/java/org/example/ReadAndDisplayUsingDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/src/main/java/org/middleware/EmployeeAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/src/main/java/org/middleware/EmployeeAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/src/main/java/org/middleware/EmployeeBasicDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/src/main/java/org/middleware/EmployeeBasicDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/src/main/java/org/middleware/InputEmployeeDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/src/main/java/org/middleware/InputEmployeeDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/src/main/resources/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/src/main/resources/database.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/target/DatabaseRepository-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/target/DatabaseRepository-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/target/classes/org/example/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/target/classes/org/example/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/target/classes/org/example/ReadAndDisplayUsingDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/target/classes/org/example/ReadAndDisplayUsingDatabase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/target/surefire-reports/TEST-org.example.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/target/surefire-reports/TEST-org.example.AppTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/target/surefire-reports/org.example.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/target/surefire-reports/org.example.AppTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/target/test-classes/org/example/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/DatabaseRepository/target/test-classes/org/example/AppTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/src/main/java/org/files/EmployeeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/src/main/java/org/files/EmployeeException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/src/main/java/org/files/ReadAndDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/src/main/java/org/files/ReadAndDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/src/main/resources/filerepo.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/src/main/resources/filerepo.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/target/FileRepository-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/target/FileRepository-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/target/classes/org/files/ReadAndDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/target/classes/org/files/ReadAndDisplay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/target/surefire-reports/TEST-org.files.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/target/surefire-reports/TEST-org.files.AppTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/target/surefire-reports/org.files.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/FileRepository/target/surefire-reports/org.files.AppTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/MiddlewareInterface/src/main/java/org/middleware/InputEmployeeDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/MiddlewareInterface/src/main/java/org/middleware/InputEmployeeDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/MiddlewareInterface/target/MiddlewareInterface-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/MiddlewareInterface/target/MiddlewareInterface-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/MiddlewareInterface/target/classes/org/middleware/InputEmployeeDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/MiddlewareInterface/target/classes/org/middleware/InputEmployeeDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/MiddlewareInterface/target/surefire-reports/TEST-org.middleware.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/MiddlewareInterface/target/surefire-reports/TEST-org.middleware.AppTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/MiddlewareInterface/target/surefire-reports/org.middleware.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/MiddlewareInterface/target/surefire-reports/org.middleware.AppTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/src/main/java/validate/data/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/src/main/java/validate/data/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/src/main/java/validate/data/ValidationOfData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/src/main/java/validate/data/ValidationOfData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/target/Validation-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/target/Validation-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/target/classes/validate/data/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/target/classes/validate/data/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/target/classes/validate/data/ValidationOfData.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/target/classes/validate/data/ValidationOfData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/target/surefire-reports/TEST-validate.data.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/target/surefire-reports/TEST-validate.data.AppTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/target/surefire-reports/validate.data.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/Validation/target/surefire-reports/validate.data.AppTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../DLTE-Java/EmployeeDetails/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/DLTE-JavaEE.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLE-Java-2.2.0=filePart/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLE-Java-2.2.0=filePart/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLE-Java-2.2.0=filePart/src/main/webapp/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLTE-JavaEE-001/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-001/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLTE-JavaEE-001/src/main/java/first/Interaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-001/src/main/java/first/Interaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLTE-JavaEE-001/src/main/java/first/MyFirstServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-001/src/main/java/first/MyFirstServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLTE-JavaEE-001/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-001/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLTE-JavaEE-001/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-001/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLTE-JavaEE-001/target/DLTE-JavaEE-001.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-001/target/DLTE-JavaEE-001.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLTE-JavaEE-001/target/DLTE-JavaEE-001/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-001/target/DLTE-JavaEE-001/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLTE-JavaEE-003/JNDI/src/main/java/BindingAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-003/JNDI/src/main/java/BindingAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLTE-JavaEE-003/JNDI/src/main/java/ReadAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-003/JNDI/src/main/java/ReadAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DLTE-JavaEE-Tasks/RestTransactionModule/target/RestTransactionModule.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-Tasks/RestTransactionModule/target/RestTransactionModule.war" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-Tasks/SOAPWebServiceForDAO/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-Tasks/SOAPWebServiceForDAO/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DLTE-JavaEE-Tasks/SOAPWebServiceForDAO/SOAPWebServiceForDAO.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MyCardOfficial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MyCardOfficial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MyCardServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MyCardServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +38,20 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../DLTE-JavaEE-Tasks/RestTransactionModule" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MyCardOfficial">
+    <configuration name="MyCardOfficial" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.MyCardOfficial" />
+      <module name="RMI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MyCardServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.MyCardServer" />
       <module name="RMI" />
@@ -134,6 +67,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MyCardOfficial" />
         <item itemvalue="Application.MyCardServer" />
       </list>
     </recent_temporary>
@@ -161,6 +95,8 @@
       <option name="presentableId" value="Default" />
       <updated>1710475846498</updated>
       <workItem from="1710475849582" duration="4995000" />
+      <workItem from="1710761220270" duration="265000" />
+      <workItem from="1710761693629" duration="1407000" />
     </task>
     <servers />
   </component>
@@ -172,26 +108,42 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="766" y="50" key="#com.intellij.ide.util.MemberChooser/0.0.1280.672@0.0.1280.672" timestamp="1710477082430" />
-    <state x="421" y="93" key="FileChooserDialogImpl" timestamp="1710493349714">
+    <state x="421" y="93" key="FileChooserDialogImpl" timestamp="1710761711852">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="421" y="93" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1710493349714" />
-    <state width="1237" height="307" key="GridCell.Tab.0.bottom" timestamp="1710493713031">
+    <state x="421" y="93" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1710761711852" />
+    <state width="1237" height="201" key="GridCell.Tab.0.bottom" timestamp="1710763112490">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="307" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1710493713031" />
-    <state width="1237" height="307" key="GridCell.Tab.0.center" timestamp="1710493713031">
+    <state width="1237" height="201" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1710763112490" />
+    <state width="1237" height="201" key="GridCell.Tab.0.center" timestamp="1710763112490">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="307" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1710493713031" />
-    <state width="1237" height="307" key="GridCell.Tab.0.left" timestamp="1710493713031">
+    <state width="1237" height="201" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1710763112490" />
+    <state width="1237" height="201" key="GridCell.Tab.0.left" timestamp="1710763112490">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="307" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1710493713031" />
-    <state width="1237" height="307" key="GridCell.Tab.0.right" timestamp="1710493713031">
+    <state width="1237" height="201" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1710763112490" />
+    <state width="1237" height="201" key="GridCell.Tab.0.right" timestamp="1710763112490">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="307" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1710493713031" />
+    <state width="1237" height="201" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1710763112490" />
+    <state width="1237" height="201" key="GridCell.Tab.1.bottom" timestamp="1710763112490">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.bottom/0.0.1280.672@0.0.1280.672" timestamp="1710763112490" />
+    <state width="1237" height="201" key="GridCell.Tab.1.center" timestamp="1710763112490">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.center/0.0.1280.672@0.0.1280.672" timestamp="1710763112490" />
+    <state width="1237" height="201" key="GridCell.Tab.1.left" timestamp="1710763112490">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.left/0.0.1280.672@0.0.1280.672" timestamp="1710763112490" />
+    <state width="1237" height="201" key="GridCell.Tab.1.right" timestamp="1710763112490">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.right/0.0.1280.672@0.0.1280.672" timestamp="1710763112490" />
     <state x="91" y="33" key="new project wizard" timestamp="1710485385634">
       <screen x="0" y="0" width="1280" height="672" />
     </state>

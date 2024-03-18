@@ -19,7 +19,8 @@ public class App
 
         AccountService service=new AccountService(storageTarget);
     //    service.callVerifyPassword(scanner.next(),scanner.next());
-        service.callFindByUsername("eeksha25");
+       // service.callFindByUsername("eeksha25");
+        service.callWithdraw("eeksha25","eeksha365",500);
 ////        CreditCard creditCard=new CreditCard(11111122343L,383,new Date("12/2/2029"),91000,20000,71000,4844,true,"Annapoorna Pai");
 //        creditCardServices.callSave(creditCard);
 //        System.out.println(creditCardServices.callFindAll());

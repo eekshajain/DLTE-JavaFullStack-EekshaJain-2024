@@ -12,7 +12,7 @@ public class MyCardOfficial {
         properties.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.rmi.registry.RegistryContextFactory");
         properties.put(Context.PROVIDER_URL,"rmi://localhost:3030");
         Context context=new InitialContext(properties);//throws naming exception
-        MyCardServer myCardServer= (MyCardServer) context.list("java:/card-filter");
+        MyCardInterface myCardServer= (MyCardInterface) context.lookup("java:/card-filter");
         myCardServer.fetchDetailsBasedOnBalance().forEach(System.out::println);
     }
 }
