@@ -1,9 +1,11 @@
 package org.example.services;
 
 import org.example.entity.Account;
+import org.example.entity.Transaction;
 import org.example.remotes.StorageTarget;
 import org.example.remotes.UserRepository;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -24,28 +26,58 @@ public class AccountService {
             return false;
         }
     }
-    public void callWithdraw(String username,String password, double withdrawAmount){
+    public Double callWithdraw(String username,String password, double withdrawAmount){
         try {
-             userRepository.withdraw(username,password,withdrawAmount);
+            return userRepository.withdraw(username,password,withdrawAmount);
         }catch (Exception e){
-            return;
+            return null;
         }
     }
-    public void callAddTransactions(Account account){
+    public void callAddAccounts(Account account){
         try {
-            userRepository.addTransactions( account);
+            userRepository.addAccounts( account);
         }
         catch (Exception e){
             return;
         }
     }
-//    public List<Account> callFinaAll(){
-//        try{
-//            return userRepository.findALL();
-//        }
-//        catch (Exception e){
-//            return null;
-//        }
-//    }
+    public List<Transaction> callFindAll(){
+        try{
+            return userRepository.findALL();
+        }
+        catch (Exception e){
+            return null;
+        }
+    }
+    public List<Transaction> callFindAllUser(String user){
+        try{
+            return userRepository.findAllUser(user);
+        }
+        catch (Exception e){
+            return null;
+        }
+    }
+    public List<Transaction> callFindAllDate(Date date, String user){
+        try{
+            return userRepository.findAllByDate(date,user);
+        }
+        catch (Exception e){
+            return null;
+        }
+    }
+    public Account callFindByUsername(String username){
+        try {
+            return userRepository.findUserByUsername(username);
+        }catch (Exception e){
+            return null;
+        }
+    }
+  public Double callBalance(String username){
+        try{
+            return userRepository.balance(username);
+        }catch (Exception e){
+            return null;
+        }
+  }
 
 }

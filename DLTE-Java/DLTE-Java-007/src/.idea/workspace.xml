@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ccdc602-e324-41ef-a5d5-22e8f748301a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/main/java/generics/example/collections/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/main/java/generics/example/collections/.idea/collections.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/main/java/generics/example/collections/.idea/misc.xml" afterDir="false" />
@@ -34,7 +39,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -59,10 +64,17 @@
       <option name="presentableId" value="Default" />
       <updated>1710134499516</updated>
       <workItem from="1710134500653" duration="13000" />
+      <workItem from="1710134545750" duration="635000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="93" key="FileChooserDialogImpl" timestamp="1710134584840">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="421" y="93" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1710134584840" />
   </component>
 </project>

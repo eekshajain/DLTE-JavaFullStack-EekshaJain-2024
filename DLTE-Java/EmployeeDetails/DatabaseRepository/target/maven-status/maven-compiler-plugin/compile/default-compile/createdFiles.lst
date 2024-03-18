@@ -1,2 +1,6 @@
-org\example\ReadAndDisplayUsingDatabase.class
+org\middleware\EmployeeAddress.class
+org\middleware\Employee.class
+org\middleware\EmployeeBasicDetails.class
 org\example\App.class
+org\example\ReadAndDisplayUsingDatabase.class
+org\middleware\InputEmployeeDetails.class

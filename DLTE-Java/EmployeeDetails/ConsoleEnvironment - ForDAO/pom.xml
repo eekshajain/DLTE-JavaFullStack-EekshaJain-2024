@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.consoleEnv</groupId>
-  <artifactId>ConsoleEnvironment</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <artifactId>ConsoleEnvironment-ForDAO</artifactId>
+  <version>2.0-SNAPSHOT</version>
 
   <name>ConsoleEnvironment</name>
   <!-- FIXME change it to the project's website -->
@@ -26,8 +26,13 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-     <groupId>org.files</groupId>
-      <artifactId>FileRepository</artifactId>
+      <groupId>org.example</groupId>
+      <artifactId>DatabaseRepository</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>validate.data</groupId>
+      <artifactId>Validation</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>

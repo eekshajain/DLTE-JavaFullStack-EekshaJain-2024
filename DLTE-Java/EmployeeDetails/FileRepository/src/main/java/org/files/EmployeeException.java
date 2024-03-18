@@ -1,4 +1,10 @@
 package org.files;
 
-public class EmployeeException {
+import java.util.ResourceBundle;
+
+public class EmployeeException extends RuntimeException{
+    public EmployeeException() {
+        super(String.valueOf(ResourceBundle.getBundle("filerepo")));
+    }
 }
+
