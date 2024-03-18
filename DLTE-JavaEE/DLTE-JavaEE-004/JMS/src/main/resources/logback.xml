@@ -1,0 +1,36 @@
+<configuration>
+
+    <!-- Define appenders -->
+    <appender name="myConsole" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%highlight([%thread]) %highlight(%-5level) %logger{36} - %highlight(%msg) %d{dd/MM/YYYY HH:mm:ss} %n</pattern>
+        </encoder>
+    </appender>
+
+    <!--     Define file appender-->
+    <!--        <appender name="myLogs" class="ch.qos.logback.core.FileAppender">-->
+    <!--            <file>C:\Users\xxjainne\Documents\logs\app.log</file> &lt;!&ndash; Define log file name and path &ndash;&gt;-->
+    <!--            <encoder>-->
+    <!--                <pattern>%d{HH:mm:ss.SSS} %highlight([%thread]) %-5level %logger{36} - %highlight(%msg) %n</pattern>-->
+    <!--            </encoder>-->
+    <!--        </appender>-->
+    <appender name="myLogs" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>C:\Users\xxjainne\Documents\logs\app.log</file> <!-- Define base log file name -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Set rolling schedule -->
+            <fileNamePattern>C:\Users\xxjainne\Documents\logs\app-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- Set max history -->
+            <maxHistory>1</maxHistory> <!-- Keep up to 1 day of log history -->
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %highlight([%thread]) %-5level %logger{36} - %highlight(%msg) %n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger settings -->
+    <root level="INFO">
+        <appender-ref ref="myConsole" />
+<!--        <appender-ref ref="myLogs" /> &lt;!&ndash; Attach file appender &ndash;&gt;-->
+    </root>
+
+</configuration>

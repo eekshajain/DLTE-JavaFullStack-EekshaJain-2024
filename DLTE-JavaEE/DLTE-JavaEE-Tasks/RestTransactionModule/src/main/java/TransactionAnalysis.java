@@ -14,10 +14,16 @@ import java.util.stream.Stream;
 
 @WebServlet("/transaction/*")
 public class TransactionAnalysis extends HttpServlet {
-List<Transaction> myTransaction= Stream.of(new Transaction(new Date("3/2/2024"),2300,"Vinitha","Friend"),
-        new Transaction(new Date("4/2/2024"),200,"Vani","Bills"),
-        new Transaction(new Date("5/2/2024"),500,"Health Clinic","Emergency"),
-        new Transaction(new Date("6/2/2024"),1000,"Babita","Family")).collect(Collectors.toList());
+    List<Transaction> myTransaction;
+    @Override
+    public void init() throws ServletException {
+                myTransaction= Stream.of(new Transaction(new Date("3/2/2024"),2300,"Vinitha","Friend"),
+                new Transaction(new Date("4/2/2024"),200,"Vani","Bills"),
+                new Transaction(new Date("5/2/2024"),500,"Health Clinic","Emergency"),
+                new Transaction(new Date("6/2/2024"),1000,"Babita","Family")).collect(Collectors.toList());
+            // System.out.println("initiated");
+    }
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -48,4 +54,6 @@ List<Transaction> myTransaction= Stream.of(new Transaction(new Date("3/2/2024"),
             resp.getWriter().println(json);
         }
     }
+
+
 }
