@@ -1,6 +1,8 @@
-org\middleware\EmployeeAddress.class
-org\middleware\Employee.class
-org\middleware\EmployeeBasicDetails.class
-org\example\App.class
-org\example\ReadAndDisplayUsingDatabase.class
-org\middleware\InputEmployeeDetails.class
+employee\interfaces\InputEmployeeDetails.class
+employee\interfaces\EmployeeAddress.class
+employee\implementation\CreateConnection.class
+employee\implementation\EmployeeExceptions.class
+employee\interfaces\EmployeeBasicDetails.class
+employee\implementation\App.class
+employee\implementation\ReadAndDisplayUsingDatabase.class
+employee\interfaces\Employee.class

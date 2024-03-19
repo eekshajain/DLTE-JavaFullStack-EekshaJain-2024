@@ -1,0 +1,6 @@
+Mar 18, 2024 9:32:49 PM org.example.middleware.UserDatabaseRepository addAccounts
+INFO: Card added successfully
+Mar 18, 2024 9:46:15 PM org.example.middleware.UserDatabaseRepository withdraw
+INFO: Withdrawal is successful
+Mar 19, 2024 9:42:26 AM org.example.middleware.UserDatabaseRepository withdraw
+INFO: Withdrawal is successful
