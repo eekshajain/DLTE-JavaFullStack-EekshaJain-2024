@@ -15,12 +15,13 @@ public class CreateConnection {
         try {
             Driver driver=new OracleDriver();
             DriverManager.registerDriver(driver);
-            connection=DriverManager.getConnection(resourceBundle.getString("db.url"),resourceBundle.getString("db.user"),resourceBundle.getString("db.password"));
+            connection=DriverManager.getConnection(resourceBundle.getString("db.url"),
+                    resourceBundle.getString("db.user"),
+                    resourceBundle.getString("db.password"));
         } catch (SQLException e) {
            throw new EmployeeExceptions("system.error");
         }
         return connection;
     }
-
 
 }

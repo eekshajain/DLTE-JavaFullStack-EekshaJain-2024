@@ -7,16 +7,13 @@ package org.consoleEnv;
 
 import employee.implementation.EmployeeExceptions;
 import employee.implementation.ReadAndDisplayUsingDatabase;
-import employee.interfaces.Employee;
-import employee.interfaces.EmployeeAddress;
-import employee.interfaces.EmployeeBasicDetails;
+import employee.entity.Employee;
 import employee.interfaces.InputEmployeeDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.event.Level;
 import validate.data.ValidationOfData;
 
-import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -35,9 +32,9 @@ public class App
         InputEmployeeDetails employeeDetails=null;
       //  EmployeeBasicDetails employeeBasicDetails=new EmployeeBasicDetails();
         ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
-        EmployeeBasicDetailsConsole employeeBasicDetails1=new EmployeeBasicDetailsConsole();
-        EmployeeAddressConsole tempEmployeeAddress1=new EmployeeAddressConsole();
-        EmployeeAddressConsole permEmployeeAddress1=new EmployeeAddressConsole();
+        EmployeeBasicDetails employeeBasicDetails1=new EmployeeBasicDetails();
+        EmployeeAddress tempEmployeeAddress1=new EmployeeAddress();
+        EmployeeAddress permEmployeeAddress1=new EmployeeAddress();
         List<Employee> employeeArrayList=new ArrayList<>();
         ValidationOfData validationData=new ValidationOfData();
         //System.setProperty("logbackConfiguration","C:\\DLTE-JavaFullStack-EekshaJain-2024\\DLTE-Java\\EmployeeDetails\\logback.xml");//or else add log file in resource file
@@ -153,15 +150,15 @@ public class App
                             }
                         }
                         logger.info("Data to be added to array list");
-                        EmployeeBasicDetails employeeBasicDetails;
+                        employee.entity.EmployeeBasicDetails employeeBasicDetails;
                         employeeBasicDetails = translateEmployeeBasic(employeeBasicDetails1);
-                        EmployeeAddress tempEmployeeAddress;
+                        employee.entity.EmployeeAddress tempEmployeeAddress;
                         tempEmployeeAddress = translateEmployeeAddress(tempEmployeeAddress1);
-                        EmployeeAddress permEmployeeAddress;
+                        employee.entity.EmployeeAddress permEmployeeAddress;
                         permEmployeeAddress = translateEmployeeAddress(permEmployeeAddress1);
-                        employee = new Employee(employeeBasicDetails, tempEmployeeAddress, permEmployeeAddress);
+                        employee = new employee.entity.Employee(employeeBasicDetails, tempEmployeeAddress, permEmployeeAddress);
                         try {
-                            if(employeeDetails.saveAll(employee)) System.out.println("Employee Details added successfully!");
+                            if(employeeDetails.saveAll(employee) != null) System.out.println("Employee Details added successfully!");
                             else System.out.println("Failed to add employee details!");
                         }catch(EmployeeExceptions employeeExceptions){
                             System.out.println(employeeExceptions.getMessage());
@@ -175,6 +172,7 @@ public class App
                     employeeId = scanner.nextInt();
                     try {
                         if (employeeDetails.doesEmployeeExists(employeeId)) {
+                            logger.info("Displaying the info of particular ID:"+employeeId);
                             System.out.println(employeeDetails.displayRequired(employeeId));
                         } else throw new EmployeeException();
                     }catch(EmployeeException e){
@@ -185,9 +183,9 @@ public class App
                 case 3:
                     logger.info("Displaying all details");
                     //System.out.println(employeeDetails.displayAll());
-                    List<Employee> employee=employeeDetails.displayAll();
-                    for(Employee employee1:employee) {
-                        EmployeeConsole employeeConsole;
+                    List<employee.entity.Employee> employee=employeeDetails.displayAll();
+                    for(employee.entity.Employee employee1:employee) {
+                        org.consoleEnv.Employee employeeConsole;
                         employeeConsole = translateBack(employee1);
                         System.out.println(employeeConsole);
                     }
@@ -195,7 +193,14 @@ public class App
                 case 4:
                     logger.info("Display required details based on Temporary pincode");
                     System.out.println("Enter Temporary Pincode");
-                    System.out.println(employeeDetails.displayBasedOnPinCode(scanner.nextInt()));
+                    int pincode=scanner.nextInt();
+                    List<employee.entity.Employee> employeePincode=employeeDetails.displayBasedOnPinCode(pincode);
+                    for(employee.entity.Employee employee1:employeePincode) {
+                        org.consoleEnv.Employee employeeConsole;
+                        employeeConsole = translateBack(employee1);
+                        System.out.println(employeeConsole);
+                    }
+                    //System.out.println(employeeDetails.displayBasedOnPinCode(scanner.nextInt()));
                     break;
                 case 5:
                     System.exit(0);
@@ -217,14 +222,14 @@ public class App
                 scanner1.close();
                 scanner2.close();
                 scanner3.close();
-                if(employeeDetails!=null) employeeDetails.close();
+//                if(employeeDetails!=null) employeeDetails.close();
             }
     }
 
-    private static EmployeeConsole translateBack(Employee employee) {
-       EmployeeBasicDetailsConsole employeeBasicDetailsConsole=new EmployeeBasicDetailsConsole();
-       EmployeeAddressConsole tempAddress=new EmployeeAddressConsole();
-       EmployeeAddressConsole permAddress=new EmployeeAddressConsole();
+    private static org.consoleEnv.Employee translateBack(Employee employee) {
+       EmployeeBasicDetails employeeBasicDetailsConsole=new EmployeeBasicDetails();
+       EmployeeAddress tempAddress=new EmployeeAddress();
+       EmployeeAddress permAddress=new EmployeeAddress();
        employeeBasicDetailsConsole.setFirstName(employee.getEmployeeBasicDetails().getFirstName());
        employeeBasicDetailsConsole.setMiddleName(employee.getEmployeeBasicDetails().getMiddleName());
        employeeBasicDetailsConsole.setLastName(employee.getEmployeeBasicDetails().getLastName());
@@ -233,7 +238,7 @@ public class App
        employeeBasicDetailsConsole.setPhoneNumber(employee.getEmployeeBasicDetails().getPhoneNumber());
 
        tempAddress.setHouseName(employee.getTemporaryEmployeeAddress().getHouseName());
-       tempAddress.setHouseStreet(employee.getTemporaryEmployeeAddress().getHouseName());
+       tempAddress.setHouseStreet(employee.getTemporaryEmployeeAddress().getHouseStreet());
        tempAddress.setCityName(employee.getTemporaryEmployeeAddress().getCityName());
        tempAddress.setStateName(employee.getTemporaryEmployeeAddress().getStateName());
        tempAddress.setPinCode(employee.getTemporaryEmployeeAddress().getPinCode());
@@ -243,11 +248,12 @@ public class App
        permAddress.setCityName(employee.getPermanentEmployeeAddress().getCityName());
        permAddress.setStateName(employee.getPermanentEmployeeAddress().getStateName());
        permAddress.setPinCode(employee.getPermanentEmployeeAddress().getPinCode());
-       return new EmployeeConsole(employeeBasicDetailsConsole,tempAddress,permAddress);
+       return new org.consoleEnv.Employee(employeeBasicDetailsConsole,tempAddress,permAddress);
+
     }
 
-    private static EmployeeAddress translateEmployeeAddress(EmployeeAddressConsole address) {
-        EmployeeAddress employeeAddress =new EmployeeAddress();
+    private static employee.entity.EmployeeAddress translateEmployeeAddress(EmployeeAddress address) {
+        employee.entity.EmployeeAddress employeeAddress =new employee.entity.EmployeeAddress();
         employeeAddress.setHouseName(address.getHouseName());
         employeeAddress.setHouseStreet(address.getHouseStreet());
         employeeAddress.setCityName(address.getCityName());
@@ -256,8 +262,8 @@ public class App
         return employeeAddress;
     }
 
-    private static EmployeeBasicDetails translateEmployeeBasic(EmployeeBasicDetailsConsole employeeBasicDetails1) {
-       EmployeeBasicDetails employeeBasicDetails=new EmployeeBasicDetails();
+    private static employee.entity.EmployeeBasicDetails translateEmployeeBasic(EmployeeBasicDetails employeeBasicDetails1) {
+       employee.entity.EmployeeBasicDetails employeeBasicDetails=new employee.entity.EmployeeBasicDetails();
         employeeBasicDetails.setEmployeeID(employeeBasicDetails1.getEmployeeID());
         employeeBasicDetails.setFirstName(employeeBasicDetails1.getFirstName());
         employeeBasicDetails.setMiddleName(employeeBasicDetails1.getMiddleName());

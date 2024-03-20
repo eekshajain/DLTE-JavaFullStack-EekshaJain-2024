@@ -18,8 +18,9 @@
         <file>C:\Users\xxjainne\Documents\logs\app.log</file> <!-- Define base log file name -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- Set rolling schedule -->
-            <fileNamePattern>C:\Users\xxjainne\Documents\logs\app-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>C:\Users\xxjainne\Documents\logs\myLogs-%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- Set max history -->
+            <maxFileSize>1KB</maxFileSize>
             <maxHistory>1</maxHistory> <!-- Keep up to 1 day of log history -->
         </rollingPolicy>
         <encoder>
@@ -29,7 +30,7 @@
 
     <!-- Root logger settings -->
     <root level="INFO">
-        <appender-ref ref="myConsole" />
+<!--        <appender-ref ref="myConsole" />-->
         <appender-ref ref="myLogs" /> <!-- Attach file appender -->
     </root>
 

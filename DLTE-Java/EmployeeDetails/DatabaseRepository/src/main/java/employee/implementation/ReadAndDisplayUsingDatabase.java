@@ -1,14 +1,13 @@
 package employee.implementation;
 
-import employee.interfaces.Employee;
-import employee.interfaces.EmployeeAddress;
-import employee.interfaces.EmployeeBasicDetails;
+import employee.entity.Employee;
+import employee.entity.EmployeeAddress;
+import employee.entity.EmployeeBasicDetails;
 import employee.interfaces.InputEmployeeDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import validate.data.ValidationOfData;
 
-import javax.xml.bind.ValidationEvent;
 import java.sql.*;
 import java.util.*;
 
@@ -28,12 +27,12 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
 
 
     @Override
-    public boolean saveAll(Employee employee) {
+    public Employee saveAll(Employee employee) {
         boolean success=false;
-        if(employee.getEmployeeBasicDetails().getLastName()==null){
-            logger.error("Last name is missing!");
-            throw new EmployeeExceptions("last.name.missing");
-        }
+//        if(employee.getEmployeeBasicDetails().getLastName()==null){
+//            logger.error("Last name is missing!");
+//            throw new EmployeeExceptions("last.name.missing");
+//        }
         if(!validationData.isPhoneNumberValid(employee.getEmployeeBasicDetails().getPhoneNumber())){
             logger.error("Phone number is corrupted!");
             throw new EmployeeExceptions("invalid.phone.number");
@@ -53,6 +52,7 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
 
             int employeeID = employee.getEmployeeBasicDetails().getEmployeeID();
             try {
+                connection=CreateConnection.createConnection();
                 String insertBasicDetails = "insert into EmployeeBasicDetails(EMPLOYEE_ID,FIRST_NAME,MIDDLE_NAME,LAST_NAME,PHONE_NUMBER,EMAIL_ID) values (?,?,?,?,?,?)";
                 preparedStatement = connection.prepareStatement(insertBasicDetails);
                 preparedStatement.setInt(1, employeeID);
@@ -85,9 +85,11 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
                   success = resultBasic>0 & resultPermanent>0 & resultTemporary>0;
             } catch (SQLException e) {
                 e.printStackTrace();
+            }finally {
+                close();
             }
 
-          return success;
+          return employee;
     }
 
     @Override
@@ -98,6 +100,7 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
         EmployeeAddress permEmployeeAddress=new EmployeeAddress();
         EmployeeAddress employeeAddress=new EmployeeAddress();
         try {
+            connection=CreateConnection.createConnection();
             String findByID="SELECT * FROM employeebasicdetails ebd INNER JOIN temporaryaddress ta ON ebd.employee_id = ta.employee_id INNER JOIN permanentaddress pa ON ebd.employee_id = pa.employee_id WHERE ebd.employee_id = ?";
             preparedStatement=connection.prepareStatement(findByID);
             preparedStatement.setInt(1,employeeID);
@@ -133,6 +136,8 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            close();
         }
         return null;
     }
@@ -140,6 +145,7 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
     @Override
     public List<Employee> displayBasedOnPinCode(int temporaryPincode) {
         try {
+            connection=CreateConnection.createConnection();
             Employee employee=new Employee();
             EmployeeBasicDetails employeeBasicDetails=new EmployeeBasicDetails();
             EmployeeAddress tempEmployeeAddress=new EmployeeAddress();
@@ -175,6 +181,8 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            close();
         }
         return employees;
     }
@@ -183,6 +191,7 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
     public List<Employee> displayAll() {
        // Employee employee=null;
         try {
+            connection=CreateConnection.createConnection();
             String findAll="SELECT * FROM employeebasicdetails ebd INNER JOIN temporaryaddress ta ON ebd.employee_id = ta.employee_id INNER JOIN permanentaddress pa ON ebd.employee_id = pa.employee_id ";
             preparedStatement=connection.prepareStatement(findAll);
             resultSet=preparedStatement.executeQuery();
@@ -197,7 +206,7 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
                 employeeBasicDetails.setLastName(resultSet.getString(4));
                 employeeBasicDetails.setPhoneNumber(resultSet.getLong(5));
                 employeeBasicDetails.setEmailID(resultSet.getString(6));
-
+                //employeeBasicDetails.setTemporaryEmployeeAddress(tempEmployeeAddress.setHouseName(resultSet.getString(8)));
                 tempEmployeeAddress.setHouseName(resultSet.getString(8));
 //                employeeAddress.setTemporaryHouseStreet(resultSet.getString("street_name"));
 //                employeeAddress.setTemporaryCityName(resultSet.getString("city_name"));
@@ -216,6 +225,8 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally{
+            close();
         }
         return employees;
     }
@@ -239,12 +250,15 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
     public boolean deleteByID(int employeeID) {
         String deleteByID="DELETE FROM employeebasicdetails WHERE employee_id = ?";
         try {
+            connection=CreateConnection.createConnection();
             preparedStatement=connection.prepareStatement(deleteByID);
             preparedStatement.setInt(1,employeeID);
            int deleteResult=preparedStatement.executeUpdate();
            if(deleteResult!=0) return true;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            close();
         }
   return false;
     }
