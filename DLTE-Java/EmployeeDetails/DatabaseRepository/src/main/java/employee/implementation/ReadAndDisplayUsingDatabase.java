@@ -28,24 +28,29 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
 
 
     @Override
-    public void saveAll(Employee employee) {
-        int flag=0;
+    public boolean saveAll(Employee employee) {
+        boolean success=false;
+        if(employee.getEmployeeBasicDetails().getLastName()==null){
+            logger.error("Last name is missing!");
+            throw new EmployeeExceptions("last.name.missing");
+        }
         if(!validationData.isPhoneNumberValid(employee.getEmployeeBasicDetails().getPhoneNumber())){
             logger.error("Phone number is corrupted!");
-            flag=1;
+            throw new EmployeeExceptions("invalid.phone.number");
         }
         if(!validationData.isEmailValid(employee.getEmployeeBasicDetails().getEmailID())){
             logger.error("Email ID is corrupted!");
+            throw new EmployeeExceptions("invalid.email");
         }
         if(!validationData.isPinCodeValid(employee.getTemporaryEmployeeAddress().getPinCode())){
             logger.error("Temporary pincode is corrupted!");
-            flag=1;
+            throw new EmployeeExceptions("invalid.temporary.pincode");
         }
         if(!validationData.isPinCodeValid(employee.getPermanentEmployeeAddress().getPinCode())){
             logger.error("Permanent pincode is corrupted!");
-            flag=1;
+            throw new EmployeeExceptions("invalid.permanent.pincode");
         }
-        if(flag==0) {
+
             int employeeID = employee.getEmployeeBasicDetails().getEmployeeID();
             try {
                 String insertBasicDetails = "insert into EmployeeBasicDetails(EMPLOYEE_ID,FIRST_NAME,MIDDLE_NAME,LAST_NAME,PHONE_NUMBER,EMAIL_ID) values (?,?,?,?,?,?)";
@@ -77,17 +82,12 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
                 preparedStatement.setString(5, employee.getPermanentEmployeeAddress().getStateName());
                 preparedStatement.setInt(6, employee.getPermanentEmployeeAddress().getPinCode());
                 int resultPermanent = preparedStatement.executeUpdate();
-                if (resultBasic != 0) {
-                    logger.info(resourceBundle1.getString("basic.details"));
-                } else {
-                    System.out.println("failed");
-                }
-                if (resultTemporary != 0) logger.info(resourceBundle1.getString("temporary.details"));
-                if (resultPermanent != 0) logger.info(resourceBundle1.getString("permanent.details"));
+                  success = resultBasic>0 & resultPermanent>0 & resultTemporary>0;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
+
+          return success;
     }
 
     @Override
@@ -228,7 +228,7 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
             preparedStatement.setInt(1,employeeID);
             resultSet=preparedStatement.executeQuery();
             if(resultSet.next()) return true;
-            else logger.warn("Employee with employee ID"+employeeID+" does not exist!");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -250,12 +250,24 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
     }
 
     public void close(){
+        if(resultSet!=null) {
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                throw new EmployeeExceptions("system.error");
+            }
+        }
+        if(preparedStatement!=null) {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                throw new EmployeeExceptions("system.error");
+            }
+        }
         try{
-           if(resultSet!=null) resultSet.close();
-           if(preparedStatement!=null) preparedStatement.close();
            if(connection!=null) connection.close();
-        } catch (NullPointerException | SQLException e) {
-            System.out.println("null:"+e);
+        } catch (SQLException e) {
+            throw new EmployeeExceptions("system.error");
         }
     }
 

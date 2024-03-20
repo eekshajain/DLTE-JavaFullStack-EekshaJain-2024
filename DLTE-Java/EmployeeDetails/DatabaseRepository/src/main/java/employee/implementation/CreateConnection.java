@@ -17,7 +17,7 @@ public class CreateConnection {
             DriverManager.registerDriver(driver);
             connection=DriverManager.getConnection(resourceBundle.getString("db.url"),resourceBundle.getString("db.user"),resourceBundle.getString("db.password"));
         } catch (SQLException e) {
-           throw new EmployeeExceptions();
+           throw new EmployeeExceptions("system.error");
         }
         return connection;
     }

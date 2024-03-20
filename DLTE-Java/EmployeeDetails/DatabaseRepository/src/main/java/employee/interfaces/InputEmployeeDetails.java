@@ -4,7 +4,7 @@ package employee.interfaces;
 import java.util.List;
 
 public  interface InputEmployeeDetails {
-    void saveAll(Employee employee);
+    boolean saveAll(Employee employee);
     Employee displayRequired(int employeeID);
     List<Employee> displayBasedOnPinCode(int pinCode);
     List<Employee> displayAll();

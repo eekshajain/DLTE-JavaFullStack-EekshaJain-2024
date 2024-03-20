@@ -160,18 +160,25 @@ public class App
                         EmployeeAddress permEmployeeAddress;
                         permEmployeeAddress = translateEmployeeAddress(permEmployeeAddress1);
                         employee = new Employee(employeeBasicDetails, tempEmployeeAddress, permEmployeeAddress);
-                        employeeDetails.saveAll(employee);
+                        try {
+                            if(employeeDetails.saveAll(employee)) System.out.println("Employee Details added successfully!");
+                            else System.out.println("Failed to add employee details!");
+                        }catch(EmployeeExceptions employeeExceptions){
+                            System.out.println(employeeExceptions.getMessage());
+                        }
                         System.out.println("Do you want to add more?");
                     } while (scanner.next().equalsIgnoreCase("yes"));
                     break;
                 case 2:
+                    int employeeId;
+                    System.out.println(resourceBundle.getString("employee.id"));
+                    employeeId = scanner.nextInt();
                     try {
-                        System.out.println(resourceBundle.getString("employee.id"));
-                        int employeeId = scanner.nextInt();
                         if (employeeDetails.doesEmployeeExists(employeeId)) {
                             System.out.println(employeeDetails.displayRequired(employeeId));
                         } else throw new EmployeeException();
                     }catch(EmployeeException e){
+                        logger.error("Employee with employee ID "+employeeId+"does not exist");
                         System.out.println(resourceBundle.getString("employee.doesNotExists"));
                     }
                     break;
@@ -198,7 +205,7 @@ public class App
             }
         }
             }catch(EmployeeExceptions employeeExceptions){
-            System.out.println(resourceBundle.getString("system.error"));
+            System.out.println(employeeExceptions.getErrorMessage());
         } catch (InputMismatchException e){
                 System.out.println(resourceBundle.getString("number.only"));
                 scanner.next();
@@ -210,7 +217,7 @@ public class App
                 scanner1.close();
                 scanner2.close();
                 scanner3.close();
-                employeeDetails.close();
+                if(employeeDetails!=null) employeeDetails.close();
             }
     }
 
