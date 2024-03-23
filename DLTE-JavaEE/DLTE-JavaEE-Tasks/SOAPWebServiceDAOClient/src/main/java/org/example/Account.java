@@ -51,6 +51,9 @@ public class Account {
     protected String password;
     protected String username;
 
+    public Account(long l, long l1, String s, String anandi, int i, String anandi78, String anandi1234) {
+    }
+
     /**
      * Gets the value of the accountNumber property.
      * 

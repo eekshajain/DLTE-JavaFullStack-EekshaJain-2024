@@ -26,16 +26,13 @@ public interface WebServicesDAO {
 
     /**
      * 
-     * @param arg0
      * @return
-     *     returns org.example.Account
+     *     returns org.example.ArrayList
      */
     @WebMethod
-    @WebResult(name = "findByAccount", partName = "findByAccount")
-    @Action(input = "http://example.org/WebServicesDAO/findByUserRequest", output = "http://example.org/WebServicesDAO/findByUserResponse")
-    public Account findByUser(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
+    @WebResult(name = "findAll", partName = "findAll")
+    @Action(input = "http://example.org/WebServicesDAO/findAllRequest", output = "http://example.org/WebServicesDAO/findAllResponse")
+    public ArrayList findAll();
 
     /**
      * 
@@ -55,6 +52,19 @@ public interface WebServicesDAO {
         String arg1,
         @WebParam(name = "arg2", partName = "arg2")
         double arg2);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns org.example.Account
+     */
+    @WebMethod
+    @WebResult(name = "findByAccount", partName = "findByAccount")
+    @Action(input = "http://example.org/WebServicesDAO/findByUserRequest", output = "http://example.org/WebServicesDAO/findByUserResponse")
+    public Account findByUser(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
 
     /**
      * 

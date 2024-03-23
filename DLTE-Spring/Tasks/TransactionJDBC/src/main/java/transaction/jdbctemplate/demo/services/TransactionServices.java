@@ -24,8 +24,9 @@ public class TransactionServices {
                    transaction.getTransactionAmount(),
                    transaction.getTransactionRemarks()
                 });
-        if(acknowledge!=0) return transaction;
-        else return null;
+//        if(acknowledge!=0) return transaction;
+//        else return "No;
+        return transaction;
     }
 
     public List<Transaction> apiFindBySender(String sender){
