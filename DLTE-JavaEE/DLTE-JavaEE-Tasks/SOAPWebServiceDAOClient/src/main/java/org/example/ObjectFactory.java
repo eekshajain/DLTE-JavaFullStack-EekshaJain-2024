@@ -37,12 +37,4 @@ public class ObjectFactory {
         return new ArrayList();
     }
 
-    /**
-     * Create an instance of {@link Account }
-     * 
-     */
-    public Account createAccount() {
-        return new Account();
-    }
-
 }

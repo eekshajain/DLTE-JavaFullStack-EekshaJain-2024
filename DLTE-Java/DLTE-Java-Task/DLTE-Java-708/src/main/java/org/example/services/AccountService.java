@@ -80,4 +80,12 @@ public class AccountService {
         }
   }
 
+  public List<Account> callFinAllAccount(){
+        try{
+            return userRepository.findAllAccount();
+        }catch (Exception e){
+            return null;
+        }
+  }
+
 }

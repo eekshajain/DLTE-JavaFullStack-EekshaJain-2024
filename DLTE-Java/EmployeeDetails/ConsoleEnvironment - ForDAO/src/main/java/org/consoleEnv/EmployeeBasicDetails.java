@@ -16,6 +16,15 @@ public class EmployeeBasicDetails {
         this.permanentAddress = permanentAddress;
     }
 
+    public EmployeeBasicDetails(int employeeID, String firstName, String middleName, String lastName, long phoneNumber, String emailID) {
+        this.employeeID = employeeID;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.emailID = emailID;
+    }
+
     public EmployeeAddress getTemporaryAddress() {
         return temporaryAddress;
     }

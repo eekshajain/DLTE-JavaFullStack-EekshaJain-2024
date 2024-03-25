@@ -79,24 +79,26 @@ public class UserDatabaseRepository implements UserRepository {
         return transactionArrayList;
     }
 
-//    public List<Account> findAllAccount(){
-//        ArrayList<Account> transactionArrayList=new ArrayList<>();
-//        try{
-//            String query="select * from my_bank";
-//            preparedStatement=connection.prepareStatement(query);
-//            resultSet = preparedStatement.executeQuery();
-//            if(!resultSet.next()) throw new WithdrawException();
-//            while(resultSet.next()){
-//                transactionArrayList.add(new Account(resultSet.ge)));
-//            }
-//        }catch (WithdrawException e){
-//
-//        }
-//        catch (SQLException sqlException){
-//            System.out.println(sqlException);
-//        }
-//        return transactionArrayList;
-//    }
+    public List<Account> findAllAccount(){
+        ArrayList<Account> transactionArrayList=new ArrayList<>();
+        try{
+            String query="select * from my_bank";
+            preparedStatement=connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            if(!resultSet.next()) throw new WithdrawException();
+            while(resultSet.next()){
+                transactionArrayList.add(new Account(resultSet.getLong(1),resultSet.getLong(2),resultSet.getString(3),resultSet.getString(4),resultSet.getDouble(5),resultSet.getString(6),resultSet.getString(7)));
+            }
+        }catch (WithdrawException e){
+
+        }
+        catch (SQLException sqlException){
+            System.out.println(sqlException);
+        }
+        return transactionArrayList;
+    }
+
+
     public List<Transaction> findAllByDate(Date date,String user) {
         ArrayList<Transaction> transactionArrayList=new ArrayList<>();
         try{

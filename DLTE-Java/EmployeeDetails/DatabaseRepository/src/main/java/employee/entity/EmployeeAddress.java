@@ -7,6 +7,17 @@ public class EmployeeAddress {
     private String stateName;
     private int pinCode;
 
+    public EmployeeAddress(String houseName, String houseStreet, String cityName, String stateName, int pinCode) {
+        this.houseName = houseName;
+        this.houseStreet = houseStreet;
+        this.cityName = cityName;
+        this.stateName = stateName;
+        this.pinCode = pinCode;
+    }
+
+    public EmployeeAddress() {
+    }
+
     public String getHouseName() {
         return houseName;
     }

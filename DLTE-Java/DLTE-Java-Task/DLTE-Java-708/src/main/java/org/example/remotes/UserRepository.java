@@ -19,4 +19,5 @@ public interface UserRepository {
     List<Transaction> findAllUser(String user);
     List<Transaction> findAllByDate(Date date, String user);
     Account findUserByUsername(String username);
+    List<Account> findAllAccount();
 }
