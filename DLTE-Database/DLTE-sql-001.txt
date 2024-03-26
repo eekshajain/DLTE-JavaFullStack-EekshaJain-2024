@@ -4,15 +4,15 @@ create sequence transaction_sequence start with 24001 increment by 1;
 
 alter table transaction_analysis add constraint transaction_sequence primary key(transaction_id);
 
-insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Divija',774,'20-Feb-2024','Bus Ticket');
+insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Divija',774,'20-Feb-2024','Friend');
 
-insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Ankitha',400,'12-Feb-2024','Stationary');
+insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Ankitha',400,'12-Feb-2024','Emergency');
 
-insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Akshira',800,'10-Feb-2024','Bus Ticket');
+insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Spanadana',800,'10-Feb-2024','Family');
 
-insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Divija',350,'15-Feb-2024','Desserts');
+insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Vanitha',350,'15-Feb-2024','General');
 
-insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Arundhathi',350,'01-Feb-2024','Hotel');
+insert into transaction_analysis(transaction_id,transaction_to,transaction_amount,transaction_date,transaction_remarks) values (transaction_seq.nextval,'Arundhathi',350,'01-Feb-2024','Friend');
 
 1.select * from transaction_analysis where transaction_date between '1-Feb-2024' and '15-Feb-2024';
 

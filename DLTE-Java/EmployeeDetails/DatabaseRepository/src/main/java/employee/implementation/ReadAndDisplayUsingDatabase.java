@@ -33,21 +33,36 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
 //            logger.error("Last name is missing!");
 //            throw new EmployeeExceptions("last.name.missing");
 //        }
-        if(!validationData.isPhoneNumberValid(employee.getEmployeeBasicDetails().getPhoneNumber())){
-            logger.error("Phone number is corrupted!");
-            throw new EmployeeExceptions("invalid.phone.number");
+//        if(!validationData.isPhoneNumberValid(employee.getEmployeeBasicDetails().getPhoneNumber())){
+//            logger.error("Phone number is corrupted!");
+//            throw new EmployeeExceptions("invalid.phone.number");
+//        }
+//        if(!validationData.isEmailValid(employee.getEmployeeBasicDetails().getEmailID())){
+//            logger.error("Email ID is corrupted!");
+//            throw new EmployeeExceptions("invalid.email");
+//        }
+//        if(!validationData.isPinCodeValid(employee.getTemporaryEmployeeAddress().getPinCode())){
+//            logger.error("Temporary pincode is corrupted!");
+//            throw new EmployeeExceptions("invalid.temporary.pincode");
+//        }
+//        if(!validationData.isPinCodeValid(employee.getPermanentEmployeeAddress().getPinCode())){
+//            logger.error("Permanent pincode is corrupted!");
+//            throw new EmployeeExceptions("invalid.permanent.pincode");
+//        }
+        if (employee == null) {
+            throw new IllegalArgumentException("Employee object is null");
         }
-        if(!validationData.isEmailValid(employee.getEmployeeBasicDetails().getEmailID())){
-            logger.error("Email ID is corrupted!");
-            throw new EmployeeExceptions("invalid.email");
+
+        if (employee.getEmployeeBasicDetails() == null) {
+            throw new IllegalArgumentException("EmployeeBasicDetails is null");
         }
-        if(!validationData.isPinCodeValid(employee.getTemporaryEmployeeAddress().getPinCode())){
-            logger.error("Temporary pincode is corrupted!");
-            throw new EmployeeExceptions("invalid.temporary.pincode");
+
+        if (employee.getTemporaryEmployeeAddress() == null) {
+            throw new IllegalArgumentException("TemporaryEmployeeAddress is null");
         }
-        if(!validationData.isPinCodeValid(employee.getPermanentEmployeeAddress().getPinCode())){
-            logger.error("Permanent pincode is corrupted!");
-            throw new EmployeeExceptions("invalid.permanent.pincode");
+
+        if (employee.getPermanentEmployeeAddress() == null) {
+            throw new IllegalArgumentException("PermanentEmployeeAddress is null");
         }
 
             int employeeID = employee.getEmployeeBasicDetails().getEmployeeID();
@@ -63,7 +78,8 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
                 preparedStatement.setString(6, employee.getEmployeeBasicDetails().getEmailID());
                 int resultBasic = preparedStatement.executeUpdate();
 
-                String insertTemporaryAddress = "insert into TemporaryAddress(EMPLOYEE_ID,HOUSE_NAME,STREET_NAME,CITY_NAME,STATE_NAME,PIN_CODE) values (?,?,?,?,?,?)";
+                //String insertTemporaryAddress = "insert into TemporaryAddress(EMPLOYEE_ID,HOUSE_NAME,STREET_NAME,CITY_NAME,STATE_NAME,PIN_CODE) values (?,?,?,?,?,?)";
+                String insertTemporaryAddress = "insert into EmployeeAddress(ADDRESS_ID,EMPLOYEE_ID,HOUSE_NAME,STREET_NAME,CITY_NAME,STATE_NAME,PIN_CODE,IS_TEMPORARY) values (address_seq.nextval,?,?,?,?,?,?,1)";
                 preparedStatement = connection.prepareStatement(insertTemporaryAddress);
                 preparedStatement.setInt(1, employeeID);
                 preparedStatement.setString(2, employee.getTemporaryEmployeeAddress().getHouseName());
@@ -73,7 +89,8 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
                 preparedStatement.setInt(6, employee.getTemporaryEmployeeAddress().getPinCode());
                 int resultTemporary = preparedStatement.executeUpdate();
 
-                String insertPermanentAddress = "insert into PermanentAddress(EMPLOYEE_ID,HOUSE_NAME,STREET_NAME,CITY_NAME,STATE_NAME,PIN_CODE) values (?,?,?,?,?,?)";
+                //String insertPermanentAddress = "insert into PermanentAddress(EMPLOYEE_ID,HOUSE_NAME,STREET_NAME,CITY_NAME,STATE_NAME,PIN_CODE) values (?,?,?,?,?,?)";
+                String insertPermanentAddress = "insert into EmployeeAddress(ADDRESS_ID,EMPLOYEE_ID,HOUSE_NAME,STREET_NAME,CITY_NAME,STATE_NAME,PIN_CODE,IS_TEMPORARY) values (address_seq.nextval,?,?,?,?,?,?,0)";
                 preparedStatement = connection.prepareStatement(insertPermanentAddress);
                 preparedStatement.setInt(1, employeeID);
                 preparedStatement.setString(2, employee.getPermanentEmployeeAddress().getHouseName());
@@ -101,7 +118,27 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
         EmployeeAddress employeeAddress=new EmployeeAddress();
         try {
             connection=CreateConnection.createConnection();
-            String findByID="SELECT * FROM employeebasicdetails ebd INNER JOIN temporaryaddress ta ON ebd.employee_id = ta.employee_id INNER JOIN permanentaddress pa ON ebd.employee_id = pa.employee_id WHERE ebd.employee_id = ?";
+          //  String findByID="SELECT * FROM employeebasicdetails ebd INNER JOIN temporaryaddress ta ON ebd.employee_id = ta.employee_id INNER JOIN permanentaddress pa ON ebd.employee_id = pa.employee_id WHERE ebd.employee_id = ?";
+            String findByID = "SELECT e.EMPLOYEE_ID,\n" +
+                    "       e.FIRST_NAME,\n" +
+                    "       e.MIDDLE_NAME,\n" +
+                    "       e.LAST_NAME,\n" +
+                    "       e.PHONE_NUMBER,\n" +
+                    "       e.EMAIL_ID,\n" +
+                    "       ta.HOUSE_NAME ,\n" +
+                    "       ta.STREET_NAME ,\n" +
+                    "       ta.CITY_NAME ,\n" +
+                    "       ta.STATE_NAME ,\n" +
+                    "       ta.PIN_CODE ,\n" +
+                    "       pa.HOUSE_NAME ,\n" +
+                    "       pa.STREET_NAME ,\n" +
+                    "       pa.CITY_NAME ,\n" +
+                    "       pa.STATE_NAME ,\n" +
+                    "       pa.PIN_CODE \n" +
+                    "FROM EmployeeBasicDetails e\n" +
+                    "INNER JOIN EmployeeAddress ta ON e.EMPLOYEE_ID = ta.EMPLOYEE_ID AND ta.IS_TEMPORARY = 1\n" +
+                    "INNER JOIN EmployeeAddress pa ON e.EMPLOYEE_ID = pa.EMPLOYEE_ID AND pa.IS_TEMPORARY = 0\n" +
+                    "WHERE e.EMPLOYEE_ID=?";
             preparedStatement=connection.prepareStatement(findByID);
             preparedStatement.setInt(1,employeeID);
             resultSet=preparedStatement.executeQuery();
@@ -113,25 +150,25 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
                 employeeBasicDetails.setPhoneNumber(resultSet.getLong(5));
                 employeeBasicDetails.setEmailID(resultSet.getString(6));
 
-                tempEmployeeAddress.setHouseName(resultSet.getString(8));
+                tempEmployeeAddress.setHouseName(resultSet.getString(7));
 //                employeeAddress.setTemporaryHouseStreet(resultSet.getString("street_name"));
 //                employeeAddress.setTemporaryCityName(resultSet.getString("city_name"));
 //                employeeAddress.setTemporaryStateName(resultSet.getString("state_name"));
 //                employeeAddress.setTemporaryPinCode(resultSet.getInt("pin_code"));
-                tempEmployeeAddress.setHouseStreet(resultSet.getString(9));
-                tempEmployeeAddress.setCityName(resultSet.getString(10));
-                tempEmployeeAddress.setStateName(resultSet.getString(11));
-                tempEmployeeAddress.setPinCode(resultSet.getInt(12));
+                tempEmployeeAddress.setHouseStreet(resultSet.getString(8));
+                tempEmployeeAddress.setCityName(resultSet.getString(9));
+                tempEmployeeAddress.setStateName(resultSet.getString(10));
+                tempEmployeeAddress.setPinCode(resultSet.getInt(11));
 
-                permEmployeeAddress.setHouseName(resultSet.getString(14));
-                permEmployeeAddress.setHouseStreet(resultSet.getString(15));
-                permEmployeeAddress.setCityName(resultSet.getString(16));
-                permEmployeeAddress.setStateName(resultSet.getString(17));
-                permEmployeeAddress.setPinCode(resultSet.getInt(18));
+                permEmployeeAddress.setHouseName(resultSet.getString(12));
+                permEmployeeAddress.setHouseStreet(resultSet.getString(13));
+                permEmployeeAddress.setCityName(resultSet.getString(14));
+                permEmployeeAddress.setStateName(resultSet.getString(15));
+                permEmployeeAddress.setPinCode(resultSet.getInt(16));
 //                employeeBasicDetails.setTemporaryEmployeeAddress(tempEmployeeAddress);
 //                employeeBasicDetails.setTemporaryEmployeeAddress(permEmployeeAddress);
                 logger.info("Displaying details of Employee with Employee ID:"+employeeID);
-               employee= new Employee(employeeBasicDetails,tempEmployeeAddress,permEmployeeAddress);
+                employee =new Employee(employeeBasicDetails,permEmployeeAddress,tempEmployeeAddress);
               return employee;
             }
         } catch (SQLException e) {
@@ -143,19 +180,44 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
     }
 
     @Override
-    public List<Employee> displayBasedOnPinCode(int temporaryPincode) {
+    public List<Employee> displayBasedOnPinCode(int pincode) {
+        List<Employee> employees1=new ArrayList<>();
         try {
             connection=CreateConnection.createConnection();
-            Employee employee=new Employee();
-            EmployeeBasicDetails employeeBasicDetails=new EmployeeBasicDetails();
-            EmployeeAddress tempEmployeeAddress=new EmployeeAddress();
-            EmployeeAddress permEmployeeAddress=new EmployeeAddress();
-            String findByID="SELECT * FROM employeebasicdetails ebd INNER JOIN temporaryaddress ta ON ebd.employee_id = ta.employee_id INNER JOIN permanentaddress pa ON ebd.employee_id = pa.employee_id WHERE ta.pin_code = ?";
-            preparedStatement=connection.prepareStatement(findByID);
-            preparedStatement.setInt(1,temporaryPincode);
+          //  Employee employee=new Employee();
+            EmployeeBasicDetails employeeBasicDetails;
+            EmployeeAddress tempEmployeeAddress;
+            EmployeeAddress permEmployeeAddress;
+           // String findByID="SELECT * FROM employeebasicdetails ebd JOIN temporaryaddress ta ON ebd.employee_id = ta.employee_id JOIN permanentaddress pa ON ebd.employee_id = pa.employee_id WHERE pa.pin_code = ? or ta.pin_code=?";
+            String findByPincode = "SELECT e.EMPLOYEE_ID,\n" +
+                    "       e.FIRST_NAME,\n" +
+                    "       e.MIDDLE_NAME,\n" +
+                    "       e.LAST_NAME,\n" +
+                    "       e.PHONE_NUMBER,\n" +
+                    "       e.EMAIL_ID,\n" +
+                    "       ta.HOUSE_NAME ,\n" +
+                    "       ta.STREET_NAME ,\n" +
+                    "       ta.CITY_NAME ,\n" +
+                    "       ta.STATE_NAME ,\n" +
+                    "       ta.PIN_CODE ,\n" +
+                    "       pa.HOUSE_NAME ,\n" +
+                    "       pa.STREET_NAME ,\n" +
+                    "       pa.CITY_NAME ,\n" +
+                    "       pa.STATE_NAME ,\n" +
+                    "       pa.PIN_CODE \n" +
+                    "FROM EmployeeBasicDetails e\n" +
+                    "INNER JOIN EmployeeAddress ta ON e.EMPLOYEE_ID = ta.EMPLOYEE_ID AND ta.IS_TEMPORARY = 1\n" +
+                    "INNER JOIN EmployeeAddress pa ON e.EMPLOYEE_ID = pa.EMPLOYEE_ID AND pa.IS_TEMPORARY = 0 " + // Added space before "WHERE"
+                    "WHERE ta.PIN_CODE=? or pa.PIN_CODE=?";
+            preparedStatement=connection.prepareStatement(findByPincode);
+            preparedStatement.setInt(1,pincode);
+            preparedStatement.setInt(2,pincode);
             resultSet=preparedStatement.executeQuery();
-            logger.info("Displaying details based on Temporary Pincode:"+temporaryPincode);
+            logger.info("Displaying details based on Temporary Pincode:"+pincode);
             while (resultSet.next()){
+                employeeBasicDetails=new EmployeeBasicDetails();
+                tempEmployeeAddress=new EmployeeAddress();
+                permEmployeeAddress=new EmployeeAddress();
                 employeeBasicDetails.setEmployeeID(resultSet.getInt(1));
                 employeeBasicDetails.setFirstName(resultSet.getString(2));
                 employeeBasicDetails.setMiddleName(resultSet.getString(3));
@@ -163,28 +225,28 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
                 employeeBasicDetails.setPhoneNumber(resultSet.getLong(5));
                 employeeBasicDetails.setEmailID(resultSet.getString(6));
 
-                tempEmployeeAddress.setHouseName(resultSet.getString(8));
-                tempEmployeeAddress.setHouseStreet(resultSet.getString(9));
-                tempEmployeeAddress.setCityName(resultSet.getString(10));
-                tempEmployeeAddress.setStateName(resultSet.getString(11));
-                tempEmployeeAddress.setPinCode(resultSet.getInt(12));
+                tempEmployeeAddress.setHouseName(resultSet.getString(7));
+                tempEmployeeAddress.setHouseStreet(resultSet.getString(8));
+                tempEmployeeAddress.setCityName(resultSet.getString(9));
+                tempEmployeeAddress.setStateName(resultSet.getString(1));
+                tempEmployeeAddress.setPinCode(resultSet.getInt(11));
 //                employeeAddress.setTemporaryHouseStreet(resultSet.getString("street_name"));
 //                employeeAddress.setTemporaryCityName(resultSet.getString("city_name"));
 //                employeeAddress.setTemporaryStateName(resultSet.getString("state_name"));
 //                employeeAddress.setTemporaryPinCode(resultSet.getInt("pin_code"));
-                permEmployeeAddress.setHouseName(resultSet.getString(14));
-                permEmployeeAddress.setHouseStreet(resultSet.getString(15));
-                permEmployeeAddress.setCityName(resultSet.getString(16));
-                permEmployeeAddress.setStateName(resultSet.getString(17));
-                permEmployeeAddress.setPinCode(resultSet.getInt(18));
-                employees.add(new Employee(employeeBasicDetails,tempEmployeeAddress,permEmployeeAddress));
+                permEmployeeAddress.setHouseName(resultSet.getString(12));
+                permEmployeeAddress.setHouseStreet(resultSet.getString(13));
+                permEmployeeAddress.setCityName(resultSet.getString(14));
+                permEmployeeAddress.setStateName(resultSet.getString(15));
+                permEmployeeAddress.setPinCode(resultSet.getInt(16));
+                employees1.add(new Employee(employeeBasicDetails,tempEmployeeAddress,permEmployeeAddress));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
             close();
         }
-        return employees;
+        return employees1;
     }
 
     @Override
@@ -192,7 +254,26 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
        // Employee employee=null;
         try {
             connection=CreateConnection.createConnection();
-            String findAll="SELECT * FROM employeebasicdetails ebd INNER JOIN temporaryaddress ta ON ebd.employee_id = ta.employee_id INNER JOIN permanentaddress pa ON ebd.employee_id = pa.employee_id ";
+            //String findAll="SELECT * FROM employeebasicdetails ebd INNER JOIN temporaryaddress ta ON ebd.employee_id = ta.employee_id INNER JOIN permanentaddress pa ON ebd.employee_id = pa.employee_id ";
+            String findAll = "SELECT e.EMPLOYEE_ID,\n" +
+                    "       e.FIRST_NAME,\n" +
+                    "       e.MIDDLE_NAME,\n" +
+                    "       e.LAST_NAME,\n" +
+                    "       e.PHONE_NUMBER,\n" +
+                    "       e.EMAIL_ID,\n" +
+                    "       ta.HOUSE_NAME ,\n" +
+                    "       ta.STREET_NAME ,\n" +
+                    "       ta.CITY_NAME ,\n" +
+                    "       ta.STATE_NAME ,\n" +
+                    "       ta.PIN_CODE ,\n" +
+                    "       pa.HOUSE_NAME ,\n" +
+                    "       pa.STREET_NAME ,\n" +
+                    "       pa.CITY_NAME ,\n" +
+                    "       pa.STATE_NAME ,\n" +
+                    "       pa.PIN_CODE \n" +
+                    "FROM EmployeeBasicDetails e\n" +
+                    "INNER JOIN EmployeeAddress ta ON e.EMPLOYEE_ID = ta.EMPLOYEE_ID AND ta.IS_TEMPORARY = 1\n" +
+                    "INNER JOIN EmployeeAddress pa ON e.EMPLOYEE_ID = pa.EMPLOYEE_ID AND pa.IS_TEMPORARY = 0";
             preparedStatement=connection.prepareStatement(findAll);
             resultSet=preparedStatement.executeQuery();
             while (resultSet.next()){
@@ -207,20 +288,20 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
                 employeeBasicDetails.setPhoneNumber(resultSet.getLong(5));
                 employeeBasicDetails.setEmailID(resultSet.getString(6));
                 //employeeBasicDetails.setTemporaryEmployeeAddress(tempEmployeeAddress.setHouseName(resultSet.getString(8)));
-                tempEmployeeAddress.setHouseName(resultSet.getString(8));
+                tempEmployeeAddress.setHouseName(resultSet.getString(7));
 //                employeeAddress.setTemporaryHouseStreet(resultSet.getString("street_name"));
 //                employeeAddress.setTemporaryCityName(resultSet.getString("city_name"));
 //                employeeAddress.setTemporaryStateName(resultSet.getString("state_name"));
 //                employeeAddress.setTemporaryPinCode(resultSet.getInt("pin_code"));
-                tempEmployeeAddress.setHouseStreet(resultSet.getString(9));
-                tempEmployeeAddress.setCityName(resultSet.getString(10));
-                tempEmployeeAddress.setStateName(resultSet.getString(11));
-                tempEmployeeAddress.setPinCode(resultSet.getInt(12));
-                permEmployeeAddress.setHouseName(resultSet.getString(14));
-                permEmployeeAddress.setHouseStreet(resultSet.getString(15));
-                permEmployeeAddress.setCityName(resultSet.getString(16));
-                permEmployeeAddress.setStateName(resultSet.getString(17));
-                permEmployeeAddress.setPinCode(resultSet.getInt(18));
+                tempEmployeeAddress.setHouseStreet(resultSet.getString(8));
+                tempEmployeeAddress.setCityName(resultSet.getString(9));
+                tempEmployeeAddress.setStateName(resultSet.getString(10));
+                tempEmployeeAddress.setPinCode(resultSet.getInt(11));
+                permEmployeeAddress.setHouseName(resultSet.getString(12));
+                permEmployeeAddress.setHouseStreet(resultSet.getString(13));
+                permEmployeeAddress.setCityName(resultSet.getString(14));
+                permEmployeeAddress.setStateName(resultSet.getString(15));
+                permEmployeeAddress.setPinCode(resultSet.getInt(16));
                 employees.add(new Employee(employeeBasicDetails,tempEmployeeAddress,permEmployeeAddress));
             }
         } catch (SQLException e) {
@@ -234,7 +315,8 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
     @Override
     public boolean doesEmployeeExists(int employeeID) {
         try {
-            String findByID="SELECT * FROM employeebasicdetails ebd INNER JOIN temporaryaddress ta ON ebd.employee_id = ta.employee_id INNER JOIN permanentaddress pa ON ebd.employee_id = pa.employee_id WHERE ebd.employee_id = ?";
+           // String findByID="SELECT ebd.employee_id FROM employeebasicdetails ebd INNER JOIN temporaryaddress ta ON ebd.employee_id = ta.employee_id INNER JOIN permanentaddress pa ON ebd.employee_id = pa.employee_id WHERE ebd.employee_id = ?";
+            String findByID="SELECT ebd.employee_id FROM employeebasicdetails ebd WHERE ebd.employee_id = ?";
             preparedStatement=connection.prepareStatement(findByID);
             preparedStatement.setInt(1,employeeID);
             resultSet=preparedStatement.executeQuery();

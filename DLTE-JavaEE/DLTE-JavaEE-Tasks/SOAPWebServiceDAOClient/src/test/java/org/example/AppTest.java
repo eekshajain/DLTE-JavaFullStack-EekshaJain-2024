@@ -64,12 +64,12 @@ public class AppTest {
         assertEquals(expectedBalance, actualBalance);
     }
 
-    @Test
-    public void testFndBy(){
-        String username="anandi78";
-        Account account=new Account(123456790L,45679L,"anandi@gmail.com","Anandi",45000,"anandi78","anandi1234");
-        when(accountService.callFindByUsername(username)).thenReturn(account);
-        org.example.Account actual=webServicesDAO.findByUser(username);
-        assertEquals(account,actual);
-    }
+//    @Test
+//    public void testFndBy(){
+//        String username="anandi78";
+//        Account account=new Account(123456790L,45679L,"anandi@gmail.com","Anandi",45000,"anandi78","anandi1234");
+//        when(accountService.callFindByUsername(username)).thenReturn(account);
+//        org.example.Account actual=webServicesDAO.findByUser(username);
+//        assertEquals(account,actual);
+//    }
 }

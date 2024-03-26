@@ -20,7 +20,7 @@ public class InputDetailsCollectAndDisplay {
     Scanner scanner2=new Scanner(System.in);
     Scanner scanner3=new Scanner(System.in);
     ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
-
+//to collect details
     public void callCollectDetails(InputEmployeeDetails employeeDetails){
         EmployeeBasicDetails employeeBasicDetails1=new EmployeeBasicDetails();
         EmployeeAddress tempEmployeeAddress1=new EmployeeAddress();
@@ -148,7 +148,7 @@ public class InputDetailsCollectAndDisplay {
         } while (scanner.next().equalsIgnoreCase("yes"));
     }
 
-
+//to display based on employee id
     public void callDisplayRequired(InputEmployeeDetails employeeDetails){
         int employeeId;
         System.out.println(resourceBundle.getString("employee.id"));
@@ -177,14 +177,19 @@ public class InputDetailsCollectAndDisplay {
 
     public void callDisplayRequiredPincode(InputEmployeeDetails employeeDetails){
         logger.info("Display required details based on Temporary pincode");
-        System.out.println("Enter Temporary Pincode");
+        System.out.println("Enter Pincode");
         int pincode=scanner.nextInt();
         List<employee.entity.Employee> employeePincode=employeeDetails.displayBasedOnPinCode(pincode);
-        for(employee.entity.Employee employee1:employeePincode) {
-            org.consoleEnv.Employee employeeConsole;
-            employeeConsole = translateBack(employee1);
-            System.out.println(employeeConsole);
+        if(employeePincode.isEmpty()){
+            System.out.println("No employees found for the given pincode.");
+        }else {
+            System.out.println(employeePincode.size());
+            for (Employee employee : employeePincode) {
+                org.consoleEnv.Employee employeeConsole = translateBack(employee);
+                System.out.println(employeeConsole);
+            }
         }
+
     }
 
     public static org.consoleEnv.Employee translateBack(Employee employee) {
@@ -209,7 +214,12 @@ public class InputDetailsCollectAndDisplay {
         permAddress.setCityName(employee.getPermanentEmployeeAddress().getCityName());
         permAddress.setStateName(employee.getPermanentEmployeeAddress().getStateName());
         permAddress.setPinCode(employee.getPermanentEmployeeAddress().getPinCode());
-        return new org.consoleEnv.Employee(employeeBasicDetailsConsole,tempAddress,permAddress);
+        org.consoleEnv.Employee employee1=new org.consoleEnv.Employee();
+        employee1.setEmployeeBasicDetails(employeeBasicDetailsConsole);
+        employee1.setTemporaryEmployeeAddress(tempAddress);
+        employee1.setTemporaryEmployeeAddress(permAddress);
+        //return employee1;
+         return new org.consoleEnv.Employee(employeeBasicDetailsConsole,tempAddress,permAddress);
 
     }
     public static employee.entity.EmployeeAddress translateEmployeeAddress(EmployeeAddress address) {

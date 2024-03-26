@@ -10,8 +10,8 @@ public class EmployeeBasicDetails {
     private String lastName;
     private long phoneNumber;
     private String emailID;
-    EmployeeAddress temporaryEmployeeAddress;
-    EmployeeAddress permanentEmployeeAddress;
+//    EmployeeAddress temporaryEmployeeAddress;
+//    EmployeeAddress permanentEmployeeAddress;
 
     public EmployeeBasicDetails(int employeeID, String firstName, String middleName, String lastName, long phoneNumber, String emailID) {
         this.employeeID = employeeID;
@@ -23,35 +23,35 @@ public class EmployeeBasicDetails {
     }
 
 
+//
+//    //public EmployeeAddress getTemporaryEmployeeAddress() {
+//        return temporaryEmployeeAddress;
+//    }
+//
+//    public void setTemporaryEmployeeAddress(EmployeeAddress temporaryEmployeeAddress) {
+//        this.temporaryEmployeeAddress = temporaryEmployeeAddress;
+//    }
+//
+//    public EmployeeAddress getPermanentEmployeeAddress() {
+//        return permanentEmployeeAddress;
+//    }
+//
+//    public void setPermanentEmployeeAddress(EmployeeAddress permanentEmployeeAddress) {
+//        this.permanentEmployeeAddress = permanentEmployeeAddress;
+//    }
 
-    public EmployeeAddress getTemporaryEmployeeAddress() {
-        return temporaryEmployeeAddress;
-    }
 
-    public void setTemporaryEmployeeAddress(EmployeeAddress temporaryEmployeeAddress) {
-        this.temporaryEmployeeAddress = temporaryEmployeeAddress;
-    }
-
-    public EmployeeAddress getPermanentEmployeeAddress() {
-        return permanentEmployeeAddress;
-    }
-
-    public void setPermanentEmployeeAddress(EmployeeAddress permanentEmployeeAddress) {
-        this.permanentEmployeeAddress = permanentEmployeeAddress;
-    }
-
-
-
-    public EmployeeBasicDetails(int employeeID, String firstName, String middleName, String lastName, long phoneNumber, String emailID, EmployeeAddress temporaryEmployeeAddress, EmployeeAddress permanentEmployeeAddress) {
-        this.employeeID = employeeID;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.emailID = emailID;
-        this.temporaryEmployeeAddress = temporaryEmployeeAddress;
-        this.permanentEmployeeAddress = permanentEmployeeAddress;
-    }
+//
+//    public EmployeeBasicDetails(int employeeID, String firstName, String middleName, String lastName, long phoneNumber, String emailID, EmployeeAddress temporaryEmployeeAddress, EmployeeAddress permanentEmployeeAddress) {
+//        this.employeeID = employeeID;
+//        this.firstName = firstName;
+//        this.middleName = middleName;
+//        this.lastName = lastName;
+//        this.phoneNumber = phoneNumber;
+//        this.emailID = emailID;
+//        this.temporaryEmployeeAddress = temporaryEmployeeAddress;
+//        this.permanentEmployeeAddress = permanentEmployeeAddress;
+//    }
 
     public EmployeeBasicDetails() {
     }

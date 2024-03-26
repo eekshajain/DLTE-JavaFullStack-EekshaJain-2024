@@ -21,7 +21,7 @@
             <fileNamePattern>C:\Users\xxjainne\Documents\logs\myLogs-%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- Set max history -->
             <maxFileSize>1KB</maxFileSize>
-            <maxHistory>1</maxHistory> <!-- Keep up to 1 day of log history -->
+            <maxHistory>2</maxHistory> <!-- Keep up to 1 day of log history -->
         </rollingPolicy>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} %highlight([%thread]) %-5level %logger{36} - %highlight(%msg) %n</pattern>
