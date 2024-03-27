@@ -261,7 +261,7 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
                     "       e.LAST_NAME,\n" +
                     "       e.PHONE_NUMBER,\n" +
                     "       e.EMAIL_ID,\n" +
-                    "       ta.HOUSE_NAME ,\n" +
+                    "       ta.HOUSE_NAME as TEMPORARY_HOUSENAME,\n" +
                     "       ta.STREET_NAME ,\n" +
                     "       ta.CITY_NAME ,\n" +
                     "       ta.STATE_NAME ,\n" +
@@ -288,7 +288,7 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
                 employeeBasicDetails.setPhoneNumber(resultSet.getLong(5));
                 employeeBasicDetails.setEmailID(resultSet.getString(6));
                 //employeeBasicDetails.setTemporaryEmployeeAddress(tempEmployeeAddress.setHouseName(resultSet.getString(8)));
-                tempEmployeeAddress.setHouseName(resultSet.getString(7));
+                tempEmployeeAddress.setHouseName(resultSet.getString("TEMPORARY_HOUSENAME"));
 //                employeeAddress.setTemporaryHouseStreet(resultSet.getString("street_name"));
 //                employeeAddress.setTemporaryCityName(resultSet.getString("city_name"));
 //                employeeAddress.setTemporaryStateName(resultSet.getString("state_name"));

@@ -1,40 +1,35 @@
-package transaction.jdbctemplate.demo.services;
+package springjdbc.transaction.demo.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import transaction.jdbctemplate.demo.entity.Transaction;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.Date;
 import java.util.List;
-
 @Service
 public class TransactionServices {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
-
     public Transaction apiSave(Transaction transaction){
         int acknowledge=jdbcTemplate.update("insert into transactions_table values(?,?,?,?,?,?)",
-                new Object[]{
-                   transaction.getTransactionId(),
-                   transaction.getTransactionDate(),
-                   transaction.getTransactionBy(),
-                   transaction.getTransactionTo(),
-                   transaction.getTransactionAmount(),
-                   transaction.getTransactionRemarks()
-                });
-//        if(acknowledge!=0) return transaction;
-//        else return "No;
-        return transaction;
+                transaction.getTransactionId(),
+                transaction.getTransactionDate(),
+                transaction.getTransactionBy(),
+                transaction.getTransactionTo(),
+                transaction.getTransactionAmount(),
+                transaction.getTransactionRemarks());
+        if(acknowledge!=0) return transaction;
+        else return null;
+        //return transaction;
     }
 
     public List<Transaction> apiFindBySender(String sender){
-       List<Transaction> myCards= (List<Transaction>) jdbcTemplate.query("select * from transactions_table where transaction_by=?",
-               new Object[]{sender},
-               new BeanPropertyRowMapper<>(Transaction.class));
-       return myCards;
+        List<Transaction> myCards= (List<Transaction>) jdbcTemplate.query("select * from transactions_table where transaction_by=?",
+                new Object[]{sender},
+                new BeanPropertyRowMapper<>(Transaction.class));
+        return myCards;
     }
 
 
@@ -53,17 +48,17 @@ public class TransactionServices {
     }
 
     public Transaction updateTransaction(Transaction transaction){
-        int acknowledge=jdbcTemplate.update("update transactions_table set tranaction_remarks=? where transaction_id=?",
+        int acknowledge=jdbcTemplate.update("update transactions_table set transaction_remarks=? where transaction_id=?",
                 new Object[]{transaction.getTransactionRemarks(),transaction.getTransactionId()}
-                );
+        );
         if(acknowledge!=0) return transaction;
         else  return null;
     }
 
-    public String deleteTransaction(Date startDate,Date endDate){
+    public String deleteTransaction(XMLGregorianCalendar startDate, XMLGregorianCalendar endDate){
         int acknowledge= jdbcTemplate.update("delete from transactions_table where transaction_date between ? and ?",
                 new Object[]{startDate,endDate}
-                );
+        );
         if(acknowledge!=0) return "Transaction deleted";
         else return "Failed to delete transaction";
     }

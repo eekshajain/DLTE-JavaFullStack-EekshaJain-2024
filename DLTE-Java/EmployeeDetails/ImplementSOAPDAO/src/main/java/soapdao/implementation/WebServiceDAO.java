@@ -9,10 +9,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.RPC)
@@ -39,16 +36,19 @@ public class WebServiceDAO {
     }
 
     @WebResult(name="findBasedOnPincode")
-    public ArrayList<Employee> callFilterBasedOnPincode(int pincode){
+    public GroupOfEmployees callFilterBasedOnPincode(int pincode){
+        GroupOfEmployees groupOfEmployees=new GroupOfEmployees();
         ArrayList<Employee> employees= (ArrayList<Employee>) inputEmployeeDetails.displayBasedOnPinCode(pincode);
-        if(employees!=null) return employees;
-        else return null;
+       if(employees!=null) groupOfEmployees.setEmployeesArrayList(employees);
+       return groupOfEmployees;
     }
 
     @WebResult(name="findAll")
-    public ArrayList<Employee> callFindAll(){
+    public GroupOfEmployees callFindAll(){
+        GroupOfEmployees groupOfEmployees=new GroupOfEmployees();
         ArrayList<Employee> employees= (ArrayList<Employee>) inputEmployeeDetails.displayAll();
-        return employees;
+         groupOfEmployees.setEmployeesArrayList(employees);
+         return groupOfEmployees;
     }
 
     @WebResult(name = "doesEmployeeExists")
