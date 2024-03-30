@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.*;
 import transaction.jdbctemplate.demo.entity.Transaction;
 import transaction.jdbctemplate.demo.services.TransactionServices;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 
 @RestController
 @RequestMapping("/transaction")
@@ -87,6 +91,21 @@ To find receiver
     @GetMapping("/amount/{amount}")
     public List<Transaction> findBySender(@PathVariable("amount") Integer amount){
         return transactionServices.apiFindByAmount(amount);
+    }
+
+    @PutMapping("/updateRemarks")
+    public Transaction updateTransaction(@RequestBody Transaction transaction){
+        Transaction transaction1=transactionServices.apiUpdateTransaction(transaction);
+        return transaction1;
+    }
+
+    @DeleteMapping("/deleteBasedOnRangeOfDate/{startDate}/{endDate}")
+    public String deleteTransaction(@PathVariable("startDate") String startDateString,@PathVariable("endDate") String endDateString) throws ParseException {
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        Date startDate=simpleDateFormat.parse(startDateString);
+        Date endDate=simpleDateFormat.parse(endDateString);
+        return transactionServices.deleteTransaction(startDate,endDate);
+
     }
 
 }

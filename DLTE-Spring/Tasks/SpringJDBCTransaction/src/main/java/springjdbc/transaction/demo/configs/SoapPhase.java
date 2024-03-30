@@ -10,10 +10,11 @@ import services.transaction.*;
 import springjdbc.transaction.demo.dao.Transaction;
 import springjdbc.transaction.demo.dao.TransactionServices;
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Date;
+
 @Endpoint
 public class SoapPhase {
     private final String url="http://transaction.services";
@@ -27,7 +28,9 @@ public class SoapPhase {
         ServiceStatus serviceStatus=new ServiceStatus();
 
         services.transaction.Transaction actualTransaction=newTransactionRequest.getTransaction();
+        Date date=newTransactionRequest.getTransaction().getTransactionDate().toGregorianCalendar().getTime();
         Transaction daoTransaction=new Transaction();
+        daoTransaction.setTransactionDate(date);
         BeanUtils.copyProperties(actualTransaction,daoTransaction);
 
         daoTransaction=transactionServices.apiSave(daoTransaction);

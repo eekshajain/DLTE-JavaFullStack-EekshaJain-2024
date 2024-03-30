@@ -20,11 +20,16 @@ public class LoanRestController {
 
     @GetMapping("/{employeeIndex}")
     public Loan readOne(@PathVariable("employeeIndex") int index){
+
         return loans.get(index);
     }
+
+
     @PostMapping("/")
-    public String addNewLoan(@RequestBody Loan loan){
-        loans.add(loan);
+    public String addNewLoan(@RequestBody List<Loan> loan){
+        for(Loan loan1:loan){
+            loans.add(loan1);
+        }
         return "New Loan object "+loan+ " added";
     }
 }

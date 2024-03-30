@@ -14,10 +14,11 @@ public class MyBankUsersServices implements UserDetailsService {
     private JdbcTemplate jdbcTemplate;
 
     public MyBankUsers signUp(MyBankUsers myBankUsers){
-       jdbcTemplate.update("insert into mybankusers values(?,?,?,?,?,?)",new Object[]{
+       jdbcTemplate.update("insert into  mybankusers values(?,?,?,?,?,?,?)",new Object[]{
                 myBankUsers.getName(),myBankUsers.getUsername(),
                 myBankUsers.getPassword(),myBankUsers.getEmail(),
-                myBankUsers.getContact(),myBankUsers.getAadhaar()
+                myBankUsers.getContact(),myBankUsers.getAadhaar(),
+               myBankUsers.getRole()
         });
         return myBankUsers;
     }

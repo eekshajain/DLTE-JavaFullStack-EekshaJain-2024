@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 @Service
 public class TransactionServices {
@@ -56,8 +57,10 @@ public class TransactionServices {
     }
 
     public String deleteTransaction(XMLGregorianCalendar startDate, XMLGregorianCalendar endDate){
+        java.util.Date startUtilDate = startDate.toGregorianCalendar().getTime();
+        java.util.Date endUtilDate = endDate.toGregorianCalendar().getTime();
         int acknowledge= jdbcTemplate.update("delete from transactions_table where transaction_date between ? and ?",
-                new Object[]{startDate,endDate}
+                new Object[]{startUtilDate,endUtilDate}
         );
         if(acknowledge!=0) return "Transaction deleted";
         else return "Failed to delete transaction";

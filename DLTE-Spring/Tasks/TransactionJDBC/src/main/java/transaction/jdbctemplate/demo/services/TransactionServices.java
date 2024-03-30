@@ -52,8 +52,8 @@ public class TransactionServices {
         return myCards;
     }
 
-    public Transaction updateTransaction(Transaction transaction){
-        int acknowledge=jdbcTemplate.update("update transactions_table set tranaction_remarks=? where transaction_id=?",
+    public Transaction apiUpdateTransaction(Transaction transaction){
+        int acknowledge=jdbcTemplate.update("update transactions_table set transaction_remarks=? where transaction_id=?",
                 new Object[]{transaction.getTransactionRemarks(),transaction.getTransactionId()}
                 );
         if(acknowledge!=0) return transaction;
