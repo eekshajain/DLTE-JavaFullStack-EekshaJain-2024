@@ -13,10 +13,12 @@
 }
 
 .background{
-    background-color: rgb(222, 220, 245);
+   background-image: url('bankbackground.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
     height: 100%;
     width: 100%;
-    overflow: hidden;
 }
 
 .media{
@@ -35,6 +37,7 @@
 p{
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: azure;
 }
 
 .media-text {
@@ -49,4 +52,11 @@ p{
 .media img:hover,
 video:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+}
+
+ul,ol{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(4, 22, 81);
+    background-color: rgb(168, 171, 245);
+    p
 }
