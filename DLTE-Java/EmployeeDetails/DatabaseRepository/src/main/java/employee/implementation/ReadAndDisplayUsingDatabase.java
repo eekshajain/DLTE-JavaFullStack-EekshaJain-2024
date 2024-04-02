@@ -251,7 +251,8 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
 
     @Override
     public List<Employee> displayAll() {
-       // Employee employee=null;
+        List<Employee> employees1=new ArrayList<>();
+        // Employee employee=null;
         try {
             connection=CreateConnection.createConnection();
             //String findAll="SELECT * FROM employeebasicdetails ebd INNER JOIN temporaryaddress ta ON ebd.employee_id = ta.employee_id INNER JOIN permanentaddress pa ON ebd.employee_id = pa.employee_id ";
@@ -302,14 +303,14 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
                 permEmployeeAddress.setCityName(resultSet.getString(14));
                 permEmployeeAddress.setStateName(resultSet.getString(15));
                 permEmployeeAddress.setPinCode(resultSet.getInt(16));
-                employees.add(new Employee(employeeBasicDetails,tempEmployeeAddress,permEmployeeAddress));
+                employees1.add(new Employee(employeeBasicDetails,tempEmployeeAddress,permEmployeeAddress));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }finally{
             close();
         }
-        return employees;
+        return employees1;
     }
 
     @Override

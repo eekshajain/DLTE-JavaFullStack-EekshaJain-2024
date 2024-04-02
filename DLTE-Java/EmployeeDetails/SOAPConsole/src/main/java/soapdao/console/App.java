@@ -1,10 +1,12 @@
 package soapdao.console;
 
 import soapdao.EmployeeException;
+import soapdao.implementation.Employee;
 import soapdao.implementation.WebServiceDAO;
 import soapdao.implementation.WebServiceDAOService;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -44,6 +46,9 @@ public class App
                         inputDetailsCollectAndDisplay.callDisplayRequiredPincode();
                         break;
                     case 5:
+                       inputDetailsCollectAndDisplay.displayBasedOnPincode();
+                        break;
+                    case 6:
                         System.exit(0);
                     default:
                         System.out.println(resourceBundle.getString("invalid.choice"));

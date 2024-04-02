@@ -30,19 +30,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GroupOfEmployees }
+     * 
+     */
+    public GroupOfEmployees createGroupOfEmployees() {
+        return new GroupOfEmployees();
+    }
+
+    /**
      * Create an instance of {@link EmployeeBasicDetails }
      * 
      */
     public EmployeeBasicDetails createEmployeeBasicDetails() {
         return new EmployeeBasicDetails();
-    }
-
-    /**
-     * Create an instance of {@link ArrayList }
-     * 
-     */
-    public ArrayList createArrayList() {
-        return new ArrayList();
     }
 
     /**

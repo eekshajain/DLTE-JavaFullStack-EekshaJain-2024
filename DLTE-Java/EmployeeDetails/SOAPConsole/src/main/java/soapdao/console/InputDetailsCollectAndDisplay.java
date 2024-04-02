@@ -1,6 +1,7 @@
 package soapdao.console;
 
 
+import jdk.nashorn.internal.runtime.JSONListAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.event.Level;
@@ -15,13 +16,18 @@ import java.util.Scanner;
 
 public class InputDetailsCollectAndDisplay {
     WebServiceDAOService webServiceDAOService=new WebServiceDAOService();
-    WebServiceDAO webServiceDAO=webServiceDAOService.getWebServiceDAOPort();
-    static Logger logger= LoggerFactory.getLogger("App.class");//import from org.slf4j
+    WebServiceDAO webServiceDAO;
+    private static final Logger logger = LoggerFactory.getLogger(InputDetailsCollectAndDisplay.class);    //static Logger logger= LoggerFactory.getLogger("App.class");//import from org.slf4j
     Scanner scanner=new Scanner(System.in);
     Scanner scanner1=new Scanner(System.in);
     Scanner scanner2=new Scanner(System.in);
     Scanner scanner3=new Scanner(System.in);
     ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
+    public InputDetailsCollectAndDisplay() {
+        webServiceDAO = new WebServiceDAOService().getWebServiceDAOPort();
+        resourceBundle = ResourceBundle.getBundle("application");
+        scanner = new Scanner(System.in);
+    }
     //to collect details
     public void callCollectDetails( ){
         EmployeeBasicDetails employeeBasicDetails1=new EmployeeBasicDetails();
@@ -133,17 +139,17 @@ public class InputDetailsCollectAndDisplay {
                 }
             }
             logger.info("Data to be added to array list");
-            employee.entity.EmployeeBasicDetails employeeBasicDetails;
+            soapdao.implementation.EmployeeBasicDetails employeeBasicDetails;
             employeeBasicDetails = translateEmployeeBasic(employeeBasicDetails1);
-            employee.entity.EmployeeAddress tempEmployeeAddress;
+            soapdao.implementation.EmployeeAddress tempEmployeeAddress;
             tempEmployeeAddress = translateEmployeeAddress(tempEmployeeAddress1);
-            employee.entity.EmployeeAddress permEmployeeAddress;
+            soapdao.implementation.EmployeeAddress permEmployeeAddress;
             permEmployeeAddress = translateEmployeeAddress(permEmployeeAddress1);
-            employee = new employee.entity.Employee(employeeBasicDetails, tempEmployeeAddress, permEmployeeAddress);
+            employee = new soapdao.implementation.Employee(employeeBasicDetails, tempEmployeeAddress, permEmployeeAddress);
             try {
-                if(employeeDetails.saveAll(employee) != null) System.out.println("Employee Details added successfully!");
+                if(webServiceDAO.callSaveAll(employee) != null) System.out.println("Employee Details added successfully!");
                 else System.out.println("Failed to add employee details!");
-            }catch(EmployeeExceptions employeeExceptions){
+            }catch(EmployeeException employeeExceptions){
                 System.out.println(employeeExceptions.getMessage());
             }
             System.out.println("Do you want to add more?");
@@ -156,22 +162,27 @@ public class InputDetailsCollectAndDisplay {
         System.out.println(resourceBundle.getString("employee.id"));
         employeeId = scanner.nextInt();
         try {
-            if (employeeDetails.doesEmployeeExists(employeeId)) {
+            if (webServiceDAO.callEmployeeExists(employeeId)) {
                 logger.info("Displaying the info of particular ID:"+employeeId);
-                System.out.println(employeeDetails.displayRequired(employeeId));
-            } else throw new EmployeeException();
+              //  System.out.println(webServiceDAO.callFilterBasedOnID(employeeId));
+                soapdao.implementation.Employee employee=webServiceDAO.callFilterBasedOnID(employeeId);
+                soapdao.entity.Employee employeeConsole = translateBack(employee);
+                System.out.println(employeeConsole);
+            } else throw new EmployeeException("employee.doesNotExists");
         }catch(EmployeeException e){
             logger.error("Employee with employee ID "+employeeId+"does not exist");
-            System.out.println(resourceBundle.getString("employee.doesNotExists"));
+            System.out.println(e.getMessage());
         }
     }
 
     public void callDisplayAll(){
         logger.info("Displaying all details");
         //System.out.println(employeeDetails.displayAll());
-        List<employee.entity.Employee> employee=employeeDetails.displayAll();
-        for(employee.entity.Employee employee1:employee) {
-            org.consoleEnv.Employee employeeConsole;
+//        List<soapdao.implementation.Employee> employee= (List<Employee>) webServiceDAO.callFindAll();
+        soapdao.implementation.GroupOfEmployees employeesGroup = webServiceDAO.callFindAll();
+        List<soapdao.implementation.Employee> employeeList = employeesGroup.getEmployeesArrayList();
+        for(soapdao.implementation.Employee employee1:employeeList) {
+            soapdao.entity.Employee employeeConsole;
             employeeConsole = translateBack(employee1);
             System.out.println(employeeConsole);
         }
@@ -181,23 +192,42 @@ public class InputDetailsCollectAndDisplay {
         logger.info("Display required details based on Temporary pincode");
         System.out.println("Enter Pincode");
         int pincode=scanner.nextInt();
-        List<employee.entity.Employee> employeePincode=employeeDetails.displayBasedOnPinCode(pincode);
+        soapdao.implementation.GroupOfEmployees employeesGroup = webServiceDAO.callFindAll();
+        List<soapdao.implementation.Employee> employeePincode = employeesGroup.getEmployeesArrayList();
+       // List<soapdao.implementation.Employee> employeePincode= (List<Employee>) webServiceDAO.callFilterBasedOnPincode(pincode);
         if(employeePincode.isEmpty()){
             System.out.println("No employees found for the given pincode.");
         }else {
             System.out.println(employeePincode.size());
             for (Employee employee : employeePincode) {
-                org.consoleEnv.Employee employeeConsole = translateBack(employee);
+                soapdao.entity.Employee employeeConsole = translateBack(employee);
                 System.out.println(employeeConsole);
             }
         }
 
     }
 
-    public static org.consoleEnv.Employee translateBack(Employee employee) {
-        EmployeeBasicDetails employeeBasicDetailsConsole=new EmployeeBasicDetails();
-        EmployeeAddress tempAddress=new EmployeeAddress();
-        EmployeeAddress permAddress=new EmployeeAddress();
+    public void displayBasedOnPincode(){
+        System.out.println("Enter Pincode");
+        int pincode=scanner.nextInt();
+        soapdao.implementation.GroupOfEmployees employeesGroup = webServiceDAO.callFindAll();
+        List<soapdao.implementation.Employee> employeeList = employeesGroup.getEmployeesArrayList();
+        DisplayBasedOnPincode displayBasedOnPincode=((pincode1 -> {
+            for(Employee employee:employeeList){
+                if(employee.getPermanentEmployeeAddress().getPinCode()==pincode1 || employee.getPermanentEmployeeAddress().getPinCode()==pincode1){
+                    soapdao.entity.Employee employeeConsole = translateBack(employee);
+                    System.out.println(employeeConsole);
+                }
+            }
+        }));
+        displayBasedOnPincode.filterPincode(pincode);
+
+    }
+
+    public static soapdao.entity.Employee translateBack(Employee employee) {
+        soapdao.entity.EmployeeBasicDetails employeeBasicDetailsConsole= new soapdao.entity.EmployeeBasicDetails();
+        soapdao.entity.EmployeeAddress tempAddress= new soapdao.entity.EmployeeAddress();
+        soapdao.entity.EmployeeAddress permAddress= new soapdao.entity.EmployeeAddress();
         employeeBasicDetailsConsole.setFirstName(employee.getEmployeeBasicDetails().getFirstName());
         employeeBasicDetailsConsole.setMiddleName(employee.getEmployeeBasicDetails().getMiddleName());
         employeeBasicDetailsConsole.setLastName(employee.getEmployeeBasicDetails().getLastName());
@@ -216,16 +246,16 @@ public class InputDetailsCollectAndDisplay {
         permAddress.setCityName(employee.getPermanentEmployeeAddress().getCityName());
         permAddress.setStateName(employee.getPermanentEmployeeAddress().getStateName());
         permAddress.setPinCode(employee.getPermanentEmployeeAddress().getPinCode());
-        org.consoleEnv.Employee employee1=new org.consoleEnv.Employee();
+        soapdao.entity.Employee employee1=new  soapdao.entity.Employee();
         employee1.setEmployeeBasicDetails(employeeBasicDetailsConsole);
         employee1.setTemporaryEmployeeAddress(tempAddress);
         employee1.setTemporaryEmployeeAddress(permAddress);
         //return employee1;
-        return new org.consoleEnv.Employee(employeeBasicDetailsConsole,tempAddress,permAddress);
+        return new soapdao.entity.Employee(employeeBasicDetailsConsole,tempAddress,permAddress);
 
     }
-    public static employee.entity.EmployeeAddress translateEmployeeAddress(EmployeeAddress address) {
-        employee.entity.EmployeeAddress employeeAddress =new employee.entity.EmployeeAddress();
+    public static soapdao.implementation.EmployeeAddress translateEmployeeAddress(EmployeeAddress address) {
+        soapdao.implementation.EmployeeAddress employeeAddress =new soapdao.implementation.EmployeeAddress();
         employeeAddress.setHouseName(address.getHouseName());
         employeeAddress.setHouseStreet(address.getHouseStreet());
         employeeAddress.setCityName(address.getCityName());
@@ -234,8 +264,8 @@ public class InputDetailsCollectAndDisplay {
         return employeeAddress;
     }
 
-    public static employee.entity.EmployeeBasicDetails translateEmployeeBasic(EmployeeBasicDetails employeeBasicDetails1) {
-        employee.entity.EmployeeBasicDetails employeeBasicDetails=new employee.entity.EmployeeBasicDetails();
+    public static soapdao.implementation.EmployeeBasicDetails translateEmployeeBasic(EmployeeBasicDetails employeeBasicDetails1) {
+        soapdao.implementation.EmployeeBasicDetails employeeBasicDetails=new soapdao.implementation.EmployeeBasicDetails();
         employeeBasicDetails.setEmployeeID(employeeBasicDetails1.getEmployeeID());
         employeeBasicDetails.setFirstName(employeeBasicDetails1.getFirstName());
         employeeBasicDetails.setMiddleName(employeeBasicDetails1.getMiddleName());

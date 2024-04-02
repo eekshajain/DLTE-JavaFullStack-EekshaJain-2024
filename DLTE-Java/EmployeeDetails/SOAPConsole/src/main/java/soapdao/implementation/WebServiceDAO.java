@@ -26,6 +26,29 @@ public interface WebServiceDAO {
 
     /**
      * 
+     * @return
+     *     returns soapdao.implementation.GroupOfEmployees
+     */
+    @WebMethod
+    @WebResult(name = "findAll", partName = "findAll")
+    @Action(input = "http://implementation.soapdao/WebServiceDAO/callFindAllRequest", output = "http://implementation.soapdao/WebServiceDAO/callFindAllResponse")
+    public GroupOfEmployees callFindAll();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns soapdao.implementation.Employee
+     */
+    @WebMethod
+    @WebResult(name = "addNewEmployee", partName = "addNewEmployee")
+    @Action(input = "http://implementation.soapdao/WebServiceDAO/callSaveAllRequest", output = "http://implementation.soapdao/WebServiceDAO/callSaveAllResponse")
+    public Employee callSaveAll(
+        @WebParam(name = "arg0", partName = "arg0")
+        Employee arg0);
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns boolean
@@ -41,12 +64,12 @@ public interface WebServiceDAO {
      * 
      * @param arg0
      * @return
-     *     returns soapdao.implementation.ArrayList
+     *     returns soapdao.implementation.GroupOfEmployees
      */
     @WebMethod
     @WebResult(name = "findBasedOnPincode", partName = "findBasedOnPincode")
     @Action(input = "http://implementation.soapdao/WebServiceDAO/callFilterBasedOnPincodeRequest", output = "http://implementation.soapdao/WebServiceDAO/callFilterBasedOnPincodeResponse")
-    public ArrayList callFilterBasedOnPincode(
+    public GroupOfEmployees callFilterBasedOnPincode(
         @WebParam(name = "arg0", partName = "arg0")
         int arg0);
 
@@ -62,28 +85,5 @@ public interface WebServiceDAO {
     public Employee callFilterBasedOnID(
         @WebParam(name = "arg0", partName = "arg0")
         int arg0);
-
-    /**
-     * 
-     * @return
-     *     returns soapdao.implementation.ArrayList
-     */
-    @WebMethod
-    @WebResult(name = "findAll", partName = "findAll")
-    @Action(input = "http://implementation.soapdao/WebServiceDAO/callFindAllRequest", output = "http://implementation.soapdao/WebServiceDAO/callFindAllResponse")
-    public ArrayList callFindAll();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns soapdao.implementation.Employee
-     */
-    @WebMethod
-    @WebResult(name = "addNewEmployee", partName = "addNewEmployee")
-    @Action(input = "http://implementation.soapdao/WebServiceDAO/callSaveAllRequest", output = "http://implementation.soapdao/WebServiceDAO/callSaveAllResponse")
-    public Employee callSaveAll(
-        @WebParam(name = "arg0", partName = "arg0")
-        Employee arg0);
 
 }
