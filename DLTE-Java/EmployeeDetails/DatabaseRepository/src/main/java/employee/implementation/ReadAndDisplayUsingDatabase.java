@@ -316,6 +316,7 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
     @Override
     public boolean doesEmployeeExists(int employeeID) {
         try {
+            connection=CreateConnection.createConnection();
            // String findByID="SELECT ebd.employee_id FROM employeebasicdetails ebd INNER JOIN temporaryaddress ta ON ebd.employee_id = ta.employee_id INNER JOIN permanentaddress pa ON ebd.employee_id = pa.employee_id WHERE ebd.employee_id = ?";
             String findByID="SELECT ebd.employee_id FROM employeebasicdetails ebd WHERE ebd.employee_id = ?";
             preparedStatement=connection.prepareStatement(findByID);
@@ -325,6 +326,8 @@ public class ReadAndDisplayUsingDatabase implements InputEmployeeDetails {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally{
+            close();
         }
         return false;
     }

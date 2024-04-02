@@ -30,9 +30,9 @@ public class InputDetailsCollectAndDisplay {
     }
     //to collect details
     public void callCollectDetails( ){
-        EmployeeBasicDetails employeeBasicDetails1=new EmployeeBasicDetails();
-        EmployeeAddress tempEmployeeAddress1=new EmployeeAddress();
-        EmployeeAddress permEmployeeAddress1=new EmployeeAddress();
+       soapdao.entity.EmployeeBasicDetails employeeBasicDetails1=new soapdao.entity.EmployeeBasicDetails();
+        soapdao.entity.EmployeeAddress tempEmployeeAddress1=new soapdao.entity.EmployeeAddress();
+        soapdao.entity.EmployeeAddress permEmployeeAddress1=new soapdao.entity.EmployeeAddress();
         ValidationOfData validationData=new ValidationOfData();
         logger.info("Enter data to employee list");
         logger.isEnabledForLevel(Level.INFO);
@@ -192,7 +192,7 @@ public class InputDetailsCollectAndDisplay {
         logger.info("Display required details based on Temporary pincode");
         System.out.println("Enter Pincode");
         int pincode=scanner.nextInt();
-        soapdao.implementation.GroupOfEmployees employeesGroup = webServiceDAO.callFindAll();
+        soapdao.implementation.GroupOfEmployees employeesGroup = webServiceDAO.callFilterBasedOnPincode(pincode);
         List<soapdao.implementation.Employee> employeePincode = employeesGroup.getEmployeesArrayList();
        // List<soapdao.implementation.Employee> employeePincode= (List<Employee>) webServiceDAO.callFilterBasedOnPincode(pincode);
         if(employeePincode.isEmpty()){
@@ -254,7 +254,7 @@ public class InputDetailsCollectAndDisplay {
         return new soapdao.entity.Employee(employeeBasicDetailsConsole,tempAddress,permAddress);
 
     }
-    public static soapdao.implementation.EmployeeAddress translateEmployeeAddress(EmployeeAddress address) {
+    public static soapdao.implementation.EmployeeAddress translateEmployeeAddress(soapdao.entity.EmployeeAddress address) {
         soapdao.implementation.EmployeeAddress employeeAddress =new soapdao.implementation.EmployeeAddress();
         employeeAddress.setHouseName(address.getHouseName());
         employeeAddress.setHouseStreet(address.getHouseStreet());
@@ -264,7 +264,7 @@ public class InputDetailsCollectAndDisplay {
         return employeeAddress;
     }
 
-    public static soapdao.implementation.EmployeeBasicDetails translateEmployeeBasic(EmployeeBasicDetails employeeBasicDetails1) {
+    public static soapdao.implementation.EmployeeBasicDetails translateEmployeeBasic(soapdao.entity.EmployeeBasicDetails employeeBasicDetails1) {
         soapdao.implementation.EmployeeBasicDetails employeeBasicDetails=new soapdao.implementation.EmployeeBasicDetails();
         employeeBasicDetails.setEmployeeID(employeeBasicDetails1.getEmployeeID());
         employeeBasicDetails.setFirstName(employeeBasicDetails1.getFirstName());
