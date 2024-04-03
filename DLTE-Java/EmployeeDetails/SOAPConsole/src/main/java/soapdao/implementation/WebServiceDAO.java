@@ -51,19 +51,6 @@ public interface WebServiceDAO {
      * 
      * @param arg0
      * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(name = "doesEmployeeExists", partName = "doesEmployeeExists")
-    @Action(input = "http://implementation.soapdao/WebServiceDAO/callEmployeeExistsRequest", output = "http://implementation.soapdao/WebServiceDAO/callEmployeeExistsResponse")
-    public boolean callEmployeeExists(
-        @WebParam(name = "arg0", partName = "arg0")
-        int arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
      *     returns soapdao.implementation.GroupOfEmployees
      */
     @WebMethod
@@ -83,6 +70,19 @@ public interface WebServiceDAO {
     @WebResult(name = "findBasedOnId", partName = "findBasedOnId")
     @Action(input = "http://implementation.soapdao/WebServiceDAO/callFilterBasedOnIDRequest", output = "http://implementation.soapdao/WebServiceDAO/callFilterBasedOnIDResponse")
     public Employee callFilterBasedOnID(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(name = "doesEmployeeExists", partName = "doesEmployeeExists")
+    @Action(input = "http://implementation.soapdao/WebServiceDAO/callEmployeeExistsRequest", output = "http://implementation.soapdao/WebServiceDAO/callEmployeeExistsResponse")
+    public boolean callEmployeeExists(
         @WebParam(name = "arg0", partName = "arg0")
         int arg0);
 

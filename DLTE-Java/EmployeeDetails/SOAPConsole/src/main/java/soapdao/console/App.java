@@ -5,10 +5,8 @@ import soapdao.implementation.Employee;
 import soapdao.implementation.WebServiceDAO;
 import soapdao.implementation.WebServiceDAOService;
 
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Scanner;
+import javax.xml.ws.BindingProvider;
+import java.util.*;
 
 /**
  * Hello world!
@@ -30,6 +28,10 @@ public class App
         try {
 
             while (true) {
+//                BindingProvider bp = (BindingProvider) webServiceDAO;
+//                Map<String, Object> responseContext = bp.getResponseContext();
+//                int statusCode = (int) responseContext.get("javax.xml.ws.http.response.code");
+//                System.out.println("HTTP Status Code: " + statusCode);
                 System.out.println(resourceBundle.getString("menu.display"));
                 int choice = scanner.nextInt();
                 switch (choice) {

@@ -31,6 +31,8 @@ public class FindAllByUsername extends HttpServlet {
         List<Transaction> transactions=accountService.callFindAllUser(username);
         Gson gson=new Gson();
         String allTransaction=gson.toJson(transactions);
+        int status=resp.getStatus();
+        System.out.println(status);
         resp.getWriter().println(allTransaction);
     }
 

@@ -6,7 +6,7 @@
 
   <groupId>soapdao.console</groupId>
   <artifactId>SOAPConsole</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>3.0-SNAPSHOT</version>
 
   <name>SOAPConsole</name>
   <!-- FIXME change it to the project's website -->

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class LoanProduct implements MyBank{
     Scanner scanner =new Scanner(System.in);
     Scanner scanner1=new Scanner(System.in);

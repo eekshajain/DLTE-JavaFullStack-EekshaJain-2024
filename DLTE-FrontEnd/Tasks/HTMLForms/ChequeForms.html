@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheque Form</title>
+    <link rel="stylesheet" href="forms.css" />
+</head>
+<body>
+    <div class="navbar">
+        <h1>My Bank Cheque Portal</h1>
+    </div>
+     <h2>Apply For New Cheque</h2>
+     <div class="row">
+       <form name="application" action="#" class="column">
+        <div>
+            <label >Account Number</label>
+            <input type="text" name="accountNumber" placeholder="Account Number"/>
+        </div>
+        <div>
+            <label >Account Holder</label>
+            <input type="text" name="accountHolder" placeholder="Account Holder Name"/>
+        </div>
+        <div>
+            <label>Account Type</label>
+            <div class="radio-container">
+                <input type="radio" name="accType" value="savingsAccounts"/>Savings Accounts
+                <input type="radio" name="accType" value="checkingAccounts"/>Checking Accounts
+                <input type="radio" name="accType" value="trustAccounts"/>Trust Accounts
+                <input type="radio" name="accType" value="jointAccounts"/>Joint Accounts
+            </div>
+        </div>
+        <div>
+            
+        </div>
+       </form>
+     </div>
+</body>
+</html>

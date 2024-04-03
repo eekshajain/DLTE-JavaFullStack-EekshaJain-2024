@@ -39,11 +39,6 @@ public class Employee {
     protected EmployeeAddress permanentEmployeeAddress;
     protected EmployeeAddress temporaryEmployeeAddress;
 
-    public Employee(EmployeeBasicDetails employeeBasicDetails, EmployeeAddress tempEmployeeAddress, EmployeeAddress permEmployeeAddress) {
-    }
-public Employee(){
-
-}
     /**
      * Gets the value of the employeeBasicDetails property.
      * 

@@ -37,7 +37,7 @@ public class InputDetailsCollectAndDisplay {
         logger.info("Enter data to employee list");
         logger.isEnabledForLevel(Level.INFO);
         do {
-            Employee employee = new Employee();
+            Employee employee=new Employee();
             System.out.println(resourceBundle.getString("employee.id"));
             try {
                 int empID = scanner.nextInt();
@@ -145,7 +145,10 @@ public class InputDetailsCollectAndDisplay {
             tempEmployeeAddress = translateEmployeeAddress(tempEmployeeAddress1);
             soapdao.implementation.EmployeeAddress permEmployeeAddress;
             permEmployeeAddress = translateEmployeeAddress(permEmployeeAddress1);
-            employee = new soapdao.implementation.Employee(employeeBasicDetails, tempEmployeeAddress, permEmployeeAddress);
+           // employee = new soapdao.implementation.Employee(employeeBasicDetails, tempEmployeeAddress, permEmployeeAddress);
+            employee.setEmployeeBasicDetails(employeeBasicDetails);
+            employee.setTemporaryEmployeeAddress(tempEmployeeAddress);
+            employee.setPermanentEmployeeAddress(permEmployeeAddress);
             try {
                 if(webServiceDAO.callSaveAll(employee) != null) System.out.println("Employee Details added successfully!");
                 else System.out.println("Failed to add employee details!");
