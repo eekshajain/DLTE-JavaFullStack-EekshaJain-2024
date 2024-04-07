@@ -10,9 +10,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class MyBank {
-    @Autowired
-    @Qualifier("homeImplementation")
-    private LoanInterface loanInterface;
+//    @Autowired
+//    @Qualifier("homeImplementation")
+//    private LoanInterface loanInterface;
+
+        private  LoanInterface loanInterface;
+    public MyBank(@Qualifier("homeImplementation") LoanInterface loanInterface ) {
+        this.loanInterface = loanInterface;
+    }
     public List<Loan> callFindAll(){
         List<Loan> fieldInjectedLoan=loanInterface.findAll();
         return fieldInjectedLoan;

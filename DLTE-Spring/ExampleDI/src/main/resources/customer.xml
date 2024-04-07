@@ -1,0 +1,28 @@
+<!-- applicationContext.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    <bean id="customerRepository" class="com.exampledi.demodi.CustomerRepoImpl" />-->
+
+<!--    <bean id="customerService" class="com.exampledi.demodi.CustomerService">-->
+<!--        <constructor-arg ref="customerRepository" />-->
+<!--    </bean>-->
+
+
+        <bean id="customerRepository" class="com.exampledi.demodi.CustomerRepoImpl" />
+
+        <bean id="customerService" class="com.exampledi.demodi.CustomerService">
+            <property name="customerRepository" ref="customerRepository"/>
+        </bean>
+
+
+
+    <bean id="customerRepository" class="com.exampledi.demodi.CustomerRepoImpl" autowire="byType" />
+
+    <!-- Define the bean for CustomerService with autowire by name -->
+    <bean id="customerService" class="com.exampledi.demodi.CustomerService" autowire="byName" />
+    <context:component-scan base-package="com.exampledi.demodi" />
+</beans>

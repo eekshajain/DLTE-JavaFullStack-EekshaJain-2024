@@ -1,7 +1,12 @@
 package loan.autowiringtask.demo.model;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
+@Configuration
 public class Loan {
     private Long loanNumber;
     private Integer loanAmount;
@@ -10,6 +15,10 @@ public class Loan {
     private String loanStatus;
     private String borrowerName;
     private Long borrowerContact;
+
+    public Loan() {
+        System.out.println("Object created");
+    }
 
     public Loan(Long loanNumber, Integer loanAmount, Date loanDate, String loanType, String loanStatus, String borrowerName, Long borrowerContact) {
         this.loanNumber = loanNumber;

@@ -1,0 +1,12 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Define Car bean -->
+    <bean id="vehicle" class="com.exampleVehicle.Bike" />
+    <bean name="vehicle1,vehicle2" class="com.exampleVehicle.Bike" />
+
+
+
+</beans>

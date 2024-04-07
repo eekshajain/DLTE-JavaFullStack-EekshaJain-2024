@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Schemes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .card {
+      width: calc(100% / 5 - 20px); /* Adjust the number of cards per row accordingly */
+      margin: 10px;
+    }
+    @media (max-width: 992px) {
+      .card {
+        width: calc(100% / 3 - 20px); /* Adjust for smaller screens */
+      }
+    }
+    @media (max-width: 576px) {
+      .card {
+        width: calc(100% - 20px); /* Adjust for extra small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="mt-5 mb-4">Loan Schemes</h1>
+  <div class="row flex-nowrap overflow-auto">
+    <!-- Repeat the card markup as needed -->
+    <div class="col card">
+      <div class="card-body">
+        <h5 class="card-title">Scheme 1</h5>
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+    <div class="col card">
+      <div class="card-body">
+        <h5 class="card-title">Scheme 2</h5>
+        <p class="card-text">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+      </div>
+    </div>
+    <div class="col card">
+      <div class="card-body">
+        <h5 class="card-title">Scheme 3</h5>
+        <p class="card-text">Nulla facilisi. Nullam scelerisque luctus leo, eu convallis risus bibendum vel.</p>
+      </div>
+    </div>
+    <!-- Repeat the card markup as needed -->
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

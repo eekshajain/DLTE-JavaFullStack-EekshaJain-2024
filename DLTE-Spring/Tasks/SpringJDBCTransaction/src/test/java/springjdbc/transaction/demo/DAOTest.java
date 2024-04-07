@@ -34,8 +34,8 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -52,14 +52,47 @@ public class DAOTest {
     private JdbcTemplate jdbcTemplate;
 
     @Test
-public void testBySender(){
-    Transaction transactions1=new Transaction(123456L,new Date(2024,03,31),"Eeksha","MAX",500,"Bills");
-    Transaction transactions2=new Transaction(123457L,new Date(2024,03,31),"Eeksha","Yuthika",700,"Family");
+    public void testBySender() {
+        Transaction transactions1 = new Transaction(123456L, new Date(2024, 03, 31), "Eeksha", "MAX", 500, "Bills");
+        Transaction transactions2 = new Transaction(123457L, new Date(2024, 03, 31), "Eeksha", "Yuthika", 700, "Family");
 
-    List<Transaction> transactionsList= Stream.of(transactions1,transactions2).collect(Collectors.toList());
-    when(jdbcTemplate.query(anyString(), any(Object[].class), any(BeanPropertyRowMapper.class))).thenReturn(transactionsList);
-    List<Transaction> result=transactionServices.apiFindBySender("Eeksha");
-    assertNotNull(result);
-    assertEquals(transactionsList,result);
-}
+        List<Transaction> transactionsList = Stream.of(transactions1, transactions2).collect(Collectors.toList());
+        // when(jdbcTemplate.query(anyString(), any(Object[].class), any(BeanPropertyRowMapper.class))).thenReturn(transactionsList);
+        when(jdbcTemplate.query(eq("select * from transactions_table where transaction_by=?"),
+                eq(new Object[]{"Eeksha"}),
+                any(BeanPropertyRowMapper.class))).thenReturn(transactionsList);
+        List<Transaction> result = transactionServices.apiFindBySender("Eeksha");
+        assertNotNull(result);
+        assertEquals(transactionsList, result);
+    }
+
+    @Test
+    public void testByReceiver() {
+        Transaction transactions1 = new Transaction(123456L, new Date(2024, 03, 31), "Eeksha", "MAX", 500, "Bills");
+        Transaction transactions2 = new Transaction(123457L, new Date(2024, 03, 31), "Eeksha", "Yuthika", 700, "Family");
+
+        List<Transaction> transactionsList = Stream.of(transactions2).collect(Collectors.toList());
+        // when(jdbcTemplate.query(anyString(), any(Object[].class), any(BeanPropertyRowMapper.class))).thenReturn(transactionsList);
+        when(jdbcTemplate.query(eq("select * from transactions_table where transaction_to=?"),
+                eq(new Object[]{"Yuthiks"}),
+                any(BeanPropertyRowMapper.class))).thenReturn(transactionsList);
+        List<Transaction> result = transactionServices.apiFindByReceiver("Yuthika");
+        assertEquals(transactionsList.get(0).getTransactionAmount(), result.get(0).getTransactionAmount());
+    }
+
+    @Test
+    public void testByAmount() {
+        Transaction transactions1 = new Transaction(123456L, new Date(2024, 03, 31), "Eeksha", "Nanu", 700, "Bills");
+        Transaction transactions2 = new Transaction(123457L, new Date(2024, 03, 31), "Eeksha", "Yuthika", 700, "Family");
+
+        List<Transaction> transactionsList = Stream.of(transactions1, transactions2).collect(Collectors.toList());
+        // when(jdbcTemplate.query(anyString(), any(Object[].class), any(BeanPropertyRowMapper.class))).thenReturn(transactionsList);
+        when(jdbcTemplate.query(eq("select * from transactions_table where transaction_amount=?"),
+                eq(new Object[]{700}),
+                any(BeanPropertyRowMapper.class))).thenReturn(transactionsList);
+        List<Transaction> result = transactionServices.apiFindByAmount(700);
+        assertEquals(transactionsList.get(0).getTransactionTo(), result.get(0).getTransactionTo());
+    }
+
+
 }

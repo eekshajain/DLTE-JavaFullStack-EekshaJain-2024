@@ -3,32 +3,34 @@ package com.paymentdao.payment.entity;
 import org.springframework.data.relational.core.sql.In;
 
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 public class Account {
-    @NotNull(message = "Must not be null")
+    @NotNull(message = "{accountId.notnull}")
     private Integer accountId;
 
-    @NotNull(message = "Must not be null")
+    @NotNull(message = "{customerId.notnull}")
     private Integer customerId;
 
-    @NotNull(message = "Must not be null")
-    @Pattern(regexp = "^[a-zA-Z\\s]*$",message = "Not null")
+    @NotBlank(message = "{accountType.notBlank}")
+    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "{pattern.accountType.message}")
     private String accountType;
 
-    @NotNull(message = "Must not be null")
-    @Digits(integer = 12, fraction = 0)
+    @NotNull(message = "{accountNumber.notnull}")
+    @Digits(integer = 12, fraction = 0, message = "{digits.accountNumber.message}")
     private Long accountNumber;
 
-    @NotNull(message = "Must not be null")
-    @Pattern(regexp = "^[a-zA-Z\\s]*$",message = "Not null")
+    @NotNull(message = "{accountStatus.notNull}")
+    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "{pattern.accountStatus.message}")
     private String accountStatus;
 
-    @NotNull(message = "Must not be null")
-    @Digits(integer = 8,fraction = 3)
+    @NotNull(message = "{accountBalance.notNull}")
+    @Digits(integer = 8, fraction = 3, message = "{digits.accountBalance.message}")
     private Integer accountBalance;
+
 
     public Account() {
     }
