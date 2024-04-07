@@ -22,8 +22,12 @@ import springjdbc.transaction.demo.configs.SoapPhase;
 import springjdbc.transaction.demo.dao.Transaction;
 import springjdbc.transaction.demo.dao.TransactionServices;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.transform.Result;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -32,8 +36,7 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
@@ -51,6 +54,24 @@ public class DAOTest {
     @Mock
     private JdbcTemplate jdbcTemplate;
 
+
+    @Test
+    void testNewTransaction(){
+        Transaction transaction = new Transaction(224555L, new Date(2024, 2, 2), "Arundhathi", "Avinash", 80000, "Bills");
+
+        // Mock the behavior of jdbcTemplate's update method to return the number of rows affected
+        when(jdbcTemplate.update(
+                eq("INSERT INTO transactions_table VALUES (?, ?, ?, ?, ?, ?)"),
+                any(Object[].class),
+                any(int[].class)))
+                .thenReturn(1); // Assuming 1 row is inserted
+
+        // Call the method under test
+        Transaction result = transactionServices.newTransactions(transaction);
+
+        // Assert the result
+        assertEquals(transaction, result);
+    }
     @Test
     public void testBySender() {
         Transaction transactions1 = new Transaction(123456L, new Date(2024, 03, 31), "Eeksha", "MAX", 500, "Bills");
@@ -93,6 +114,36 @@ public class DAOTest {
         List<Transaction> result = transactionServices.apiFindByAmount(700);
         assertEquals(transactionsList.get(0).getTransactionTo(), result.get(0).getTransactionTo());
     }
+    @Test
+    public void testByUpdate() {
+        Transaction transactions1 = new Transaction(123456L, new Date(2024, 03, 31), "Eeksha", "Nandu", 700, "Bills");
+        Transaction transactions2 = new Transaction(123456L, new Date(2024, 03, 31), "Eeksha", "Nandu", 700, "Bills");
 
+        List<Transaction> transactionsList = Stream.of(transactions1, transactions2).collect(Collectors.toList());
+        // when(jdbcTemplate.query(anyString(), any(Object[].class), any(BeanPropertyRowMapper.class))).thenReturn(transactionsList);
+        when(jdbcTemplate.update(eq("update transactions_table set transaction_remarks=? where transaction_id=?"),
+                eq(new Object[]{"Friend",123456L}),
+                any(BeanPropertyRowMapper.class))).thenReturn(1);
+        Transaction result = transactionServices.updateTransaction(transactions2);
+        assertEquals("Friend", result.getTransactionRemarks());
+    }
 
+    @Test
+    void testRemoveTransactionBetweenDates() throws DatatypeConfigurationException {
+        XMLGregorianCalendar startDate = DatatypeFactory.newInstance()
+                .newXMLGregorianCalendar("2024-03-31");
+        XMLGregorianCalendar endDate = DatatypeFactory.newInstance()
+                .newXMLGregorianCalendar("2024-04-07");
+
+        // Mock the behavior of jdbcTemplate's update method to return the number of rows affected
+        when(jdbcTemplate.update(eq("delete from transactions_table where transaction_date between ? and ?"),
+                any(Object[].class)))
+                .thenReturn(1); // Assuming 1 row is deleted
+
+        // Call the method under test
+        String result = transactionServices.deleteTransaction(startDate, endDate);
+
+        // Assert the result
+        assertEquals("Transaction deleted", result);
+    }
 }

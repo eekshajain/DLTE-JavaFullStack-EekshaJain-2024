@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -25,7 +26,21 @@ public class TransactionServices {
         else return null;
         //return transaction;
     }
-
+    public Transaction newTransactions(Transaction transaction){
+        List<Transaction> newList=new ArrayList<>();
+        //Transaction transaction=new Transaction(224555L,new Date(2024,02,02),"Arundhathi","Avinash",80000,"Bills");
+        int rowsAffected = jdbcTemplate.update(
+                "INSERT INTO transactions_table VALUES (?, ?, ?, ?, ?, ?)",
+                new Object[] {
+                        transaction.getTransactionId(),
+                        transaction.getTransactionDate(),
+                        transaction.getTransactionBy(),
+                        transaction.getTransactionTo(),
+                        transaction.getTransactionAmount(),
+                        transaction.getTransactionRemarks()
+                });
+        return transaction;
+    }
     public List<Transaction> apiFindBySender(String sender){
         List<Transaction> myCards= (List<Transaction>) jdbcTemplate.query("select * from transactions_table where transaction_by=?",
                 new Object[]{sender},
