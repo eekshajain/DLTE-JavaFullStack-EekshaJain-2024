@@ -10,4 +10,5 @@ import java.util.List;
 public interface PaymentTransferRepository {
     List<Payee> findAllPayeeBasedOnAccountNumber(Long accountNumber) ;
     List<Payee> findAllPayee();
+    void processTransaction(long senderAccountNumber,long payeeAccountNumber,String transactionType,double transactionAmount);
 }

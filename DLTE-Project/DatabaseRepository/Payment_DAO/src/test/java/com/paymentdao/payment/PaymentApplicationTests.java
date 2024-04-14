@@ -1,28 +1,28 @@
 package com.paymentdao.payment;
 
 import com.paymentdao.payment.entity.Payee;
-import com.paymentdao.payment.remote.PaymentTransferRepository;
+import com.paymentdao.payment.exceptions.PayeeException;
 import com.paymentdao.payment.service.PaymentTransferImplementation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 
-import java.sql.SQLSyntaxErrorException;
-import java.util.ArrayList;
+import javax.sql.DataSource;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
@@ -32,6 +32,18 @@ class PaymentApplicationTests {
     JdbcTemplate jdbcTemplate;
 @InjectMocks
 PaymentTransferImplementation paymentTransferImplementation;
+
+@Mock
+    SimpleJdbcCall simpleJdbcCall;
+    @Mock
+    private DataSource dataSource;
+//    @Autowired
+//    public void PaymentTransferImplementation(JdbcTemplate jdbcTemplate) {
+//        this.jdbcTemplate = jdbcTemplate;
+//    }
+//    public PaymentApplicationTests(JdbcTemplate jdbcTemplate) {
+//        this.jdbcTemplate = jdbcTemplate;
+//    }
     @Test
     void testFindAllBasedOnAccount()  {
         Payee payee1=new Payee(101,213456789654L,543212345678L,"Eeksha");
@@ -112,4 +124,71 @@ PaymentTransferImplementation paymentTransferImplementation;
         assertEquals(543567543456L, actualList.get(0).getPayeeAccountNumber());
     }
 
+    @Test
+    public void testProcessTransaction() {
+        long senderAccountNumber = 123456789;
+        long payeeAccountNumber = 987654321;
+        String transactionType = "transfer";
+        double transactionAmount = 100.0;
+
+        // Call the method under test
+        paymentTransferImplementation.processTransaction(senderAccountNumber, payeeAccountNumber, transactionType, transactionAmount);
+
+        // Verify that jdbcTemplate.update() was called with the correct arguments
+        verify(jdbcTemplate).update(
+                eq("CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)"),
+                eq(senderAccountNumber),
+                eq(payeeAccountNumber),
+                eq(transactionType),
+                eq(transactionAmount)
+        );
+    }
+
+//    @Test
+//    void testProcessTransactionException() {
+//        // Mock JdbcTemplate
+//        JdbcTemplate jdbcTemplate = mock(JdbcTemplate.class);
+//
+//        // Create the PaymentTransferImplementation instance
+//        PaymentTransferImplementation paymentTransferImplementation = new PaymentTransferImplementation(jdbcTemplate);
+//
+//        // Test data
+//        long senderAccountNumber = 123456789;
+//        long payeeAccountNumber = 987654321;
+//        String transactionType = "transfer";
+//        double transactionAmount = 100.0;
+//
+//        // Verify that jdbcTemplate.update() was called with the correct arguments
+//        assertDoesNotThrow(() -> {
+//            paymentTransferImplementation.processTransaction(senderAccountNumber, payeeAccountNumber, transactionType, transactionAmount);
+//
+//            verify(jdbcTemplate).update(
+//                    eq("CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)"),
+//                    eq(senderAccountNumber),
+//                    eq(payeeAccountNumber),
+//                    eq(transactionType),
+//                    eq(transactionAmount)
+//            );
+//
+//            // Additional assertion to ensure no other methods were called on the JdbcTemplate
+//            verifyNoMoreInteractions(jdbcTemplate);
+//        });
+//
+//        // Test exception handling for insufficient balance
+//        when(jdbcTemplate.update(anyString(), any(), any(), any(), any())).thenThrow(new DataAccessException.("ORA-20001"){
+//
+//        });
+//        assertThrows(PayeeException.class, () ->
+//                paymentTransferImplementation.processTransaction(senderAccountNumber, payeeAccountNumber, transactionType, transactionAmount));
+//
+//        // Test exception handling for no payee found
+//        when(jdbcTemplate.update(anyString(), any(), any(), any(), any())).thenThrow(new DataAccessException("ORA-20002"){});
+//        assertThrows(PayeeException.class, () ->
+//                paymentTransferImplementation.processTransaction(senderAccountNumber, payeeAccountNumber, transactionType, transactionAmount));
+//
+//        // Test exception handling for sender inactive
+//        when(jdbcTemplate.update(anyString(), any(), any(), any(), any())).thenThrow(new DataAccessException("ORA-20003"){});
+//        assertThrows(PayeeException.class, () ->
+//                paymentTransferImplementation.processTransaction(senderAccountNumber, payeeAccountNumber, transactionType, transactionAmount));
+//    }
 }

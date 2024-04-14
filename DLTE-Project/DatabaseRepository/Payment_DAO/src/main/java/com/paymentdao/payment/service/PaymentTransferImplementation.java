@@ -7,8 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
@@ -53,6 +57,22 @@ public class PaymentTransferImplementation  implements PaymentTransferRepository
             throw new PayeeException(resourceBundle.getString("no.payee"));
         }
         return payees;
+    }
+
+    @Override
+    public void processTransaction(long senderAccountNumber, long payeeAccountNumber, String transactionType, double transactionAmount) {
+        String procedureCall = "CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)";
+        try {
+            jdbcTemplate.update(procedureCall, senderAccountNumber, payeeAccountNumber, transactionType, transactionAmount);
+        }
+        catch(DataAccessException dataException){
+            if(dataException.getLocalizedMessage().contains("ORA-20001"))
+                throw new PayeeException(resourceBundle.getString("insufficient.balance"));
+            if(dataException.getLocalizedMessage().contains("ORA-20002"))
+                throw new PayeeException(resourceBundle.getString("no.payee.found"));
+            if(dataException.getLocalizedMessage().contains("ORA-20003"))
+                throw new PayeeException(resourceBundle.getString("sender.inactive"));
+        }
     }
 
     public class PayeeMapper implements RowMapper<Payee> {

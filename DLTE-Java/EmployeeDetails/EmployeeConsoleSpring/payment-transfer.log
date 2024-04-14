@@ -1,0 +1,13 @@
+2024-04-08 22:18:03,451 [INFO] com.springboot.employee.EmployeeApplicationTests main Starting EmployeeApplicationTests using Java 1.8.0_292 on WPG02VB46 with PID 14916 (started by xxjainne in C:\DLTE-JavaFullStack-EekshaJain-2024\DLTE-Java\EmployeeDetails\EmployeeConsoleSpring)
+2024-04-08 22:18:03,467 [INFO] com.springboot.employee.EmployeeApplicationTests main No active profile set, falling back to 1 default profile: "default"
+2024-04-08 22:18:04,314 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate main Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-08 22:18:04,377 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate main Finished Spring Data repository scanning in 11 ms. Found 0 JDBC repository interfaces.
+2024-04-08 22:18:04,808 [INFO] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker main Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$dab8149f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2024-04-08 22:18:04,900 [INFO] org.springframework.ws.soap.addressing.server.AnnotationActionEndpointMapping main Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-08 22:18:07,052 [INFO] com.zaxxer.hikari.HikariDataSource main HikariPool-1 - Starting...
+2024-04-08 22:18:07,067 [WARN] com.zaxxer.hikari.util.DriverDataSource main Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-08 22:18:07,922 [INFO] com.zaxxer.hikari.pool.PoolBase main HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+2024-04-08 22:18:07,937 [INFO] com.zaxxer.hikari.HikariDataSource main HikariPool-1 - Start completed.
+2024-04-08 22:18:08,581 [INFO] com.springboot.employee.EmployeeApplicationTests main Started EmployeeApplicationTests in 5.469 seconds (JVM running for 6.807)
+2024-04-08 22:18:09,419 [INFO] com.zaxxer.hikari.HikariDataSource SpringApplicationShutdownHook HikariPool-1 - Shutdown initiated...
+2024-04-08 22:18:09,451 [INFO] com.zaxxer.hikari.HikariDataSource SpringApplicationShutdownHook HikariPool-1 - Shutdown completed.
