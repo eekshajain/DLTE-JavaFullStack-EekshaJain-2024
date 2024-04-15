@@ -26,14 +26,28 @@ public class MyBankUsersServices implements UserDetailsService {
         });
         return myBankUsers;
     }
-//    public Customer update(Customer customer){
-//        jdbcTemplate.update("update mybank_app_customer set ")
+
+//    public Customer signUp(Customer customer){
+//        jdbcTemplate.update("insert into  MYBANK_APP_CUSTOMER values(CUSTOMERID_SEQ.nextval,?,?,?,?,?,?,?)",new Object[]{
+//                customer.getCustomerName(),customer.getCustomerAddress(),
+//                customer.getCustomerContact(),customer.getUsername(),
+//                customer.getPassword(),customer.getCustomerStatus(),
+//                customer.getAttempts()
+//        });
+//        return customer;
 //    }
+
     public MyBankUsers findByUsername(String username){
         MyBankUsers myBankUsers = jdbcTemplate.queryForObject("select * from MYBANK_APP_USERS where username=?",
                 new Object[]{username},new BeanPropertyRowMapper<>(MyBankUsers.class));
         return myBankUsers;
     }
+
+//    public Customer findByUsernameCustomer(String username){
+//        Customer customer = jdbcTemplate.queryForObject("select * from MYBANK_APP_CUSTOMER where username=?",
+//                new Object[]{username},new BeanPropertyRowMapper<>(Customer.class));
+//        return customer;
+//    }
 
     public void updateAttempts(MyBankUsers myBankUsers){
         jdbcTemplate.update("update MYBANK_APP_USERS set attempts=? where username=?",
@@ -41,11 +55,23 @@ public class MyBankUsersServices implements UserDetailsService {
       logger.info("Attempts are updated");
     }
 
+//    public void updateAttempts(Customer customer){
+//        jdbcTemplate.update("update MYBANK_APP_CUSTOMER set attempts=? where username=?",
+//                new Object[]{customer.getAttempts(),customer.getUsername()});
+//        logger.info("Attempts are updated");
+//    }
+
     public void updateStatus(MyBankUsers myBankUsers){
         jdbcTemplate.update("update MYBANK_APP_USERS set status=0 where username=?",
                 new Object[]{myBankUsers.getUsername()});
         logger.info("Status has changed");
     }
+
+//    public void updateStatus(Customer customer){
+//        jdbcTemplate.update("update MYBANK_APP_CUSTOMER set status=0 where customer_username=?",
+//                new Object[]{customer.getUsername()});
+//        logger.info("Status has changed");
+//    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         MyBankUsers users = findByUsername(username);
@@ -53,5 +79,12 @@ public class MyBankUsersServices implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         return users;
     }
+
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        Customer users = findByUsernameCustomer(username);
+//        if(users==null)
+//            throw new UsernameNotFoundException(username);
+//        return users;
+//    }
     }
 
