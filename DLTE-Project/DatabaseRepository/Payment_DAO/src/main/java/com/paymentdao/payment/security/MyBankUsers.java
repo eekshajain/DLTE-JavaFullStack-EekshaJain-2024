@@ -1,10 +1,8 @@
-package com.payment.webservices.security;//package com.payment.webservices.security;
+package com.paymentdao.payment.security;//package com.payment.webservices.security;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class MyBankUsers implements UserDetails {

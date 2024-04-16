@@ -1,5 +1,6 @@
 package com.payment.webservices.security;//package com.payment.webservices.security;
 
+import com.paymentdao.payment.security.MyBankUsersServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,16 +34,22 @@ public class TransactionSecurity {
         return new BCryptPasswordEncoder();
     }
 
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(services)
+//                .passwordEncoder(passwordEncoder());
+//    }
+
     @Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf().disable();
         httpSecurity.httpBasic();
         httpSecurity.formLogin().usernameParameter("username").failureHandler(officialsFailureHandler).successHandler(officialsSuccessHandler);
+        httpSecurity.csrf().disable();
         httpSecurity.authorizeRequests().antMatchers("/profile/register").permitAll();
-        httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST, "/transactions/new").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/v3/api-docs").permitAll();
+
 
         httpSecurity.authorizeRequests().anyRequest().authenticated();
-
         // 3rd layer
         AuthenticationManagerBuilder builder = httpSecurity.getSharedObject(AuthenticationManagerBuilder.class);
         builder.userDetailsService(services);
@@ -51,10 +58,4 @@ public class TransactionSecurity {
         return httpSecurity.build();
     }
 
-//    @Bean
-//    public HttpFirewall httpFirewall() {
-//        DefaultHttpFirewall firewall = new DefaultHttpFirewall();
-//        firewall.setAllowUrlEncodedSlash(true);
-//        return firewall;
-//    }
 }

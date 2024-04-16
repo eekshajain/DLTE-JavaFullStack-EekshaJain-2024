@@ -1,18 +1,19 @@
-package com.springboot.webservices.console;
+package com.springproject.employee.console;
 
-import com.springboot.webservices.configuration.SoapConfiguration;
-import com.springboot.webservices.controller.EmployeeController;
-import com.springboot.webservices.exceptions.EmployeeException;
+import com.springproject.employee.configuration.WebServiceConfiguration;
+import com.springproject.employee.exceptions.EmployeeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.event.Level;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import services.employee.*;
 import validate.data.ValidationOfData;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class ConsoleMethods {
 //    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
@@ -22,16 +23,16 @@ public class ConsoleMethods {
     Scanner scanner1=new Scanner(System.in);
     Scanner scanner2=new Scanner(System.in);
     Scanner scanner3=new Scanner(System.in);
-    EmployeeController employeeController=new EmployeeController();
+  //  EmployeeController employeeController=new EmployeeController();
     ResourceBundle resourceBundle=ResourceBundle.getBundle("employee");
     public void callCollectDetails( ){
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SoapConfiguration.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(WebServiceConfiguration.class);
         WebServiceTemplate webServiceTemplate = context.getBean(WebServiceTemplate.class);
         Employebasicdetails employeeBasicDetails1=new Employebasicdetails();
         Employeeaddress tempEmployeeAddress1=new Employeeaddress();
         Employeeaddress permEmployeeAddress1=new Employeeaddress();
         ValidationOfData validationData=new ValidationOfData();
-        ResourceBundle resourceBundle=ResourceBundle.getBundle("employee");
+       // ResourceBundle resourceBundle=ResourceBundle.getBundle("employee");
         logger.info("Enter data to employee list");
         do {
             System.out.println(resourceBundle.getString("employee.id"));
@@ -39,7 +40,7 @@ public class ConsoleMethods {
                 EmployeeExistsRequest employeeExistsRequest=new EmployeeExistsRequest();
                 int empID = scanner.nextInt();
                 employeeExistsRequest.setEmployeeId(empID);
-                EmployeeExistsResponse employeeExistsResponse=employeeController.doesEmployeeExist(employeeExistsRequest);
+                EmployeeExistsResponse employeeExistsResponse= (EmployeeExistsResponse) webServiceTemplate.marshalSendAndReceive(employeeExistsRequest);
                 if (employeeExistsResponse.getServiceStatus().getStatus()== HttpServletResponse.SC_OK) {
                     throw new EmployeeException("employee.exists");
                 } else {
@@ -144,7 +145,7 @@ public class ConsoleMethods {
             try {
                 NewEmployeeRequest newEmployeeRequest=new NewEmployeeRequest();
                 newEmployeeRequest.setEmployeeBasic(employeeBasicDetails1);
-                NewEmployeeResponse newEmployeeResponse=employeeController.addNewEmployee(newEmployeeRequest);
+                NewEmployeeResponse newEmployeeResponse= (NewEmployeeResponse) webServiceTemplate.marshalSendAndReceive(newEmployeeRequest);
                 if(newEmployeeResponse.getServiceStatus().getStatus()==HttpServletResponse.SC_OK) System.out.println("Employee Details added successfully!");
                 else System.out.println("Failed to add employee details!");
             }catch(EmployeeException employeeExceptions){
@@ -156,7 +157,7 @@ public class ConsoleMethods {
     }
 
     public void callDisplayAll(){
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SoapConfiguration.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(WebServiceConfiguration.class);
         WebServiceTemplate webServiceTemplate = context.getBean(WebServiceTemplate.class);
         logger.info("Displaying all details");
         //System.out.println(employeeDetails.displayAll());
@@ -167,13 +168,23 @@ public class ConsoleMethods {
         System.out.println(serviceStatus.getMessage());
         List<Employebasicdetails> employebasicdetails=displayAllResponse.getEmployee();
         for(Employebasicdetails employebasicdetails1:employebasicdetails){
-            System.out.println(employebasicdetails1);
+            display(employebasicdetails1);
             System.out.println();
         }
         context.close();
         }
+
+    private void display(Employebasicdetails employebasicdetails1) {
+        System.out.println("Employee ID:"+employebasicdetails1.getEmployeeID());
+        System.out.println("Name:"+employebasicdetails1.getFirstName()+" "+employebasicdetails1.getMiddleName()+" "+employebasicdetails1.getLastName());
+        System.out.println("Phone Number:"+employebasicdetails1.getPhoneNumber());
+        System.out.println("Email ID:"+employebasicdetails1.getEmailID());
+        System.out.println("Temporary Address:"+employebasicdetails1.getTemporaryEmployeeAddress().getHouseName()+" "+employebasicdetails1.getTemporaryEmployeeAddress().getHouseStreet()+" "+employebasicdetails1.getTemporaryEmployeeAddress().getCityName()+" "+employebasicdetails1.getTemporaryEmployeeAddress().getStateName()+" "+employebasicdetails1.getTemporaryEmployeeAddress().getPinCode());
+        System.out.println("Temporary Address:"+employebasicdetails1.getPermanentEmployeeAddress().getHouseName()+" "+employebasicdetails1.getPermanentEmployeeAddress().getHouseStreet()+" "+employebasicdetails1.getPermanentEmployeeAddress().getCityName()+" "+employebasicdetails1.getPermanentEmployeeAddress().getStateName()+" "+employebasicdetails1.getPermanentEmployeeAddress().getPinCode());
+    }
+
     public void callDisplayRequiredPincode(){
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SoapConfiguration.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(WebServiceConfiguration.class);
         WebServiceTemplate webServiceTemplate = context.getBean(WebServiceTemplate.class);
         logger.info("Display required details based on Temporary pincode");
         System.out.println("Enter Pincode");
@@ -188,14 +199,15 @@ public class ConsoleMethods {
         }else {
             System.out.println(employebasicdetails.size());
             for (Employebasicdetails employee : employebasicdetails) {
-                System.out.println(employee);
+                display(employee);
                 System.out.println();
             }
         }
+        context.close();
     }
 
         public void callDisplayRequired(){
-            AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SoapConfiguration.class);
+            AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(WebServiceConfiguration.class);
             WebServiceTemplate webServiceTemplate = context.getBean(WebServiceTemplate.class);
         int employeeId;
         System.out.println(resourceBundle.getString("employee.id"));
@@ -212,7 +224,7 @@ public class ConsoleMethods {
                displayBasedOnIdRequest.setEmployeeID(employeeId);
                DisplayBasedOnIdResponse displayBasedOnIdResponse= (DisplayBasedOnIdResponse) webServiceTemplate.marshalSendAndReceive(displayBasedOnIdRequest);
                 Employebasicdetails employebasicdetails1=displayBasedOnIdResponse.getEmployee();
-                System.out.println(employebasicdetails1);
+                display(employebasicdetails1);
             } else throw new EmployeeException("employee.doesNotExists");
         }catch(EmployeeException e){
             logger.error("Employee with employee ID "+employeeId+"does not exist");

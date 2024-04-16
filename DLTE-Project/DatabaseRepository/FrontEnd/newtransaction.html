@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>New Transaction</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card-header {
+            background-color: rgb(171, 151, 190);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            font-size: large;
+            text-align: center;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .radio-container {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
+            background-color: rgb(171, 151, 190);
+            border-color: rgb(171, 151, 190);
+        }
+        input[type="submit"]:hover {
+            background-color: #502061;
+            border-color: #c7b0d6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6 col-md-9 col-12">
+                <div class="card">
+                    <h5 class="card-header">Apply for New Cheque Book</h5>
+                    <div class="card-body">
+                        <form name="application" action="#" class="column">
+                            <!-- <div class="form-group">
+                                <label for="accountNumber">Account Number</label>
+                                <select class="form-control" name="accountNumber" id="accountNumber">
+                                    <option>564738291823</option>
+                                    <option>543213456786</option>
+                                    <option>546283920384</option>
+                                    <option>529384726354</option>
+                                </select>
+                            </div> -->
+                            <div class="form-group">
+                                <label for="transactionType">Transaction Type</label>
+                                <div class="radio-container">
+                                    <input type="radio" name="transactionType" id="imps" value="IMPS">
+                                    <label for="imps">IMPS</label>
+                                    <input type="radio" name="transactionType" id="neft" value="NEFT">
+                                    <label for="neft">NEFT</label>
+                                    <input type="radio" name="transactionType" id="rtgs" value="RTGS">
+                                    <label for="rtgs">RTGS</label>
+                                    <input type="radio" name="transactionType" id="upi" value="UPI">
+                                    <label for="upi">UPI</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="amount">Amount to be transferred</label>
+                                <input type="text" class="form-control" id="amount" name="amount" required pattern="\d+(\.\d{2})?">
+                            </div>
+                            <div class="row justify-content-center">
+                                <input class="btn btn-primary" type="submit" value="Send">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,7 +1,10 @@
 
 package soapdao.implementation;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -21,12 +24,21 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _SOAPException_QNAME = new QName("http://implementation.soapdao/", "SOAPException");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: soapdao.implementation
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link SOAPException }
+     * 
+     */
+    public SOAPException createSOAPException() {
+        return new SOAPException();
     }
 
     /**
@@ -59,6 +71,15 @@ public class ObjectFactory {
      */
     public EmployeeAddress createEmployeeAddress() {
         return new EmployeeAddress();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SOAPException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://implementation.soapdao/", name = "SOAPException")
+    public JAXBElement<SOAPException> createSOAPException(SOAPException value) {
+        return new JAXBElement<SOAPException>(_SOAPException_QNAME, SOAPException.class, null, value);
     }
 
 }

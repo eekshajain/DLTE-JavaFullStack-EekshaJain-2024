@@ -1,9 +1,13 @@
 package com.paymentdao.payment.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.Collection;
 
-public class Customer {
+public class Customer implements UserDetails {
     @NotNull(message = "{customer.id.null}")
     private Integer customerId;
 
@@ -31,6 +35,21 @@ public class Customer {
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$", message = "{customer.password}")
     private String password;
 
+    private int attempts;
+    private final int maxAttempts=3;
+
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
+    }
+
+    public int getMaxAttempts() {
+        return maxAttempts;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -47,7 +66,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Integer customerId, String customerName, String customerAddress, String customerStatus, Long customerContact, String username, String password) {
+    public Customer(@NotNull(message = "{customer.id.null}") Integer customerId, @NotNull(message = "{customer.name.null}") @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "{customer.name}") String customerName, @NotNull(message = "{customer.address.null}") @Pattern(regexp = "^\\d+\\s[a-zA-Z]+\\s[a-zA-Z]+", message = "{customer.address}") String customerAddress, @NotNull(message = "{customer.status.null}") @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "{customer.status}") String customerStatus, @NotNull(message = "{customer.Contact.null}") Long customerContact, @NotNull(message = "{customer.username.null}") @Pattern(regexp = "^[a-zA-Z0-9]{5,20}$", message = "{customer.username}") String username, @NotNull(message = "{customer.password.null}") @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$", message = "{customer.password}") String password, int attempts) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerAddress = customerAddress;
@@ -55,6 +74,7 @@ public class Customer {
         this.customerContact = customerContact;
         this.username = username;
         this.password = password;
+        this.attempts = attempts;
     }
 
     public Integer getCustomerId() {
@@ -101,8 +121,33 @@ public class Customer {
         return username;
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
     public String getPassword() {

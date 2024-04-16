@@ -2,9 +2,12 @@ package com.paymentdao.payment.configuration;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+@Configuration
+//@ComponentScan("com.paymentdao.payment.entity")
 public class ValidationConfiguration {
     @Bean
     public MessageSource messageSource() {

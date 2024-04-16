@@ -9,6 +9,7 @@ import soapdao.EmployeeException;
 import soapdao.implementation.*;
 import validate.data.ValidationOfData;
 
+import javax.xml.ws.soap.SOAPFaultException;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -160,6 +161,23 @@ public class InputDetailsCollectAndDisplay {
     }
 
     //to display based on employee id
+//    public void callDisplayRequired(){
+//        int employeeId;
+//        System.out.println(resourceBundle.getString("employee.id"));
+//        employeeId = scanner.nextInt();
+//        try {
+//            if (webServiceDAO.callEmployeeExists(employeeId)) {
+//                logger.info("Displaying the info of particular ID:"+employeeId);
+//              //  System.out.println(webServiceDAO.callFilterBasedOnID(employeeId));
+//                soapdao.implementation.Employee employee=webServiceDAO.callFilterBasedOnID(employeeId);
+//                soapdao.entity.Employee employeeConsole = translateBack(employee);
+//                System.out.println(employeeConsole);
+//            } else throw new EmployeeException("employee.doesNotExists");
+//        }catch(EmployeeException e){
+//            logger.error("Employee with employee ID "+employeeId+"does not exist");
+//            System.out.println(e.getMessage());
+//        }
+//    }
     public void callDisplayRequired(){
         int employeeId;
         System.out.println(resourceBundle.getString("employee.id"));
@@ -167,14 +185,23 @@ public class InputDetailsCollectAndDisplay {
         try {
             if (webServiceDAO.callEmployeeExists(employeeId)) {
                 logger.info("Displaying the info of particular ID:"+employeeId);
-              //  System.out.println(webServiceDAO.callFilterBasedOnID(employeeId));
+                //  System.out.println(webServiceDAO.callFilterBasedOnID(employeeId));
                 soapdao.implementation.Employee employee=webServiceDAO.callFilterBasedOnID(employeeId);
                 soapdao.entity.Employee employeeConsole = translateBack(employee);
                 System.out.println(employeeConsole);
-            } else throw new EmployeeException("employee.doesNotExists");
-        }catch(EmployeeException e){
-            logger.error("Employee with employee ID "+employeeId+"does not exist");
-            System.out.println(e.getMessage());
+            } //else throw new EmployeeException("employee.doesNotExists");
+        }catch(SOAPFaultException | SOAPException_Exception e){
+//            logger.error("Employee with employee ID "+employeeId+"does not exist");
+//            System.out.println(e.getMessage());
+            if (e instanceof SOAPFaultException) {
+                SOAPFaultException soapFaultException = (SOAPFaultException) e;
+                if (soapFaultException.getFault().getFaultCode().equalsIgnoreCase("EmployeeNotFoundException")) {
+                    logger.warn(soapFaultException.getFault().getFaultString());
+                    //System.out.println(resourceBundle.getString("app.error.employeeIdExists"));
+                    //System.out.println(((SOAPFaultException) e).getFault());
+                    System.out.println(((SOAPFaultException) e).getMessage());
+                }
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 package com.paymentdao.payment;
 
 import com.paymentdao.payment.entity.Payee;
+import com.paymentdao.payment.entity.Transaction;
 import com.paymentdao.payment.exceptions.PayeeException;
 import com.paymentdao.payment.service.PaymentTransferImplementation;
 import org.junit.jupiter.api.Test;
@@ -126,69 +127,62 @@ PaymentTransferImplementation paymentTransferImplementation;
 
     @Test
     public void testProcessTransaction() {
-        long senderAccountNumber = 123456789;
-        long payeeAccountNumber = 987654321;
-        String transactionType = "transfer";
-        double transactionAmount = 100.0;
+        Transaction transaction = new Transaction();
+        transaction.setTransactionFrom(123456789);
+        transaction.setTransactionTo(987654321);
+        transaction.setTransactionType("transfer");
+        transaction.setTransactionAmount(100.0);
 
-        // Call the method under test
-        paymentTransferImplementation.processTransaction(senderAccountNumber, payeeAccountNumber, transactionType, transactionAmount);
+        when(jdbcTemplate.update(eq("CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)"), any(), any(), any(), any())).thenReturn(1);
 
-        // Verify that jdbcTemplate.update() was called with the correct arguments
-        verify(jdbcTemplate).update(
-                eq("CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)"),
-                eq(senderAccountNumber),
-                eq(payeeAccountNumber),
-                eq(transactionType),
-                eq(transactionAmount)
-        );
+        // Act
+        Transaction result = paymentTransferImplementation.processTransaction(transaction);
+
+        // Assert
+        assertEquals(transaction, result);
     }
 
-//    @Test
-//    void testProcessTransactionException() {
-//        // Mock JdbcTemplate
-//        JdbcTemplate jdbcTemplate = mock(JdbcTemplate.class);
-//
-//        // Create the PaymentTransferImplementation instance
-//        PaymentTransferImplementation paymentTransferImplementation = new PaymentTransferImplementation(jdbcTemplate);
-//
-//        // Test data
-//        long senderAccountNumber = 123456789;
-//        long payeeAccountNumber = 987654321;
-//        String transactionType = "transfer";
-//        double transactionAmount = 100.0;
-//
-//        // Verify that jdbcTemplate.update() was called with the correct arguments
-//        assertDoesNotThrow(() -> {
-//            paymentTransferImplementation.processTransaction(senderAccountNumber, payeeAccountNumber, transactionType, transactionAmount);
-//
-//            verify(jdbcTemplate).update(
-//                    eq("CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)"),
-//                    eq(senderAccountNumber),
-//                    eq(payeeAccountNumber),
-//                    eq(transactionType),
-//                    eq(transactionAmount)
-//            );
-//
-//            // Additional assertion to ensure no other methods were called on the JdbcTemplate
-//            verifyNoMoreInteractions(jdbcTemplate);
-//        });
-//
-//        // Test exception handling for insufficient balance
-//        when(jdbcTemplate.update(anyString(), any(), any(), any(), any())).thenThrow(new DataAccessException.("ORA-20001"){
-//
-//        });
-//        assertThrows(PayeeException.class, () ->
-//                paymentTransferImplementation.processTransaction(senderAccountNumber, payeeAccountNumber, transactionType, transactionAmount));
-//
-//        // Test exception handling for no payee found
-//        when(jdbcTemplate.update(anyString(), any(), any(), any(), any())).thenThrow(new DataAccessException("ORA-20002"){});
-//        assertThrows(PayeeException.class, () ->
-//                paymentTransferImplementation.processTransaction(senderAccountNumber, payeeAccountNumber, transactionType, transactionAmount));
-//
-//        // Test exception handling for sender inactive
-//        when(jdbcTemplate.update(anyString(), any(), any(), any(), any())).thenThrow(new DataAccessException("ORA-20003"){});
-//        assertThrows(PayeeException.class, () ->
-//                paymentTransferImplementation.processTransaction(senderAccountNumber, payeeAccountNumber, transactionType, transactionAmount));
-//    }
+   //@Test
+    public void testProcessTransaction_Fail() {
+        // Create a Transaction object
+        Transaction transaction = new Transaction();
+        transaction.setTransactionFrom(123456789);
+        transaction.setTransactionTo(987654321);
+        transaction.setTransactionType("transfer");
+        transaction.setTransactionAmount(100.0);
+
+        // Stub the jdbcTemplate update method to return 0 (failure)
+        when(jdbcTemplate.update(
+                eq("CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)"),
+                eq(transaction.getTransactionFrom()),
+                eq(transaction.getTransactionTo()),
+                eq(transaction.getTransactionType()),
+                eq(transaction.getTransactionAmount())
+        )).thenReturn(0); // Changed to return 0 instead of 1
+
+        // Call the method under test
+        Transaction result = paymentTransferImplementation.processTransaction(transaction);
+
+        // Assert that the result is null, indicating failure
+        assertNull(result);
+    }
+
+    @Test
+    void testProcessTransaction_InsufficientBalance() {
+        // Arrange
+        Transaction transaction = new Transaction();
+        transaction.setTransactionFrom(123456789);
+        transaction.setTransactionTo(987654321);
+        transaction.setTransactionType("transfer");
+        transaction.setTransactionAmount(00.0); // Corrected transaction amount
+
+        when(jdbcTemplate.update(
+                eq("CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)"),
+                any(Long.class), any(Long.class), any(String.class), any(Double.class)
+        )).thenThrow(new DataAccessException("ORA-20001") {}); // Throwing exception for insufficient balance
+
+        // Act & Assert
+        assertThrows(PayeeException.class, () -> paymentTransferImplementation.processTransaction(transaction));
+    }
+
 }

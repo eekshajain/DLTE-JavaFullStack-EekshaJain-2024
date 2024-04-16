@@ -1,4 +1,4 @@
-package com.springboot.webservices.exceptions;
+package com.springproject.employee.exceptions;
 
 import java.util.ResourceBundle;
 

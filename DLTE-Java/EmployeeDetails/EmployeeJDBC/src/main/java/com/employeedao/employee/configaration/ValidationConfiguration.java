@@ -1,4 +1,4 @@
-package com.payment.webservices.config;
+package com.employeedao.employee.configaration;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;

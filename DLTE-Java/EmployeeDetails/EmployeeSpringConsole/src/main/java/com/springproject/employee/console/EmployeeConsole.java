@@ -1,27 +1,26 @@
-package com.springboot.webservices.console;
+package com.springproject.employee.console;
 
-import com.springboot.webservices.configuration.SoapConfiguration;
-import com.springboot.webservices.exceptions.EmployeeException;
+import com.springproject.employee.configuration.WebServiceConfiguration;
+import com.springproject.employee.exceptions.EmployeeException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.ws.client.core.WebServiceTemplate;
 
 import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class EmployeeConsole {
+    static ResourceBundle resourceBundle=ResourceBundle.getBundle("employee");
     public static void main( String[] args )
     {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(SoapConfiguration.class);
+        context.register(WebServiceConfiguration.class);
         context.refresh();
-
 
         Scanner scanner=new Scanner(System.in);
         Scanner scanner1=new Scanner(System.in);
         Scanner scanner2=new Scanner(System.in);
         Scanner scanner3=new Scanner(System.in);
-        ResourceBundle resourceBundle=ResourceBundle.getBundle("employee");
+
         ConsoleMethods inputDetailsCollectAndDisplay=new ConsoleMethods();
         //System.setProperty("logbackConfiguration","C:\\DLTE-JavaFullStack-EekshaJain-2024\\DLTE-Java\\EmployeeDetails\\logback.xml");//or else add log file in resource file
         try {

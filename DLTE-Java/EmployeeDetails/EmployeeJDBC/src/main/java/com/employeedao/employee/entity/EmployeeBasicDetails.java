@@ -1,14 +1,35 @@
 package com.employeedao.employee.entity;
 
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.*;
+
 public class EmployeeBasicDetails {
-    //@NotNull(message = "")
+    @NotNull
     private int employeeID;
+
+    @NotBlank
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "First name must contain only alphabetic characters")
     private String firstName;
+
+    @NotBlank
+    @Pattern(regexp = "^[A-Za-z']+$",message = "Middle name can have alphabets and apostrophe")
     private String middleName;
+
+    @NotBlank
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Last name must contain only alphabetic characters")
     private String lastName;
+
+    @Range(min = 7000000000L, max = 9999999999L, message = "Invalid Indian phone number")
     private long phoneNumber;
+
+    @Email(message = "Email should be valid")
     private String emailID;
+
+    @NotNull
     EmployeeAddress temporaryEmployeeAddress;
+
+    @NotNull
     EmployeeAddress permanentEmployeeAddress;
 
     public EmployeeBasicDetails() {

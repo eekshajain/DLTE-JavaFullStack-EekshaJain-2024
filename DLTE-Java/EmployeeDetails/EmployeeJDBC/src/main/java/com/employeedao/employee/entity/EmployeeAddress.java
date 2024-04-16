@@ -1,10 +1,25 @@
 package com.employeedao.employee.entity;
 
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 public class EmployeeAddress {
+    @NotNull
     private String houseName;
+
+    @NotNull
     private String houseStreet;
+
+    @NotNull
+    @Pattern(regexp = "^[A-Za-z ]+$", message = "City name must contain only letters and spaces")
     private String cityName;
+
+    @NotNull
+    @Pattern(regexp = "^[A-Za-z ]+$", message = "State name must contain only letters and spaces")
     private String stateName;
+    @Range(min = 100000, max = 999999, message = "PIN code must be a 6-digit number")
     private int pinCode;
 
     public EmployeeAddress() {

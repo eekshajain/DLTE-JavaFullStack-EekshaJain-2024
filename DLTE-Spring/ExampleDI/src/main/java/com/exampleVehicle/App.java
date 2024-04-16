@@ -8,7 +8,7 @@ public class App {
         ApplicationContext context = new ClassPathXmlApplicationContext("vehicle.xml");
 
         // Retrieve Vehicle bean
-        Vehicle vehicle = (Vehicle) context.getBean("vehicle");
+        Vehicle vehicle = (Vehicle) context.getBean("vehicle1");
         vehicle.start();
         vehicle.stop();
 

@@ -10,6 +10,7 @@ public class Transaction {
     private Integer transactionId;
 
     @NotNull(message = "{transactionType.notnull}")
+    @Pattern(regexp = "(?i)IMPS|NEFT|RTGS|UPI", message = "{transaction.type.pattern}")
     private String transactionType;
 
     @NotNull

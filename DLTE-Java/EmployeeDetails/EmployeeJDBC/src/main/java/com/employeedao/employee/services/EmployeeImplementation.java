@@ -5,6 +5,7 @@ import com.employeedao.employee.entity.EmployeeBasicDetails;
 import com.employeedao.employee.exception.EmployeeException;
 import com.employeedao.employee.remotes.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
@@ -30,8 +31,9 @@ public class EmployeeImplementation implements EmployeeRepository {
                         employee.getPhoneNumber(),
                         employee.getEmailID()
                 });
-        int acknowledgeTempAddress=jdbcTemplate.update("insert into EmployeeAddress(ADDRESS_ID,EMPLOYEE_ID,HOUSE_NAME,STREET_NAME,CITY_NAME,STATE_NAME,PIN_CODE,IS_TEMPORARY) values (address_seq.nextval,?,?,?,?,?,?,0)",
+        int acknowledgeTempAddress=jdbcTemplate.update("insert into EMPLOYEEADDRESS(ADDRESS_ID,EMPLOYEE_ID,HOUSE_NAME,STREET_NAME,CITY_NAME,STATE_NAME,PIN_CODE,IS_TEMPORARY) values (address_seq.nextval,?,?,?,?,?,?,0)",
                 new Object[]{
+                        employee.getEmployeeID(),
                         employee.getTemporaryEmployeeAddress().getHouseName(),
                         employee.getTemporaryEmployeeAddress().getHouseStreet(),
                         employee.getTemporaryEmployeeAddress().getCityName(),
@@ -39,8 +41,9 @@ public class EmployeeImplementation implements EmployeeRepository {
                         employee.getTemporaryEmployeeAddress().getPinCode()
                 });
 
-        int acknowledgePermAddress=jdbcTemplate.update("insert into EmployeeAddress(ADDRESS_ID,EMPLOYEE_ID,HOUSE_NAME,STREET_NAME,CITY_NAME,STATE_NAME,PIN_CODE,IS_TEMPORARY) values (address_seq.nextval,?,?,?,?,?,?,1)",
+        int acknowledgePermAddress=jdbcTemplate.update("insert into EMPLOYEEADDRESS(ADDRESS_ID,EMPLOYEE_ID,HOUSE_NAME,STREET_NAME,CITY_NAME,STATE_NAME,PIN_CODE,IS_TEMPORARY) values (address_seq.nextval,?,?,?,?,?,?,1)",
                 new Object[]{
+                        employee.getEmployeeID(),
                         employee.getPermanentEmployeeAddress().getHouseName(),
                         employee.getPermanentEmployeeAddress().getHouseStreet(),
                         employee.getPermanentEmployeeAddress().getCityName(),
@@ -72,8 +75,8 @@ public class EmployeeImplementation implements EmployeeRepository {
              "pa.STATE_NAME AS PERM_STATE_NAME, " +
              "pa.PIN_CODE AS PERM_PIN_CODE " +
              "FROM EmployeeBasicDetails e " +
-             "INNER JOIN EmployeeAddress ta ON e.EMPLOYEE_ID = ta.EMPLOYEE_ID AND ta.IS_TEMPORARY = 1 " +
-             "INNER JOIN EmployeeAddress pa ON e.EMPLOYEE_ID = pa.EMPLOYEE_ID AND pa.IS_TEMPORARY = 0 " +
+             "INNER JOIN EMPLOYEEADDRESS ta ON e.EMPLOYEE_ID = ta.EMPLOYEE_ID AND ta.IS_TEMPORARY = 1 " +
+             "INNER JOIN EMPLOYEEADDRESS pa ON e.EMPLOYEE_ID = pa.EMPLOYEE_ID AND pa.IS_TEMPORARY = 0 " +
              "WHERE e.EMPLOYEE_ID=?",
              new Object[]{employeeID},
              new EmployeeRowMapper());
@@ -101,10 +104,10 @@ public class EmployeeImplementation implements EmployeeRepository {
                 "pa.STATE_NAME AS PERM_STATE_NAME, " +
                 "pa.PIN_CODE AS PERM_PIN_CODE " +
                 "FROM EmployeeBasicDetails e " +
-                "INNER JOIN EmployeeAddress ta ON e.EMPLOYEE_ID = ta.EMPLOYEE_ID AND ta.IS_TEMPORARY = 1 " +
-                "INNER JOIN EmployeeAddress pa ON e.EMPLOYEE_ID = pa.EMPLOYEE_ID AND pa.IS_TEMPORARY = 0 " +
+                "INNER JOIN EMPLOYEEADDRESS ta ON e.EMPLOYEE_ID = ta.EMPLOYEE_ID AND ta.IS_TEMPORARY = 1 " +
+                "INNER JOIN EMPLOYEEADDRESS pa ON e.EMPLOYEE_ID = pa.EMPLOYEE_ID AND pa.IS_TEMPORARY = 0 " +
                 "WHERE ta.PIN_CODE=? or pa.PIN_CODE=?",
-                new Object[]{pinCode},
+                new Object[]{pinCode,pinCode},
                 new EmployeeRowMapper()
         );
         if (employeeBasicDetails.size()==0) throw new EmployeeException(resourceBundle.getString("no.details.based.on.pincode"));
@@ -131,8 +134,8 @@ public class EmployeeImplementation implements EmployeeRepository {
                         "pa.STATE_NAME AS PERM_STATE_NAME, " +
                         "pa.PIN_CODE AS PERM_PIN_CODE " +
                         "FROM EmployeeBasicDetails e " +
-                        "INNER JOIN EmployeeAddress ta ON e.EMPLOYEE_ID = ta.EMPLOYEE_ID AND ta.IS_TEMPORARY = 1 " +
-                        "INNER JOIN EmployeeAddress pa ON e.EMPLOYEE_ID = pa.EMPLOYEE_ID AND pa.IS_TEMPORARY = 0 ",
+                        "INNER JOIN EMPLOYEEADDRESS ta ON e.EMPLOYEE_ID = ta.EMPLOYEE_ID AND ta.IS_TEMPORARY = 1 " +
+                        "INNER JOIN EMPLOYEEADDRESS pa ON e.EMPLOYEE_ID = pa.EMPLOYEE_ID AND pa.IS_TEMPORARY = 0 ",
                 new Object[]{},
                 new EmployeeRowMapper()
         );
@@ -142,13 +145,16 @@ public class EmployeeImplementation implements EmployeeRepository {
 
     @Override
     public boolean doesEmployeeExists(int empID) {
-        EmployeeBasicDetails employee = jdbcTemplate.queryForObject(
-                "SELECT ebd.employee_id FROM employeebasicdetails ebd WHERE ebd.employee_id = ?",
-                new Object[]{empID},
-                new EmployeeRowMapper()
-        );
-        return employee != null;
-
+        try {
+            Integer employeeId = jdbcTemplate.queryForObject(
+                    "SELECT ebd.employee_id FROM employeebasicdetails ebd WHERE ebd.employee_id = ?",
+                    new Object[]{empID},
+                    new EmployeeIdRowMapper()
+            );
+            return employeeId != null;
+        } catch (EmptyResultDataAccessException e) {
+            return false; // No data found for the given empID
+        }
     }
 
     @Override
@@ -156,32 +162,73 @@ public class EmployeeImplementation implements EmployeeRepository {
         return false;
     }
 
+//    public class EmployeeRowMapper implements RowMapper<EmployeeBasicDetails> {
+//
+//        @Override
+//        public EmployeeBasicDetails mapRow(ResultSet rs, int rowNum) throws SQLException {
+//          EmployeeBasicDetails employeeBasicDetails=new EmployeeBasicDetails();
+//            EmployeeAddress tempAddress=new EmployeeAddress();
+//            EmployeeAddress permAddress=new EmployeeAddress();
+//          employeeBasicDetails.setEmployeeID(rs.getInt(1));
+//          employeeBasicDetails.setFirstName(rs.getString(2));
+//          employeeBasicDetails.setMiddleName(rs.getString(3));
+//          employeeBasicDetails.setLastName(rs.getString(4));
+//          employeeBasicDetails.setPhoneNumber(rs.getLong(5));
+//          employeeBasicDetails.setEmailID(rs.getString(6));
+//          tempAddress.setHouseName(rs.getString(7));
+//          tempAddress.setHouseStreet(rs.getString(8));
+//          tempAddress.setCityName(rs.getString(9));
+//          tempAddress.setStateName(rs.getString(10));
+//          tempAddress.setPinCode(rs.getInt(11));
+//          permAddress.setHouseName(rs.getString(12));
+//          permAddress.setHouseStreet(rs.getString(13));
+//          permAddress.setCityName(rs.getString(14));
+//          permAddress.setStateName(rs.getString(15));
+//          permAddress.setPinCode(rs.getInt(16));
+//          employeeBasicDetails.setTemporaryEmployeeAddress(tempAddress);
+//          employeeBasicDetails.setPermanentEmployeeAddress(permAddress);
+//          return employeeBasicDetails;
+//        }
+//    }
+
     public class EmployeeRowMapper implements RowMapper<EmployeeBasicDetails> {
 
         @Override
         public EmployeeBasicDetails mapRow(ResultSet rs, int rowNum) throws SQLException {
-          EmployeeBasicDetails employeeBasicDetails=new EmployeeBasicDetails();
-            EmployeeAddress tempAddress=new EmployeeAddress();
-            EmployeeAddress permAddress=new EmployeeAddress();
-          employeeBasicDetails.setEmployeeID(rs.getInt(1));
-          employeeBasicDetails.setFirstName(rs.getString(2));
-          employeeBasicDetails.setMiddleName(rs.getString(3));
-          employeeBasicDetails.setLastName(rs.getString(4));
-          employeeBasicDetails.setLastName(rs.getString(5));
-          employeeBasicDetails.setPhoneNumber(rs.getLong(6));
-          employeeBasicDetails.setEmailID(rs.getString(7));
-          tempAddress.setHouseName(rs.getString(8));
-          tempAddress.setHouseStreet(rs.getString(9));
-          tempAddress.setCityName(rs.getString(10));
-          tempAddress.setStateName(rs.getString(11));
-          tempAddress.setPinCode(rs.getInt(12));
-          permAddress.setHouseName(rs.getString(13));
-          permAddress.setHouseStreet(rs.getString(14));
-          permAddress.setCityName(rs.getString(15));
-          permAddress.setStateName(rs.getString(16));
-          permAddress.setPinCode(rs.getInt(17));
-          employeeBasicDetails.setTemporaryEmployeeAddress(tempAddress);
-          return employeeBasicDetails;
+            EmployeeBasicDetails employeeBasicDetails = new EmployeeBasicDetails();
+            EmployeeAddress tempAddress = new EmployeeAddress();
+            EmployeeAddress permAddress = new EmployeeAddress();
+
+            employeeBasicDetails.setEmployeeID(rs.getInt("EMPLOYEE_ID"));
+            employeeBasicDetails.setFirstName(rs.getString("FIRST_NAME"));
+            employeeBasicDetails.setMiddleName(rs.getString("MIDDLE_NAME"));
+            employeeBasicDetails.setLastName(rs.getString("LAST_NAME"));
+            employeeBasicDetails.setPhoneNumber(rs.getLong("PHONE_NUMBER"));
+            employeeBasicDetails.setEmailID(rs.getString("EMAIL_ID"));
+
+            tempAddress.setHouseName(rs.getString("TEMP_HOUSE_NAME"));
+            tempAddress.setHouseStreet(rs.getString("TEMP_STREET_NAME"));
+            tempAddress.setCityName(rs.getString("TEMP_CITY_NAME"));
+            tempAddress.setStateName(rs.getString("TEMP_STATE_NAME"));
+            tempAddress.setPinCode(rs.getInt("TEMP_PIN_CODE"));
+
+            permAddress.setHouseName(rs.getString("PERM_HOUSE_NAME"));
+            permAddress.setHouseStreet(rs.getString("PERM_STREET_NAME"));
+            permAddress.setCityName(rs.getString("PERM_CITY_NAME"));
+            permAddress.setStateName(rs.getString("PERM_STATE_NAME"));
+            permAddress.setPinCode(rs.getInt("PERM_PIN_CODE"));
+
+            employeeBasicDetails.setTemporaryEmployeeAddress(tempAddress);
+            employeeBasicDetails.setPermanentEmployeeAddress(permAddress);
+
+            return employeeBasicDetails;
+        }
+    }
+
+    public class EmployeeIdRowMapper implements RowMapper<Integer> {
+        @Override
+        public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return rs.getInt("EMPLOYEE_ID");
         }
     }
 }
