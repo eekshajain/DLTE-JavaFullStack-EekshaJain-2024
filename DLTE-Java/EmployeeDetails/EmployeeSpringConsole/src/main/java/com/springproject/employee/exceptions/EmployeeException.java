@@ -10,7 +10,7 @@ public class EmployeeException extends RuntimeException{
     }
 
     public String getErrorMessage(){
-        ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
+        ResourceBundle resourceBundle=ResourceBundle.getBundle("employee");
         return resourceBundle.getString(errorMessage);
     }
 }

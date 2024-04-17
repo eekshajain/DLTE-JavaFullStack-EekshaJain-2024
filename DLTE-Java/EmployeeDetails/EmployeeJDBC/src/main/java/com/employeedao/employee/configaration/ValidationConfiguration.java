@@ -12,7 +12,7 @@ public class ValidationConfiguration {
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("payment");
+//        messageSource.setBasename("payment");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }

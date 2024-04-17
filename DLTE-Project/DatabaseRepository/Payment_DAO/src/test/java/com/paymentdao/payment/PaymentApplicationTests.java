@@ -38,13 +38,7 @@ PaymentTransferImplementation paymentTransferImplementation;
     SimpleJdbcCall simpleJdbcCall;
     @Mock
     private DataSource dataSource;
-//    @Autowired
-//    public void PaymentTransferImplementation(JdbcTemplate jdbcTemplate) {
-//        this.jdbcTemplate = jdbcTemplate;
-//    }
-//    public PaymentApplicationTests(JdbcTemplate jdbcTemplate) {
-//        this.jdbcTemplate = jdbcTemplate;
-//    }
+
     @Test
     void testFindAllBasedOnAccount()  {
         Payee payee1=new Payee(101,213456789654L,543212345678L,"Eeksha");

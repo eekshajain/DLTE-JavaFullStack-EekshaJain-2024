@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+
+
 public class ConsoleMethods {
 //    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 //    WebServiceTemplate webServiceTemplate = context.getBean(WebServiceTemplate.class);
@@ -24,7 +26,8 @@ public class ConsoleMethods {
     Scanner scanner2=new Scanner(System.in);
     Scanner scanner3=new Scanner(System.in);
   //  EmployeeController employeeController=new EmployeeController();
-    ResourceBundle resourceBundle=ResourceBundle.getBundle("employee");
+
+    ResourceBundle resourceBundle= ResourceBundle.getBundle("employee");
     public void callCollectDetails( ){
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(WebServiceConfiguration.class);
         WebServiceTemplate webServiceTemplate = context.getBean(WebServiceTemplate.class);
@@ -69,7 +72,7 @@ public class ConsoleMethods {
                         employeeBasicDetails1.setPhoneNumber(phoneNumber);
                         break;
                     } else {
-                        throw new EmployeeException("invalid.phone.number");
+                        throw new EmployeeException(resourceBundle.getString("invalid.phone.number"));
                     }
                 } catch (EmployeeException e) {
                     System.out.println(e.getErrorMessage());
@@ -207,6 +210,7 @@ public class ConsoleMethods {
     }
 
         public void callDisplayRequired(){
+            ResourceBundle resourceBundle=ResourceBundle.getBundle("employee");
             AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(WebServiceConfiguration.class);
             WebServiceTemplate webServiceTemplate = context.getBean(WebServiceTemplate.class);
         int employeeId;

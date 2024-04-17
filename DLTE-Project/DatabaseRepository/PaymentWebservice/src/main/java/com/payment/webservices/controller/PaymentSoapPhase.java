@@ -1,12 +1,16 @@
 package com.payment.webservices.controller;
 
+import com.paymentdao.payment.entity.Customer;
 import com.paymentdao.payment.exceptions.PayeeException;
 import com.paymentdao.payment.remote.PaymentTransferRepository;
+import com.paymentdao.payment.security.MyBankUsersServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -26,6 +30,8 @@ public class PaymentSoapPhase {
     private final String url="http://payee.services";
     @Autowired
     public PaymentTransferRepository paymentTransferRepository;
+    @Autowired
+    MyBankUsersServices service;
 
    Logger logger=LoggerFactory.getLogger(PaymentSoapPhase.class);
 
@@ -129,6 +135,11 @@ public class PaymentSoapPhase {
     @PayloadRoot(namespace = url,localPart = "findAllPayeeBasedOnAccountNumberLambdaRequest")
     @ResponsePayload  //list user based on account number using lambda
     public FindAllPayeeBasedOnAccountNumberLambdaResponse listAllPayeeLambda(@RequestPayload FindAllPayeeBasedOnAccountNumberLambdaRequest findAllPayeeBasedOnAccountNumberLambdaRequest)  {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Customer customer=service.findByUsernameCustomer(username);
+        List<Long> senderAccountNumber=service.getAccountNumbersByCustomerId(customer.getCustomerId());
+
         FindAllPayeeBasedOnAccountNumberLambdaResponse findAllPayeeBasedOnAccountNumberLambdaResponse=new FindAllPayeeBasedOnAccountNumberLambdaResponse();
         ServiceStatus serviceStatus=new ServiceStatus();
         try {

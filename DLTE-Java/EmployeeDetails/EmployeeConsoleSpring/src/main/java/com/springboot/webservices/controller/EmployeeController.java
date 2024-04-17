@@ -15,6 +15,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import services.employee.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class EmployeeController {
 
 @PayloadRoot(namespace = url,localPart = "newEmployeeRequest")
 @ResponsePayload
-    public NewEmployeeResponse addNewEmployee(@RequestPayload NewEmployeeRequest newEmployeeRequest)
+    public NewEmployeeResponse addNewEmployee(@Valid @RequestPayload NewEmployeeRequest newEmployeeRequest)
 {
     NewEmployeeResponse newEmployeeResponse = new NewEmployeeResponse();
     ServiceStatus serviceStatus = new ServiceStatus();
@@ -44,9 +45,11 @@ public class EmployeeController {
            // BeanUtils.copyProperties(daoEmployee,actualEmployee);
             actualEmployee=copy(daoEmployee);
             newEmployeeResponse.setEmployee(actualEmployee);
+        }else{
+            throw new EmployeeException("no employee");
         }
     }catch (EmployeeException e){
-        serviceStatus.setStatus(HttpServletResponse.SC_NO_CONTENT);
+        serviceStatus.setStatus(HttpServletResponse.SC_NOT_FOUND);
         serviceStatus.setMessage(e.getMessage());
     }
     newEmployeeResponse.setServiceStatus(serviceStatus);

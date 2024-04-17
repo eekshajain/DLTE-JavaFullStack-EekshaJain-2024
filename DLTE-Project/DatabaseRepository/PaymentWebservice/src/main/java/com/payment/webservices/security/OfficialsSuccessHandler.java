@@ -47,7 +47,7 @@ public class OfficialsSuccessHandler extends SimpleUrlAuthenticationSuccessHandl
                 myBankUsers.setAttempts(1);
                 service.updateAttempts(myBankUsers);
             }
-            super.setDefaultTargetUrl("http://localhost:8085/payeerepo/payee.wsdl");
+            super.setDefaultTargetUrl("/payeerepo/payee.wsdl");
             //response.sendRedirect(request.getContextPath() + "/transactions/new");
         }
         else{
