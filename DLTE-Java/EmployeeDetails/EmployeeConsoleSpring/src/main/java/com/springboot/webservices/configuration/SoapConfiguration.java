@@ -27,7 +27,7 @@ public class SoapConfiguration {
     }
 
     // wsdl properties
-    @Bean(name = "employee")
+    @Bean(name = "employees")
     public DefaultWsdl11Definition convertToWsdl(XsdSchema xsdSchema){
         DefaultWsdl11Definition defaultWsdl11Definition=new DefaultWsdl11Definition();
         defaultWsdl11Definition.setPortTypeName(resourceBundle.getString("employee.port"));
@@ -42,13 +42,13 @@ public class SoapConfiguration {
         PayloadValidatingInterceptor interceptor = new PayloadValidatingInterceptor();
         interceptor.setValidateRequest(true);
         interceptor.setValidateResponse(true);
-        interceptor.setXsdSchema(loansSchema()); // Assuming you have defined XsdSchema bean
+        interceptor.setXsdSchema(employeeSchema()); // Assuming you have defined XsdSchema bean
         return interceptor;
     }
 
     // identify the xsd
     @Bean
-    public XsdSchema loansSchema(){
+    public XsdSchema employeeSchema(){
         return new SimpleXsdSchema(new ClassPathResource("employee.xsd"));
     }
 }
