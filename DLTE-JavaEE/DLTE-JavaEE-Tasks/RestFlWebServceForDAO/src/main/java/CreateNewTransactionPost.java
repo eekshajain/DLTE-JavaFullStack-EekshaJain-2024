@@ -10,35 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-class Transactions{
-    private String userName;
-    private String password;
-    private double withdrawAmount;
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public double getWithdrawAmount() {
-        return withdrawAmount;
-    }
-
-    public void setWithdrawAmount(double withdrawAmount) {
-        this.withdrawAmount = withdrawAmount;
-    }
-}
 @WebServlet("/createTransaction/")
 public class CreateNewTransactionPost extends HttpServlet {
     AccountService accountService;

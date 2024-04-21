@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Simple Type: String with maximum length constraint -->
+    <xsd:simpleType name="MyStringType">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="50"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- Complex Type: Person with first name, last name, and age -->
+    <xsd:complexType name="Person">
+        <xsd:sequence>
+            <xsd:element name="firstName" type="xsd:string"/>
+            <xsd:element name="lastName" type="xsd:string"/>
+            <xsd:element name="age" type="xsd:integer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+<!--    &lt;!&ndash; List Type: List of strings &ndash;&gt;-->
+<!--    <xsd:simpleType name="ListOfStrings">-->
+<!--        <xsd:list itemType="xsd:string"/>-->
+<!--    </xsd:simpleType>-->
+
+<!--    &lt;!&ndash; Union Type: Union of string and integer &ndash;&gt;-->
+<!--    <xsd:simpleType name="StringOrInteger">-->
+<!--        <xsd:union memberTypes="xsd:string xsd:integer"/>-->
+<!--    </xsd:simpleType>-->
+
+<!--    &lt;!&ndash; Enumeration Type: Status with predefined values &ndash;&gt;-->
+<!--    <xsd:simpleType name="Status">-->
+<!--        <xsd:restriction base="xsd:string">-->
+<!--            <xsd:enumeration value="Active"/>-->
+<!--            <xsd:enumeration value="Inactive"/>-->
+<!--            <xsd:enumeration value="Pending"/>-->
+<!--        </xsd:restriction>-->
+<!--    </xsd:simpleType>-->
+
+</xsd:schema>
