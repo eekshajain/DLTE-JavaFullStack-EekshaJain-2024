@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://employee.services" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://employee.services" targetNamespace="http://employee.services">
+  <wsdl:types>
+    <xsd:schema xmlns:Xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://employee.services">
+
+    <xsd:complexType name="employeeaddress">
+        <xsd:sequence>
+            <xsd:element name="houseName" type="xsd:string"/>
+            <xsd:element name="houseStreet" type="xsd:string"/>
+            <xsd:element name="cityName" type="xsd:string"/>
+            <xsd:element name="stateName" type="xsd:string"/>
+            <xsd:element name="pinCode" type="xsd:int"/>
+        </xsd:sequence>
+    </xsd:complexType>
+<xsd:complexType name="employebasicdetails">
+    <xsd:sequence>
+        <xsd:element name="employeeID" type="xsd:int"/>
+        <xsd:element name="firstName" type="xsd:string"/>
+        <xsd:element name="middleName" type="xsd:string"/>
+        <xsd:element name="lastName" type="xsd:string"/>
+        <xsd:element name="phoneNumber" type="xsd:long"/>
+        <xsd:element name="emailID" type="xsd:string"/>
+        <xsd:element name="temporaryEmployeeAddress" type="tns:employeeaddress"/>
+        <xsd:element name="permanentEmployeeAddress" type="tns:employeeaddress"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+    <xsd:complexType name="serviceStatus">
+        <xsd:sequence>
+            <xsd:element name="status" type="xsd:int"/>
+            <xsd:element name="message" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="newEmployeeRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="employeeBasic" type="tns:employebasicdetails"/>
+<!--                <xsd:element name="temporaryEmployeeAddress" type="tns:employeeaddress"/>-->
+<!--                <xsd:element name="permanentEmployeeAddress" type="tns:employeeaddress"/>-->
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="newEmployeeResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xsd:element name="employee" type="tns:employebasicdetails"/>
+<!--                <xsd:element name="temporaryEmployeeAddress" type="tns:employeeaddress"/>-->
+<!--                <xsd:element name="permanentEmployeeAddress" type="tns:employeeaddress"/>-->
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="displayAllRequest">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="displayAllResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xsd:element maxOccurs="unbounded" name="employee" type="tns:employebasicdetails"/>
+<!--                <xsd:element name="employeetemp" type="tns:employeeaddress" maxOccurs="unbounded"/>-->
+<!--                <xsd:element name="employeeper" type="tns:employeeaddress" maxOccurs="unbounded"/>-->
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="displayBasedOnIdRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="employeeID" type="xsd:int"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="displayBasedOnIdResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xsd:element name="employee" type="tns:employebasicdetails"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="displayBasedOnPincodeRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="pinCode" type="xsd:int"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="displayBasedOnPincodeResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xsd:element maxOccurs="unbounded" name="employee" type="tns:employebasicdetails"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="employeeExistsRequest">
+        <xsd:complexType>
+            <Xsd:sequence>
+                <xsd:element name="employeeId" type="xsd:int"/>
+            </Xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="employeeExistsResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xsd:element name="employeeExists" type="xsd:boolean"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="displayAllResponse">
+    <wsdl:part element="tns:displayAllResponse" name="displayAllResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="displayBasedOnPincodeRequest">
+    <wsdl:part element="tns:displayBasedOnPincodeRequest" name="displayBasedOnPincodeRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="displayBasedOnPincodeResponse">
+    <wsdl:part element="tns:displayBasedOnPincodeResponse" name="displayBasedOnPincodeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="newEmployeeResponse">
+    <wsdl:part element="tns:newEmployeeResponse" name="newEmployeeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="displayBasedOnIdRequest">
+    <wsdl:part element="tns:displayBasedOnIdRequest" name="displayBasedOnIdRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="displayBasedOnIdResponse">
+    <wsdl:part element="tns:displayBasedOnIdResponse" name="displayBasedOnIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="displayAllRequest">
+    <wsdl:part element="tns:displayAllRequest" name="displayAllRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="employeeExistsRequest">
+    <wsdl:part element="tns:employeeExistsRequest" name="employeeExistsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="newEmployeeRequest">
+    <wsdl:part element="tns:newEmployeeRequest" name="newEmployeeRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="employeeExistsResponse">
+    <wsdl:part element="tns:employeeExistsResponse" name="employeeExistsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EmployeePort">
+    <wsdl:operation name="displayAll">
+      <wsdl:input message="tns:displayAllRequest" name="displayAllRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:displayAllResponse" name="displayAllResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="displayBasedOnPincode">
+      <wsdl:input message="tns:displayBasedOnPincodeRequest" name="displayBasedOnPincodeRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:displayBasedOnPincodeResponse" name="displayBasedOnPincodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newEmployee">
+      <wsdl:input message="tns:newEmployeeRequest" name="newEmployeeRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:newEmployeeResponse" name="newEmployeeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="displayBasedOnId">
+      <wsdl:input message="tns:displayBasedOnIdRequest" name="displayBasedOnIdRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:displayBasedOnIdResponse" name="displayBasedOnIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="employeeExists">
+      <wsdl:input message="tns:employeeExistsRequest" name="employeeExistsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:employeeExistsResponse" name="employeeExistsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmployeePortSoap11" type="tns:EmployeePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="displayAll">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="displayAllRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="displayAllResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="displayBasedOnPincode">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="displayBasedOnPincodeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="displayBasedOnPincodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newEmployee">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="newEmployeeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="newEmployeeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="displayBasedOnId">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="displayBasedOnIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="displayBasedOnIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="employeeExists">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="employeeExistsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="employeeExistsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmployeePortService">
+    <wsdl:port binding="tns:EmployeePortSoap11" name="EmployeePortSoap11">
+      <soap:address location="http://localhost:8085/employeerepo"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -54,7 +54,17 @@ public class MyBankUsersServices implements UserDetailsService {
                 new Object[]{username},new BeanPropertyRowMapper<>(Customer.class));
         return customer;
     }
-
+    public List<Customer> findByUsernameCustomer1(){
+        List<Customer> customer = jdbcTemplate.query("select * from MYBANK_APP_CUSTOMER",
+                new BeanPropertyRowMapper<>(Customer.class));
+        return customer;
+    }
+    public Customer findByUsernameCustomerStream(String username) {
+        List<Customer> customerList = findByUsernameCustomer1();
+        Customer customer = customerList.stream()
+                .filter(customer1 -> customer1.getUsername().equals(username)).findFirst().orElse(null);
+        return customer;
+    }
     public Long getAccountNumberByCustomerId(int customerId) {
         String sql = "SELECT a.ACCOUNT_NUMBER " +
                 "FROM MYBANK_APP_CUSTOMER c " +

@@ -188,4 +188,5 @@ public class PaymentSoapPhase {
         findAllPayeeBasedOnAccountNumberLambdaResponse.setServiceStatus(serviceStatus);
         return findAllPayeeBasedOnAccountNumberLambdaResponse;
     }
+
 }

@@ -38,18 +38,10 @@ public class PaymentRestController {
     MyBankUsersServices service;
 
     @PostMapping("/new")
-//    @Operation(summary = "This is to do new transaction")
-//    @ApiResponses(value = {
-//            @ApiResponse(responseCode = "200", description = "Payee Inserted successfully"),
-//            @ApiResponse(responseCode = "409", description = "Payee account and sender's account cannot be same"),
-//            @ApiResponse(responseCode = "204", description = "No record exists"),
-//            @ApiResponse(responseCode = "403", description = "Sender account is inactive"),
-//            @ApiResponse(responseCode = "500", description = "Internal server error")
-//    })
     public ResponseEntity<String> newTransactions(@Valid @RequestBody Transaction transaction){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-        Customer customer=service.findByUsernameCustomer(username);
+        Customer customer=service.findByUsernameCustomerStream(username);
         List<Long> senderAccountNumber=service.getAccountNumbersByCustomerId(customer.getCustomerId());
         if (senderAccountNumber.contains(transaction.getTransactionFrom())) {
 
@@ -73,7 +65,6 @@ public class PaymentRestController {
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
                 }
                 else {
-                    // For any other type of exception, return a generic error response
                     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
                 }
             }
