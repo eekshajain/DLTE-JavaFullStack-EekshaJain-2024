@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--/*@thymesVar id="transaction" type="com.example.demo.entity.Transaction"*/-->
+<!--<form th:action="@{/transactions/new}" th:object="${transaction}" method="post">-->
+<!--<input type="text" th:field="*{transactionId}" placeholder="Transaction ID"/>-->
+<!--<input type="text" th:field="*{transactionDate}" placeholder="Transaction Date"/>-->
+<!--<input type="text" th:field="*{transactionBy}" placeholder="Transaction By"/>-->
+<!--<input type="text" th:field="*{transactionTo}" placeholder="Transaction To"/>-->
+<!--<input type="text" th:field="*{transactionRemarks}" placeholder="Transaction Remarks"/>-->
+<!--<input type="text" th:field="*{transactionAmount}" placeholder="Transaction Amount"/>-->
+<!-- <button type="submit">Add</button>-->
+<!--</form>-->
+<form th:action="@{/transactions/new}" th:object="${transaction}" method="post">
+    <input type="text"  name="transId" placeholder="Transaction ID"/>
+    <input type="text"  name="transDate" placeholder="Transaction Date"/>
+    <input type="text"  name="transBy" placeholder="Transaction By"/>
+    <input type="text" name="transTo" placeholder="Transaction To"/>
+    <input type="text" name="transRemark" placeholder="Transaction Remarks"/>
+    <input type="text" name="transAmount" placeholder="Transaction Amount"/>
+    <button type="submit">Add</button>
+</form>
+</body>
+</html>
