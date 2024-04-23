@@ -24,7 +24,7 @@ const formValidation=()=>{
   var digiSignError=document.getElementById("signatureErr")
 try{
 
-    if(!(/[0-9]{5,}/).test(accNumber))
+    if(!(/[0-9]{12}/).test(accNumber))
     {
        throw "Account number must be 12 digits"
     }

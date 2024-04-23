@@ -7,7 +7,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
      <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
     <script>
@@ -19,10 +20,16 @@
               $("iframe").attr("src","listall.html")
             }else if(current.hasClass("makepayment")){
               $("iframe").attr("src","newtransaction.html")
-            }else{
-              location.assign("http://127.0.0.1:5500/LandigPage.html")
+            }else if(current.hasClass("home")){
+              location.assign("http://127.0.0.1:5500/index.html")
+            }else if(current.hasClass("logout")){
+                        sessionStorage.removeItem("logged")
+                        location.assign("http://127.0.0.1:5500/login.html")
             }
           })
+        }
+        else{
+          location.assign("http://127.0.0.1:5500/login.html")
         }
       })
     </script>
@@ -39,33 +46,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home</a>
+              <!-- <a class="nav-link" href="#">Home</a> -->
+              <span class="home">Home&nbsp;</span>
             </li>
             <li class="nav-item active">
               <!-- <a class="nav-link" href="listall.html">List All</a> -->
-              <span class="listall">List All</span>
+              <span class="listall">List All&nbsp;</span>
             </li>
             <li class="nav-item active">
               <!-- <a class="nav-link" href="newtransaction.html">Make Payment</a> -->
-              <span class="makepayment">Make Payment</span>
+              <span class="makepayment">Make Payment&nbsp;</span>
+            </li>
+            <li class="nav-item active">
+              <span class="logout">Logout</span>
             </li>
           </ul>
         </div>
         </div>
       </nav>
       <iframe style="height: 100vh;" src="" width="100%"></iframe>
-      <!-- <div id="pageContent" class="container mt-3"> -->
-        <!-- Content of the selected page will be loaded here -->
-    <!-- </div> -->
-  <!-- <script>
-     // function loadPage(url) {
-       //   fetch(url)
-         //     .then(response => response.text())
-           //   .then(data => {
-          //        document.getElementById("pageContent").innerHTML = data;
-        ///      })
-        //      .catch(error => console.error('Error:', error));
-      //}
-  </script> -->
 </body>
 </html>

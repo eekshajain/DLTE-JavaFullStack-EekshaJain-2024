@@ -13,5 +13,5 @@ public interface PaymentTransferRepository {
     List<Payee> findAllPayee();
    // void processTransaction(long senderAccountNumber,long payeeAccountNumber,String transactionType,double transactionAmount);
     Transaction processTransaction(Transaction transaction);
-    Transaction processTransaction(Long senderAcc,Transaction transaction);
+   // Transaction processTransaction(Long senderAcc,Transaction transaction);
 }

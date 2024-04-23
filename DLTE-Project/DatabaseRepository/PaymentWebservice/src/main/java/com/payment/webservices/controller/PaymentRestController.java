@@ -3,11 +3,9 @@ package com.payment.webservices.controller;
 import com.paymentdao.payment.entity.Customer;
 import com.paymentdao.payment.entity.Transaction;
 import com.paymentdao.payment.exceptions.PayeeException;
+import com.paymentdao.payment.exceptions.TransactionException;
 import com.paymentdao.payment.remote.PaymentTransferRepository;
 import com.paymentdao.payment.security.MyBankUsersServices;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,28 +38,27 @@ public class PaymentRestController {
     @PostMapping("/new")
     public ResponseEntity<String> newTransactions(@Valid @RequestBody Transaction transaction){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
+        String username = authentication.getName();//get logged in users username
         Customer customer=service.findByUsernameCustomerStream(username);
-        List<Long> senderAccountNumber=service.getAccountNumbersByCustomerId(customer.getCustomerId());
+        List<Long> senderAccountNumber=service.getAccountNumbersByCustomerId(customer.getCustomerId());//get users account number(1 user might have multiple accounts)
         if (senderAccountNumber.contains(transaction.getTransactionFrom())) {
-
             Transaction transaction1 = null;
             try {
                 transaction1 = paymentTransferRepository.processTransaction(transaction);
                 logger.info(resourceBundle.getString("transaction.add") + transaction.getTransactionTo());
                 return ResponseEntity.status(HttpStatus.OK).body(resourceBundle.getString("transaction.add") + transaction1.getTransactionTo());
-            } catch (PayeeException payeeException) {
+            } catch (TransactionException transactionException) {
                 logger.warn(resourceBundle.getString("transaction.fail") + transaction.getTransactionTo());
-                String errorMessage = payeeException.getMessage();
-                if (errorMessage.equals(resourceBundle.getString("insufficient.balance"))) {
+                String errorMessage = transactionException.getMessage();
+                if (errorMessage.equals(resourceBundle.getString("insufficient.balance"))) {  //if user has insufficient balance
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
-                } else if (errorMessage.equals(resourceBundle.getString("no.payee.found"))) {
+                } else if (errorMessage.equals(resourceBundle.getString("no.payee.found"))) { //if user does not have particular payee
                     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
-                } else if (errorMessage.equals(resourceBundle.getString("sender.inactive"))) {
+                } else if (errorMessage.equals(resourceBundle.getString("sender.inactive"))) { //if users account is inactive
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
-                }else if(errorMessage.equals(resourceBundle.getString("rtgs.minimum.amount"))){
+                }else if(errorMessage.equals(resourceBundle.getString("rtgs.minimum.amount"))){ //if rtgs amount to be sent is less than 50000
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
-                }else if(errorMessage.equals(resourceBundle.getString("minimum.balance.fail"))){
+                }else if(errorMessage.equals(resourceBundle.getString("minimum.balance.fail"))){ //if users balance will fall below minimum balance
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
                 }
                 else {
@@ -69,7 +66,7 @@ public class PaymentRestController {
                 }
             }
         }else{
-            logger.warn(resourceBundle.getString("logger.no.sender.account")+customer.getCustomerId());
+            logger.warn(resourceBundle.getString("logger.no.sender.account")+customer.getCustomerId());//if sender doesnot ave account
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resourceBundle.getString("sender.no.account"));
         }
     }

@@ -1,7 +1,6 @@
 package com.payment.webservices.security;
 
 import com.paymentdao.payment.entity.Customer;
-import com.paymentdao.payment.security.MyBankUsers;
 import com.paymentdao.payment.security.MyBankUsersServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,22 +22,6 @@ public class OfficialsSuccessHandler extends SimpleUrlAuthenticationSuccessHandl
     Logger logger= LoggerFactory.getLogger(OfficialsSuccessHandler.class);
 
     @Override
-//    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-//        MyBankUsers myBankUsers= (MyBankUsers) authentication.getPrincipal();
-//        if(myBankUsers.getStatus()!=0){
-//            if(myBankUsers.getAttempts()>1){
-//                myBankUsers.setAttempts(1);
-//                service.updateAttempts(myBankUsers);
-//            }
-//            super.setDefaultTargetUrl("http://localhost:8085/payeerepo/payee.wsdl");
-//            //response.sendRedirect(request.getContextPath() + "/transactions/new");
-//        }
-//        else{
-//            logger.warn("Max attempts reached contact admin");
-//            super.setDefaultTargetUrl("/login");
-//        }
-//        super.onAuthenticationSuccess(request, response, authentication);
-//    }
 
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         Customer myBankUsers= (Customer) authentication.getPrincipal();
@@ -48,7 +31,6 @@ public class OfficialsSuccessHandler extends SimpleUrlAuthenticationSuccessHandl
                 service.updateAttempts(myBankUsers);
             }
             super.setDefaultTargetUrl("/payeerepo/payee.wsdl");
-            //response.sendRedirect(request.getContextPath() + "/transactions/new");
         }
         else{
             logger.warn("Max attempts reached contact admin");

@@ -41,7 +41,7 @@ public class PaymentSoapPhase {
     public FindAllPayeeBasedOnAccountNumberResponse listPayeeBasedOnAccountNumber(@RequestPayload FindAllPayeeBasedOnAccountNumberRequest findAllPayeeBasedOnAccountNumberRequest) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-        Customer customer = service.findByUsernameCustomer(username);
+        Customer customer = service.findByUsernameCustomerStream(username);
         List<Long> senderAccountNumber = service.getAccountNumbersByCustomerId(customer.getCustomerId());
         FindAllPayeeBasedOnAccountNumberResponse findAllPayeeBasedOnAccountNumberResponse = new FindAllPayeeBasedOnAccountNumberResponse();
         ServiceStatus serviceStatus = new ServiceStatus();
@@ -78,115 +78,6 @@ public class PaymentSoapPhase {
         }
         findAllPayeeBasedOnAccountNumberResponse.setServiceStatus(serviceStatus); //setting message status in response
         return findAllPayeeBasedOnAccountNumberResponse;
-    }
-
-
-    @PayloadRoot(namespace = url, localPart = "findAllPayeeRequest")
-    @ResponsePayload  //list all users
-    public FindAllPayeeResponse listAllPayee(@RequestPayload FindAllPayeeRequest findAllPayeeRequest) {
-
-        FindAllPayeeResponse findAllPayeeResponse = new FindAllPayeeResponse();
-        ServiceStatus serviceStatus = new ServiceStatus();
-        try {
-            List<Payee> payees = new ArrayList<>();
-            List<com.paymentdao.payment.entity.Payee> daoPayee = paymentTransferRepository.findAllPayee();
-            Iterator<com.paymentdao.payment.entity.Payee> iterator = daoPayee.iterator();
-            if (daoPayee != null) {
-                while (iterator.hasNext()) {
-                    Payee currentPayee = new Payee();
-                    BeanUtils.copyProperties(iterator.next(), currentPayee);
-                    payees.add(currentPayee);
-                }
-                serviceStatus.setStatus(HttpServletResponse.SC_OK);//request succeeded normally.
-                logger.info(resourceBundle.getString("logger.list.all"));
-                serviceStatus.setMessage(resourceBundle.getString("details.fetched"));
-                findAllPayeeResponse.getPayee().addAll(payees);
-            }
-        } catch (PayeeException e) {
-            logger.warn(resourceBundle.getString("error.message") + e.getMessage());//if no details
-            serviceStatus.setStatus(HttpServletResponse.SC_NO_CONTENT);//request succeeded but that there was no new information to return.
-            serviceStatus.setMessage(e.getMessage());
-        }
-        findAllPayeeResponse.setServiceStatus(serviceStatus);
-        return findAllPayeeResponse;
-    }
-
-
-    @PayloadRoot(namespace = url, localPart = "findAllPayeeReqRequest")
-    @ResponsePayload  //list all users
-    public FindAllPayeeReqResponse listAllPayee(@RequestPayload FindAllPayeeReqRequest findAllPayeeRequest) {
-        FindAllPayeeReqResponse findAllPayeeResponse = new FindAllPayeeReqResponse();
-        ServiceStatus serviceStatus = new ServiceStatus();
-        try {
-            List<PayeeRequired> payees = new ArrayList<>();
-            List<com.paymentdao.payment.entity.Payee> daoPayee = paymentTransferRepository.findAllPayee();
-            Iterator<com.paymentdao.payment.entity.Payee> iterator = daoPayee.iterator();
-
-            while (iterator.hasNext()) {
-                PayeeRequired currentPayee = new PayeeRequired();
-                BeanUtils.copyProperties(iterator.next(), currentPayee);
-                payees.add(currentPayee);
-            }
-            serviceStatus.setStatus(HttpServletResponse.SC_OK);//request succeeded normally.
-            logger.info(resourceBundle.getString("logger.list.all.requiredOnly"));
-            serviceStatus.setMessage(resourceBundle.getString("details.fetched"));
-            findAllPayeeResponse.getPayeeRequired().addAll(payees);
-        } catch (PayeeException e) {
-            logger.warn(resourceBundle.getString("error.message") + e.getMessage());
-            serviceStatus.setStatus(HttpServletResponse.SC_NO_CONTENT);//request succeeded but that there was no new information to return.
-            serviceStatus.setMessage(e.getMessage());
-        }
-        findAllPayeeResponse.setServiceStatus(serviceStatus);
-        return findAllPayeeResponse;
-    }
-
-
-    @PayloadRoot(namespace = url, localPart = "findAllPayeeBasedOnAccountNumberLambdaRequest")
-    @ResponsePayload  //list user based on account number using lambda
-    public FindAllPayeeBasedOnAccountNumberLambdaResponse listAllPayeeLambda(@RequestPayload FindAllPayeeBasedOnAccountNumberLambdaRequest findAllPayeeBasedOnAccountNumberLambdaRequest) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        Customer customer = service.findByUsernameCustomer(username);
-        List<Long> senderAccountNumber = service.getAccountNumbersByCustomerId(customer.getCustomerId());
-
-        FindAllPayeeBasedOnAccountNumberLambdaResponse findAllPayeeBasedOnAccountNumberLambdaResponse = new FindAllPayeeBasedOnAccountNumberLambdaResponse();
-        ServiceStatus serviceStatus = new ServiceStatus();
-        try {
-            // List<Payee> payees = new ArrayList<>();
-            List<PayeeRequired> payees = new ArrayList<>();
-            List<com.paymentdao.payment.entity.Payee> daoPayee = paymentTransferRepository.findAllPayee();
-
-//           daoPayee.forEach(daoPayee1->{          //lambda expression to print based on account number
-//               if(daoPayee1.getSenderAccountNumber()==findAllPayeeBasedOnAccountNumberLambdaRequest.getSenderAccount()){
-//                   Payee currentPayee=new Payee();
-//                   BeanUtils.copyProperties(daoPayee1,currentPayee);
-//                   payees.add(currentPayee);
-//               }
-//           });
-            daoPayee.stream() //using streams
-                    .filter(payee -> payee.getSenderAccountNumber() == findAllPayeeBasedOnAccountNumberLambdaRequest.getSenderAccount())
-                    .forEach(payee -> {
-                        // Payee currentPayee = new Payee();
-                        PayeeRequired currentPayee = new PayeeRequired();
-                        BeanUtils.copyProperties(payee, currentPayee);
-                        payees.add(currentPayee);
-                    });
-            if (payees.size() != 0) {
-                serviceStatus.setStatus(HttpServletResponse.SC_OK);//request succeeded normally.
-                logger.info(resourceBundle.getString("logger.list.all.account.lambda"));
-                serviceStatus.setMessage(resourceBundle.getString("details.fetched"));
-                findAllPayeeBasedOnAccountNumberLambdaResponse.getPayeeRequired().addAll(payees);
-            } else {
-
-                throw new com.payment.webservices.exceptions.PayeeException(resourceBundle.getString("no.payee") + findAllPayeeBasedOnAccountNumberLambdaRequest.getSenderAccount());
-            }
-        } catch (com.payment.webservices.exceptions.PayeeException e) {
-            logger.warn(resourceBundle.getString("error.message") + e.getMessage());
-            serviceStatus.setStatus(HttpServletResponse.SC_NO_CONTENT);//request succeeded but that there was no new information to return.
-            serviceStatus.setMessage(e.getMessage());
-        }
-        findAllPayeeBasedOnAccountNumberLambdaResponse.setServiceStatus(serviceStatus);
-        return findAllPayeeBasedOnAccountNumberLambdaResponse;
     }
 
 }

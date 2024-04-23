@@ -9,13 +9,13 @@
             margin-top: 100px;
         }
         .login-box {
-            background-color: #f8f9fa;
+            background-color: #e4a9f0;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
         }
         .login-button {
-            background-color: #6c757d;
+            background-color: #6a2d76;
             color: #fff;
             border: none;
             border-radius: 5px;

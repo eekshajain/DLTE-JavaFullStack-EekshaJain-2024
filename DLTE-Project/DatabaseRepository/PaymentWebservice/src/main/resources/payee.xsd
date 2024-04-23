@@ -12,15 +12,6 @@
  </xsd:sequence>
 </xsd:complexType>
 
-
-
- <xsd:complexType name="payeeRequired">
-  <xsd:sequence>
-   <xsd:element name="payeeAccountNumber" type="xsd:long"/>
-   <xsd:element name="payeeName" type="xsd:string"/>
-  </xsd:sequence>
- </xsd:complexType>
-
 <!--Service status-->
  <xsd:complexType name="serviceStatus">
   <xsd:sequence>
@@ -46,44 +37,5 @@
   </xsd:complexType>
  </xsd:element>
 
- <xsd:element name="findAllPayeeRequest">
-  <xsd:complexType/>
- </xsd:element>
- <xsd:element name="findAllPayeeResponse">
-  <xsd:complexType>
-   <xsd:sequence>
-    <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
-    <xsd:element name="payee" type="tns:payee" maxOccurs="unbounded"/>
-   </xsd:sequence>
-  </xsd:complexType>
- </xsd:element>
 
-
- <xsd:element name="findAllPayeeReqRequest">
-  <xsd:complexType/>
- </xsd:element>
- <xsd:element name="findAllPayeeReqResponse">
-  <xsd:complexType>
-   <xsd:sequence>
-    <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
-    <xsd:element name="payeeRequired" type="tns:payeeRequired" maxOccurs="unbounded"/>
-   </xsd:sequence>
-  </xsd:complexType>
- </xsd:element>
-
- <xsd:element name="findAllPayeeBasedOnAccountNumberLambdaRequest">
-  <xsd:complexType>
-   <xsd:sequence>
-    <xsd:element name="senderAccount" type="xsd:long"/>
-   </xsd:sequence>
-  </xsd:complexType>
- </xsd:element>
- <xsd:element name="findAllPayeeBasedOnAccountNumberLambdaResponse">
-  <xsd:complexType>
-   <xsd:sequence>
-    <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
-    <xsd:element name="payeeRequired" type="tns:payeeRequired" maxOccurs="unbounded"/>
-   </xsd:sequence>
-  </xsd:complexType>
- </xsd:element>
  </xsd:schema>

@@ -3,19 +3,15 @@ package com.paymentdao.payment.service;
 import com.paymentdao.payment.entity.Payee;
 import com.paymentdao.payment.entity.Transaction;
 import com.paymentdao.payment.exceptions.PayeeException;
+import com.paymentdao.payment.exceptions.TransactionException;
 import com.paymentdao.payment.remote.PaymentTransferRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.dao.DataAccessException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
@@ -62,30 +58,6 @@ public class PaymentTransferImplementation  implements PaymentTransferRepository
         return payees;
     }
 
-//    @Override
-//    public void processTransaction(long senderAccountNumber, long payeeAccountNumber, String transactionType, double transactionAmount) {
-//        String procedureCall = "CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)";
-//        logger.info(resourceBundle.getString("logger.transaction.initiate")+payeeAccountNumber);
-//        try {
-//            int rowAffected=jdbcTemplate.update(procedureCall, senderAccountNumber, payeeAccountNumber, transactionType, transactionAmount);
-//            if(rowAffected>0)  logger.info(resourceBundle.getString("logger.transaction.done"));
-//        }
-//        catch(DataAccessException dataException){
-//            if(dataException.getLocalizedMessage().contains("ORA-20001")) {
-//                logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("insufficient.balance"));
-//                throw new PayeeException(resourceBundle.getString("insufficient.balance"));
-//            }
-//            if(dataException.getLocalizedMessage().contains("ORA-20002")) {
-//                logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("no.payee.found"));
-//                throw new PayeeException(resourceBundle.getString("no.payee.found"));
-//            }
-//            if(dataException.getLocalizedMessage().contains("ORA-20004")) {
-//                logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("sender.inactive"));
-//                throw new PayeeException(resourceBundle.getString("sender.inactive"));
-//            }
-//        }
-//    }
-
     @Override
     public Transaction processTransaction(Transaction transaction) {
         String procedureCall = "CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)";
@@ -105,64 +77,29 @@ public class PaymentTransferImplementation  implements PaymentTransferRepository
         catch(DataAccessException dataException){
             if(dataException.getLocalizedMessage().contains("ORA-20001")) {
                 logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("insufficient.balance"));
-                throw new PayeeException(resourceBundle.getString("insufficient.balance"));
+                throw new TransactionException(resourceBundle.getString("insufficient.balance"));
             }
             else if(dataException.getLocalizedMessage().contains("ORA-20002")) {
                 logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("no.payee.found"));
-                throw new PayeeException(resourceBundle.getString("no.payee.found"));
+                throw new TransactionException(resourceBundle.getString("no.payee.found"));
             }
             else if(dataException.getLocalizedMessage().contains("ORA-20004")) {
                 logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("sender.inactive"));
-                throw new PayeeException(resourceBundle.getString("sender.inactive"));
+                throw new TransactionException(resourceBundle.getString("sender.inactive"));
             }else if(dataException.getLocalizedMessage().contains("ORA-20003")){
                 logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("rtgs.minimum.amount"));
-                throw new PayeeException(resourceBundle.getString("rtgs.minimum.amount"));
+                throw new TransactionException(resourceBundle.getString("rtgs.minimum.amount"));
             }else if(dataException.getLocalizedMessage().contains("ORA-20005")){
                 logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("minimum.balance.fail"));
-                throw new PayeeException(resourceBundle.getString("minimum.balance.fail"));
+                throw new TransactionException(resourceBundle.getString("minimum.balance.fail"));
             }
             else {
                 // For any other type of exception, return a generic error response
-               throw new PayeeException(resourceBundle.getString("internal.server.error"));
+               throw new TransactionException(resourceBundle.getString("internal.server.error"));
             }
         }
     }
 
-    @Override
-    public Transaction processTransaction(Long senderAcc, Transaction transaction) {
-        String procedureCall = "CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)";
-        logger.info(resourceBundle.getString("logger.transaction.initiate")+transaction.getTransactionTo());
-        try {
-            int rowAffected=jdbcTemplate.update(procedureCall,
-                    new Object[]{
-                            senderAcc,
-                            transaction.getTransactionTo(),
-                            transaction.getTransactionType(),
-                            transaction.getTransactionAmount()
-                    }
-            );
-            if(rowAffected>0)  logger.info(resourceBundle.getString("logger.transaction.done"));
-            return transaction;
-        }
-        catch(DataAccessException dataException){
-            if(dataException.getLocalizedMessage().contains("ORA-20001")) {
-                logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("insufficient.balance"));
-                throw new PayeeException(resourceBundle.getString("insufficient.balance"));
-            }
-            else if(dataException.getLocalizedMessage().contains("ORA-20002")) {
-                logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("no.payee.found"));
-                throw new PayeeException(resourceBundle.getString("no.payee.found"));
-            }
-            else if(dataException.getLocalizedMessage().contains("ORA-20004")) {
-                logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("sender.inactive"));
-                throw new PayeeException(resourceBundle.getString("sender.inactive"));
-            }
-            else {
-                // For any other type of exception, return a generic error response
-                throw new PayeeException(resourceBundle.getString("internal.server.error"));
-            }
-        }
-    }
 
     public class PayeeMapper implements RowMapper<Payee> {
         @Override
