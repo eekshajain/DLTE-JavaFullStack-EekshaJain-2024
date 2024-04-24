@@ -13,12 +13,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 @Component
 public class OfficialsSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     @Autowired
     MyBankUsersServices service;
-
+    ResourceBundle resourceBundle=ResourceBundle.getBundle("payment");
     Logger logger= LoggerFactory.getLogger(OfficialsSuccessHandler.class);
 
     @Override
@@ -33,7 +34,7 @@ public class OfficialsSuccessHandler extends SimpleUrlAuthenticationSuccessHandl
             super.setDefaultTargetUrl("/payeerepo/payee.wsdl");
         }
         else{
-            logger.warn("Max attempts reached contact admin");
+            logger.warn(resourceBundle.getString("max.attempt"));
             super.setDefaultTargetUrl("/login");
         }
         super.onAuthenticationSuccess(request, response, authentication);

@@ -15,13 +15,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 @Component
 public class OfficialsFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     @Autowired
     MyBankUsersServices service;
-
+    ResourceBundle resourceBundle=ResourceBundle.getBundle("payment");
     Logger logger= LoggerFactory.getLogger(OfficialsFailureHandler.class);
 
     @Override
@@ -38,14 +39,14 @@ public class OfficialsFailureHandler extends SimpleUrlAuthenticationFailureHandl
                     if (myBankUsers.getAttempts() < myBankUsers.getMaxAttempts()) {
                         myBankUsers.setAttempts(myBankUsers.getAttempts() + 1);
                         service.updateAttempts(myBankUsers);
-                        logger.warn("Invalid credentials and attempts taken");
-                        exception = new LockedException("Attempts are taken");
+                        logger.warn(resourceBundle.getString("logger.invalid.credential"));
+                        exception = new LockedException(resourceBundle.getString("attempt.taken"));
                     } else {
                         service.updateStatus(myBankUsers);
-                        exception = new LockedException("Max Attempts reached account is suspended");
+                        exception = new LockedException(resourceBundle.getString("max.attempt"));
                     }
                 } else {
-                    logger.warn("Account suspended contact admin to redeem");
+                    logger.warn(resourceBundle.getString("logger.account.suspend"));
                 }
 
             }else{

@@ -2,12 +2,18 @@ package com.example.demo.entity;
 
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Component
 public class Transaction {
+    @NotNull(message ="Transaction ID cannot be null")
+    @Digits()
     private Long transactionId;
     private Date transactionDate;
+    @NotBlank(message = )
     private String transactionBy;
     private String transactionTo;
     private Integer transactionAmount;

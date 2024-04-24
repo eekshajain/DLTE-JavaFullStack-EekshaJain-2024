@@ -50,15 +50,13 @@ public class PaymentRestController {
             } catch (TransactionException transactionException) {
                 logger.warn(resourceBundle.getString("transaction.fail") + transaction.getTransactionTo());
                 String errorMessage = transactionException.getMessage();
-                if (errorMessage.equals(resourceBundle.getString("insufficient.balance"))) {  //if user has insufficient balance
-                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
+                if (errorMessage.equals(resourceBundle.getString("minimum.balance.fail"))) {  //if users balance will fall below minimum balance
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
                 } else if (errorMessage.equals(resourceBundle.getString("no.payee.found"))) { //if user does not have particular payee
                     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
                 } else if (errorMessage.equals(resourceBundle.getString("sender.inactive"))) { //if users account is inactive
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
                 }else if(errorMessage.equals(resourceBundle.getString("rtgs.minimum.amount"))){ //if rtgs amount to be sent is less than 50000
-                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
-                }else if(errorMessage.equals(resourceBundle.getString("minimum.balance.fail"))){ //if users balance will fall below minimum balance
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
                 }
                 else {

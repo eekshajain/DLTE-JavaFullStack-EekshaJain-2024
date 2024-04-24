@@ -25,7 +25,7 @@ public class Transaction {
 
     private Date transactionDate;
 
-    @NotNull(message = "{transactionAmount.notnull}")
+    @NotBlank(message = "{transactionAmount.notnull}")
     @DecimalMin(value = "0.01",message = "{transactionAmount.not.zero}")
     private Double transactionAmount;
 

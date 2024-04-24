@@ -76,8 +76,8 @@ public class PaymentTransferImplementation  implements PaymentTransferRepository
         }
         catch(DataAccessException dataException){
             if(dataException.getLocalizedMessage().contains("ORA-20001")) {
-                logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("insufficient.balance"));
-                throw new TransactionException(resourceBundle.getString("insufficient.balance"));
+                logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("minimum.balance.fail"));
+                throw new TransactionException(resourceBundle.getString("minimum.balance.fail"));
             }
             else if(dataException.getLocalizedMessage().contains("ORA-20002")) {
                 logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("no.payee.found"));
@@ -89,9 +89,6 @@ public class PaymentTransferImplementation  implements PaymentTransferRepository
             }else if(dataException.getLocalizedMessage().contains("ORA-20003")){
                 logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("rtgs.minimum.amount"));
                 throw new TransactionException(resourceBundle.getString("rtgs.minimum.amount"));
-            }else if(dataException.getLocalizedMessage().contains("ORA-20005")){
-                logger.warn(resourceBundle.getString("logger.transaction.fail")+resourceBundle.getString("minimum.balance.fail"));
-                throw new TransactionException(resourceBundle.getString("minimum.balance.fail"));
             }
             else {
                 // For any other type of exception, return a generic error response

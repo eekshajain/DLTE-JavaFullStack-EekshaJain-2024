@@ -59,7 +59,7 @@ public class MyBankUsersServices implements UserDetailsService {
         try {
             return jdbcTemplate.queryForList(sql, new Object[]{customerId}, Long.class);
         } catch (EmptyResultDataAccessException e) {
-            throw new PayeeException("No account found for customer ID: " + customerId);
+            throw new PayeeException(resourceBundle.getString("no.account") + customerId);
         } catch (Exception e) {
             // Handle other exceptions
             e.printStackTrace();
@@ -71,7 +71,7 @@ public class MyBankUsersServices implements UserDetailsService {
     public void updateAttempts(Customer customer){
         jdbcTemplate.update("update MYBANK_APP_CUSTOMER set attempts=? where username=?",
                 new Object[]{customer.getAttempts(),customer.getUsername()});
-        logger.info("Attempts are updated");
+        logger.info(resourceBundle.getString("logger.attempt.update"));
     }
 
 
@@ -79,7 +79,7 @@ public class MyBankUsersServices implements UserDetailsService {
     public void updateStatus(Customer customer){
         jdbcTemplate.update("update MYBANK_APP_CUSTOMER set CUSTOMER_STATUS='inactive' where username=?",
                 new Object[]{customer.getUsername()});
-        logger.info("Status has changed");
+        logger.info(resourceBundle.getString("logger.status.update"));
     }
     @Override
 
