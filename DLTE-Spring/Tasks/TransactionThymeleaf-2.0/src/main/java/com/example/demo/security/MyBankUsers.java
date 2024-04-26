@@ -1,4 +1,4 @@
-package transaction.jdbctemplate.demo.security;
+package com.example.demo.security;//package transaction.jdbctemplate.demo.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

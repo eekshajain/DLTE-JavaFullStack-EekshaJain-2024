@@ -1,4 +1,4 @@
-package transaction.jdbctemplate.demo.security;//package springjdbc.transaction.demo.security;
+package com.example.demo.security;//package transaction.jdbctemplate.demo.security;//package springjdbc.transaction.demo.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
