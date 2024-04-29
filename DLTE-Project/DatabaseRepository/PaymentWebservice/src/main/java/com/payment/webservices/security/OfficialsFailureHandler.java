@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
@@ -31,9 +32,7 @@ public class OfficialsFailureHandler extends SimpleUrlAuthenticationFailureHandl
         Customer myBankUsers = null;
         try {
              myBankUsers = service.findByUsernameCustomerStream(username);
-        }catch (PayeeException payeeException){
-            System.out.println("no");
-    }
+
             if (myBankUsers != null) {
                 if (myBankUsers.getCustomerStatus().equals("active")) {
                     if (myBankUsers.getAttempts() < myBankUsers.getMaxAttempts()) {
@@ -51,7 +50,10 @@ public class OfficialsFailureHandler extends SimpleUrlAuthenticationFailureHandl
 
             }else{
                 super.setDefaultFailureUrl("/login?error=true");
-                super.onAuthenticationFailure(request, response, exception);
             }
+        }catch (UsernameNotFoundException payeeException){
+            exception=new LockedException("No username");
+        }
+            super.onAuthenticationFailure(request, response, exception);
     }
 }

@@ -2,7 +2,6 @@ package com.payment.webservices.controller;
 
 import com.paymentdao.payment.entity.Customer;
 import com.paymentdao.payment.entity.Transaction;
-import com.paymentdao.payment.exceptions.PayeeException;
 import com.paymentdao.payment.exceptions.TransactionException;
 import com.paymentdao.payment.remote.PaymentTransferRepository;
 import com.paymentdao.payment.security.MyBankUsersServices;
@@ -53,7 +52,7 @@ public class PaymentRestController {
                 if (errorMessage.equals(resourceBundle.getString("minimum.balance.fail"))) {  //if users balance will fall below minimum balance
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
                 } else if (errorMessage.equals(resourceBundle.getString("no.payee.found"))) { //if user does not have particular payee
-                    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+                    return ResponseEntity.status(HttpStatus.NO_CONTENT).body(errorMessage);
                 } else if (errorMessage.equals(resourceBundle.getString("sender.inactive"))) { //if users account is inactive
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
                 }else if(errorMessage.equals(resourceBundle.getString("rtgs.minimum.amount"))){ //if rtgs amount to be sent is less than 50000

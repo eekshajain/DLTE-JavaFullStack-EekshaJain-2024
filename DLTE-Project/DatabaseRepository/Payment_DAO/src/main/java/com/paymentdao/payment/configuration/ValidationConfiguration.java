@@ -7,7 +7,6 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @Configuration
-//@ComponentScan("com.paymentdao.payment.entity")
 public class ValidationConfiguration {
     @Bean
     public MessageSource messageSource() {

@@ -27,7 +27,8 @@ public class TransactionSecurity {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable();
         httpSecurity.httpBasic();
-        httpSecurity.formLogin();
+        httpSecurity.formLogin().loginPage("/transactions/").usernameParameter("username");
+        httpSecurity.csrf().disable();
         httpSecurity.authorizeRequests().antMatchers("/profile/register").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/transaction/add").hasAnyAuthority("admin");
         httpSecurity.authorizeRequests().antMatchers("/transaction/send/*").hasAnyAuthority("customer");

@@ -3,6 +3,8 @@ package com.example.demo.mvc;
 import com.example.demo.entity.Transaction;
 import com.example.demo.services.TransactionServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -103,6 +105,13 @@ public class TransactionsController {
            String delete=transactionServices.deleteTransaction(startDate,endDate);
            model.addAttribute("messageDelete",delete);
            return "index";
-
+    }
+    @PostMapping("/logout")
+    public String logout() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            SecurityContextHolder.getContext().setAuthentication(null);
+        }
+        return "redirect:/index";
     }
 }

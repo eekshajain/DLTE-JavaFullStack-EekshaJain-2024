@@ -67,12 +67,12 @@
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container" >
     <div class="form-container">
         <h1 th:if="${param.error}">
             <span th:text="${session?.SPRING_SECURITY_LAST_EXCEPTION?.message}"></span>
         </h1>
-        <form action="#" th:action="@{/transactions/dash}" method="post">
+        <form action="#" th:action="@{/transactions/}" method="post">
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control" placeholder="Username"/>

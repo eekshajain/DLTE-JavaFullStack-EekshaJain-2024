@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="new">
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
@@ -42,7 +42,7 @@
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container" th:fragment="menu">
     <nav class="navbar">
         <ul class="nav-list">
             <li class="nav-item">
@@ -53,6 +53,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/transactions/before}">Delete</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
             </li>
         </ul>
     </nav>

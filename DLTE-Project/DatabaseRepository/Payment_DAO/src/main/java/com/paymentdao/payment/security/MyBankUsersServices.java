@@ -46,7 +46,7 @@ public class MyBankUsersServices implements UserDetailsService {
                 .filter(customer1 -> customer1.getUsername().equals(username)).findFirst().orElse(null);
         if(customer==null){
             logger.warn(resourceBundle.getString("logger.no.username"));
-            throw new PayeeException(resourceBundle.getString("no.username"));
+            throw new UsernameNotFoundException(username);
         }
         return customer;
     }

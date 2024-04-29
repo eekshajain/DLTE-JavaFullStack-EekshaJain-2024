@@ -6,7 +6,6 @@ import com.paymentdao.payment.entity.Customer;
 import com.paymentdao.payment.entity.Transaction;
 import com.paymentdao.payment.exceptions.PayeeException;
 import com.paymentdao.payment.remote.PaymentTransferRepository;
-import com.paymentdao.payment.security.MyBankUsers;
 import com.paymentdao.payment.security.MyBankUsersServices;
 import com.paymentdao.payment.service.PaymentTransferImplementation;
 import org.junit.jupiter.api.BeforeEach;
@@ -120,7 +119,7 @@ public class RestEndPoint {
 
    //@Test
 
-    public void testNewTransactions_SenderNotFounderror() {
+    public void testNewTransactions_SenderNotFoundError() {
         // Mock data
         Transaction transaction = new Transaction();
         transaction.setTransactionFrom(12345678901L);
