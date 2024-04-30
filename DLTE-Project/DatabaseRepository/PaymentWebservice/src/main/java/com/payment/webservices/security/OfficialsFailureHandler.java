@@ -34,25 +34,34 @@ public class OfficialsFailureHandler extends SimpleUrlAuthenticationFailureHandl
              myBankUsers = service.findByUsernameCustomerStream(username);
 
             if (myBankUsers != null) {
-                if (myBankUsers.getCustomerStatus().equals("active")) {
+                if (myBankUsers.getCustomerStatus().equalsIgnoreCase("active")) {
                     if (myBankUsers.getAttempts() < myBankUsers.getMaxAttempts()) {
                         myBankUsers.setAttempts(myBankUsers.getAttempts() + 1);
                         service.updateAttempts(myBankUsers);
                         logger.warn(resourceBundle.getString("logger.invalid.credential"));
-                        exception = new LockedException(resourceBundle.getString("attempt.taken"));
+                        exception = new LockedException((4-myBankUsers.getAttempts())+" "+resourceBundle.getString("attempt.left"));
+                        String error=myBankUsers.getAttempts()+" "+exception.getMessage();
+                        logger.warn(error);
+                        super.setDefaultFailureUrl("/payment/?error="+error);
                     } else {
                         service.updateStatus(myBankUsers);
+                        logger.warn(resourceBundle.getString("logger.account.suspend"));
                         exception = new LockedException(resourceBundle.getString("max.attempt"));
+                        super.setDefaultFailureUrl("/payment/?error="+exception.getMessage());
                     }
-                } else {
+                }
+                else {
                     logger.warn(resourceBundle.getString("logger.account.suspend"));
                 }
 
             }else{
-                super.setDefaultFailureUrl("/login?error=true");
+                super.setDefaultFailureUrl("/payment/?error=User does not exist");
             }
-        }catch (UsernameNotFoundException payeeException){
-            exception=new LockedException("No username");
+        }catch (UsernameNotFoundException userException){
+            logger.info(userException.toString());
+            logger.warn(resourceBundle.getString("logger.account.suspend"));
+            exception=new LockedException(resourceBundle.getString("no.username"));
+            super.setDefaultFailureUrl("/payment/?error="+exception.getMessage());
         }
             super.onAuthenticationFailure(request, response, exception);
     }

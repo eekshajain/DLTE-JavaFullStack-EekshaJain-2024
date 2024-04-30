@@ -50,13 +50,14 @@ public class MyBankAppSecurity {
     @Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.httpBasic();
-        httpSecurity.formLogin().usernameParameter("username").failureHandler(officialsFailureHandler).successHandler(officialsSuccessHandler);
+//        httpSecurity.formLogin().usernameParameter("username").failureHandler(officialsFailureHandler).successHandler(officialsSuccessHandler);
         httpSecurity.csrf().disable();
         httpSecurity.authorizeRequests().antMatchers("/profile/register").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/v3/api-docs").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/pictures/**").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/styles/**").permitAll();
-        httpSecurity.authorizeRequests().antMatchers("/transaction/**").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/payment/**").permitAll();
+        httpSecurity.formLogin().usernameParameter("username").loginPage("/payment/").failureHandler(officialsFailureHandler).successHandler(officialsSuccessHandler);
         httpSecurity.cors();
         httpSecurity.authorizeRequests().anyRequest().authenticated();
         // 3rd layer

@@ -31,11 +31,11 @@ public class OfficialsSuccessHandler extends SimpleUrlAuthenticationSuccessHandl
                 myBankUsers.setAttempts(1);
                 service.updateAttempts(myBankUsers);
             }
-            super.setDefaultTargetUrl("/payeerepo/payee.wsdl");
+            super.setDefaultTargetUrl("/payment/dash");
         }
         else{
             logger.warn(resourceBundle.getString("max.attempt"));
-            super.setDefaultTargetUrl("/login");
+            super.setDefaultTargetUrl("/payment/?errors="+resourceBundle.getString("contact.admin"));
         }
         super.onAuthenticationSuccess(request, response, authentication);
     }
