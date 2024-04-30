@@ -49,10 +49,6 @@
     color: #fff; /* White text color on hover */
 }
 
-.nav-item {
-    flex-grow: 1; /* Allow items to grow equally */
-    text-align: center;
-}
 img{
     width:30px;
     height: 25px;

@@ -42,4 +42,7 @@ public class MyBank {
     public String showDash(){
         return "dashboard";
     }
+
+    @GetMapping("/view")
+    public String showViewAll(){return "viewall";}
 }

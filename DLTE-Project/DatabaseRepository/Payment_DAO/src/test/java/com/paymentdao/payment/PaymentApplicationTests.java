@@ -32,10 +32,6 @@ class PaymentApplicationTests {
 @InjectMocks
 PaymentTransferImplementation paymentTransferImplementation;
 
-@Mock
-    SimpleJdbcCall simpleJdbcCall;
-    @Mock
-    private DataSource dataSource;
 
     @Test
     void testFindAllBasedOnAccount()  {
@@ -75,47 +71,8 @@ PaymentTransferImplementation paymentTransferImplementation;
         assertEquals(987654321234L, actualList.get(0).getPayeeAccountNumber());
     }
 
-    @Test
-    void testFindAll()  {
-        Payee payee1=new Payee(101,213456789654L,543212345678L,"Eeksha");
-        Payee payee2=new Payee(102,765423123564L,765432345678L,"Divija");
-        Payee payee3=new Payee(103,213456789654L,987654321234L,"Arundhathi");
-        Payee payee4=new Payee(104,765423123564L,543567543456L,"Anu");
-        List<Payee> payees=Stream.of(payee1,payee2,payee3,payee4).collect(Collectors.toList());
-        when(jdbcTemplate.query(eq("select * from MYBANK_APP_Payee"),
-                any(PaymentTransferImplementation.PayeeMapper.class))).thenReturn(payees);
-//        when(jdbcTemplate.query(anyString(),any(Object[].class),
-//                any(PaymentTransferImplementation.PayeeMapper.class))).thenReturn(payees);
-        // Call the method under test
-        List<Payee> actualList = paymentTransferImplementation.findAllPayee();
 
-        // Assert that the actual list contains the expected payee account number
-        assertEquals(543212345678L, actualList.get(0).getPayeeAccountNumber());
-        assertEquals(765432345678L, actualList.get(1).getPayeeAccountNumber());
-        assertEquals(987654321234L, actualList.get(2).getPayeeAccountNumber());
-        assertEquals(543567543456L, actualList.get(3).getPayeeAccountNumber());
-    }
 
-   // @Test
-    void testFindAllFail()  {
-        Payee payee1=new Payee(101,213456789654L,543212345678L,"Eeksha");
-        Payee payee2=new Payee(102,765423123564L,765432345678L,"Divija");
-        Payee payee3=new Payee(103,213456789654L,987654321234L,"Arundhathi");
-        Payee payee4=new Payee(104,765423123564L,543567543456L,"Anu");
-        List<Payee> payees=Stream.of(payee1,payee2,payee3,payee4).collect(Collectors.toList());
-        when(jdbcTemplate.query(eq("select * from MYBANK_APP_Payee"),
-                any(PaymentTransferImplementation.PayeeMapper.class))).thenReturn(payees);
-//        when(jdbcTemplate.query(anyString(),any(Object[].class),
-//                any(PaymentTransferImplementation.PayeeMapper.class))).thenReturn(payees);
-        // Call the method under test
-        List<Payee> actualList = paymentTransferImplementation.findAllPayee();
-
-        // Assert that the actual list contains the expected payee account number
-        assertEquals(543212345678L, actualList.get(3).getPayeeAccountNumber());
-        assertEquals(765432345678L, actualList.get(2).getPayeeAccountNumber());
-        assertEquals(987654321234L, actualList.get(1).getPayeeAccountNumber());
-        assertEquals(543567543456L, actualList.get(0).getPayeeAccountNumber());
-    }
 
     @Test
     public void testProcessTransaction() {

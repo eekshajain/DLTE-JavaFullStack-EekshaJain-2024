@@ -18,8 +18,8 @@
         <span>MY BANK</span>
         </div>
         <div class="logout">
-            <form id="logoutForm" action="/logout" method="post">
-                <button type="submit">Logout</button>
+            <form id="logoutForm"  method="post">
+                <button type="submit"><a th:href="@{'/logout'}">Logout</a></button>
             </form>
         </div>
         </div>
@@ -44,7 +44,7 @@
                             Payments
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarPayments">
-                            <li><a class="dropdown-item" href="#">View All Payee</a></li>
+                            <li><a class="dropdown-item" th:href="@{/payment/view}">View All Payee</a></li>
                             <li><a class="dropdown-item" href="#">Add Payee</a></li>
                         </ul>
                     </li>

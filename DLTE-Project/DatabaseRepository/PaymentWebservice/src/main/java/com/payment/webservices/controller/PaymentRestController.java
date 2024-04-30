@@ -50,13 +50,13 @@ public class PaymentRestController {
                 logger.warn(resourceBundle.getString("transaction.fail") + transaction.getTransactionTo());
                 String errorMessage = transactionException.getMessage();
                 if (errorMessage.equals(resourceBundle.getString("minimum.balance.fail"))) {  //if users balance will fall below minimum balance
-                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
+                    return ResponseEntity.status(HttpStatus.OK).body(errorMessage);
                 } else if (errorMessage.equals(resourceBundle.getString("no.payee.found"))) { //if user does not have particular payee
-                    return ResponseEntity.status(HttpStatus.NO_CONTENT).body(errorMessage);
+                    return ResponseEntity.status(HttpStatus.OK).body(errorMessage);
                 } else if (errorMessage.equals(resourceBundle.getString("sender.inactive"))) { //if users account is inactive
-                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
+                    return ResponseEntity.status(HttpStatus.OK).body(errorMessage);
                 }else if(errorMessage.equals(resourceBundle.getString("rtgs.minimum.amount"))){ //if rtgs amount to be sent is less than 50000
-                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage);
+                    return ResponseEntity.status(HttpStatus.OK).body(errorMessage);
                 }
                 else {
                     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
@@ -66,6 +66,16 @@ public class PaymentRestController {
             logger.warn(resourceBundle.getString("logger.no.sender.account")+customer.getCustomerId());//if sender doesnot ave account
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resourceBundle.getString("sender.no.account"));
         }
+    }
+
+
+    @GetMapping("/fetch-details")
+    public List<Long> fetchAccountNumber(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();//get logged in users username
+        Customer customer=service.findByUsernameCustomerStream(username);
+        List<Long> senderAccountNumber=service.getAccountNumbersByCustomerId(customer.getCustomerId());
+        return senderAccountNumber;
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

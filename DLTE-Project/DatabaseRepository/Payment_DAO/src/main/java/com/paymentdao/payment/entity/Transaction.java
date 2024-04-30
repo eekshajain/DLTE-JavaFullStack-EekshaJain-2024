@@ -6,7 +6,7 @@ import javax.validation.constraints.*;
 import java.util.Date;
 
 public class Transaction {
-   // @NotNull(message = "{transactionId.notnull}")
+
     private Integer transactionId;
 
     @NotNull(message = "{transactionType.notnull}")
@@ -29,10 +29,10 @@ public class Transaction {
     @DecimalMin(value = "0.01",message = "{transactionAmount.not.zero}")
     private Double transactionAmount;
 
-  //  @NotNull(message = "{transactionStatus.notnull}")
+
     private String transactionStatus;
 
-    public Transaction(Integer transactionId, String transactionType, @NotNull @Positive(message = "{transactionAccount.positive}") @Range(min = 100000000000L, max = 999999999999L, message = "{digits.accountNumber.message}") Long transactionFrom, @NotNull @Positive(message = "{transactionAccount.positive}") @Range(min = 100000000000L, max = 999999999999L, message = "{digits.accountNumber.message}") Long transactionTo, Date transactionDate, @NotNull Double transactionAmount, String transactionStatus) {
+    public Transaction(Integer transactionId, String transactionType, Long transactionFrom, Long transactionTo, Date transactionDate, Double transactionAmount, String transactionStatus) {
         this.transactionId = transactionId;
         this.transactionType = transactionType;
         this.transactionFrom = transactionFrom;
