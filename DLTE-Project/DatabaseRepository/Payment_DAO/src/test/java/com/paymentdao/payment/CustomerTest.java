@@ -3,6 +3,9 @@ package com.paymentdao.payment;
 
 import com.paymentdao.payment.entity.Customer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -14,6 +17,8 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@ExtendWith(MockitoExtension.class)
+@SpringBootTest
 public class CustomerTest {
     @Test
     public void testValidCustomer() {

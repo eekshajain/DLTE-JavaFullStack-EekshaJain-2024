@@ -43,20 +43,6 @@ public class PaymentTransferImplementation  implements PaymentTransferRepository
         return payees;
     }
 
-    @Override
-    public List<Payee> findAllPayee()  {
-        List<Payee> payees;
-            logger.info(resourceBundle.getString("logger.list.all"));
-            payees = jdbcTemplate.query("select * from MYBANK_APP_Payee",  // query to fetch all
-//                new BeanPropertyRowMapper<>(Payee.class)
-                    new PayeeMapper());
-
-        if(payees.size()==0){
-            logger.error(resourceBundle.getString("no.payee"));
-            throw new PayeeException(resourceBundle.getString("no.payee"));
-        }
-        return payees;
-    }
 
     @Override
     public Transaction processTransaction(Transaction transaction) {

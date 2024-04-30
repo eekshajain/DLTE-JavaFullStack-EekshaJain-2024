@@ -1,38 +1,48 @@
 package com.payment.webservices;
 
 import com.payment.webservices.controller.PaymentSoapPhase;
+import com.paymentdao.payment.entity.Customer;
 import com.paymentdao.payment.entity.Payee;
-import com.paymentdao.payment.service.PaymentTransferImplementation;
+import com.paymentdao.payment.remote.PaymentTransferRepository;
+import com.paymentdao.payment.security.MyBankUsersServices;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import services.payee.FindAllPayeeBasedOnAccountNumberRequest;
 import services.payee.FindAllPayeeBasedOnAccountNumberResponse;
 
 import java.sql.SQLSyntaxErrorException;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class EndPointTesting {
     @MockBean
-    private PaymentTransferImplementation paymentService;
+    private PaymentTransferRepository paymentService;
 
     @InjectMocks
     private PaymentSoapPhase soapPhase;
     private MockMvc mockMvc;
+    @Mock
+    MyBankUsersServices usersServices;
+
 
     @BeforeEach
     void setup() {
@@ -40,6 +50,15 @@ public class EndPointTesting {
     }
     @Test
     public void testFindAllAccountNumber() throws SQLSyntaxErrorException {
+        Authentication authentication = mock(Authentication.class);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        when(authentication.getName()).thenReturn("testUser");
+
+        // Mock service behavior
+        Customer customer = new Customer();
+        customer.setCustomerId(123);
+        when(usersServices.findByUsernameCustomerStream("testUser")).thenReturn(customer);
+        when(usersServices.getAccountNumbersByCustomerId(123)).thenReturn(Collections.singletonList(213456789654L));
         List<Payee> payees;
         Payee payee = new Payee();
         Payee payee1=new Payee(101,213456789654L,543212345678L,"Eeksha");
