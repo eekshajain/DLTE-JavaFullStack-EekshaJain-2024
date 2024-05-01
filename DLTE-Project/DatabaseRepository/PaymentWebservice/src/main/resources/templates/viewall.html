@@ -18,35 +18,111 @@
             background-color: #d1d6d4;
             color: #020082;
         }
+        h2{
+            text-align: center;
+            color: #020082;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+        }
     </style>
     <script>
-        $(document).ready(()=>{
+        $(document).ready(() => {
+            // Fetch account numbers and populate dropdown
             $.ajax({
-                type:"GET",
-                url:"/transactions/fetch-details",
-                dataType:"json",
-                contentType:"application/json;charset=utf-8",
-                success:function (response) {
-                    alert(response)
+                type: "GET",
+                url: "/transactions/fetch-details",
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                success: function (response) {
                     $("#populate").empty().append('<option value="" selected disabled>Select Account Number</option>');
                     response.forEach(accountNumber => {
                         $("#populate").append(`<option value="${accountNumber}">${accountNumber}</option>`);
                     });
-                  console.log(response);
                 },
-                error:function (error){
-                  console.error("Error fetching:"+error);
+                error: function (error) {
+                    console.error("Error fetching:" + error);
+                }
+            });
+
+            // Event handler for dropdown change
+            $("#populate").change(function () {
+                var selectedAccountNumber = $(this).val();
+                if (selectedAccountNumber) {
+                    alert("Selected account number: " + selectedAccountNumber);
+                    findBasedOnAccNumber(selectedAccountNumber);
+                }
+            });
+
+            // Function to fetch payees based on account number
+            function findBasedOnAccNumber(number) {
+                let soapRequest = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://payee.services">
+<soapenv:Header/>
+<soapenv:Body>
+<pay:findAllPayeeBasedOnAccountNumberRequest>
+<pay:senderAccount>${number}</pay:senderAccount>
+</pay:findAllPayeeBasedOnAccountNumberRequest>
+</soapenv:Body>
+</soapenv:Envelope>`;
+
+                $.ajax({
+                    url: "http://localhost:8085/payeerepo",
+                    type: "POST",
+                    dataType: "xml",
+                    beforeSend: function (handler) {
+                        handler.setRequestHeader("SOAPAction", "findAllPayeeBasedOnAccountNumberRequest");
+                    },
+                    contentType: "text/xml;charset=utf-8",
+                    data: soapRequest,
+                    success: function (response) {
+                        alert("Successfully fetched payee details!");
+                        const payeeDetails = [];
+                        $(response).find(`ns2\\:payee`).each(function () {
+                            const payee = {
+                                name: $(this).find(`ns2\\:payeeName`).text(),
+                                accountNumber: $(this).find(`ns2\\:payeeAccountNumber`).text(),
+                                // Add other payee details as needed
+                            };
+                            payeeDetails.push(payee);
+                        });
+
+                        // Display payee details in cards
+                        displayPayeeDetails(payeeDetails);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error fetching payee details: " + error);
+                        console.error("Error fetching payees: " + error);
+                    }
+                });
             }
-            })
+
+            const displayPayeeDetails = (payees) => {
+                const payeeCardsContainer = $("#payeeDetails");
+                payeeCardsContainer.empty();
+
+                payees.forEach(payee => {
+                    const card = `
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">${payee.name}</h5>
+                    <p class="card-text">Account Number: ${payee.accountNumber}</p>
+                </div>
+            </div>
+        `;
+                    payeeCardsContainer.append(card);
+                });
             }
-        )
+        })
     </script>
 </head>
 <body>
 <header style="margin-bottom: 15px"><div th:insert="header::menu"></div></header>
+<h2>View all payees</h2>
 <div>
     <select id="populate" name="senderAccountNumber" class="form-select custom-dropdown"></select>
 </div>
-<footer style="margin-top: 10px"><div th:insert="footer::footer"></div></footer>
+<div id="payeeDetails" class="container mt-3" style="display: inline-block;">
+    <!-- Payee details will be displayed here -->
+</div>
+<footer style="margin-top: 15px"><div th:insert="footer::footer"></div></footer>
 </body>
 </html>

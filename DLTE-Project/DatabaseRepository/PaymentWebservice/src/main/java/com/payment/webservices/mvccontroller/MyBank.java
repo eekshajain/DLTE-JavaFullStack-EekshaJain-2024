@@ -45,4 +45,7 @@ public class MyBank {
 
     @GetMapping("/view")
     public String showViewAll(){return "viewall";}
+
+    @GetMapping("/new-trans")
+    public String showTrans(){ return "newtransaction";}
 }
