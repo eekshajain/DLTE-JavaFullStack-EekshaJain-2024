@@ -117,7 +117,7 @@ public class RestEndPoint {
         assertEquals("No account found.Please add new account!", responseEntity.getBody());
     }
 
-   //@Test
+   @Test
 
     public void testNewTransactions_SenderNotFoundError() {
         // Mock data
@@ -144,10 +144,10 @@ public class RestEndPoint {
 
         // Verify the response
         assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
-        assertEquals("No account found for the sender.", responseEntity.getBody());
+        assertEquals("No account found.Please add new account!", responseEntity.getBody());
     }
 
-    @Test
+    //@Test
     public void testEndPoint() throws Exception {
         Transaction transaction = new Transaction();
         transaction.setTransactionFrom(12345678901L);

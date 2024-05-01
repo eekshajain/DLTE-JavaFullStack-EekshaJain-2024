@@ -24,6 +24,25 @@
             text-transform: uppercase;
             font-family: 'Montserrat', sans-serif;
         }
+        body {
+            height: 100vh;
+        }
+        .narrow-btn1 {
+
+            background-color: #182052; /* Orange color */
+            color: #fff4f7;
+            border-radius: 10px;
+        }
+        .narrow-btn1.clicked {
+            background-color: #182052; /* White color */
+            color: #182052; /* Orange color */
+        }
+
+        .narrow-btn{
+            color: #fff4f7;
+            border-radius: 10px;
+            margin-left: 10px;
+        }
     </style>
     <script>
         $(document).ready(() => {
@@ -43,7 +62,6 @@
                     console.error("Error fetching:" + error);
                 }
             });
-
             // Event handler for dropdown change
             $("#populate").change(function () {
                 var selectedAccountNumber = $(this).val();
@@ -52,7 +70,6 @@
                     findBasedOnAccNumber(selectedAccountNumber);
                 }
             });
-
             // Function to fetch payees based on account number
             function findBasedOnAccNumber(number) {
                 let soapRequest = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://payee.services">
@@ -63,7 +80,6 @@
 </pay:findAllPayeeBasedOnAccountNumberRequest>
 </soapenv:Body>
 </soapenv:Envelope>`;
-
                 $.ajax({
                     url: "http://localhost:8085/payeerepo",
                     type: "POST",
@@ -84,7 +100,6 @@
                             };
                             payeeDetails.push(payee);
                         });
-
                         // Display payee details in cards
                         displayPayeeDetails(payeeDetails);
                     },
@@ -94,24 +109,61 @@
                     }
                 });
             }
-
             const displayPayeeDetails = (payees) => {
                 const payeeCardsContainer = $("#payeeDetails");
-                payeeCardsContainer.empty();
+                payeeCardsContainer.empty(); // Clear the container before adding new cards
+                const itemsPerPage = 3; // Number of cards per page
+                const totalPages = Math.ceil(payees.length / itemsPerPage);
+                let currentPage = 1;
+                showPage(currentPage);
 
-                payees.forEach(payee => {
-                    const card = `
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">${payee.name}</h5>
-                    <p class="card-text">Account Number: ${payee.accountNumber}</p>
+                function showPage(page) {
+                    payeeCardsContainer.empty(); // Clear the container before adding new cards
+                    const startIndex = (page - 1) * itemsPerPage;
+                    const endIndex = Math.min(startIndex + itemsPerPage, payees.length);
+                    const row = $("<div class='row'></div>");
+                    for (let i = startIndex; i < endIndex; i++) {
+                        const payee = payees[i];
+                        const card = `
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">${payee.name}</h5>
+                            <p class="card-text">Account Number: ${payee.accountNumber}</p>
+                           <button class="btn narrow-btn1" onclick="viewtransaction('${$("#populate").val()}', '${payee.accountNumber}')">Transaction</button>
+                            <button class="btn btn-danger narrow-btn">Delete</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        `;
-                    payeeCardsContainer.append(card);
-                });
-            }
+            `;
+                        row.append(card);
+                    }
+                    payeeCardsContainer.append(row);
+                }
+
+                function updatePagination() {
+                    $(".pagination").remove();
+                    const pagination = $("<ul class='pagination justify-content-center'></ul>");
+                    for (let i = 1; i <= totalPages; i++) {
+                        const pageItem = $("<li class='page-item'></li>");
+                        const pageLink = $(`<a class='page-link' href='#'>${i}</a>`);
+                        pageLink.click(() => {
+                            currentPage = i;
+                            showPage(currentPage);
+                        });
+                        pageItem.append(pageLink);
+                        pagination.append(pageItem);
+                    }
+                    pagination.find(".page-link").css("margin", "0 5px");
+                    $("#payeeDetails").after(pagination);
+                }
+                updatePagination();
+            };
         })
+        function viewtransaction(dropdownAccountNumber, cardAccountNumber) {
+            const url = "/payment/new-trans?dropdownAccountNumber=" + dropdownAccountNumber + "&cardAccountNumber=" + cardAccountNumber;
+            window.location.href = url;
+        }
     </script>
 </head>
 <body>
