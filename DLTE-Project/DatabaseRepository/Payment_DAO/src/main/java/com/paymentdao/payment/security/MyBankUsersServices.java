@@ -67,6 +67,15 @@ public class MyBankUsersServices implements UserDetailsService {
         }
     }
 
+    public String getCustomerName(String user) {
+        try {
+            String sql = "SELECT c.CUSTOMER_NAME FROM mybank_app_customer c WHERE c.username =  ?";
+            return jdbcTemplate.queryForObject(sql, new Object[]{user}, String.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public void updateAttempts(Customer customer){
         jdbcTemplate.update("update MYBANK_APP_CUSTOMER set attempts=? where username=?",
@@ -87,7 +96,6 @@ public class MyBankUsersServices implements UserDetailsService {
         Customer users = findByUsernameCustomerStream(username);
         if(users==null)
             throw new UsernameNotFoundException(username);
-           // throw new PayeeException(resourceBundle.getString("no.username"));
         return users;
     }
     }

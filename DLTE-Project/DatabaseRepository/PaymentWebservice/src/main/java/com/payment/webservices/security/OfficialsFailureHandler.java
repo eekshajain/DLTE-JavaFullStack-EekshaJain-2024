@@ -1,7 +1,6 @@
 package com.payment.webservices.security;
 
 import com.paymentdao.payment.entity.Customer;
-import com.paymentdao.payment.exceptions.PayeeException;
 import com.paymentdao.payment.security.MyBankUsersServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +38,7 @@ public class OfficialsFailureHandler extends SimpleUrlAuthenticationFailureHandl
                         myBankUsers.setAttempts(myBankUsers.getAttempts() + 1);
                         service.updateAttempts(myBankUsers);
                         logger.warn(resourceBundle.getString("logger.invalid.credential"));
-                        exception = new LockedException((4-myBankUsers.getAttempts())+" "+resourceBundle.getString("attempt.left"));
+                        exception = new LockedException(resourceBundle.getString("invalid.password")+(4-myBankUsers.getAttempts())+" "+resourceBundle.getString("attempt.left"));
                         String error=myBankUsers.getAttempts()+" "+exception.getMessage();
                         logger.warn(error);
                         super.setDefaultFailureUrl("/payment/?error="+error);

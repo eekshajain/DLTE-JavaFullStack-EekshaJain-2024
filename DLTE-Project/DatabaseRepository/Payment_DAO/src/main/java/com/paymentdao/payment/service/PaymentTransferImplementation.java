@@ -55,8 +55,7 @@ public class PaymentTransferImplementation  implements PaymentTransferRepository
                             transaction.getTransactionTo(),
                             transaction.getTransactionType(),
                             transaction.getTransactionAmount()
-                    }
-                    );
+                    });
             if(rowAffected>0)  logger.info(resourceBundle.getString("logger.transaction.done"));
             return transaction;
         }
@@ -83,6 +82,10 @@ public class PaymentTransferImplementation  implements PaymentTransferRepository
         }
     }
 
+    public double retrieveBalance(Long senderAccount){
+        Double balanceAmount =  jdbcTemplate.queryForObject("SELECT ACCOUNT_BALANCE FROM MYBANK_APP_ACCOUNT where ACCOUNT_NUMBER=? " ,new Object[]{senderAccount},double.class);
+        return balanceAmount;
+    }
 
     public class PayeeMapper implements RowMapper<Payee> {
         @Override

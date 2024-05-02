@@ -3,6 +3,7 @@ package com.paymentdao.payment;
 import com.paymentdao.payment.entity.Payee;
 import com.paymentdao.payment.entity.Transaction;
 import com.paymentdao.payment.exceptions.PayeeException;
+import com.paymentdao.payment.exceptions.TransactionException;
 import com.paymentdao.payment.service.PaymentTransferImplementation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -71,9 +72,6 @@ PaymentTransferImplementation paymentTransferImplementation;
         assertEquals(987654321234L, actualList.get(0).getPayeeAccountNumber());
     }
 
-
-
-
     @Test
     public void testProcessTransaction() {
         Transaction transaction = new Transaction();
@@ -91,47 +89,67 @@ PaymentTransferImplementation paymentTransferImplementation;
         assertEquals(transaction, result);
     }
 
-   //@Test
-    public void testProcessTransaction_Fail() {
-        // Create a Transaction object
+
+    @Test
+    void testProcessTransaction_InsufficientBalance() {
+        // Arrange
         Transaction transaction = new Transaction();
-        transaction.setTransactionFrom(123456789);
-        transaction.setTransactionTo(987654321);
+        transaction.setTransactionFrom(12345678901L);
+        transaction.setTransactionTo(12345667897L);
         transaction.setTransactionType("transfer");
         transaction.setTransactionAmount(100.0);
 
-        // Stub the jdbcTemplate update method to return 0 (failure)
-        when(jdbcTemplate.update(
+        // Mock procedure call to throw exception for insufficient balance
+        doThrow(new DataAccessException("ORA-20001") {}).when(jdbcTemplate).update(
                 eq("CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)"),
                 eq(transaction.getTransactionFrom()),
                 eq(transaction.getTransactionTo()),
                 eq(transaction.getTransactionType()),
                 eq(transaction.getTransactionAmount())
-        )).thenReturn(0); // Changed to return 0 instead of 1
-
-        // Call the method under test
-        Transaction result = paymentTransferImplementation.processTransaction(transaction);
-
-        // Assert that the result is null, indicating failure
-        assertNull(result);
+        );
+        // Perform the transaction and verify the exception
+        assertThrows(TransactionException.class, () -> paymentTransferImplementation.processTransaction(transaction));
     }
 
- //   @Test
-    void testProcessTransaction_InsufficientBalance() {
+    @Test
+    void testProcessTransaction_PayeeNotFound() {
         // Arrange
         Transaction transaction = new Transaction();
-        transaction.setTransactionFrom(123456789);
-        transaction.setTransactionTo(987654321);
+        transaction.setTransactionFrom(12345678901L);
+        transaction.setTransactionTo(12345667897L);
         transaction.setTransactionType("transfer");
-        transaction.setTransactionAmount(00.0); // Corrected transaction amount
+        transaction.setTransactionAmount(100.0);
 
-        when(jdbcTemplate.update(
+        // Mock procedure call to throw exception for insufficient balance
+        doThrow(new DataAccessException("ORA-20002") {}).when(jdbcTemplate).update(
                 eq("CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)"),
-                any(Long.class), any(Long.class), any(String.class), any(Double.class)
-        )).thenThrow(new DataAccessException("ORA-20001") {}); // Throwing exception for insufficient balance
+                eq(transaction.getTransactionFrom()),
+                eq(transaction.getTransactionTo()),
+                eq(transaction.getTransactionType()),
+                eq(transaction.getTransactionAmount())
+        );
+        assertThrows(TransactionException.class, () -> paymentTransferImplementation.processTransaction(transaction));
+    }
 
-        // Act & Assert
-        assertThrows(PayeeException.class, () -> paymentTransferImplementation.processTransaction(transaction));
+
+    @Test
+    void testProcessTransaction_RTGSAmount() {
+        // Arrange
+        Transaction transaction = new Transaction();
+        transaction.setTransactionFrom(12345678901L);
+        transaction.setTransactionTo(12345667897L);
+        transaction.setTransactionType("transfer");
+        transaction.setTransactionAmount(100.0);
+
+        // Mock procedure call to throw exception for insufficient balance
+        doThrow(new DataAccessException("ORA-20003") {}).when(jdbcTemplate).update(
+                eq("CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)"),
+                eq(transaction.getTransactionFrom()),
+                eq(transaction.getTransactionTo()),
+                eq(transaction.getTransactionType()),
+                eq(transaction.getTransactionAmount())
+        );
+        assertThrows(TransactionException.class, () -> paymentTransferImplementation.processTransaction(transaction));
     }
 
 }

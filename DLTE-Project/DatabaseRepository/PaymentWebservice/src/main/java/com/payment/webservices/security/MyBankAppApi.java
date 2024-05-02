@@ -17,7 +17,6 @@ public class MyBankAppApi {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     @PostMapping("/register")
     public Customer save(@RequestBody Customer customer){
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));

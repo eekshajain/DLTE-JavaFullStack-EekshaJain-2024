@@ -3,36 +3,22 @@ package com.paymentdao.payment.entity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.util.Collection;
 
 public class Customer implements UserDetails {
-    @NotNull(message = "{customer.id.null}")
+
     private Integer customerId;
 
-    @NotNull(message = "{customer.name.null}")
-    @Pattern(regexp = "^[a-zA-Z\\s]*$",message = "{customer.name}")
     private String customerName;
 
-    @NotNull(message = "{customer.address.null}")
-    @Pattern(regexp = "^\\d+\\s[a-zA-Z]+\\s[a-zA-Z]+", message = "{customer.address}")
     private String customerAddress;
 
-    @NotNull(message = "{customer.status.null}")
-    @Pattern(regexp = "^[a-zA-Z\\s]*$",message = "{customer.status}")
     private String customerStatus;
 
-    @NotNull(message = "{customer.Contact.null}")
-   // @Pattern(regexp = "^\\d{10}$", message = "{customer.contact}")
     private Long customerContact;
 
-    @NotNull(message = "{customer.username.null}")
-    @Pattern(regexp = "^[a-zA-Z0-9]{5,20}$", message = "{customer.username}")
     private String username;
 
-    @NotNull(message = "{customer.password.null}")
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$", message = "{customer.password}")
     private String password;
 
     private int attempts;
@@ -66,7 +52,7 @@ public class Customer implements UserDetails {
     public Customer() {
     }
 
-    public Customer(@NotNull(message = "{customer.id.null}") Integer customerId, @NotNull(message = "{customer.name.null}") @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "{customer.name}") String customerName, @NotNull(message = "{customer.address.null}") @Pattern(regexp = "^\\d+\\s[a-zA-Z]+\\s[a-zA-Z]+", message = "{customer.address}") String customerAddress, @NotNull(message = "{customer.status.null}") @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "{customer.status}") String customerStatus, @NotNull(message = "{customer.Contact.null}") Long customerContact, @NotNull(message = "{customer.username.null}") @Pattern(regexp = "^[a-zA-Z0-9]{5,20}$", message = "{customer.username}") String username, @NotNull(message = "{customer.password.null}") @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$", message = "{customer.password}") String password, int attempts) {
+    public Customer(Integer customerId, String customerName, String customerAddress, String customerStatus, Long customerContact, String username, String password, int attempts) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerAddress = customerAddress;

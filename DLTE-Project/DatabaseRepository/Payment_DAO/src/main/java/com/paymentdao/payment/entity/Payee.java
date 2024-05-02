@@ -7,27 +7,19 @@ import javax.validation.constraints.Pattern;
 
 public class Payee {
 
-    @NotNull(message = "{payee.id}")
-    @Digits(integer = 3, fraction = 0, message = "{payee.id}")
     private Integer payeeId;
 
-    @NotNull(message = "{payee.senderAcc}")
-    @Digits(integer = 12, fraction = 0, message = "{payee.senderAcc}")
     private Long senderAccountNumber;
 
-    @NotNull(message = "{payee.payeeAcc}")
-    @Digits(integer = 12, fraction = 0, message = "{payee.payeeAcc}")
     private Long payeeAccountNumber;
 
-    @NotBlank(message = "{name.null}")
-    @Pattern(regexp = "^[a-zA-Z\\s]*$",message = "{payee.holder}")
     private String payeeName;
 
 
     public Payee() {
     }
 
-    public Payee(@NotNull(message = "{payee.id}") @Digits(integer = 3, fraction = 0, message = "{payee.id}") int payeeId, @NotNull(message = "{payee.senderAcc}") @Digits(integer = 12, fraction = 0, message = "{payee.senderAcc}") long senderAccountNumber, @NotNull(message = "{payee.payeeAcc}") @Digits(integer = 12, fraction = 0, message = "{payee.payeeAcc}") long payeeAccountNumber, @NotBlank(message = "{name.null}") @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "{payee.holder}") String payeeName) {
+    public Payee(Integer payeeId, Long senderAccountNumber, Long payeeAccountNumber, String payeeName) {
         this.payeeId = payeeId;
         this.senderAccountNumber = senderAccountNumber;
         this.payeeAccountNumber = payeeAccountNumber;

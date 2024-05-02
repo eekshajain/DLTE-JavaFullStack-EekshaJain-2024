@@ -28,7 +28,6 @@
             height: 100vh;
         }
         .narrow-btn1 {
-
             background-color: #182052; /* Orange color */
             color: #fff4f7;
             border-radius: 10px;
@@ -46,6 +45,7 @@
     </style>
     <script>
         $(document).ready(() => {
+            var balanceDisplay = $("#balanceDisplay");
             // Fetch account numbers and populate dropdown
             $.ajax({
                 type: "GET",
@@ -65,8 +65,19 @@
             // Event handler for dropdown change
             $("#populate").change(function () {
                 var selectedAccountNumber = $(this).val();
+                $.ajax({
+                    type: "GET",
+                    url: "/transactions/getBalance",
+                    data: { accountNumber: selectedAccountNumber },
+                    success: function(response) {
+                        // Update the balance display with the fetched balance
+                        balanceDisplay.text("Balance: " + response);
+                    },
+                    error: function(xhr, status, error) {
+                        balanceDisplay.text("Error fetching balance");
+                    }
+                });
                 if (selectedAccountNumber) {
-                    alert("Selected account number: " + selectedAccountNumber);
                     findBasedOnAccNumber(selectedAccountNumber);
                 }
             });
@@ -90,7 +101,6 @@
                     contentType: "text/xml;charset=utf-8",
                     data: soapRequest,
                     success: function (response) {
-                        alert("Successfully fetched payee details!");
                         const payeeDetails = [];
                         $(response).find(`ns2\\:payee`).each(function () {
                             const payee = {
@@ -161,8 +171,13 @@
             };
         })
         function viewtransaction(dropdownAccountNumber, cardAccountNumber) {
-            const url = "/payment/new-trans?dropdownAccountNumber=" + dropdownAccountNumber + "&cardAccountNumber=" + cardAccountNumber;
-            window.location.href = url;
+          //  const url = "/payment/new-trans?dropdownAccountNumber=" + dropdownAccountNumber + "&cardAccountNumber=" + cardAccountNumber;
+            const data={
+               sender:dropdownAccountNumber,
+                payee:cardAccountNumber
+            };
+            sessionStorage.setItem('dataN',JSON.stringify(data));
+            window.location.href = "../payment/new-trans";
         }
     </script>
 </head>
@@ -171,6 +186,7 @@
 <h2>View all payees</h2>
 <div>
     <select id="populate" name="senderAccountNumber" class="form-select custom-dropdown"></select>
+    <h5 id="balanceDisplay"></h5>
 </div>
 <div id="payeeDetails" class="container mt-3" style="display: inline-block;">
     <!-- Payee details will be displayed here -->

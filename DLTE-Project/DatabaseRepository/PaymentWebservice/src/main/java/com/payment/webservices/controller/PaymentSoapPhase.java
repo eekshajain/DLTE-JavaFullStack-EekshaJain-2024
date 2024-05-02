@@ -49,13 +49,6 @@ public class PaymentSoapPhase {
             try {
                 List<Payee> payees = new ArrayList<>(); //arraylist of services
                 List<com.paymentdao.payment.entity.Payee> daoPayee = paymentTransferRepository.findAllPayeeBasedOnAccountNumber(findAllPayeeBasedOnAccountNumberRequest.getSenderAccount());  //array list of dao fetch all details and store in dao array list
-                //  Iterator<com.paymentdao.payment.entity.Payee> iterator = daoPayee.iterator();
-/*
-        while (iterator.hasNext()){
-            Payee currentPayee=new Payee();
-            BeanUtils.copyProperties(iterator.next(),currentPayee);
-            payees.add(currentPayee);
-        }*/
                 if (daoPayee != null) {
                     daoPayee.forEach(each -> {    //using lambda expression to copy elements from dao to services
                         Payee currentPayee = new Payee();
