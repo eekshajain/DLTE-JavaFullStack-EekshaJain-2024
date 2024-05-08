@@ -1,0 +1,223 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PaymentTransferImplementation</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.paymentdao.payment.service</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PaymentTransferImplementation (com.paymentdao.payment.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PaymentTransferImplementation</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97.7%
+  </span>
+  <span class="absValue">
+    (43/ 44)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">PaymentTransferImplementation$$EnhancerBySpringCGLIB$$d1473f5a</td>
+  </tr>
+  <tr>
+    <td class="name">PaymentTransferImplementation$PayeeMapper</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/ 7)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    98%
+  </span>
+  <span class="absValue">
+    (50/ 51)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.paymentdao.payment.service;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.paymentdao.payment.entity.Payee;
+<i>4</i>&nbsp;import com.paymentdao.payment.entity.Transaction;
+<i>5</i>&nbsp;import com.paymentdao.payment.exceptions.PayeeException;
+<i>6</i>&nbsp;import com.paymentdao.payment.exceptions.TransactionException;
+<i>7</i>&nbsp;import com.paymentdao.payment.remote.PaymentTransferRepository;
+<i>8</i>&nbsp;import org.slf4j.Logger;
+<i>9</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>10</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;import org.springframework.dao.DataAccessException;
+<i>13</i>&nbsp;import org.springframework.jdbc.core.JdbcTemplate;
+<i>14</i>&nbsp;import org.springframework.jdbc.core.RowMapper;
+<i>15</i>&nbsp;import org.springframework.stereotype.Service;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;import java.sql.ResultSet;
+<i>18</i>&nbsp;import java.sql.SQLException;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;import java.util.List;
+<i>21</i>&nbsp;import java.util.ResourceBundle;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;@Service
+<b class="fc"><i>24</i>&nbsp;public class PaymentTransferImplementation  implements PaymentTransferRepository {</b>
+<b class="fc"><i>25</i>&nbsp;    ResourceBundle resourceBundle= ResourceBundle.getBundle(&quot;payment&quot;);</b>
+<b class="fc"><i>26</i>&nbsp;    Logger logger = LoggerFactory.getLogger(PaymentTransferImplementation.class);</b>
+<i>27</i>&nbsp;@Autowired
+<i>28</i>&nbsp;    JdbcTemplate jdbcTemplate;
+<i>29</i>&nbsp;    @Override
+<i>30</i>&nbsp;    public List&lt;Payee&gt; findAllPayeeBasedOnAccountNumber(Long accountNumber)  {
+<i>31</i>&nbsp;        List&lt;Payee&gt; payees;
+<i>32</i>&nbsp;
+<b class="fc"><i>33</i>&nbsp;            logger.info(resourceBundle.getString(&quot;logger.account.number&quot;)+accountNumber);</b>
+<b class="fc"><i>34</i>&nbsp;             payees = jdbcTemplate.query(&quot;select * from MYBANK_APP_Payee where sender_account_number=?&quot;, //to fetch based on account number</b>
+<i>35</i>&nbsp;                    new Object[]{accountNumber},
+<i>36</i>&nbsp;                    new PayeeMapper());
+<b class="fc"><i>37</i>&nbsp;        if (!payees.isEmpty()) {</b>
+<b class="fc"><i>38</i>&nbsp;            for (Payee payee : payees) {</b>
+<b class="fc"><i>39</i>&nbsp;                logger.info(&quot;Dao:Payee details: PayeeId - &quot; + payee.getPayeeId() +</b>
+<b class="fc"><i>40</i>&nbsp;                        &quot;, Sender Account Number - &quot; + payee.getSenderAccountNumber() +</b>
+<b class="fc"><i>41</i>&nbsp;                        &quot;, Payee Account Number - &quot; + payee.getPayeeAccountNumber() +</b>
+<b class="fc"><i>42</i>&nbsp;                        &quot;, Payee Name - &quot; + payee.getPayeeName());</b>
+<b class="fc"><i>43</i>&nbsp;            }</b>
+<i>44</i>&nbsp;        }
+<b class="fc"><i>45</i>&nbsp;        if(payees.size()==0){</b>
+<b class="fc"><i>46</i>&nbsp;            logger.error(resourceBundle.getString(&quot;no.payee&quot;));</b>
+<b class="fc"><i>47</i>&nbsp;            throw new PayeeException(resourceBundle.getString(&quot;no.payee&quot;)+accountNumber);</b>
+<i>48</i>&nbsp;        }
+<b class="fc"><i>49</i>&nbsp;        return payees;</b>
+<i>50</i>&nbsp;    }
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    @Override
+<i>54</i>&nbsp;    public Transaction processTransaction(Transaction transaction) {
+<b class="fc"><i>55</i>&nbsp;        String procedureCall = &quot;CALL ADD_NEW_TRANSACTIONS(?, ?, ?, ?)&quot;;</b>
+<b class="fc"><i>56</i>&nbsp;        logger.info(resourceBundle.getString(&quot;logger.transaction.initiate&quot;)+transaction.getTransactionTo());</b>
+<i>57</i>&nbsp;        try {
+<b class="fc"><i>58</i>&nbsp;            int rowAffected=jdbcTemplate.update(procedureCall,</b>
+<i>59</i>&nbsp;                    new Object[]{
+<b class="fc"><i>60</i>&nbsp;                            transaction.getTransactionFrom(),</b>
+<b class="fc"><i>61</i>&nbsp;                            transaction.getTransactionTo(),</b>
+<b class="fc"><i>62</i>&nbsp;                            transaction.getTransactionType(),</b>
+<b class="fc"><i>63</i>&nbsp;                            transaction.getTransactionAmount()</b>
+<i>64</i>&nbsp;                    });
+<b class="fc"><i>65</i>&nbsp;            if(rowAffected&gt;0)  logger.info(resourceBundle.getString(&quot;logger.transaction.done&quot;)+ &quot;Transaction from: &quot; + transaction.getTransactionFrom() + &quot;, &quot; +</b>
+<b class="fc"><i>66</i>&nbsp;                    &quot;Transaction to: &quot; + transaction.getTransactionTo() + &quot;, &quot; +</b>
+<b class="fc"><i>67</i>&nbsp;                    &quot;Transaction type: &quot; + transaction.getTransactionType() + &quot;, &quot; +</b>
+<b class="fc"><i>68</i>&nbsp;                    &quot;Transaction amount: &quot; + transaction.getTransactionAmount());</b>
+<b class="fc"><i>69</i>&nbsp;            return transaction;</b>
+<i>70</i>&nbsp;        }
+<b class="fc"><i>71</i>&nbsp;        catch(DataAccessException dataException){</b>
+<b class="fc"><i>72</i>&nbsp;            if(dataException.getLocalizedMessage().contains(&quot;ORA-20001&quot;)) {</b>
+<b class="fc"><i>73</i>&nbsp;                logger.warn(resourceBundle.getString(&quot;logger.transaction.fail&quot;)+resourceBundle.getString(&quot;minimum.balance.fail&quot;));</b>
+<b class="fc"><i>74</i>&nbsp;                throw new TransactionException(resourceBundle.getString(&quot;minimum.balance.fail&quot;));</b>
+<i>75</i>&nbsp;            }
+<b class="fc"><i>76</i>&nbsp;            else if(dataException.getLocalizedMessage().contains(&quot;ORA-20002&quot;)) {</b>
+<b class="fc"><i>77</i>&nbsp;                logger.warn(resourceBundle.getString(&quot;logger.transaction.fail&quot;)+resourceBundle.getString(&quot;no.payee.found&quot;));</b>
+<b class="fc"><i>78</i>&nbsp;                throw new TransactionException(resourceBundle.getString(&quot;no.payee.found&quot;));</b>
+<i>79</i>&nbsp;            }
+<b class="fc"><i>80</i>&nbsp;            else if(dataException.getLocalizedMessage().contains(&quot;ORA-20004&quot;)) {</b>
+<b class="fc"><i>81</i>&nbsp;                logger.warn(resourceBundle.getString(&quot;logger.transaction.fail&quot;)+resourceBundle.getString(&quot;sender.inactive&quot;));</b>
+<b class="fc"><i>82</i>&nbsp;                throw new TransactionException(resourceBundle.getString(&quot;sender.inactive&quot;));</b>
+<b class="fc"><i>83</i>&nbsp;            }else if(dataException.getLocalizedMessage().contains(&quot;ORA-20003&quot;)){</b>
+<b class="fc"><i>84</i>&nbsp;                logger.warn(resourceBundle.getString(&quot;logger.transaction.fail&quot;)+resourceBundle.getString(&quot;rtgs.minimum.amount&quot;));</b>
+<b class="fc"><i>85</i>&nbsp;                throw new TransactionException(resourceBundle.getString(&quot;rtgs.minimum.amount&quot;));</b>
+<i>86</i>&nbsp;            }
+<i>87</i>&nbsp;            else {
+<i>88</i>&nbsp;                // For any other type of exception, return a generic error response
+<b class="nc"><i>89</i>&nbsp;               throw new TransactionException(resourceBundle.getString(&quot;internal.server.error&quot;));</b>
+<i>90</i>&nbsp;            }
+<i>91</i>&nbsp;        }
+<i>92</i>&nbsp;    }
+<i>93</i>&nbsp;
+<i>94</i>&nbsp;
+<i>95</i>&nbsp;    public double retrieveBalance(Long senderAccount){
+<b class="fc"><i>96</i>&nbsp;        Double balanceAmount =  jdbcTemplate.queryForObject(&quot;SELECT ACCOUNT_BALANCE FROM MYBANK_APP_ACCOUNT where ACCOUNT_NUMBER=? &quot; ,new Object[]{senderAccount},double.class);</b>
+<b class="fc"><i>97</i>&nbsp;        return balanceAmount;</b>
+<i>98</i>&nbsp;    }
+<i>99</i>&nbsp;
+<b class="fc"><i>100</i>&nbsp;    public static class PayeeMapper implements RowMapper&lt;Payee&gt; {</b>
+<i>101</i>&nbsp;        @Override
+<i>102</i>&nbsp;        public Payee mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>103</i>&nbsp;            Payee payee=new Payee();</b>
+<b class="fc"><i>104</i>&nbsp;            payee.setPayeeId(rs.getInt(1));//mapping based on column index</b>
+<b class="fc"><i>105</i>&nbsp;            payee.setSenderAccountNumber(rs.getLong(2));</b>
+<b class="fc"><i>106</i>&nbsp;            payee.setPayeeAccountNumber(rs.getLong(&quot;payee_account_number&quot;));//mapping based on column label</b>
+<b class="fc"><i>107</i>&nbsp;            payee.setPayeeName(rs.getString(&quot;payee_name&quot;));</b>
+<b class="fc"><i>108</i>&nbsp;            return payee;</b>
+<i>109</i>&nbsp;        }
+<i>110</i>&nbsp;    }
+<i>111</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-07 16:43</div>
+</div>
+</body>
+</html>
