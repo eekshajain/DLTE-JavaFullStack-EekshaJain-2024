@@ -9,48 +9,31 @@ public class Transaction {
 
     private Integer transactionId;
 
-    @NotNull(message = "{transactionType.notnull}")
-    @Pattern(regexp = "(?i)IMPS|NEFT|RTGS|UPI", message = "{transaction.type.pattern}")
+    @NotNull(message = "{ERR0001}")
+    @Pattern(regexp = "(?i)IMPS|NEFT|RTGS|UPI", message = "{ERR0001}")
     private String transactionType;
 
     @NotNull
-    @Positive(message = "{transactionAccount.positive}")
-    @Range(min = 100000000000L,max=999999999999L,message = "{digits.accountNumber.message}")
+    @Positive(message = "{ERR0002}")
+    @Range(min = 100000000000L,max=999999999999L,message = "{ERR0002}")
     private Long transactionFrom;
 
     @NotNull
-    @Positive(message = "{transactionAccount.positive}")
-    @Range(min = 100000000000L,max=999999999999L,message = "{digits.accountNumber.message}")
+    @Positive(message = "{ERR0003}")
+    @Range(min = 100000000000L,max=999999999999L,message = "{ERR0003}")
     private Long transactionTo;
 
     private Date transactionDate;
 
-    @NotNull(message = "{transactionAmount.notnull}")
-    @DecimalMin(value = "0.01",message = "{transactionAmount.not.zero}")
+    @NotNull(message = "{ERR0004}")
+    @DecimalMin(value = "1.00",message = "{ERR0004}")
     private Double transactionAmount;
 
 
     private String transactionStatus;
 
-    public Transaction(Integer transactionId, String transactionType, Long transactionFrom, Long transactionTo, Date transactionDate, Double transactionAmount, String transactionStatus) {
-        this.transactionId = transactionId;
-        this.transactionType = transactionType;
-        this.transactionFrom = transactionFrom;
-        this.transactionTo = transactionTo;
-        this.transactionDate = transactionDate;
-        this.transactionAmount = transactionAmount;
-        this.transactionStatus = transactionStatus;
-    }
 
     public Transaction() {
-    }
-
-    public int getTransactionId() {
-        return transactionId;
-    }
-
-    public void setTransactionId(int transactionId) {
-        this.transactionId = transactionId;
     }
 
     public String getTransactionType() {
@@ -77,13 +60,6 @@ public class Transaction {
         this.transactionTo = transactionTo;
     }
 
-    public Date getTransactionDate() {
-        return transactionDate;
-    }
-
-    public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
-    }
 
     public double getTransactionAmount() {
         return transactionAmount;
@@ -93,11 +69,4 @@ public class Transaction {
         this.transactionAmount = transactionAmount;
     }
 
-    public String getTransactionStatus() {
-        return transactionStatus;
-    }
-
-    public void setTransactionStatus(String transactionStatus) {
-        this.transactionStatus = transactionStatus;
-    }
 }

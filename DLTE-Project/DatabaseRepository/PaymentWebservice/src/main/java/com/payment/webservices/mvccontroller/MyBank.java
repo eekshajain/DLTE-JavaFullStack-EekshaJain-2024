@@ -1,17 +1,20 @@
 package com.payment.webservices.mvccontroller;
 
 
+import com.paymentdao.payment.security.MyBankUsersServices;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 
 @Controller
 @RequestMapping("/payment")
 public class MyBank {
+    @Autowired
+    MyBankUsersServices service;
     @GetMapping("/")
     public String login(){
         return "index";
@@ -23,7 +26,7 @@ public class MyBank {
         return "index";
     }
 
-    @RequestMapping(value = "/dash",method = RequestMethod.POST)
+    @RequestMapping(value = "/dashboard",method = RequestMethod.POST)
     public String showDashboard(){
         return "dashboard";
     }
@@ -38,7 +41,7 @@ public class MyBank {
         return "footer";
     }
 
-    @GetMapping("/dash")
+    @GetMapping("/dashboard")
     public String showDash(){
         return "dashboard";
     }
@@ -48,4 +51,19 @@ public class MyBank {
 
     @GetMapping("/new-trans")
     public String showTrans(){ return "newtransaction";}
+
+    @GetMapping("/error")
+    public String errorPage(){
+        return "error";
+    }
+
+    @GetMapping("/name")
+    @ResponseBody
+    public String getCustomerName() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
+        String user = service.getCustomerName(name);
+        return user;
+    }
+
 }

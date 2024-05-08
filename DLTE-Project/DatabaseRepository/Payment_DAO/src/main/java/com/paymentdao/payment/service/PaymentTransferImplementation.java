@@ -33,9 +33,15 @@ public class PaymentTransferImplementation  implements PaymentTransferRepository
             logger.info(resourceBundle.getString("logger.account.number")+accountNumber);
              payees = jdbcTemplate.query("select * from MYBANK_APP_Payee where sender_account_number=?", //to fetch based on account number
                     new Object[]{accountNumber},
-//                new BeanPropertyRowMapper<>(Payee.class)
                     new PayeeMapper());
-
+        if (!payees.isEmpty()) {
+            for (Payee payee : payees) {
+                logger.info("Dao:Payee details: PayeeId - " + payee.getPayeeId() +
+                        ", Sender Account Number - " + payee.getSenderAccountNumber() +
+                        ", Payee Account Number - " + payee.getPayeeAccountNumber() +
+                        ", Payee Name - " + payee.getPayeeName());
+            }
+        }
         if(payees.size()==0){
             logger.error(resourceBundle.getString("no.payee"));
             throw new PayeeException(resourceBundle.getString("no.payee")+accountNumber);
@@ -56,7 +62,10 @@ public class PaymentTransferImplementation  implements PaymentTransferRepository
                             transaction.getTransactionType(),
                             transaction.getTransactionAmount()
                     });
-            if(rowAffected>0)  logger.info(resourceBundle.getString("logger.transaction.done"));
+            if(rowAffected>0)  logger.info(resourceBundle.getString("logger.transaction.done")+ "Transaction from: " + transaction.getTransactionFrom() + ", " +
+                    "Transaction to: " + transaction.getTransactionTo() + ", " +
+                    "Transaction type: " + transaction.getTransactionType() + ", " +
+                    "Transaction amount: " + transaction.getTransactionAmount());
             return transaction;
         }
         catch(DataAccessException dataException){
@@ -82,12 +91,13 @@ public class PaymentTransferImplementation  implements PaymentTransferRepository
         }
     }
 
+
     public double retrieveBalance(Long senderAccount){
         Double balanceAmount =  jdbcTemplate.queryForObject("SELECT ACCOUNT_BALANCE FROM MYBANK_APP_ACCOUNT where ACCOUNT_NUMBER=? " ,new Object[]{senderAccount},double.class);
         return balanceAmount;
     }
 
-    public class PayeeMapper implements RowMapper<Payee> {
+    public static class PayeeMapper implements RowMapper<Payee> {
         @Override
         public Payee mapRow(ResultSet rs, int rowNum) throws SQLException {
             Payee payee=new Payee();

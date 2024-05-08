@@ -28,10 +28,8 @@ public class OfficialsFailureHandler extends SimpleUrlAuthenticationFailureHandl
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         String username = request.getParameter("username");
-        Customer myBankUsers = null;
         try {
-             myBankUsers = service.findByUsernameCustomerStream(username);
-
+            Customer myBankUsers = service.findByUsernameCustomerStream(username);
             if (myBankUsers != null) {
                 if (myBankUsers.getCustomerStatus().equalsIgnoreCase("active")) {
                     if (myBankUsers.getAttempts() < myBankUsers.getMaxAttempts()) {

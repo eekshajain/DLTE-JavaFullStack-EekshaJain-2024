@@ -37,6 +37,7 @@ public class MyBankAppSecurity {
         httpSecurity.authorizeRequests().antMatchers("/v3/api-docs").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/pictures/**").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/styles/**").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/scripts/**").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/payment/").permitAll();
         httpSecurity.cors();
         httpSecurity.authorizeRequests().anyRequest().authenticated();

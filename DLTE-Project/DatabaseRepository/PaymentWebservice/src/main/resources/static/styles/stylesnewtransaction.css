@@ -55,3 +55,8 @@ input[type="reset"]:hover {
     background-color: #5c696a;
     border-color: #809192;
 }
+
+span{
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+}

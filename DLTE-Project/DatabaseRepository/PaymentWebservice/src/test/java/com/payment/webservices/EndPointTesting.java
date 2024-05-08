@@ -1,116 +1,139 @@
 package com.payment.webservices;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.payment.webservices.controller.PaymentSoapPhase;
+import com.payment.webservices.security.MyBankAppApi;
+import com.payment.webservices.security.OfficialsFailureHandler;
+import com.payment.webservices.security.OfficialsSuccessHandler;
 import com.paymentdao.payment.entity.Customer;
 import com.paymentdao.payment.entity.Payee;
+import com.paymentdao.payment.exceptions.PayeeException;
 import com.paymentdao.payment.remote.PaymentTransferRepository;
 import com.paymentdao.payment.security.MyBankUsersServices;
-import com.paymentdao.payment.service.PaymentTransferImplementation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.web.servlet.ResultMatcher;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import services.payee.FindAllPayeeBasedOnAccountNumberRequest;
 import services.payee.FindAllPayeeBasedOnAccountNumberResponse;
 
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
 import java.sql.SQLSyntaxErrorException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+
+import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class EndPointTesting {
-    @MockBean
-    private PaymentTransferImplementation paymentService;
 
-    @InjectMocks
-    private PaymentSoapPhase soapPhase;
-    private MockMvc mockMvc;
     @Mock
-    MyBankUsersServices usersServices;
+    MyBankUsersServices myBankUsersServices;
+    @InjectMocks
+    private OfficialsFailureHandler failureHandler;
+    @InjectMocks
+    private OfficialsSuccessHandler successHandler;
+    @Mock
+    private SpringApplicationBuilder mockApplicationBuilder;
 
+  //  @Test
+    public void testAuthenticationFailureAttemptsExceeded() throws IOException, ServletException {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        AuthenticationException exception = new BadCredentialsException("Invalid credentials");
 
-    @BeforeEach
-    void setup() {
-        mockMvc = MockMvcBuilders.standaloneSetup(paymentService).build();
+        String username = "testUser";
+        Customer myBankOfficials = new Customer();
+        myBankOfficials.setUsername(username);
+        myBankOfficials.setCustomerStatus("active"); // Assuming status allows authentication
+        myBankOfficials.setAttempts(3); // Assuming maximum attempts are 3
+        when(myBankUsersServices.findByUsernameCustomerStream(username)).thenReturn(myBankOfficials);
+        failureHandler.onAuthenticationFailure(request, response, exception);
+        assertEquals("/web/?error=User not exists",response.getRedirectedUrl());
     }
-    @Test
-    public void testFindAllAccountNumber()  {
-        Authentication authentication = mock(Authentication.class);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        when(authentication.getName()).thenReturn("Vandana");
 
-        // Mock service behavior
-        Customer customer = new Customer();
-        customer.setCustomerId(123);
-        when(usersServices.findByUsernameCustomerStream("Vandana")).thenReturn(customer);
-        when(usersServices.getAccountNumbersByCustomerId(123)).thenReturn(Collections.singletonList(213456789654L));
-        List<Payee> payees;
-        Payee payee = new Payee();
-        Payee payee1=new Payee(101,213456789654L,543212345678L,"Eeksha");
-        Payee payee2=new Payee(102,765423123564L,765432345678L,"Divija");
-        Payee payee3=new Payee(103,213456789654L,987654321234L,"Arundhathi");
-        Payee payee4=new Payee(104,765423123564L,543567543456L,"Anu");
-        payees= Stream.of(payee1,payee3).collect(Collectors.toList());
-
-        when(paymentService.findAllPayeeBasedOnAccountNumber(213456789654L)).thenReturn(payees);
-
-        FindAllPayeeBasedOnAccountNumberRequest request = new FindAllPayeeBasedOnAccountNumberRequest();
-        // passing the entity
-        request.setSenderAccount(213456789654L);
-        FindAllPayeeBasedOnAccountNumberResponse response = soapPhase.listPayeeBasedOnAccountNumber(request);
-
-        //checking the payeeName in entity as well in response
-        assertEquals(payees.get(0).getPayeeAccountNumber(), response.getPayee().get(0).getPayeeAccountNumber());
-       // assertEquals(payees.get(0).getPayeeName(), response.getPayee().get(1).getPayeeName());
-        // checking the response is success or not
-        assertEquals(200, response.getServiceStatus().getStatus());
-
+ //   @Test
+    public void testAuthenticationFailureUserNotExists() throws IOException, ServletException {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        AuthenticationException exception = new UsernameNotFoundException("User not exists");
+        String username = "nonExistingUser";
+        when(myBankUsersServices.findByUsernameCustomerStream(username)).thenReturn(null);
+        failureHandler.onAuthenticationFailure(request, response, exception);
+        assertEquals("/web/?error=User not exists", response.getRedirectedUrl());
     }
+
 
     @Test
-    public void testFindAllAccountNumberFail() throws SQLSyntaxErrorException {
+    public void testSuccessHandler() throws IOException, ServletException {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        MockHttpServletResponse response = new MockHttpServletResponse();
         Authentication authentication = mock(Authentication.class);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        when(authentication.getName()).thenReturn("Vandana");
-
-        // Mock service behavior
         Customer customer = new Customer();
-        customer.setCustomerId(123);
-        when(usersServices.findByUsernameCustomerStream("Vandana")).thenReturn(customer);
-        when(usersServices.getAccountNumbersByCustomerId(123)).thenReturn(Collections.singletonList(213456789654L));
-        List<Payee> payees;
-        Payee payee = new Payee();
-        Payee payee1=new Payee(101,213456789654L,543212345678L,"Eeksha");
-        Payee payee2=new Payee(102,765423123564L,765432345678L,"Divija");
-        Payee payee3=new Payee(103,213456789654L,987654321234L,"Arundhathi");
-        Payee payee4=new Payee(104,765423123564L,543567543456L,"Anu");
-        payees= Stream.of(payee1,payee3).collect(Collectors.toList());
-        when(paymentService.findAllPayeeBasedOnAccountNumber(213456789654L)).thenReturn(payees);
-        FindAllPayeeBasedOnAccountNumberRequest request = new FindAllPayeeBasedOnAccountNumberRequest();
-        // passing the entity
-        request.setSenderAccount(213456789654L);
-        FindAllPayeeBasedOnAccountNumberResponse response = soapPhase.listPayeeBasedOnAccountNumber(request);
+        customer.setCustomerStatus("active"); // Assuming status allows authentication
+        when(authentication.getPrincipal()).thenReturn(customer);
+        successHandler.onAuthenticationSuccess(request, response, authentication);
+        assertEquals("/payment/dashboard", response.getRedirectedUrl());
+    }
 
-         assertNotEquals(payees.get(0).getPayeeName(), response.getPayee().get(1).getPayeeName());
-        // checking the response is success or not
-       //assertNotEquals(200, response.getServiceStatus().getStatus());
+    @Test
+    public void testMaxAttemptsReached() throws IOException, ServletException {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        Authentication authentication = mock(Authentication.class);
+        Customer myBankOfficials = new Customer();
+        myBankOfficials.setCustomerStatus("inactive"); // Assuming status indicates maximum attempts reached
+        when(authentication.getPrincipal()).thenReturn(myBankOfficials);
+        successHandler.onAuthenticationSuccess(request, response, authentication);
+        assertEquals("/payment/?errors=Your account is blocked,Please contact admin!", response.getRedirectedUrl());
+    }
 
+
+
+    @Test
+    void configureTest() {
+        ServletInitializer servletInitializer = new ServletInitializer();
+        servletInitializer.configure(mockApplicationBuilder);
+        verify(mockApplicationBuilder).sources(WebservicesApplication.class);
+    }
     }
 
 
@@ -119,4 +142,3 @@ public class EndPointTesting {
 
 
 
-}

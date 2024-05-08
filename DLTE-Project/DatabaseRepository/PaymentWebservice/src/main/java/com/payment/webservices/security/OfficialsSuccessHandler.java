@@ -31,7 +31,7 @@ public class OfficialsSuccessHandler extends SimpleUrlAuthenticationSuccessHandl
                 myBankUsers.setAttempts(1);
                 service.updateAttempts(myBankUsers);
             }
-            super.setDefaultTargetUrl("/payment/dash");
+            super.setDefaultTargetUrl("/payment/dashboard");
         }
         else{
             logger.warn(resourceBundle.getString("max.attempt"));

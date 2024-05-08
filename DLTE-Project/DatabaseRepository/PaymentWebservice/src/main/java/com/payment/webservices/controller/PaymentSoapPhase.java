@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -20,7 +19,6 @@ import services.payee.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -57,17 +55,23 @@ public class PaymentSoapPhase {
                     });
                     serviceStatus.setStatus(HttpServletResponse.SC_OK);
                     logger.info(resourceBundle.getString("logger.list.all.account"));
+                    if (!payees.isEmpty()) {
+                        for (Payee payee : payees) {
+                            logger.info("Username: "+username+" Payee details: PayeeId - " + payee.getPayeeId() +
+                                    ", Sender Account Number - " + payee.getSenderAccountNumber() +
+                                    ", Payee Account Number - " + payee.getPayeeAccountNumber() +
+                                    ", Payee Name - " + payee.getPayeeName());
+                        }
+                    }
                     serviceStatus.setMessage("Payee details for account number " + findAllPayeeBasedOnAccountNumberRequest.getSenderAccount());
                     findAllPayeeBasedOnAccountNumberResponse.getPayee().addAll(payees); //add all payee object to response
                 }
-            } catch (PayeeException e) {
-                logger.warn(resourceBundle.getString("error.message") + e.getMessage());//if no details
-                serviceStatus.setStatus(HttpServletResponse.SC_NO_CONTENT);
-                serviceStatus.setMessage(e.getMessage());
             }
-        } else {
-            serviceStatus.setStatus(HttpStatus.NOT_FOUND.value());
-            serviceStatus.setMessage(resourceBundle.getString("sender.no.account") + " " + findAllPayeeBasedOnAccountNumberRequest.getSenderAccount());
+            catch (PayeeException e) {
+                logger.warn(resourceBundle.getString("error.message") + e.getMessage());//if no details
+                serviceStatus.setStatus(HttpServletResponse.SC_OK);
+                serviceStatus.setMessage(resourceBundle.getString("error.one")+e.getMessage());
+            }
         }
         findAllPayeeBasedOnAccountNumberResponse.setServiceStatus(serviceStatus); //setting message status in response
         return findAllPayeeBasedOnAccountNumberResponse;

@@ -1,10 +1,5 @@
 package com.paymentdao.payment.entity;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-
 public class Payee {
 
     private Integer payeeId;
@@ -19,12 +14,6 @@ public class Payee {
     public Payee() {
     }
 
-    public Payee(Integer payeeId, Long senderAccountNumber, Long payeeAccountNumber, String payeeName) {
-        this.payeeId = payeeId;
-        this.senderAccountNumber = senderAccountNumber;
-        this.payeeAccountNumber = payeeAccountNumber;
-        this.payeeName = payeeName;
-    }
 
     public int getPayeeId() {
         return payeeId;

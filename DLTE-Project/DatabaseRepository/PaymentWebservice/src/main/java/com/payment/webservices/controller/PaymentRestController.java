@@ -44,16 +44,30 @@ public class PaymentRestController {
             Transaction transaction1 = null;
             try {
                 transaction1 = paymentTransferRepository.processTransaction(transaction);
-                logger.info(resourceBundle.getString("transaction.add") + transaction.getTransactionTo());
-                return ResponseEntity.status(HttpStatus.OK).body(resourceBundle.getString("transaction.add") + transaction1.getTransactionTo());
+                logger.info(resourceBundle.getString("logger.transaction.add") +"Username: "+username+" "+  "Transaction from: " + transaction.getTransactionFrom() + ", " +
+                        "Transaction to: " + transaction.getTransactionTo() + ", " +
+                        "Transaction type: " + transaction.getTransactionType() + ", " +
+                        "Transaction amount: " + transaction.getTransactionAmount());
+                return ResponseEntity.status(HttpStatus.OK).body(resourceBundle.getString("transaction.add") + transaction.getTransactionTo());
             } catch (TransactionException transactionException) {
                 logger.warn(resourceBundle.getString("transaction.fail") + transaction.getTransactionTo());
                 String errorMessage = transactionException.getMessage();
-                return ResponseEntity.status(HttpStatus.OK).body(errorMessage);
+                if (errorMessage.equals(resourceBundle.getString("minimum.balance.fail"))) {  //if users balance will fall below minimum balance
+                    return ResponseEntity.status(HttpStatus.OK).body(resourceBundle.getString("error.two")+errorMessage);
+                } else if (errorMessage.equals(resourceBundle.getString("no.payee.found"))) { //if user does not have particular payee
+                    return ResponseEntity.status(HttpStatus.OK).body(resourceBundle.getString("error.three")+errorMessage);
+                } else if (errorMessage.equals(resourceBundle.getString("sender.inactive"))) { //if users account is inactive
+                    return ResponseEntity.status(HttpStatus.OK).body(resourceBundle.getString("error.four")+errorMessage);
+                }else if(errorMessage.equals(resourceBundle.getString("rtgs.minimum.amount"))){ //if rtgs amount to be sent is less than 200000
+                    return ResponseEntity.status(HttpStatus.OK).body(resourceBundle.getString("error.five")+errorMessage);
+                }
+                else {
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
+                }
             }
         }else{
             logger.warn(resourceBundle.getString("logger.no.sender.account")+customer.getCustomerId());//if sender doesnot ave account
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resourceBundle.getString("sender.no.account"));
+            return ResponseEntity.status(HttpStatus.OK).body(resourceBundle.getString("error.six")+resourceBundle.getString("sender.no.account"));
         }
     }
 
@@ -67,25 +81,12 @@ public class PaymentRestController {
     }
 
 
-    public String getUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String name = authentication.getName();
-        return name;
-    }
-    @GetMapping("/name")
-    public String getCustomerName() {
-        String name = getUser();
-        String user = service.getCustomerName(name);
-        return user;
-    }
-
-
     @GetMapping("/getBalance")
     public double accountBalance(@RequestParam Long accountNumber) {
         return paymentTransferRepository.retrieveBalance(accountNumber);
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(
             MethodArgumentNotValidException ex) {
