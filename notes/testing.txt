@@ -1,0 +1,11 @@
+Unit testing -testing individual component to check if its working or not
+mockito- to mock object 
+When to se?
+-to mock objects when one project depends on another
+-If the real components perform slow operations while dealing with database connections or another
+ complex read/ write operation. Sometimes the database queries can take 10, 20, or more seconds to execute.
+ In such cases, we require mock objects to perform testing, and it can be done via mocking.
+ doNothing() is used when void is return
+ Testing restapi
+ Mockito
+ 

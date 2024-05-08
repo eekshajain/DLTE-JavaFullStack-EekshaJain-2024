@@ -1,0 +1,77 @@
+ArrayList:
+Size is not fixed
+-Accessing is faster as it uses index
+-Manipulation requires shift of positions
+Methods:
+add(index,obj)
+add(obj)
+addAll(Collection)
+addAll(index,Coll)
+clear()- remove all elements
+contains()
+forEach()
+get(index)
+indexOf(Obj)
+isEmpty()
+remove(index or obj)
+removeAll()
+set(index,element)- replaces specific element with another element
+size()
+toArray()
+====================================================================================================================
+LinkedList
+-LinkedList is better than ArrayList in terms of manipulating elements, no shifting of elements
+-Accessing is slower as requires traversal of elements
+Methods:
+add(index,element)
+add(index)
+addAll(Collection)
+addAll(index,Coll)
+addFirst(element)
+addLast(element)
+getFirst()
+getLast()
+indexOf()
+lastIndexOf(object)- returns the index of last occurence of specified element
+listIterator(index)-returns a list-iterator of the elements in this list, starting at the specified position in the list.
+peek()/peekFirst()- returns first element does not delete it
+peekLast()
+poll()/pollFirst()-retrieve and delete first element
+pollLast()
+pop()
+push()
+remove()/remove(index)/remove(Object)
+removeFirst()/removeFirstOccurrence(Object o)/removeLast()
+======================================================================================================
+vector is used if thread safety required
+=================================================================================
+Set
+unordered collection of objects in which duplicate values cannot be stored. 
+when need to store a collection of unique elements without any specific order.
+----------------------------------------------------------------------------------
+Choose HashSet for fast access and no specific order.
+Choose LinkedHashSet for maintaining insertion order.
+Choose TreeSet for sorted elements. (so it uses comparable interface to sort)- follows natural sort order
+=================================================================================================
+Map
+No duplicates,each value has unique key
+access value based on key- it can be of any data form
+-----------------------------------------------------------------------------------------------------------------
+Use HashMap for fast access by key without caring about order.
+        *No specific order of key value
+		*Duplicate values allowed but not duplicate keys
+Use LinkedHashMap for maintaining insertion order.
+		*Duplicate values allowed but not duplicate keys
+Use TreeMap for sorted keys and efficient lookup.
+		*Keys sorted in specific order
+=========================================================================================
+HashMap										|		HashTable
+Not thread safe								|   thread safe
+cant be shared with multiple thread			| shared with multiple thread
+1 null key multiple null value				| no null key and value
+											
+Thread safety:
+ensuring that a piece of code or data can be accessed and modified by multiple threads concurrently without causing unexpected 
+behavior or data corruption.
+=============================================================================================================================
+

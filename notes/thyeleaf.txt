@@ -1,0 +1,61 @@
+**Thymeleaf** is a powerful **template engine** used in web development, particularly with **Spring Boot** applications. Let's explore why and when you might use the special symbols **`$`** and **`@`** in Thymeleaf:
+
+1. **`$` (Dollar Sign) - Variable Expressions**:
+    - **Purpose**: To access and display values from the **model attributes** (data provided by the server) within your HTML templates.
+    - **Usage Example**:
+        - Suppose you have a `user` object with a `name` property. You can display the user's name using:
+          ```html
+          <p>User Name: <span th:text="${user.name}"></span></p>
+          ```
+    - **Advantages**:
+        - **Dynamic Content**: Allows you to dynamically insert data into your views.
+        - **Cleaner Code**: Reduces the need for hardcoding values directly in HTML.
+        - **Integration with Model**: Seamlessly integrates with Spring model attributes.
+
+2. **`@` (At Sign) - Link Expressions**:
+    - **Purpose**: To rewrite URLs within your templates.
+    - **Usage Example**:
+        - When creating links, you can use `@{...}` expressions to ensure proper URL rewriting:
+          ```html
+          <a th:href="@{/products/details/{productId}(productId=${product.id})}">Product Details</a>
+          ```
+    - **Advantages**:
+        - **URL Rewriting**: Automatically handles URL rewriting based on the application context.
+        - **Consistent Links**: Ensures consistent and valid URLs across different environments (e.g., development, production).
+
+3. **Other Special Symbols**:
+    - **`*` (Asterisk) - Form Backing Bean Expressions**: Used for form fields and form submission.
+    - **`#` (Hash) - Internationalization Expressions**: Used for localization and message externalization.
+    - **`{...}` (Curly Braces) - Variable Expressions**: General variable expressions for dynamic content.
+
+In summary, Thymeleaf simplifies template rendering, integrates well with Spring, and provides a clean way to handle dynamic data and URLs in your web applications. 🌟¹²³⁴
+
+Source: Conversation with Bing, 4/24/2024
+(1) spring - What is thymeleaf? And what are the advantages of using .... https://stackoverflow.com/questions/62036527/what-is-thymeleaf-and-what-are-the-advantages-of-using-thymeleaf.
+(2) Spring Boot Thymeleaf View - javatpoint. https://www.javatpoint.com/spring-boot-thymeleaf-view.
+(3) Standard URL Syntax - Thymeleaf. https://www.thymeleaf.org/doc/articles/standardurlsyntax.html.
+(4) Introduction to Using Thymeleaf in Spring | Baeldung. https://www.baeldung.com/thymeleaf-in-spring-mvc.
+
+In **Thymeleaf**, the **asterisk** (**`*`**) symbol is used for **form backing bean expressions**. Let's explore its purpose and usage:
+
+1. **Form Backing Bean Expressions**:
+    - **Purpose**: To work with form fields and handle form submissions.
+    - **Usage Example**:
+        - Suppose you have a form with an input field named `username`. You can bind the user input to a form backing bean property using the asterisk expression:
+          ```html
+          <input type="text" th:field="*{username}" />
+          ```
+        - Here, `*{username}` binds the value entered by the user to the `username` property in the form backing bean.
+    - **Advantages**:
+        - **Data Binding**: Allows seamless data binding between form fields and Java objects.
+        - **Validation**: Useful for form validation and processing user input.
+
+Remember that the asterisk expression is specifically used for form-related tasks in Thymeleaf. 🌟²³
+
+Source: Conversation with Bing, 4/24/2024
+(1) Spring Boot Thymeleaf View - javatpoint. https://www.javatpoint.com/spring-boot-thymeleaf-view.
+(2) Conditionals in Thymeleaf | Baeldung. https://www.baeldung.com/spring-thymeleaf-conditionals.
+(3) Spring Boot - Thymeleaf with Example - GeeksforGeeks. https://www.geeksforgeeks.org/spring-boot-thymeleaf-with-example/.
+(4) Thymeleaf 3.1: What’s new and how to migrate - Thymeleaf. https://www.thymeleaf.org/doc/articles/thymeleaf31whatsnew.html.
+(5) undefined. http://maven.apache.org/POM/4.0.0.
+(6) undefined. http://www.w3.org/2001/XMLSchema-instance.

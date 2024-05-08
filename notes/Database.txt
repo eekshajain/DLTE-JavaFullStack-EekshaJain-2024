@@ -1,0 +1,20 @@
+1.Create and register Oracle Driver
+Driver driver=new OracleDriver();   The OracleDriver class is a JDBC driver specific to Oracle databases.
+DriverManager.registerDriver(driver);   The DriverManager class is part of the Java standard library and manages a list of available JDBC Driver
+
+2.create a connection to database
+connection=DriverManager.getConnection(resourceBundle.getString("db.url"),resourceBundle.getString("db.user"), resourceBundle.getString("db.pass"));
+
+private PreparedStatement preparedStatement;  
+
+Use executeQuery() to retrieve results (for SELECT queries).
+Use executeUpdate() for other operations (e.g., INSERT, UPDATE, DELETE).
+
+
+3.insert
+q=insert into table values(?,?)
+preparedStatement=connection.prepareStatement(q)   You can set parameter placeholders (using question marks) in the query.
+preparedStatement.setString(1,"")
+                 setInt,setFloat,setDouble
+				 
+preparedStatement.executeUpdate2()

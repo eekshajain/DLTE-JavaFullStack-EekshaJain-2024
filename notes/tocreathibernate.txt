@@ -1,0 +1,5 @@
+To create Hibernate
+1.Create models
+2.Create interface extending crudrepo or jparepo
+3.Create services,add object interface,call crudrepo methods through interface object
+4.Create controller to call methods defined in services-use mappings for it

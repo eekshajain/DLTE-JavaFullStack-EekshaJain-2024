@@ -19,7 +19,7 @@ $(document).ready(()=>{
         }
 
         // Check if amount is provided and is a positive number
-        if (!amount || isNaN(amount)) {
+        if (!amount || isNaN(amount) || amount<0) {
             $('#amountValidation').text("Please enter a valid amount").show();
             isValid = false;
         }else if(amount<1){

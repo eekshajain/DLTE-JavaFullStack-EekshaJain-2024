@@ -1,0 +1,58 @@
+JNDI-Java Naming directory Interface
+One of the way of invoking object
+https://stackoverflow.com/questions/4365621/what-is-jndi-what-is-its-basic-use-when-is-it-used
+
+naming- pool to construct object
+Two process 
+binding & lookup
+
+4 types of binding?
+
+naming convention -> java:/name
+       type -> java.lang.String or java.lang.Integer   after binding it'll return string type
+	   Value -> 
+	  create a servlet project because it uses jBoss container
+	  doGet
+	  Context context=new InitialContext()
+      String role = context.lookup("name")
+      resp.getWriter().println(role)
+	  
+	  
+Database
+     Context context = new InitialContext();
+     Connection connection=null;
+     DataSource dataSource =(DataSource) context.lookup("java:/OracleDS");
+     connection=dataSource.getConnection();
+     PreparedStatement preparedStatement = connection.prepareStatement("select * from my_bank");
+     ResultSet resultSet=preparedStatement.executeQuery();
+
+For database - config->DataSources and drivers->jdbc drivers(config driver) ->  
+
+
+
+
+To add driver-> add jdbc driver ->OracleDriver(driver name) -> module name is path (com.oracle.database.jdbc) -> Driver Class Name
+oracle.jdbc.OracleDriver 
+C:\jboss-eap-7.3\modules\system\layers\base\com\oracle\database\jdbc\main add module and jar file in this
+
+
+
+
+To make our class as JNDI object
+  Module if group id is org.example -> folder structure org -> example -> main -> jar file and module.xml  jar file from .mr 
+  
+  Add datasource template oracle
+                  atribute   Name OracleDS
+                             JNDI Name java:/OracleDS
+                    JDBC driver Driver Name :oracle 
+					Driver Module Name  com.oracle
+                     Driver Class Name  oracle.jdbc.OracleDriver
+
+
+JMS
+Its a architecture to communicate message to consumer. It uses broker called ActiveMQ
+Provider sends message to consumer in 2 ways Queue(point to point) or in topic(publisher,need to subscribe to get messgae)
+4 dependecy-> JMS(JMS api 2.0.1),ActiveMQ,SLF4j,logback
+Factory->Connection->Session->Provider-> can be topic or queue
+Open cmd through bin folder of active mq type acivemq start-> server starts in browser http://localhost:8161/admin/
+Destination is a plac where producer works

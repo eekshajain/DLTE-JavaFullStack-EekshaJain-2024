@@ -1,0 +1,85 @@
+Java Server Faces
+Life cycle begins with client makes request and end with server response
+The request-response lifecycle handles two kinds of requests: 
+initial requests and postbacks. 
+An initial request occurs when a user makes a request for a page for the first time. (when i click on a amazon link give me a login page)(restore view->rener response)
+A postback request occurs when a user submits the form contained on a page that was previously loaded into the browser as a result of 
+executing an initial request.(fill login page and click submit)(execute all phase)
+
+Restore view-
+Begins as soon as link is clicked and jsf receives request
+JSf will build view and wire event handler(connect user interaction to specific action) to ui and save view to faces context instance
+faces context contains information required to process request
+
+Apply Request view
+value entered by user will be updated to each component in component tree(if its postback update component tree else build new component tree)
+if validation or conversion fails then processng will terminate and control goes to render response for rendering error
+
+
+Process validation
+process validations for ui components
+this will happen only if rendered property is set true(validation will be executed only if)
+
+Update Model values
+It is used to set or get values to or from component tree
+
+Invoke application
+Handles application level events like submit form/link to another page
+JSF implementation call UIComponenetBase.processsApplications() which call Render response
+
+Render response 
+whatever response was received from invoke applictaion willl be converted to html response
+Give response back to client
+
+
+For new request 
+There will not be component tree
+Restore view ->componen tree designed with help of restore view ->set values of tree from managed bean or retrieve values from tree to managed bean
+Then send direct to render response
+
+Post request 
+Restore view->if same request sam tree or update tree->then validation->update tree->
+call application->resnder response
+
+Managed bean:
+*Managed Bean is a regular Java Bean class registered with JSF. 
+*In other words, Managed Beans is a Java bean managed by JSF framework. 
+*Managed bean contains the getter and setter methods, business logic, or even a backing bean 
+(a bean contains all the HTML form value).
+Config using Annotation or xml
+*@ManagedBean marks a bean to be a managed bean with the name specified in name attribute. 
+*If the name attribute is not specified, then the managed bean name will default to class name 
+portion of the fully qualified class name. (LoanProduct as loanProduct)
+*If eager = "true" then managed bean is created before it is requested for the 
+first time otherwise "lazy" initialization is used in which bean will be created only
+when it is requested.
+
+@RequestScoped
+
+Bean lives as long as the HTTP request-response lives. 
+It gets created upon a HTTP request and gets destroyed when the HTTP response associated
+with the HTTP request is finished.
+
+@ViewScoped
+
+Bean lives as long as the user is interacting with the same JSF view in the browser window/tab. 
+It gets created upon a HTTP request and gets destroyed once the user postbacks to a different view.
+ 
+@SessionScoped
+
+Bean lives as long as the HTTP session lives. It gets created upon the first HTTP request 
+involving this bean in the session and gets destroyed when the HTTP session is invalidated. 
+
+@ApplicationScoped
+
+Bean lives as long as the web application lives.
+ It gets created upon the first HTTP request involving this bean in the application 
+ (or when the web application starts up and the eager=true attribute is set in @ManagedBean) 
+ and gets destroyed when the web application shuts down.
+ 
+ 
+ For basic jsf tags refer: https://www.tutorialspoint.com/jsf/jsf_basic_tags.htm
+ For converter tags:https://www.tutorialspoint.com/jsf/jsf_convertor_tags.htm
+ 
+
+

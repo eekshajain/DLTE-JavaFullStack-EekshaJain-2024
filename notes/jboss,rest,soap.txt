@@ -1,0 +1,57 @@
+rest used for json
+soap used for xml
+
+
+JBoss: JBoss provides a Java EE-based application server runtime platform.
+
+ resp.setContentType("application/json"); The content type specifies the format of the data being sent in the response body.
+ 
+ Gson to convert object to Json format
+ 
+ For task 
+ -create entity for 3
+ -middleware having connection,statements,result set,loggers,exception
+    (add new transaction-check if new merchant exists)
+	
+web service provides cross platform support
+
+
+To build-> clean package
+
+SOAP-simple object access protocol
+ 
+Marshaling object to xml
+Unmarshaling xml to object
+JAXB manages all these conversion
+
+object factory to convert object to xml and vice versa
+
+while working with object in SOAP must create a intermediate to convert 
+
+soapbinding,webservice
+
+REST (Representational State Transfer):
+When to Use REST:
+Simplicity: Choose REST for straightforward scenarios where simplicity is key.
+Public APIs: REST is widely used for public APIs over the Internet.
+Browser Clients: REST is preferred for web applications accessed via browsers.
+Statelessness: RESTful services are stateless, making them suitable for scalable and distributed systems.
+Performance: REST is efficient, supports caching, and works well with existing web infrastructure.
+JSON: If you prefer working with JSON data, REST is a natural fit.
+SOAP (Simple Object Access Protocol):
+When to Use SOAP:
+Complex Scenarios: Use SOAP for complex scenarios where security, transactions, and reliability are critical.
+Legacy Systems: SOAP is still relevant for integrating with legacy systems.
+Fixed Standards: SOAP 1.2 has fixed many perceived shortcomings and is widely adopted.
+XML: If you need to work with XML-based messages, SOAP is a good choice.
+RPC-Style Communication: SOAP supports remote procedure calls (RPC) and structured data.
+Considerations:
+Overhead:
+REST has less overhead compared to SOAP due to its simplicity.
+SOAP relies on XML and has additional complexity.
+Interoperability:
+Both REST and SOAP can work across domains, but SOAP has stricter standards.
+REST is more flexible and browser-friendly.
+General Rule of Thumb:
+REST: Use REST unless there’s a compelling reason to use SOAP.
+SOAP: Choose SOAP for specific use cases, legacy systems, or when fixed standards are necessary

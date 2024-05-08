@@ -41,9 +41,8 @@ public class PaymentRestController {
         Customer customer=service.findByUsernameCustomerStream(username);
         List<Long> senderAccountNumber=service.getAccountNumbersByCustomerId(customer.getCustomerId());//get users account number(1 user might have multiple accounts)
         if (senderAccountNumber.contains(transaction.getTransactionFrom())) {
-            Transaction transaction1 = null;
             try {
-                transaction1 = paymentTransferRepository.processTransaction(transaction);
+                paymentTransferRepository.processTransaction(transaction);
                 logger.info(resourceBundle.getString("logger.transaction.add") +"Username: "+username+" "+  "Transaction from: " + transaction.getTransactionFrom() + ", " +
                         "Transaction to: " + transaction.getTransactionTo() + ", " +
                         "Transaction type: " + transaction.getTransactionType() + ", " +

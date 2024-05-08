@@ -1,0 +1,99 @@
+JSF life cycle
+restore view
+apply request
+process validation
+update model
+invoke application
+render response
+
+2 dependencies(api and implementation)
+write faceconfig.xml
+write index.xhtml
+
+
+label->outputLabel value="" (self closing)
+form-><h:form></h:form>
+text field->inputText value=""(self closing) value need to be mentioned to redirect
+drop down->selectOneListbox
+radio button->selectOneRadio
+submit button ->commandButton
+
+
+managedbean,requestscoped,viewscoped,session scope,application scope
+Certainly! Let’s delve into managed beans and their scopes in the context of JavaServer Faces (JSF).
+
+Managed Beans:
+A managed bean is a pure Java class that serves as a model for your JSF application.
+It contains properties (fields) and getter/setter methods.
+Managed beans are used to:
+Validate component data.
+Handle events fired by components.
+Determine the next page to which the application must navigate.
+You can use managed beans as a model within the JSF framework.
+Configuring Managed Beans:
+There are two ways to configure managed beans:
+XML Configuration (older approach):
+Create an XML file named faces-config.xml.
+Use the <managed-bean> tag to define the bean’s name, class, and scope.
+Example:
+XML
+
+<managed-bean>
+    <managed-bean-name>user</managed-bean-name>
+    <managed-bean-class>User</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+AI-generated code. Review and use carefully. More info on FAQ.
+Annotation-Based Configuration (modern approach):
+Use annotations directly in your Java class.
+Example:
+Java
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+@ManagedBean
+@RequestScoped
+public class User {
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+AI-generated code. Review and use carefully. More info on FAQ.
+Annotations replace the need for XML configuration.
+The @RequestScoped annotation specifies that the bean’s scope is limited to a single HTTP request.
+Bean Scopes:
+Managed beans can have different scopes:
+Application (@ApplicationScoped):
+Persists across all users’ interactions with the web application.
+Session (@SessionScoped):
+Persists across multiple HTTP requests within a user session.
+View (@ViewScoped):
+Persists during a user’s interaction with a single page (view).
+Request (@RequestScoped):
+Persists during a single HTTP request.
+None (@NoneScoped):
+Indicates no specific scope.
+Custom (@CustomScoped):
+User-defined, nonstandard scope (rarely used).
+Eager Managed Beans:
+By default, managed beans are lazy (instantiated only when requested).
+To force instantiation at application startup, set the eager attribute to true.
+Example:
+Java
+
+@ManagedBean(name = "helloWorld", eager = true)
+@RequestScoped
+public class HelloWorld {
+    // ...
+}
+AI-generated code. Review and use carefully. More info on FAQ.
+Remember that managed beans play a crucial role in JSF applications, acting as the bridge between the view and the model. Feel free to explore further and enhance your JSF development! 
+
+

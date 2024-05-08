@@ -1,0 +1,14 @@
+
+In the provided configuration, payee.port and payee.target.name.space are used to set the port type name and target namespace for the generated WSDL.
+
+Port Type Name (payee.port):
+The port type name defines the abstract interface of the web service. It typically specifies the operations that the service supports and the messages involved in those operations.
+In the configuration, defaultWsdl11Definition.setPortTypeName(resourceBundle.getString("payee.port")) sets the port type name using the value retrieved from the resource bundle.
+For example, if payee.port is set to PayeePort, the generated WSDL will have a <portType> element with the name PayeePort.
+
+
+Target Namespace (payee.target.name.space):
+The target namespace is a unique identifier for the XML elements defined in the WSDL document. It helps in avoiding naming conflicts between different services.
+In the configuration, defaultWsdl11Definition.setTargetNamespace(resourceBundle.getString("payee.target.name.space")) sets the target namespace using the value retrieved from the resource bundle.
+For example, if payee.target.name.space is set to http://payee.services, all elements defined in the generated WSDL will belong to the namespace http://payee.services.
+These properties are crucial for defining the structure and semantics of the generated WSDL. They ensure that the WSDL is correctly interpreted by clients consuming the web service

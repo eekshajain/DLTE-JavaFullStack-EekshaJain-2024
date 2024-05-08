@@ -1,0 +1,34 @@
+REST, which stands for Representational State Transfer, is an architectural style for designing networked applications.
+ REST is based on a set of principles that emphasize simplicity, scalability, and statelessness.
+
+### What is REST?
+- **Resource-based**: REST treats data and functionality as resources that can be accessed and manipulated using standard HTTP methods.
+- **Statelessness**: Each request from a client to the server must contain all the information necessary to process the request. 
+					Servers do not store any client state between requests.
+- **Uniform interface**: RESTful APIs use a uniform interface consisting of standard HTTP methods (GET, POST, PUT, DELETE) and resource identifiers
+						(URLs) to interact with resources.
+- **Representation**: Resources are represented in various formats such as JSON, XML, or HTML, allowing clients to request and receive 
+					representations of resources that suit their needs.
+- **Hypermedia**: RESTful APIs may include hypermedia links in responses to allow clients to discover and navigate related resources dynamically.
+
+### When to use REST?
+- **Building Web Services**: REST is commonly used for designing web services and APIs that expose functionality over the internet. 
+							It's suitable for scenarios where clients need to interact with remote servers to perform CRUD operations on resources.
+- **Microservices Architecture**: RESTful APIs are well-suited for implementing microservices architectures, where complex applications are decomposed 
+								into smaller, independently deployable services. Each microservice can expose a RESTful API for communication 
+								with other services and clients.
+- **Integration with Web and Mobile Clients**: RESTful APIs are ideal for integrating with web and mobile clients, as they leverage standard 
+						HTTP methods and data formats. They allow clients to access and manipulate resources using familiar protocols and technologies.
+
+### Why use REST?
+1. **Simplicity**: RESTful APIs are based on simple and intuitive principles, making them easy to understand, implement, and use. 
+						They leverage existing HTTP protocols and conventions, reducing the need for custom client or server logic.
+2. **Scalability**: RESTful APIs are stateless and can handle a large number of concurrent requests, making them highly scalable.
+					Servers can distribute requests across multiple instances or scale horizontally to accommodate growing traffic.
+3. **Flexibility**: RESTful APIs support various client types and data formats, allowing clients to access resources using different devices 
+					and platforms. They enable loose coupling between clients and servers, allowing them to evolve independently.
+4. **Interoperability**: RESTful APIs are platform-independent and can be implemented using any programming language or framework that supports HTTP.
+						They promote interoperability between different systems and enable seamless integration with third-party services.
+5. **Caching**: RESTful APIs leverage HTTP caching mechanisms to improve performance and reduce network latency. 
+				Clients can cache responses and reuse them for subsequent requests, reducing the need for redundant data transfers.
+

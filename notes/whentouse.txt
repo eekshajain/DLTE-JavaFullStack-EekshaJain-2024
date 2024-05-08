@@ -1,0 +1,2 @@
+RMI,JAX,SOAP,Spring-quickstart
+JNDI,Rest- webapp

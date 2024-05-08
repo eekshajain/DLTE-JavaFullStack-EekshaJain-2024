@@ -1,0 +1,39 @@
+Files
+1.File Creation
+To create a file -createNewFile()
+Above will be returning boolean value- true if file creted
+									   false if file already exists
+Throws IOException
+It was thown when the specified file or directory does not exist, an IOException occurs.
+
+2.Read using FileInputStream
+ Creates an input file stream to read from the specified File object. 
+ used to read bytes
+ throws FileNotFoundException
+ available()  - 
+ getFD()   -   
+ read()/read(b bytes)/read(b bytes,int off,int len)
+ 
+ 3.write using FileOutputStream
+ outputstream for writing data/streams of raw bytes to file or storing data to file
+write(): this writes the single byte to the file output stream.
+write(byte[] array): this writes the specified array’s bytes to the output stream.
+write(byte[] array, int start, int length): this writes the number of bytes equal to length to the output stream from an array starting from the position start.
+
+4.writing object into file
+to write a object into file ,class of the object must be Serializable
+Serialization is process of converting object into byte stream
+ObjectOutputStream used for serialization
+Class marked as Serializable indicates that it can be converted into byte stream
+*Create a serializable Class
+*Create FileOutputStream
+*Create ObjectOutputStream and pass FileOutputStream as argument
+*ObjectOutputStream.writeObject() to write
+-Data in file is in binary format
+
+5.Reading object from file
+*FileInputStream is used to read bytes
+*ObjectInputStream used to deserialize bytes into object
+
+
+

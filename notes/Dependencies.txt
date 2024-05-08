@@ -1,0 +1,124 @@
+Dependency for Rest
+    ---for servlet---
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+    ---for rest---
+    <!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
+    <dependency>
+      <groupId>javax.ws.rs</groupId>
+      <artifactId>javax.ws.rs-api</artifactId>
+      <version>2.1.1</version>
+    </dependency>
+    ---for gson---
+    <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
+    </dependency>
+
+Dependecy for Soap
+<!-- https://mvnrepository.com/artifact/com.sun.xml.ws/jaxws-rt -->
+    <dependency>
+      <groupId>com.sun.xml.ws</groupId>
+      <artifactId>jaxws-rt</artifactId>
+      <version>2.2.10</version>
+      <type>pom</type>
+    </dependency>
+
+Dependency for Spring
+   <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>5.3.1</version>
+</dependency>
+
+
+Dependency for Spring Dev tools
+<!--
+https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
+-->
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-devtools</artifactId>
+<version>2.7.10</version>
+</dependency>
+
+Dependency for Hibernate
+dev tools
+oracle driver (change to 6)
+jpa
+spring web
+
+Dependency for JDBC template
+Spring Data JDBC
+dev tools
+oracle driver (change to 6)
+spring web
+
+Dependency for deployment(mvn clean package)
+web flex
+servlet
+exclude tomcat
+
+Dependency for SOAP
+Spring Data JDBC
+dev tools
+oracle driver (change to 6)
+spring web
+wsdl 4j 1.6.3(from maven)
+jaxb api 2.3.1(from maven)
+
+
+To give dependency of spring dao to webservice
+add this in dao
+   <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+add this in spring webservice
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaDirectory>src/main/resources</schemaDirectory>
+                    <schemaFiles>employee.xsd</schemaFiles>
+                    <outputDirectory>src/main/java</outputDirectory>
+                    <clearOutputDir>false</clearOutputDir>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>

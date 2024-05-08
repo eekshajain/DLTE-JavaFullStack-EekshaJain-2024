@@ -1,0 +1,76 @@
+Spring
+Inversion of control/Dependecy injection
+Container where there are multiple beans(pojo)
+bean id(object/naming),class(classname with package),initialize using propert name="" value="",or constructor
+spring core(console),spring web(webapp),aop,jdbc,mvc,boot
+annotation on code:container,compoent,entity,configuration,service,repository
+Definitions-rule or protocol how
+autowire
+
+Spring security
+csrf
+in preferences enable auth preemptively
+in tab there is auth addd new auth and provide password
+
+Spirng Core -Dependecy injection and Inversion of Control
+-Dependecy injection-
+Dependency injection is used to make a class independent of its dependencies or to create a loosely coupled program. 
+Dependency injection is useful for improving the reusability of code. Likewise, by decoupling the usage of an object, 
+more dependencies can be replaced without needing to change class
+
+inject the object of one classs to another
+if we wanto make changes just chaneg bean file
+
+@Component t0 tell the spring that i want to create object of this class
+The class which is annotated with @Component can be managed by the Spring IOC container means the bean of that class can be automatically 
+created by the Spring IOC container with the same name as a class name but the first letter of that bean should start with a small case letter
+
+In Spring, both `@Bean` annotation and `@Component` annotation are used for defining beans, but they are used in different contexts and have different purposes:
+
+1. **@Bean Annotation**:
+   - `@Bean` annotation is a method-level annotation used within `@Configuration` classes.
+   - It is used to explicitly declare a bean, typically when the bean instantiation or configuration cannot be accomplished through constructor injection, auto-wiring, or component scanning.
+   - The method annotated with `@Bean` is responsible for creating and configuring the bean instance.
+   - Beans declared using `@Bean` are not automatically detected by component scanning. They need to be explicitly declared within `@Configuration` classes.
+   
+   Example:
+   ```java
+   @Configuration
+   public class AppConfig {
+       @Bean
+       public MyBean myBean() {
+           return new MyBean();
+       }
+   }
+   ```
+
+2. **@Component Annotation**:
+   - `@Component` annotation is a class-level annotation used to indicate that a class is a Spring-managed component.
+   - It is a generic stereotype annotation that can be used to annotate any class as a Spring bean.
+   - Classes annotated with `@Component` are automatically detected by Spring's component scanning mechanism during application startup.
+   - It's typically used for general-purpose beans that do not fall into more specific categories like `@Service`, `@Repository`, or `@Controller`.
+   
+   Example:
+   ```java
+   @Component
+   public class MyComponent {
+       // Class definition
+   }
+   ```
+
+**Differences**:
+- **Usage**: `@Bean` is used at the method level within `@Configuration` classes to explicitly declare beans, while `@Component` is used at the
+ class level to indicate that a class is a Spring-managed component.
+  
+- **Configuration**: `@Bean` is used within Java-based configuration (`@Configuration` classes), while `@Component` is used for annotation-based 
+component scanning.
+
+- **Automatic Detection**: Beans declared with `@Component` are automatically detected by Spring's component scanning mechanism, while beans 
+declared with `@Bean` need to be explicitly declared within `@Configuration` classes.
+
+- **Fine-grained Control**: `@Bean` allows fine-grained control over bean configuration within Java code, including custom instantiation logic or 
+injecting dependencies, while `@Component` is more declarative and relies on convention over configuration.
+
+In summary, `@Bean` and `@Component` serve the purpose of defining beans in Spring, but they are used in different contexts and offer different levels
+ of configurational control. Choose the appropriate annotation based on your configuration style and requirements. Use `@Bean` for explicit bean 
+ definition within `@Configuration` classes and `@Component` for annotation-based component scanning.

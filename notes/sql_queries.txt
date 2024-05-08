@@ -1,0 +1,124 @@
+1.Create table
+create table transaction_2024(transaction_id number not null,transaction_date date not null,transaction_to varchar(255) not null,transaction_amount number(10) not null,remarks varchar(255));
+  -- To use double data type-> double precision
+
+2.Alter table without sequence
+alter table transaction_2024 add primary key(transaction_id);
+
+3.ceate sequence-auto increment
+ create sequence transaction_seq start with 2024001 increment by 1;
+
+4.drop primary key
+alter table transaction_2024 drop primary key;
+
+5.declare primary key with sequence
+ alter table transaction_2024 add constraint transaction_seq primary key(transaction_id);
+
+6.insert data
+while inserting data we must specify transaction_id because sequence (which is used as autincrement) because sequence and tables work separately
+ insert into transaction_2024(transaction_id,transaction_to,transaction_amount,transaction_date,remarks) values (transaction_seq.nextval,'Divija',774,'20-Feb-2024','Bus Ticket');
+
+7.delete data
+ delete from transaction_2024 where transaction_id=2024002; 
+{{{make sure to give commit command after insert delete and update or else it will not be displayed in database.}}}
+
+8.truncate table
+truncate table transaction_2024;
+
+9.drop sequence
+drop sequence transaction_seq;
+
+10.select
+select transaction_to from transaction_2024 where remarks='Rent';
+
+11. creating view
+ create view rent_name as select transaction_to from transaction_2024 where remarks='Rent';
+ 
+
+12.create or replace view
+create or replace view rent_name as select transaction_to,transaction_date from transaction_2024 where remarks='Rent';
+
+
+13.delete 
+delete from transaction_2024 where transaction_date between '18-Feb-2024' and '20-Feb-2024';
+ delete from transaction_2024 where transaction_amount>=770 and transaction_amount<6600;
+
+14.update
+update transaction_2024 set remarks='Stay Expense' where transaction_amount>=5000;
+===================================PROCEDURE=======================================================
+15.create procedure for read
+create or REPLACE PROCEDURE fetch_transaction(
+tran_id number,
+tran_to out VARCHAR2
+) as 
+begin
+   select transaction_to into tran_to from transaction_2024 where transaction_id=tran_id;
+end;
+
+16.execute procedure
+variable found VARCHAR2;
+execute fetch_transaction(2024002,:found);
+print found;
+
+17.procudure read with exception
+create or REPLACE PROCEDURE fetch_transaction(
+tran_id number,
+tran_to out VARCHAR2,
+error_info out varchar2
+) as 
+begin
+   select transaction_to into tran_to from transaction_2024 where transaction_id=tran_id;
+   error_info:='Details fetched succesfully';
+   exception
+      when no_data_found then
+      error_info:='Data not found';
+      when others then
+      error_info:='Error message' || SQLERRM;
+end;
+
+18.execute above procedure
+
+variable found VARCHAR2(255);
+variable info_or_error VARCHAR2(255)
+execute fetch_transaction(2024002,:found,:info_or_error);
+print found;
+
+19.drop procedure
+drop procedure fetch_transaction;
+=====================================================GRANT AND REVOKE PERMISSION====================================================
+20.DCL
+create user
+create user username identified by password;
+create user Eeksha identified by eeksha;
+
+21
+grant connect to username;(in system) (provide connect permission)
+
+22.
+  alter session set current_schema=system;(everytime we grant permission use it. can be used in user terminal)
+
+23.
+grant select on transaction_2024 to Eeksha;(in system)
+
+24.
+connect Eeksha/eeksha;
+
+25. granting permission takes place in system not in users if tried
+ grant update on transaction_2024 to Eeksha;
+ grant update on transaction_2024 to Eeksha
+                 *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+26. revoke permission
+revoke select on transaction_2024 from Eeksha;
+
+27. after revoke
+ select * from transaction_2024;
+select * from transaction_2024
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+===========================Like constraint,group by, order by============================================
+26.select * from transaction_analysis where transaction_to like 'A%';

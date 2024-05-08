@@ -1,0 +1,29 @@
+Why use bootstrap
+easy to use
+responsiveness based on screen size chnge the content style
+
+
+Dynamic 
+Changes in content based on login location
+JS used for building interactive website validations,events-Client side js need html
+using selectors changing existin html: getElementById,TagName,Name,Classname
+
+data types:
+number,string,json,object,array,boolean
+
+variable
+var,const,let
+
+json{
+var jsonOj={
+type1=""
+type2=""
+}
+jsonOj.type1  or jsonOj['type2']
+
+typeof(jsonOj.type1)
+
+Arraylist:
+const lis=Array([])  or []
+
+functions:

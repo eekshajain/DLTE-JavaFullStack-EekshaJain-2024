@@ -1,0 +1,50 @@
+Your personal and company data are protected
+Certainly! Log levels are crucial for effective logging in software applications. They help manage the verbosity of log messages and provide valuable information during development, testing, and production. Let’s explore when to use different log levels along with examples:
+
+Trace:
+Purpose: Used for detailed tracing during debugging or troubleshooting.
+Example Use Case: When you want to trace the execution flow within a specific function or module.
+Example Code:
+Java
+
+logger.trace("Entering calculateTotal() method...");
+AI-generated code. Review and use carefully. More info on FAQ.
+Debug:
+Purpose: Provides diagnostic information for developers and system administrators.
+Example Use Case: When you need to log variable values, method calls, or other details during development.
+Example Code:
+Java
+
+logger.debug("User {} logged in successfully.", username);
+AI-generated code. Review and use carefully. More info on FAQ.
+Info:
+Purpose: General information about the application’s state.
+Example Use Case: Logging service start/stop, configuration changes, or important events.
+Example Code:
+Java
+
+logger.info("Application started on port {}", serverPort);
+AI-generated code. Review and use carefully. More info on FAQ.
+Warn:
+Purpose: Indicates potential issues that don’t disrupt the application.
+Example Use Case: When a fallback mechanism is triggered or a non-critical operation fails.
+Example Code:
+Java
+
+logger.warn("Failed to load secondary data. Using default values.");
+AI-generated code. Review and use carefully. More info on FAQ.
+Error:
+Purpose: Represents errors that require attention but don’t halt the application.
+Example Use Case: Database connection failure, missing files, or invalid input.
+Example Code:
+Java
+
+logger.error("Error processing request: {}", exception.getMessage());
+AI-generated code. Review and use carefully. More info on FAQ.
+Fatal:
+Purpose: Critical errors that force the application to shut down.
+Example Use Case: Data corruption, unrecoverable exceptions, or security breaches.
+Example Code:
+Java
+
+logger.fatal("Critical error: Application shutting down.");

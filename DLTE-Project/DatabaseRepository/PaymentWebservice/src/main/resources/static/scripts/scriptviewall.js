@@ -24,7 +24,7 @@ $(document).ready(() => {
             });
         },
         error: function (error) {
-            console.error("Error fetching:" + error);
+
         }
     });
     // Event handler for dropdown change
@@ -49,7 +49,7 @@ $(document).ready(() => {
                 $("#balanceDisplay").text("Your Account Balance: " + response);
             },
             error: function(xhr, status, error) {
-                $("#balanceDisplay").text("Error fetching balance");
+
             }
         });
     }
@@ -102,7 +102,7 @@ $(document).ready(() => {
                 displayPayeeDetails(payeeDetails);
             },
             error: function (xhr, status, error) {
-                console.error("Error fetching payees: " + error);
+
             }
         });
     }
